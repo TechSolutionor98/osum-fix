@@ -59,7 +59,8 @@ export default function About() {
 
                 {/* Bottom elegant dark gradient overlay card */}
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 pt-12 flex flex-col justify-end text-white z-10">
-                
+              
+              
                 </div>
               </div>
             </div>

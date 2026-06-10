@@ -5,20 +5,28 @@ import Image from "next/image";
 export default function About() {
   const reasons = [
     {
-      title: "PREMIUM DURABILITY",
-      description: "All our products (from switches to heavy-duty inverters) are manufactured with high-grade, heat-resistant components ensuring years of smooth operations."
+      title: "Cutting-Edge Technologies",
+      description: "As markets evolve, Voltaria Global remains focused on innovation and emerging technologies. By continuously expanding our product portfolio and adapting to industry advancements, we help businesses stay competitive in a rapidly changing marketplace."
     },
     {
-      title: "CERTIFIED SAFETY FIRST",
-      description: "Safety is our core foundation. Every single fuse, changeover, and battery unit goes through strict multi-phase quality inspections and complies with international safety standards."
+      title: "Trusted Distribution Network",
+      description: "With a growing network of business partners and customers, Voltaria Global has established itself as a trusted name in electrical product distribution. Our commitment to professionalism, reliability, and service excellence continues to strengthen our reputation across the industry."
     },
     {
-      title: "SMART ENERGY SAVING",
-      description: "Engineered using state-of-the-art power distribution topologies to minimize voltage drops, maximize efficiency, and lower overall utility consumption."
+      title: "Quality Products",
+      description: "Quality remains at the core of everything we distribute. Every product category is selected with a focus on reliability, performance, and customer satisfaction, helping businesses confidently serve their markets."
     },
     {
-      title: "UNMATCHED SUPPORT",
-      description: "Voltaria Global provides direct, round-the-clock technical helpline support and replacement warranties on all our electrical appliances and parts."
+      title: "Business Partnership Focus",
+      description: "Voltaria Global values long-term business relationships built on trust, consistency, and mutual growth. Our approach extends beyond transactions, creating partnerships that support sustainable success for retailers, dealers, wholesalers, and commercial buyers."
+    },
+    {
+      title: "Fast Inquiry Response",
+      description: "In a fast-moving industry, timely communication matters. Our team is committed to providing prompt responses, accurate information, and efficient support to help businesses make informed decisions without unnecessary delays."
+    },
+    {
+      title: "Reliable Supply Chain",
+      description: "A dependable supply chain is the foundation of every successful business. Voltaria Global maintains efficient sourcing, inventory management, and distribution processes to ensure uninterrupted product availability across multiple markets."
     }
   ];
 
@@ -33,13 +41,13 @@ export default function About() {
                 WHO WE ARE
               </span>
               <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">
-                Your Trusted Partner for Premium Electrical Solutions
+                A Leading Force in Electrical Product Distribution
               </h2>
               <p className="text-gray-600 leading-relaxed text-base">
-                Voltaria Global is an international engineering company dedicated to providing premium-grade power solutions. We design, manufacture, and distribute cutting-edge electrical items tailored for modern residential setups and heavy-duty industrial systems.
+                Voltaria Global is a growing distribution company specializing in quality electrical products for retailers, wholesalers, contractors, and commercial buyers. Through reliable supply networks, industry expertise, and a commitment to excellence, we continue to support businesses with dependable solutions that drive long-term success.
               </p>
               <p className="text-gray-600 leading-relaxed text-base">
-                From residential fans that deliver optimal airflow to high-capacity changeovers and smart hybrid inverters, our mission is to deliver uninterrupted power, optimal safety, and peak efficiency to properties worldwide.
+                
               </p>
             </div>
 
@@ -53,14 +61,14 @@ export default function About() {
                   sizes="(max-w-768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700"
                 />
-                
+
                 {/* Visual branding tag overlays */}
-              
+
 
                 {/* Bottom elegant dark gradient overlay card */}
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 pt-12 flex flex-col justify-end text-white z-10">
-              
-              
+
+
                 </div>
               </div>
             </div>
@@ -79,21 +87,21 @@ export default function About() {
               WHY CHOOSE US
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-              Why Voltaria Global?
+              Why Industry Professionals Choose Voltaria Global?
             </h2>
             <p className="mt-4 text-white/90 text-sm md:text-base leading-relaxed">
-              We design and construct top-tier power accessories. Here is why clients rely on our engineering across global regions.
+              Voltaria Global combines industry expertise, dependable distribution, and a commitment to excellence to support businesses operating at every scale. Our reputation is built on reliability, consistency, and the ability to deliver value where it matters most.
             </p>
           </div>
 
           {/* Business Impact Counts using premium solid white cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16 relative z-10">
             <div className="bg-white p-8 rounded-2xl text-left shadow-lg hover:scale-[1.02] transition-transform duration-300">
-              <div className="text-3xl md:text-4xl font-black text-[#E7050F] tracking-tight">50000+</div>
-              <div className="text-sm font-bold text-zinc-800 mt-2">Dealer</div>
+              <div className="text-3xl md:text-4xl font-black text-[#E7050F] tracking-tight">5,000+</div>
+              <div className="text-sm font-bold text-zinc-800 mt-2">Dealers</div>
             </div>
             <div className="bg-white p-8 rounded-2xl text-left shadow-lg hover:scale-[1.02] transition-transform duration-300">
-              <div className="text-3xl md:text-4xl font-black text-[#E7050F] tracking-tight">10 Mn+</div>
+              <div className="text-3xl md:text-4xl font-black text-[#E7050F] tracking-tight">1 Mn+</div>
               <div className="text-sm font-bold text-zinc-800 mt-2">Customers</div>
             </div>
             <div className="bg-white p-8 rounded-2xl text-left shadow-lg hover:scale-[1.02] transition-transform duration-300">
@@ -105,7 +113,7 @@ export default function About() {
           {/* Reasons Grid with clean solid white cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
             {reasons.map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-8 rounded-2xl bg-white text-zinc-800 hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 flex gap-6"
               >

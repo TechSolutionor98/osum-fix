@@ -160,7 +160,7 @@ export default function ProductsPage() {
             FACTORY DIRECT DISTRIBUTION
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-black tracking-tight uppercase leading-none mb-6">
-            WHOLESALE SUPPLY &amp; LOGISTICS
+            Products & Services 
           </h1>
           <p className="max-w-2xl mx-auto text-gray-500 text-sm sm:text-base md:text-lg leading-relaxed">
             Voltaria Global is a direct B2B factory manufacturer and supplier. We do not sell retail. All product inventories are supplied exclusively in bulk orders, crates, and pallets to registered distributors, merchants, electrical stores, and dealer networks.

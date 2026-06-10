@@ -118,11 +118,21 @@ export default function Footer() {
           <div className="w-full h-[3px] bg-red-600 mt-2" />
           
           <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
-            <li>FANS</li>
-            <li>BATTERIES</li>
-            <li>FUSES & BREAKERS</li>
-            <li>CHANGEOVERS</li>
-            <li>INVERTERS</li>
+            <li>
+              <Link href="/products#fans" className="hover:text-red-600 transition-colors">FANS</Link>
+            </li>
+            <li>
+              <Link href="/products#batteries" className="hover:text-red-600 transition-colors">BATTERIES</Link>
+            </li>
+            <li>
+              <Link href="/products#fuses-breakers" className="hover:text-red-600 transition-colors">FUSES & BREAKERS</Link>
+            </li>
+            <li>
+              <Link href="/products#changeovers" className="hover:text-red-600 transition-colors">CHANGEOVERS</Link>
+            </li>
+            <li>
+              <Link href="/products#inverters" className="hover:text-red-600 transition-colors">INVERTERS</Link>
+            </li>
           </ul>
         </div>
 
@@ -141,7 +151,7 @@ export default function Footer() {
               <Link href="/about" className="hover:text-red-600 transition-colors">About Us</Link>
             </li>
             <li>
-              <Link href="#products" className="hover:text-red-600 transition-colors">Products</Link>
+              <Link href="/products" className="hover:text-red-600 transition-colors">Products</Link>
             </li>
             <li>
               <Link href="/contact" className="hover:text-red-600 transition-colors">Contact Us</Link>

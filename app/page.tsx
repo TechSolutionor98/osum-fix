@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -23,7 +24,13 @@ export default function Home() {
         <Services />
 
         {/* Section 4: Get in Touch (Contact Form) */}
-        <Contact />
+        <Suspense fallback={
+          <div className="text-center py-24 text-gray-500 font-bold uppercase tracking-widest animate-pulse text-sm">
+            Initializing Contact Form...
+          </div>
+        }>
+          <Contact />
+        </Suspense>
       </main>
       
       {/* Footer Branding and Info */}

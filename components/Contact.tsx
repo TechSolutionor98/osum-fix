@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function Contact() {
+  const searchParams = useSearchParams();
+  const inquiry = searchParams.get("inquiry") || "";
+
   const [submitted, setSubmitted] = useState(false);
   const [submittedType, setSubmittedType] = useState("");
   const [formData, setFormData] = useState({
@@ -14,6 +18,16 @@ export default function Contact() {
     businessInfo: "", // handles website, location, or license
     message: ""
   });
+
+  // Prefill message if inquiry parameter is present
+  useEffect(() => {
+    if (inquiry) {
+      setFormData(prev => ({
+        ...prev,
+        message: `I am interested in requesting a quote/information for: ${inquiry}. Please provide pricing details and product catalogs.`
+      }));
+    }
+  }, [inquiry]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

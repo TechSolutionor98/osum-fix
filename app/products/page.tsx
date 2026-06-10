@@ -4,16 +4,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Products & Services | Voltaria Global",
-  description: "Explore Voltaria Global's premium energy solutions: high-efficiency fans, deep-cycle tubular batteries, automatic transfer switch changeovers, hybrid inverters, and high-safety fuses & breakers.",
+  title: "B2B Wholesale Catalog | Voltaria Global",
+  description: "Voltaria Global is a factory-direct B2B supplier of premium fans, tall tubular batteries, automatic changeover panels, hybrid inverters, and electrical protection breakers for retail merchants and distributors.",
 };
 
 const products = [
   {
     id: "fans",
     title: "PREMIUM AERODYNAMIC FANS",
-    tag: "HOME COMFORT",
-    description: "Voltaria premium fans are engineered for maximum air delivery with near-silent operations. By combining aerodynamic blade geometries with high-torque copper motors, our ceiling, pedestal, and exhaust fans offer unmatched reliability and energy conservation for modern residences and commercial areas.",
+    tag: "BULK FANS SOURCING",
+    description: "Direct factory supply of premium aerodynamic residential and commercial fans in wholesale cartons. Custom private labeling (OEM) and container-load shipping are fully available for registered retail store networks, regional distributors, and electronic merchandise chains.",
     image: "/images/voltaria-fan.png",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 text-red-600 fill-none stroke-current" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -23,24 +23,24 @@ const products = [
       </svg>
     ),
     features: [
-      "100% Pure Copper Armature Motor for high-torque longevity",
+      "OEM branding & custom faceplates available for orders exceeding 500 units",
       "Aerodynamically balanced blades preventing micro-wobbles and noise",
       "Double-shielded ball bearings for seamless friction-free spin",
-      "Low power consumption (under 55W on high speed settings)"
+      "Fully compliant with international home ventilation safety standards"
     ],
     specs: {
-      "Sweep / Sizes": "1200mm (48\") / 1400mm (56\")",
-      "Power Rating": "50W - 60W",
-      "Air Delivery": "230 Cubic Meters / Min (CMM)",
+      "Wholesale Format": "Crated boxes of 20 units",
+      "Min. Order Qty (MOQ)": "50 Units",
+      "Monthly Supply Cap": "10,000 Units",
       "Operating Speed": "380 RPM",
-      "Warranty Policy": "2 Years Full Replacement Warranty"
+      "Factory Warranty": "2 Years Direct Replacement Warranty"
     }
   },
   {
     id: "batteries",
     title: "DEEP-CYCLE TUBULAR BATTERIES",
-    tag: "ENERGY STORAGE",
-    description: "Built to survive demanding power cycles and frequent utility failures, Voltaria tubular batteries deliver robust backups you can count on. Engineered with extra-thick antimony alloy grids and heavy-duty separator sleeves, they recover rapidly from deep discharges and support high startup currents.",
+    tag: "ENERGY STORAGE SUPPLY",
+    description: "Factory-direct tall tubular backup battery cells supplied on heavy-duty pallets. Engineered with low water loss grids to survive demanding discharge cycles, our batteries are optimized for regional backup power dealers, solar equipment merchants, and corporate purchasing networks.",
     image: "/images/voltaria-battery.png",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 text-red-600 fill-none stroke-current" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -51,24 +51,24 @@ const products = [
       </svg>
     ),
     features: [
-      "High reserve capacity tall-tubular construction",
+      "Palletized delivery with anti-acid venting caps",
       "Low water evaporation rate for extended maintenance-free windows",
       "Anti-corrosive grid structure designed to prevent active plate peeling",
-      "Optimized charge acceptance from hybrid solar controllers"
+      "Tiered pricing structures for verified battery distributors"
     ],
     specs: {
-      "Voltage Rating": "12V DC Nominal",
+      "Wholesale Format": "Palletized wood crates (12 units/pallet)",
+      "Min. Order Qty (MOQ)": "24 Units (2 Pallets)",
       "Capacity Selection": "150Ah / 200Ah / 230Ah",
-      "Reserve Time": "Up to 8-10 Hours (at typical home utility loads)",
-      "Cycle Life expectancy": "1500+ Cycles at 80% Depth of Discharge",
-      "Warranty Policy": "5 Years Pro-rata Warranty Coverage"
+      "Life Expectancy": "1500+ Cycles at 80% Depth of Discharge",
+      "Factory Warranty": "5 Years Direct Merchant Warranty"
     }
   },
   {
     id: "fuses-breakers",
     title: "HIGH-SAFETY FUSES & BREAKERS",
-    tag: "OVERCURRENT PROTECTION",
-    description: "Safeguard your commercial machinery and household electronic assets with Voltaria's high-speed circuit protection systems. Our distribution boards, thermal-magnetic MCBs, and fast-blow cartridge fuses instantly isolate electric faults and cut off power surges to prevent fire hazards.",
+    tag: "OVERCURRENT PROTECTION WHOLESALE",
+    description: "Safeguard retail shelves and commercial contractor stocks with Voltaria's high-speed circuit protection components. Our thermal-magnetic MCBs, fuses, and DB boxes are packed in high-density cases for electrical merchants and wholesale supply houses.",
     image: "/images/voltaria-fuse-breaker.png",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 text-red-600 fill-none stroke-current" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -79,24 +79,24 @@ const products = [
       </svg>
     ),
     features: [
-      "Ultra-fast tripping mechanism triggers in less than 100 milliseconds",
+      "Ultra-fast tripping mechanisms certified to IEC 60898-1 standards",
       "High short-circuit breaking rating up to 10,000 Amps (10kA)",
       "Flame-retardant polycarbonate housing with high heat resistance",
-      "Finger-safe terminal guards (IP20 rating) for operator safety"
+      "Retail-ready barcode packaging or bulk industrial casing"
     ],
     specs: {
-      "Rated Voltage Range": "230V Single Phase / 400V Three Phase AC",
+      "Wholesale Format": "Cartons of 100 units (Inner boxes of 10)",
+      "Min. Order Qty (MOQ)": "500 Units",
       "Current Ratings": "6A, 10A, 16A, 25A, 32A, 63A, 100A, 125A",
-      "Tripping Curves": "B, C, and D Curve Configurations",
-      "Mechanical Life": "20,000+ Operations",
-      "Standards Compliance": "IEC 60898-1 / CE Certified"
+      "Standards Compliance": "IEC / CE Certified",
+      "Factory Warranty": "3 Years Direct Warranty"
     }
   },
   {
     id: "changeovers",
     title: "AUTOMATIC CHANGEOVERS (ATS)",
-    tag: "POWER MANAGEMENT",
-    description: "Eliminate manual switching and protect your appliances from transition power spikes. Voltaria's smart Automatic Transfer Switch (ATS) panels monitor incoming grid voltages and switch loads to backup generator or inverter systems automatically with zero human effort required.",
+    tag: "POWER MANAGEMENT PANELS",
+    description: "Eliminate transition power spikes with Voltaria smart ATS transfer panels. Supplying backup power manufacturers, generator builders, and industrial supply outlets with rapid changeover relays packed in secure crates.",
     image: "/images/voltaria-changeover.png",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 text-red-600 fill-none stroke-current" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -107,24 +107,24 @@ const products = [
       </svg>
     ),
     features: [
-      "Near-instant transfer speed ensuring server and fridge continuity",
+      "Rapid transfer speed (< 0.5s) preventing server/fridge restart cycles",
       "Integrated low-voltage and high-voltage auto-cutoff guards",
-      "LED status panels and diagnostic counters checking source health",
-      "Manual toggle override for safety maintenance operations"
+      "LED diagnostic parameters and auxiliary contacts for remote alarms",
+      "Sturdy IP30 wall mount metallic housings"
     ],
     specs: {
-      "Rated Voltage": "220V - 240V AC 50Hz",
+      "Wholesale Format": "Crated boxes of 10 panels",
+      "Min. Order Qty (MOQ)": "20 Panels (2 Crates)",
       "Max Current Rating": "32A / 63A / 100A / 150A Options",
-      "Source Transfer Delay": "< 0.5 Seconds Transfer",
-      "Operating Modes": "Fully Automatic, Mains Priority, Manual Override",
-      "Enclosure Type": "Sleek wall-mounted metallic IP30 housing"
+      "Transfer Delay": "< 0.5 Seconds",
+      "Factory Warranty": "2 Years Direct replacement coverage"
     }
   },
   {
     id: "inverters",
     title: "HYBRID SOLAR INVERTERS",
-    tag: "POWER CONVERSION",
-    description: "Convert energy efficiently and power heavy loads with pure sine wave precision. Voltaria smart hybrid inverters combine grid input, solar panel output, and battery storage to prioritize renewable electricity consumption, resulting in lower grid usage and secure backup energy.",
+    tag: "POWER CONVERSION LOTS",
+    description: "Pure sine wave hybrid solar inverters available in direct container loads. Offering backup system dealers, installers, and solar contractors factory-direct pricing scales, dedicated dealer parts support, and robust replacement coverage.",
     image: "/images/voltaria-inverter.png",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6 text-red-600 fill-none stroke-current" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -133,16 +133,16 @@ const products = [
     ),
     features: [
       "Pure Sine Wave Output safeguarding sensitive computer circuitry",
-      "Built-in ultra-fast Maximum Power Point Tracking (MPPT) solar charger",
-      "Intuitive circular LCD displaying battery percentage and power flow",
-      "Smart cooling fan system adapting to internal board temperatures"
+      "Built-in MPPT controller optimizing solar array capture",
+      "Sleek visual Circular LED dashboard panel displays",
+      "Optional Wi-Fi integration for real-time fleet telematics mapping"
     ],
     specs: {
-      "Output Waveform": "Pure Sine Wave (THD < 3%)",
-      "System Capacities": "1.5 kVA / 3.0 kVA / 5.0 kVA",
-      "MPPT Voltage Range": "120V - 450V DC Solar Input",
-      "Max Charging Current": "80A MPPT Charger / 60A Utility Charger",
-      "Connectivity": "Built-in Wi-Fi / App Remote Monitoring Setup"
+      "Wholesale Format": "Protected wood crates of 5 inverters",
+      "Min. Order Qty (MOQ)": "10 Inverters (2 Crates)",
+      "Capacity Selection": "1.5 kVA / 3.0 kVA / 5.0 kVA",
+      "MPPT Solar Input": "120V - 450V DC",
+      "Factory Warranty": "2 Years Direct Manufacturer Warranty"
     }
   }
 ];
@@ -157,13 +157,13 @@ export default function ProductsPage() {
       <section className="bg-gradient-to-b from-gray-50 to-white pt-24 pb-16 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <span className="text-red-600 font-extrabold tracking-widest uppercase text-xs sm:text-sm block mb-4">
-            VOLTARIA GLOBAL CATALOG
+            FACTORY DIRECT DISTRIBUTION
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-black tracking-tight uppercase leading-none mb-6">
-            OUR PRODUCTS &amp; SERVICES
+            WHOLESALE SUPPLY &amp; LOGISTICS
           </h1>
           <p className="max-w-2xl mx-auto text-gray-500 text-sm sm:text-base md:text-lg leading-relaxed">
-            Voltaria Global manufactures and supplies premium-grade electrical safety components, backup systems, and modern home comfort appliances certified to international standards.
+            Voltaria Global is a direct B2B factory manufacturer and supplier. We do not sell retail. All product inventories are supplied exclusively in bulk orders, crates, and pallets to registered distributors, merchants, electrical stores, and dealer networks.
           </p>
         </div>
       </section>
@@ -244,10 +244,10 @@ export default function ProductsPage() {
                     {/* Button */}
                     <div className="pt-6">
                       <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold tracking-wider uppercase rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95"
+                        href={`/products/${product.id}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-bold tracking-wider uppercase rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 cursor-pointer"
                       >
-                        Request Quote / Inquiry
+                        View Full Range
                         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current" strokeWidth="3">
                           <line x1="5" y1="12" x2="19" y2="12" />
                           <polyline points="12 5 19 12 12 19" />
@@ -282,20 +282,20 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_80%,rgba(255,255,255,0.06),transparent_60%)] pointer-events-none" />
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-6">
           <span className="text-white/80 font-black tracking-widest uppercase text-xs sm:text-sm block">
-            NEED A CUSTOMIZED SOLUTION?
+            BECOME A REGISTERED DISTRIBUTOR
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-tight">
-            STABILIZE AND PROTECT YOUR PROPERTY TODAY
+            DIRECT FACTORY MERCHANT RATES
           </h2>
           <p className="max-w-xl mx-auto text-white/90 text-sm sm:text-base leading-relaxed">
-            Get in touch with Voltaria's engineering team for customized industrial bulk order rates, technical design layouts, and direct factory distribution warranties.
+            Register your dealership, store, or reseller chain with Voltaria Global to access private catalogs, pallet pricing brackets, and direct-to-port container logistics.
           </p>
           <div className="pt-4">
             <Link
               href="/contact"
               className="inline-block px-10 py-4 bg-white text-red-600 font-extrabold uppercase text-xs sm:text-sm rounded-full tracking-wider hover:bg-gray-100 active:scale-95 transition-all shadow-lg hover:shadow-2xl"
             >
-              Contact Our Engineers
+              Apply for Dealership Account
             </Link>
           </div>
         </div>

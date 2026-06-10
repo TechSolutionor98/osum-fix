@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -34,7 +35,7 @@ export default function Navbar() {
                 : "text-gray-600 hover:text-red-600 transition-colors"
             }
           >
-            HOME
+            Home
           </Link>
           <Link
             href="/about"
@@ -46,16 +47,87 @@ export default function Navbar() {
           >
             About Us
           </Link>
-          <Link
-            href="/products"
-            className={
-              pathname === "/products"
-                ? "text-red-600 font-bold tracking-wider transition-colors"
-                : "text-gray-600 hover:text-red-600 transition-colors"
-            }
-          >
-            Products
-          </Link>
+          <div className="relative flex items-center">
+            <Link
+              href="/products"
+              onClick={() => setProductsOpen(false)}
+              className={
+                pathname.startsWith("/products")
+                  ? "text-red-600 font-bold tracking-wider transition-colors cursor-pointer"
+                  : "text-gray-600 hover:text-red-600 transition-colors cursor-pointer"
+              }
+            >
+              Products
+            </Link>
+            <button
+              onClick={() => setProductsOpen(!productsOpen)}
+              type="button"
+              className={`p-1.5 focus:outline-none transition-colors cursor-pointer rounded-full ml-1 hover:bg-gray-50/50 ${
+                pathname.startsWith("/products")
+                  ? "text-red-600"
+                  : "text-gray-400 hover:text-red-600"
+              }`}
+              aria-label="Toggle Products Menu"
+            >
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {productsOpen && (
+              <>
+                {/* Overlay to close on clicking outside */}
+                <div 
+                  className="fixed inset-0 z-10" 
+                  onClick={() => setProductsOpen(false)} 
+                />
+                
+                {/* Dropdown menu */}
+                <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl bg-white border border-gray-100 shadow-xl py-2.5 z-20 animate-fade-in origin-top-left">
+                  <Link
+                    href="/products#fans"
+                    onClick={() => setProductsOpen(false)}
+                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
+                  >
+                    FANS
+                  </Link>
+                  <Link
+                    href="/products#batteries"
+                    onClick={() => setProductsOpen(false)}
+                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
+                  >
+                    BATTERIES
+                  </Link>
+                  <Link
+                    href="/products#fuses-breakers"
+                    onClick={() => setProductsOpen(false)}
+                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
+                  >
+                    FUSES & BREAKERS
+                  </Link>
+                  <Link
+                    href="/products#changeovers"
+                    onClick={() => setProductsOpen(false)}
+                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
+                  >
+                    CHANGEOVERS
+                  </Link>
+                  <Link
+                    href="/products#inverters"
+                    onClick={() => setProductsOpen(false)}
+                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
+                  >
+                    INVERTERS
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
           <Link
             href="/contact"
             className={
@@ -128,7 +200,7 @@ export default function Navbar() {
             }`}
             onClick={() => setIsOpen(false)}
           >
-            HOME
+            Home
           </Link>
           <Link
             href="/about"
@@ -141,17 +213,94 @@ export default function Navbar() {
           >
             About Us
           </Link>
-          <Link
-            href="/products"
-            className={`block rounded-md px-3 py-2 text-base ${
-              pathname === "/products"
-                ? "font-bold text-red-600 hover:bg-gray-50"
-                : "font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
-            }`}
-            onClick={() => setIsOpen(false)}
-          >
-            Products
-          </Link>
+          <div>
+            <div className="flex items-center justify-between rounded-md hover:bg-gray-50 pr-2">
+              <Link
+                href="/products"
+                onClick={() => {
+                  setProductsOpen(false);
+                  setIsOpen(false);
+                }}
+                className={`block w-full px-3 py-2 text-base font-medium transition-colors ${
+                  pathname.startsWith("/products")
+                    ? "font-bold text-red-600"
+                    : "text-gray-600 hover:text-red-600"
+                }`}
+              >
+                Products
+              </Link>
+              <button
+                onClick={() => setProductsOpen(!productsOpen)}
+                type="button"
+                className="p-2.5 focus:outline-none text-gray-400 hover:text-red-600 cursor-pointer"
+                aria-label="Toggle Products Menu"
+              >
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+            
+            {productsOpen && (
+              <div className="pl-6 pr-4 py-1 space-y-1 bg-gray-50/50 rounded-lg mt-1 border-l-2 border-red-500 animate-fade-in">
+                <Link
+                  href="/products#fans"
+                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
+                  onClick={() => {
+                    setProductsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  FANS
+                </Link>
+                <Link
+                  href="/products#batteries"
+                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
+                  onClick={() => {
+                    setProductsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  BATTERIES
+                </Link>
+                <Link
+                  href="/products#fuses-breakers"
+                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
+                  onClick={() => {
+                    setProductsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  FUSES & BREAKERS
+                </Link>
+                <Link
+                  href="/products#changeovers"
+                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
+                  onClick={() => {
+                    setProductsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  CHANGEOVERS
+                </Link>
+                <Link
+                  href="/products#inverters"
+                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
+                  onClick={() => {
+                    setProductsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  INVERTERS
+                </Link>
+              </div>
+            )}
+          </div>
           <Link
             href="/contact"
             className={`block rounded-md px-3 py-2 text-base ${

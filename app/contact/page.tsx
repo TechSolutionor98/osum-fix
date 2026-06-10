@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
@@ -17,7 +18,13 @@ export default function ContactPage() {
 
       {/* Contact Section Form */}
       <main className="flex-grow">
-        <Contact />
+        <Suspense fallback={
+          <div className="text-center py-24 text-gray-500 font-bold uppercase tracking-widest animate-pulse text-sm">
+            Initializing Contact Form...
+          </div>
+        }>
+          <Contact />
+        </Suspense>
       </main>
 
       {/* Footer Branding and Info */}

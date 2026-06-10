@@ -63,10 +63,10 @@ export default function Contact() {
                 GET IN TOUCH
               </span>
               <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">
-                Connect with our Engineers
+                Let's Discuss Your Requirements
               </h2>
               <p className="mt-4 text-gray-500 text-sm leading-relaxed">
-                Whether you need a custom solar microgrid layout or a standard residential PV package, our consulting engineers are ready to support your setup.
+               Whether you're seeking product information, wholesale pricing, or a dependable distribution partner, Voltaria Global is committed to delivering reliable solutions, consistent supply, and professional support for businesses of every scale.
               </p>
             </div>
 

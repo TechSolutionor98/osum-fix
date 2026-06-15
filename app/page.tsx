@@ -6,26 +6,33 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { getPublishedContent } from "@/lib/cms-service";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const cms = await getPublishedContent("/");
+  const navbarCms = await getPublishedContent("[Global] Navbar");
+  const footerCms = await getPublishedContent("[Global] Footer");
+
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
       {/* Header Navigation */}
-      <Navbar />
+      <Navbar cms={navbarCms} />
       
       {/* Simplified Core Home Sections */}
       <main className="flex-grow flex flex-col">
         {/* Section 1: Hero Banner */}
-        <Hero />
+        <Hero cms={cms} />
         
         {/* Section 2: Who We Are */}
-        <WhoWeAre />
+        <WhoWeAre cms={cms} />
 
         {/* Section 3: Why Choose Us */}
-        <WhyChooseUs />
+        <WhyChooseUs cms={cms} />
 
         {/* Section 4: What We Offer (Product Portfolio) */}
-        <Services />
+        <Services cms={cms} />
 
         {/* Section 4: Get in Touch (Contact Form) */}
         <Suspense fallback={
@@ -33,12 +40,12 @@ export default function Home() {
             Initializing Contact Form...
           </div>
         }>
-          <Contact />
+          <Contact cms={cms} />
         </Suspense>
       </main>
       
       {/* Footer Branding and Info */}
-      <Footer />
+      <Footer cms={footerCms} />
     </div>
   );
 }

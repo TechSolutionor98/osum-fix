@@ -2,17 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
 
-export default function AboutPage() {
+export const dynamic = "force-dynamic";
+
+export default async function AboutPage() {
+  const cms = await getPublishedContent("/about");
+  const navbarCms = await getPublishedContent("[Global] Navbar");
+  const footerCms = await getPublishedContent("[Global] Footer");
+
+  const t = (val: string) => getCmsVal(cms, val);
+
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
       {/* Header Navigation */}
-      <Navbar />
+      <Navbar cms={navbarCms} />
 
       {/* Title */}
       <div className="text-center pt-20 pb-12">
         <h1 className="text-5xl md:text-7xl font-black text-red-600 tracking-wider uppercase">
-          ABOUT US
+          {t("ABOUT US")}
         </h1>
       </div>
 
@@ -22,18 +31,18 @@ export default function AboutPage() {
           {/* Left: Text Content */}
           <div className="lg:col-span-7 space-y-6">
             <h2 className="text-2xl md:text-4xl font-black text-black leading-tight tracking-wide uppercase">
-              POWERING EVERYDAY LIFE WITH SMART ENERGY SOLUTIONS
+              {t("POWERING EVERYDAY LIFE WITH SMART ENERGY SOLUTIONS")}
             </h2>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-              Voltaria is a modern power and home comfort brand dedicated to delivering reliable, efficient, and high-quality energy products for homes, offices, and commercial spaces. We specialize in batteries, inverters, fans, and smart home solutions designed to improve everyday comfort and provide dependable performance during all conditions.
+              {t("Voltaria is a modern power and home comfort brand dedicated to delivering reliable, efficient, and high-quality energy products for homes, offices, and commercial spaces. We specialize in batteries, inverters, fans, and smart home solutions designed to improve everyday comfort and provide dependable performance during all conditions.")}
             </p>
           </div>
           {/* Right: Meeting Image */}
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100">
               <Image
-                src="/images/about-meeting.png"
-                alt="Collaborative meeting at Voltaria Global"
+                src={t("/images/about-meeting.png")}
+                alt={t("Collaborative meeting at Voltaria Global")}
                 fill
                 priority
                 className="object-cover"
@@ -54,8 +63,8 @@ export default function AboutPage() {
             {/* Portrait Cutout */}
             <div className="flex-shrink-0 w-36 h-36 md:w-44 md:h-44 rounded-full border-8 border-white bg-white shadow-xl overflow-hidden relative -mt-16 md:-mt-0 md:-ml-12 z-10">
               <Image
-                src="/images/about-man.png"
-                alt="Voltaria Global Executive"
+                src={t("/images/about-man.png")}
+                alt={t("Voltaria Global Executive")}
                 fill
                 className="object-cover object-top"
               />
@@ -64,7 +73,7 @@ export default function AboutPage() {
             {/* Quote Text */}
             <div className="flex-grow py-6 px-6 md:px-12 text-center md:text-left">
               <blockquote className="text-base md:text-2xl font-black uppercase tracking-wider leading-tight">
-                “QUALITY YOU CAN TRUST PERFORMANCE YOU CAN RELY ON ENERGY SOLUTIONS FOR MODERN LIVING”
+                {t("“QUALITY YOU CAN TRUST PERFORMANCE YOU CAN RELY ON ENERGY SOLUTIONS FOR MODERN LIVING”")}
               </blockquote>
             </div>
           </div>
@@ -75,17 +84,17 @@ export default function AboutPage() {
       <section className="bg-[#0c0c0c] text-white py-24 border-t border-b border-zinc-900">
         <div className="max-w-4xl mx-auto px-6 text-center md:text-left space-y-8">
           <h2 className="text-3xl md:text-5xl font-black text-red-600 tracking-tight uppercase">
-            OUR STORY
+            {t("OUR STORY")}
           </h2>
           <div className="space-y-6 text-zinc-300 text-sm md:text-base leading-relaxed font-medium">
             <p>
-              Voltaria was created with a vision to solve everyday power challenges faced by homes and businesses. In a world where uninterrupted electricity and energy efficiency are becoming more important than ever, we wanted to build products that people could truly depend on.
+              {t("Voltaria was created with a vision to solve everyday power challenges faced by homes and businesses. In a world where uninterrupted electricity and energy efficiency are becoming more important than ever, we wanted to build products that people could truly depend on.")}
             </p>
             <p>
-              From durable batteries with long backup times to energy-efficient fans and intelligent inverters, every Voltaria product is designed with performance, quality, and customer satisfaction in mind.
+              {t("From durable batteries with long backup times to energy-efficient fans and intelligent inverters, every Voltaria product is designed with performance, quality, and customer satisfaction in mind.")}
             </p>
             <p>
-              Over time, Voltaria has grown into a trusted brand focused on innovation, reliability, and modern technology while maintaining affordable pricing for customers.
+              {t("Over time, Voltaria has grown into a trusted brand focused on innovation, reliability, and modern technology while maintaining affordable pricing for customers.")}
             </p>
           </div>
         </div>
@@ -98,8 +107,8 @@ export default function AboutPage() {
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100">
               <Image
-                src="/images/about-office.png"
-                alt="Voltaria team workflow"
+                src={t("/images/about-office.png")}
+                alt={t("Voltaria team workflow")}
                 fill
                 className="object-cover"
               />
@@ -110,15 +119,15 @@ export default function AboutPage() {
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-8">
             <div className="bg-red-600 rounded-[32px] p-8 md:p-12 text-white shadow-2xl border border-red-700">
               <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4">
-                OUR MISSION
+                {t("OUR MISSION")}
               </h3>
               <p className="text-white text-base md:text-lg leading-relaxed font-bold uppercase">
-                Our mission is to provide innovative and dependable energy solutions that improve comfort, productivity, and everyday living while maintaining the highest standards of quality and performance.
+                {t("Our mission is to provide innovative and dependable energy solutions that improve comfort, productivity, and everyday living while maintaining the highest standards of quality and performance.")}
               </p>
             </div>
 
             <p className="text-gray-700 text-sm md:text-base font-semibold leading-relaxed md:pl-4">
-              We aim to build long-term trust with customers through durable products, honest service, and continuous improvement.
+              {t("We aim to build long-term trust with customers through durable products, honest service, and continuous improvement.")}
             </p>
           </div>
         </div>
@@ -136,13 +145,13 @@ export default function AboutPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6">
           <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight">
-            OUR VISION
+            {t("OUR VISION")}
           </h2>
           <p className="text-gray-900 text-lg md:text-2xl font-black leading-relaxed max-w-3xl mx-auto uppercase">
-            To become a leading and trusted name in energy and home comfort sectors by delivering products that combine technology, efficiency, durability, and modern design.
+            {t("To become a leading and trusted name in energy and home comfort sectors by delivering products that combine technology, efficiency, durability, and modern design.")}
           </p>
           <p className="text-gray-500 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-medium">
-            We envision a future where every home and business has access to reliable and smart energy solutions powered by voltaria.
+            {t("We envision a future where every home and business has access to reliable and smart energy solutions powered by voltaria.")}
           </p>
         </div>
       </section>
@@ -153,7 +162,7 @@ export default function AboutPage() {
           {/* Header */}
           <div className="text-center">
             <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight">
-              WHY CHOOSE VOLTARIA
+              {t("WHY CHOOSE VOLTARIA")}
             </h2>
           </div>
 
@@ -163,40 +172,40 @@ export default function AboutPage() {
               {/* Box 1 */}
               <div className="space-y-3">
                 <h3 className="text-xl font-black uppercase tracking-wider">
-                  RELIABLE PERFORMANCE
+                  {t("RELIABLE PERFORMANCE")}
                 </h3>
                 <p className="text-red-50 text-sm md:text-base leading-relaxed font-semibold">
-                  Our products are tested for consistent and dependable performance in real-world conditions.
+                  {t("Our products are tested for consistent and dependable performance in real-world conditions.")}
                 </p>
               </div>
 
               {/* Box 2 */}
               <div className="space-y-3">
                 <h3 className="text-xl font-black uppercase tracking-wider">
-                  PREMIUM QUALITY
+                  {t("PREMIUM QUALITY")}
                 </h3>
                 <p className="text-red-50 text-sm md:text-base leading-relaxed font-semibold">
-                  We use only high-quality materials, strong build standards, and long-lasting durability.
+                  {t("We use only high-quality materials, strong build standards, and long-lasting durability.")}
                 </p>
               </div>
 
               {/* Box 3 */}
               <div className="space-y-3">
                 <h3 className="text-xl font-black uppercase tracking-wider">
-                  ENERGY EFFICIENCY
+                  {t("ENERGY EFFICIENCY")}
                 </h3>
                 <p className="text-red-50 text-sm md:text-base leading-relaxed font-semibold">
-                  Voltaria products are designed to reduce power consumption while maintaining performance.
+                  {t("Voltaria products are designed to reduce power consumption while maintaining performance.")}
                 </p>
               </div>
 
               {/* Box 4 */}
               <div className="space-y-3">
                 <h3 className="text-xl font-black uppercase tracking-wider">
-                  MODERN INNOVATION
+                  {t("MODERN INNOVATION")}
                 </h3>
                 <p className="text-red-50 text-sm md:text-base leading-relaxed font-semibold">
-                  We continuously improve our products with smart technology and modern design trends.
+                  {t("We continuously improve our products with smart technology and modern design trends.")}
                 </p>
               </div>
             </div>
@@ -205,7 +214,7 @@ export default function AboutPage() {
       </section>
 
       {/* Footer Branding and Info */}
-      <Footer />
+      <Footer cms={footerCms} />
     </div>
   );
 }

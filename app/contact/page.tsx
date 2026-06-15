@@ -2,17 +2,26 @@ import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
 
-export default function ContactPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ContactPage() {
+  const cms = await getPublishedContent("/contact");
+  const navbarCms = await getPublishedContent("[Global] Navbar");
+  const footerCms = await getPublishedContent("[Global] Footer");
+
+  const t = (val: string) => getCmsVal(cms, val);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F9FAFB] font-sans antialiased text-black">
       {/* Header Navigation */}
-      <Navbar />
+      <Navbar cms={navbarCms} />
 
       {/* Page Header */}
       <div className="text-center pt-20 pb-4">
         <h1 className="text-5xl md:text-7xl font-black text-red-600 tracking-wider uppercase">
-          CONTACT US
+          {t("CONTACT US")}
         </h1>
       </div>
 
@@ -23,12 +32,12 @@ export default function ContactPage() {
             Initializing Contact Form...
           </div>
         }>
-          <Contact />
+          <Contact cms={cms} />
         </Suspense>
       </main>
 
       {/* Footer Branding and Info */}
-      <Footer />
+      <Footer cms={footerCms} />
     </div>
   );
 }

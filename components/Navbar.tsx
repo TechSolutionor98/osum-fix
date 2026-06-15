@@ -5,10 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-export default function Navbar() {
+import { getCmsVal } from "@/lib/api-helper";
+
+export default function Navbar({ cms }: { cms?: any }) {
   const [isOpen, setIsOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const pathname = usePathname();
+
+  const t = (val: string) => getCmsVal(cms, val);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -16,8 +20,8 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <Image
-            src="/images/logo1.png"
-            alt="Voltaria Logo"
+            src={t("/images/logo1.png")}
+            alt={t("Voltaria Logo")}
             width={120}
             height={64}
             priority
@@ -35,7 +39,7 @@ export default function Navbar() {
                 : "text-gray-600 hover:text-red-600 transition-colors"
             }
           >
-            Home
+            {t("Home")}
           </Link>
           <Link
             href="/about"
@@ -45,7 +49,7 @@ export default function Navbar() {
                 : "text-gray-600 hover:text-red-600 transition-colors"
             }
           >
-            About Us
+            {t("About Us")}
           </Link>
           <div className="relative flex items-center">
             <button
@@ -58,7 +62,7 @@ export default function Navbar() {
               }`}
               aria-label="Toggle Products Menu"
             >
-              <span>Products</span>
+              <span>{t("Products")}</span>
               <span className={`p-1.5 transition-colors rounded-full ml-1 hover:bg-gray-50/50 ${
                 pathname.startsWith("/products")
                   ? "text-red-600"
@@ -90,35 +94,35 @@ export default function Navbar() {
                     onClick={() => setProductsOpen(false)}
                     className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
                   >
-                    FANS
+                    {t("FANS")}
                   </Link>
                   <Link
                     href="/products/batteries"
                     onClick={() => setProductsOpen(false)}
                     className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
                   >
-                    BATTERIES
+                    {t("BATTERIES")}
                   </Link>
                   <Link
                     href="/products/fuses-breakers"
                     onClick={() => setProductsOpen(false)}
                     className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
                   >
-                    FUSES & BREAKERS
+                    {t("FUSES & BREAKERS")}
                   </Link>
                   <Link
                     href="/products/changeovers"
                     onClick={() => setProductsOpen(false)}
                     className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
                   >
-                    CHANGEOVERS
+                    {t("CHANGEOVERS")}
                   </Link>
                   <Link
                     href="/products/inverters"
                     onClick={() => setProductsOpen(false)}
                     className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
                   >
-                    INVERTERS
+                    {t("INVERTERS")}
                   </Link>
                 </div>
               </>
@@ -132,7 +136,7 @@ export default function Navbar() {
                 : "text-gray-600 hover:text-red-600 transition-colors"
             }
           >
-            Contact Us
+            {t("Contact Us")}
           </Link>
         </nav>
 
@@ -142,7 +146,7 @@ export default function Navbar() {
             href="/login"
             className="px-8 py-2.5 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 active:scale-95 transition-all shadow-md hover:shadow-lg inline-block"
           >
-            Login
+            {t("Login")}
           </Link>
         </div>
 
@@ -196,7 +200,7 @@ export default function Navbar() {
             }`}
             onClick={() => setIsOpen(false)}
           >
-            Home
+            {t("Home")}
           </Link>
           <Link
             href="/about"
@@ -207,7 +211,7 @@ export default function Navbar() {
             }`}
             onClick={() => setIsOpen(false)}
           >
-            About Us
+            {t("About Us")}
           </Link>
           <div>
             <div className="flex items-center justify-between rounded-md hover:bg-gray-50 pr-2">
@@ -219,7 +223,7 @@ export default function Navbar() {
                     ? "font-bold text-red-600"
                     : "text-gray-600 hover:text-red-600"
                 }`}
-              >Products</button>
+              >{t("Products")}</button>
               <button
                 onClick={() => setProductsOpen(!productsOpen)}
                 type="button"
@@ -247,7 +251,7 @@ export default function Navbar() {
                     setIsOpen(false);
                   }}
                 >
-                  FANS
+                  {t("FANS")}
                 </Link>
                 <Link
                   href="/products/batteries"
@@ -257,7 +261,7 @@ export default function Navbar() {
                     setIsOpen(false);
                   }}
                 >
-                  BATTERIES
+                  {t("BATTERIES")}
                 </Link>
                 <Link
                   href="/products/fuses-breakers"
@@ -267,7 +271,7 @@ export default function Navbar() {
                     setIsOpen(false);
                   }}
                 >
-                  FUSES & BREAKERS
+                  {t("FUSES & BREAKERS")}
                 </Link>
                 <Link
                   href="/products/changeovers"
@@ -277,7 +281,7 @@ export default function Navbar() {
                     setIsOpen(false);
                   }}
                 >
-                  CHANGEOVERS
+                  {t("CHANGEOVERS")}
                 </Link>
                 <Link
                   href="/products/inverters"
@@ -287,7 +291,7 @@ export default function Navbar() {
                     setIsOpen(false);
                   }}
                 >
-                  INVERTERS
+                  {t("INVERTERS")}
                 </Link>
               </div>
             )}
@@ -301,7 +305,7 @@ export default function Navbar() {
             }`}
             onClick={() => setIsOpen(false)}
           >
-            Contact Us
+            {t("Contact Us")}
           </Link>
           <div className="pt-4 border-t border-gray-100">
             <Link
@@ -309,7 +313,7 @@ export default function Navbar() {
               className="block w-full text-center px-4 py-2.5 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Login
+              {t("Login")}
             </Link>
           </div>
         </div>

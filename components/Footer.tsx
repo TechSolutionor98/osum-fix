@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { getCmsVal } from "@/lib/api-helper";
 
-export default function Footer() {
+export default function Footer({ cms }: { cms?: any }) {
   const [email, setEmail] = useState("");
+  const t = (val: string) => getCmsVal(cms, val);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,8 +24,8 @@ export default function Footer() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
-              src="/images/logo1.png"
-              alt="Voltaria Logo"
+              src={t("/images/logo1.png")}
+              alt={t("Voltaria Logo")}
               width={120}
               height={64}
               className="h-19 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
@@ -32,7 +34,7 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="space-y-4">
-            <h4 className="text-xl font-bold text-gray-950 uppercase tracking-wide">Follow Us</h4>
+            <h4 className="text-xl font-bold text-gray-950 uppercase tracking-wide">{t("Follow Us")}</h4>
             
             {/* Social Icons (Black squircles containing white icons) */}
             <div className="flex items-center gap-3">
@@ -80,7 +82,7 @@ export default function Footer() {
               </a>
             </div>
 
-            <p className="text-zinc-500 text-xs font-semibold tracking-wide mt-3">Stay updated with our latest news and offers</p>
+            <p className="text-zinc-500 text-xs font-semibold tracking-wide mt-3">{t("Stay updated with our latest news and offers")}</p>
 
             {/* Newsletter Input Box */}
             <form onSubmit={handleSubscribe} className="flex items-center bg-[#e5e7eb] rounded-xl w-full max-w-[280px] p-1">
@@ -89,7 +91,7 @@ export default function Footer() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder={t("Enter your email")}
                 className="bg-transparent border-none outline-none text-xs px-3 py-2 flex-grow text-gray-800 placeholder-gray-500 font-bold"
               />
               <button
@@ -108,67 +110,66 @@ export default function Footer() {
 
         {/* Our Products Column */}
         <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">OUR PRODUCTS</h4>
+          <h4 className="text-lg font-black text-black uppercase tracking-wider">{t("OUR PRODUCTS")}</h4>
           <div className="w-full h-[3px] bg-red-600 mt-2" />
           
           <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
             <li>
-              <Link href="/products/fans" className="hover:text-red-600 transition-colors">FANS</Link>
+              <Link href="/products/fans" className="hover:text-red-600 transition-colors">{t("FANS")}</Link>
             </li>
             <li>
-              <Link href="/products/batteries" className="hover:text-red-600 transition-colors">BATTERIES</Link>
+              <Link href="/products/batteries" className="hover:text-red-600 transition-colors">{t("BATTERIES")}</Link>
             </li>
             <li>
-              <Link href="/products/fuses-breakers" className="hover:text-red-600 transition-colors">FUSES & BREAKERS</Link>
+              <Link href="/products/fuses-breakers" className="hover:text-red-600 transition-colors">{t("FUSES & BREAKERS")}</Link>
             </li>
             <li>
-              <Link href="/products/changeovers" className="hover:text-red-600 transition-colors">CHANGEOVERS</Link>
+              <Link href="/products/changeovers" className="hover:text-red-600 transition-colors">{t("CHANGEOVERS")}</Link>
             </li>
             <li>
-              <Link href="/products/inverters" className="hover:text-red-600 transition-colors">INVERTERS</Link>
+              <Link href="/products/inverters" className="hover:text-red-600 transition-colors">{t("INVERTERS")}</Link>
             </li>
           </ul>
         </div>
 
         {/* Company Column */}
         <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">COMPANY</h4>
+          <h4 className="text-lg font-black text-black uppercase tracking-wider">{t("COMPANY")}</h4>
           <div className="w-full h-[3px] bg-red-600 mt-2" />
 
           <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
             <li>
-              <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
+              <Link href="/" className="hover:text-red-600 transition-colors">{t("Home")}</Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-red-600 transition-colors">About Us</Link>
+              <Link href="/about" className="hover:text-red-600 transition-colors">{t("About Us")}</Link>
             </li>
             <li>
-              <Link href="/products" className="hover:text-red-600 transition-colors">Products</Link>
+              <Link href="/products" className="hover:text-red-600 transition-colors">{t("Products")}</Link>
             </li>
             <li>
-              <Link href="/career" className="hover:text-red-600 transition-colors">Career</Link>
+              <Link href="/career" className="hover:text-red-600 transition-colors">{t("Career")}</Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-red-600 transition-colors">Contact Us</Link>
+              <Link href="/contact" className="hover:text-red-600 transition-colors">{t("Contact Us")}</Link>
             </li>
-            
           </ul>
         </div>
 
         {/* Get In Touch Column */}
         <div className="lg:col-span-4 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">GET IN TOUCH</h4>
+          <h4 className="text-lg font-black text-black uppercase tracking-wider">{t("GET IN TOUCH")}</h4>
           <div className="w-full h-[3px] bg-red-600 mt-2" />
 
           <div className="space-y-4 text-sm text-black font-bold pt-4">
             <p>
-              Phone: <span className="font-semibold text-gray-700 ml-1">+971 4 354 0566</span>
+              {t("Phone:")} <span className="font-semibold text-gray-700 ml-1">{t("+971 4 354 0566")}</span>
             </p>
             <p>
-              Email: <span className="font-semibold text-gray-700 ml-1">info@voltariaglobal.com</span>
+              {t("Email:")} <span className="font-semibold text-gray-700 ml-1">{t("info@voltariaglobal.com")}</span>
             </p>
             <p>
-              Head Office: <span className="font-semibold text-gray-700 ml-1">Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai</span>
+              {t("Head Office:")} <span className="font-semibold text-gray-700 ml-1">{t("Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai")}</span>
             </p>
           </div>
         </div>

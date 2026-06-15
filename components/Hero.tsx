@@ -1,15 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import { getCmsVal } from "@/lib/api-helper";
 
-export default function Hero() {
+export default function Hero({ cms }: { cms?: any }) {
+  const t = (val: string) => getCmsVal(cms, val);
+
   return (
     <section className="relative w-full overflow-hidden bg-zinc-50 border-b border-gray-100">
       {/* Hero Image Container */}
       <div className="relative w-full aspect-[16/7] md:aspect-[21/9] min-h-[250px] max-h-[450px]">
         <Image
-          src="https://res.cloudinary.com/dqghun7oj/image/upload/v1781241977/cms/default/content/vcbtcnuaoh3k8hxyko2u.png"
-          alt="Voltaria Modern Solar Panel House"
+          src={t("https://res.cloudinary.com/dqghun7oj/image/upload/v1781241977/cms/default/content/vcbtcnuaoh3k8hxyko2u.png")}
+          alt={t("Voltaria Modern Solar Panel House")}
           fill
           priority
           sizes="100vw"

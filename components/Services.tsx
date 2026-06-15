@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { getCmsVal } from "@/lib/api-helper";
 
-export default function Services() {
+export default function Services({ cms }: { cms?: any }) {
+  const t = (val: string) => getCmsVal(cms, val);
+
   const offerings = [
     {
-      title: "PREMIUM FANS",
+      title: t("PREMIUM FANS"),
       link: "/products/fans",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -14,10 +17,10 @@ export default function Services() {
           <path d="M16 8l4-4M4 20l4-4M8 4l4 4M12 16l4 4" className="opacity-40" />
         </svg>
       ),
-      description: "Ceiling, pedestal, and exhaust fan models. Engineered with heavy-copper coils and aerodynamic blades for silent, high-output air circulation."
+      description: t("Ceiling, pedestal, and exhaust fan models. Engineered with heavy-copper coils and aerodynamic blades for silent, high-output air circulation.")
     },
     {
-      title: "DEEP-CYCLE BATTERIES",
+      title: t("DEEP-CYCLE BATTERIES"),
       link: "/products/batteries",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -27,10 +30,10 @@ export default function Services() {
           <line x1="6" y1="13" x2="12" y2="13" />
         </svg>
       ),
-      description: "Heavy-duty tubular and flat-plate battery units. Specially built for long-duration deep discharges in domestic UPS and commercial microgrids."
+      description: t("Heavy-duty tubular and flat-plate battery units. Specially built for long-duration deep discharges in domestic UPS and commercial microgrids.")
     },
     {
-      title: "HIGH-SAFETY FUSES & BREAKERS",
+      title: t("HIGH-SAFETY FUSES & BREAKERS"),
       link: "/products/fuses-breakers",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -40,10 +43,10 @@ export default function Services() {
           <path d="M7 7l10 10" className="opacity-40" />
         </svg>
       ),
-      description: "Fast-acting fuses, distribution boards, and thermal-magnetic circuit breakers designed to instantly isolate over-current surges."
+      description: t("Fast-acting fuses, distribution boards, and thermal-magnetic circuit breakers designed to instantly isolate over-current surges.")
     },
     {
-      title: "AUTOMATIC CHANGEOVERS",
+      title: t("AUTOMATIC CHANGEOVERS"),
       link: "/products/changeovers",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -53,17 +56,17 @@ export default function Services() {
           <path d="M21 17H3" />
         </svg>
       ),
-      description: "Smart automatic transfer switches (ATS). Seamlessly flips your load from mains grid to generator/UPS backup with zero human intervention."
+      description: t("Smart automatic transfer switches (ATS). Seamlessly flips your load from mains grid to generator/UPS backup with zero human intervention.")
     },
     {
-      title: "HYBRID INVERTERS",
+      title: t("HYBRID INVERTERS"),
       link: "/products/inverters",
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
         </svg>
       ),
-      description: "Pure sine wave solar-ready and smart grid-tied hybrid inverters. Smooth power conversion safeguarding your computer systems and fridge motors."
+      description: t("Pure sine wave solar-ready and smart grid-tied hybrid inverters. Smooth power conversion safeguarding your computer systems and fridge motors.")
     }
   ];
 
@@ -73,9 +76,9 @@ export default function Services() {
         
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">WHAT WE OFFER</span>
-          <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">Voltaria Global offers</h2>
-          <p className="mt-4 text-gray-500 text-sm md:text-base leading-relaxed">Voltaria Global manufactures a reliable catalog of electrical products designed to stabilize and safeguard power delivery for any property.</p>
+          <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">{t("WHAT WE OFFER")}</span>
+          <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">{t("Voltaria Global offers")}</h2>
+          <p className="mt-4 text-gray-500 text-sm md:text-base leading-relaxed">{t("Voltaria Global manufactures a reliable catalog of electrical products designed to stabilize and safeguard power delivery for any property.")}</p>
         </div>
 
         {/* Offerings Grid */}
@@ -102,12 +105,12 @@ export default function Services() {
 
               {/* Configure CTA */}
               <div className="mt-8 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <span className="text-xs font-bold text-gray-400 group-hover:text-red-600 transition-colors uppercase tracking-wider">Industrial Grade</span>
+                <span className="text-xs font-bold text-gray-400 group-hover:text-red-600 transition-colors uppercase tracking-wider">{t("Industrial Grade")}</span>
                 <Link
                   href={item.link}
                   className="text-xs font-bold text-red-600 flex items-center gap-1 hover:text-red-700 uppercase tracking-widest"
                 >
-                  View Details
+                  {t("View Details")}
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth="3">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />

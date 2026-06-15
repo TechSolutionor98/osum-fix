@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { getCmsVal } from "@/lib/api-helper";
 
-export default function Contact() {
+export default function Contact({ cms }: { cms?: any }) {
   const searchParams = useSearchParams();
   const inquiry = searchParams.get("inquiry") || "";
 
@@ -20,6 +21,8 @@ export default function Contact() {
     businessInfo: "", // handles website, location, or license
     message: ""
   });
+
+  const t = (val: string) => getCmsVal(cms, val);
 
   // Prefill message if inquiry parameter is present
   useEffect(() => {
@@ -82,12 +85,12 @@ export default function Contact() {
           {/* Left Column: Contact info */}
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">GET IN TOUCH</span>
+              <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">{t("GET IN TOUCH")}</span>
               <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">
-                Let's Discuss Your Requirements
+                {t("Let's Discuss Your Requirements")}
               </h2>
               <p className="mt-4 text-gray-500 text-sm leading-relaxed">
-                Whether you're seeking product information, wholesale pricing, or a dependable distribution partner, Voltaria Global is committed to delivering reliable solutions, consistent supply, and professional support for businesses of every scale.
+                {t("Whether you're seeking product information, wholesale pricing, or a dependable distribution partner, Voltaria Global is committed to delivering reliable solutions, consistent supply, and professional support for businesses of every scale.")}
               </p>
             </div>
 
@@ -102,8 +105,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">Head Office</h4>
-                  <p className="text-sm text-gray-600 mt-1">Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai</p>
+                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">{t("Head Office")}</h4>
+                  <p className="text-sm text-gray-600 mt-1">{t("Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai")}</p>
                 </div>
               </div>
 
@@ -115,9 +118,9 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">Call Center</h4>
-                  <p className="text-sm text-gray-600 mt-1">+971 4 354 0566</p>
-                  <p className="text-xs text-gray-400 mt-0.5">Mon - Sun: 8:00 AM - 6:00 PM</p>
+                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">{t("Call Center")}</h4>
+                  <p className="text-sm text-gray-600 mt-1">{t("+971 4 354 0566")}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{t("Mon - Sun: 8:00 AM - 6:00 PM")}</p>
                 </div>
               </div>
 
@@ -130,8 +133,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">Support Desk</h4>
-                  <p className="text-sm text-gray-600 mt-1">info@voltariaglobal.com</p>
+                  <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">{t("Support Desk")}</h4>
+                  <p className="text-sm text-gray-600 mt-1">{t("info@voltariaglobal.com")}</p>
                 </div>
               </div>
             </div>
@@ -148,19 +151,19 @@ export default function Contact() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-950 uppercase tracking-wide">
                   {submittedType === "Wholesaler" || submittedType === "Distributor" || submittedType === "Reseller" || submittedType === "Dealer"
-                    ? "B2B Request Received!"
+                    ? t("B2B Request Received!")
                     : submittedType === "Contractor" || submittedType === "Builder"
-                    ? "Spec Sheet Logged!"
+                    ? t("Spec Sheet Logged!")
                     : submittedType === "Retailer" || submittedType === "Electrical Store"
-                    ? "Retail Inquiry Logged!"
-                    : "Message Transmitted!"}
+                    ? t("Retail Inquiry Logged!")
+                    : t("Message Transmitted!")}
                 </h3>
                 <p className="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">
                   {submittedType === "Wholesaler" || submittedType === "Distributor" || submittedType === "Reseller" || submittedType === "Dealer"
-                    ? "Thank you. Our partnership development team will verify your dealer details and reach out within 24 hours with catalog pricing."
+                    ? t("Thank you. Our partnership development team will verify your dealer details and reach out within 24 hours with catalog pricing.")
                     : submittedType === "Contractor" || submittedType === "Builder"
-                    ? "Thank you for your submission. An integration engineer will review your project details and contact you within 24 hours."
-                    : "Thank you. A retail support specialist will contact you with wholesale pricing lists and merchant accounts within 24 hours."}
+                    ? t("Thank you for your submission. An integration engineer will review your project details and contact you within 24 hours.")
+                    : t("Thank you. A retail support specialist will contact you with wholesale pricing lists and merchant accounts within 24 hours.")}
                 </p>
                 <div className="pt-4">
                   <button
@@ -180,42 +183,42 @@ export default function Contact() {
                     }}
                     className="px-6 py-2.5 border border-gray-200 text-gray-600 hover:text-black font-semibold text-xs rounded-xl hover:bg-gray-50 transition-all uppercase tracking-wider cursor-pointer"
                   >
-                    Send Another Message
+                    {t("Send Another Message")}
                   </button>
                 </div>
               </div>
             ) : (() => {
               // Dynamic labels and placeholders based on businessType
-              let companyLabel = "Company Name";
-              let companyPlaceholder = "e.g. Solar Tech Solutions Ltd.";
+              let companyLabel = t("Company Name");
+              let companyPlaceholder = t("e.g. Solar Tech Solutions Ltd.");
               
-              let infoLabel = "Business Website / URL";
-              let infoPlaceholder = "e.g. www.solartech.com";
+              let infoLabel = t("Business Website / URL");
+              let infoPlaceholder = t("e.g. www.solartech.com");
 
               if (formData.businessType === "Retailer" || formData.businessType === "Electrical Store") {
-                companyLabel = "Store / Shop Name";
-                companyPlaceholder = "e.g. Voltaria Retail Hamburg";
+                companyLabel = t("Store / Shop Name");
+                companyPlaceholder = t("e.g. Voltaria Retail Hamburg");
                 
-                infoLabel = "Store Location (City, Country) or Website";
-                infoPlaceholder = "e.g. www.store-site.com or Hamburg, DE";
+                infoLabel = t("Store Location (City, Country) or Website");
+                infoPlaceholder = t("e.g. www.store-site.com or Hamburg, DE");
               } else if (formData.businessType === "Contractor" || formData.businessType === "Builder") {
-                companyLabel = "Company / Firm Name";
-                companyPlaceholder = "e.g. Apex Builders Inc.";
+                companyLabel = t("Company / Firm Name");
+                companyPlaceholder = t("e.g. Apex Builders Inc.");
                 
-                infoLabel = "License Number / Website";
-                infoPlaceholder = "e.g. www.contractor-site.com or Lic #12345";
+                infoLabel = t("License Number / Website");
+                infoPlaceholder = t("e.g. www.contractor-site.com or Lic #12345");
               }
 
               // Dynamic message placeholder
-              let messagePlaceholder = "Provide details about your average energy consumption, property size, or custom microgrid requirements...";
+              let messagePlaceholder = t("Provide details about your average energy consumption, property size, or custom microgrid requirements...");
               if (formData.businessType === "Wholesaler" || formData.businessType === "Distributor" || formData.businessType === "Reseller") {
-                messagePlaceholder = "Describe your bulk purchase needs, product line interests, and standard order volumes...";
+                messagePlaceholder = t("Describe your bulk purchase needs, product line interests, and standard order volumes...");
               } else if (formData.businessType === "Contractor" || formData.businessType === "Builder") {
-                messagePlaceholder = "Provide details about your upcoming construction projects, structural load specs, and required solar capacities...";
+                messagePlaceholder = t("Provide details about your upcoming construction projects, structural load specs, and required solar capacities...");
               } else if (formData.businessType === "Dealer" || formData.businessType === "Electrical Store") {
-                messagePlaceholder = "Provide details about your showroom or retail inventory needs and target delivery timelines...";
+                messagePlaceholder = t("Provide details about your showroom or retail inventory needs and target delivery timelines...");
               } else if (formData.businessType === "Retailer") {
-                messagePlaceholder = "Please describe your storefront details, target customer base, and volume requirements...";
+                messagePlaceholder = t("Please describe your storefront details, target customer base, and volume requirements...");
               }
 
               return (
@@ -224,7 +227,7 @@ export default function Contact() {
                     {/* Name field */}
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                        Full Name
+                        {t("Full Name")}
                       </label>
                       <input
                         id="name"
@@ -232,7 +235,7 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. John Doe"
+                        placeholder={t("e.g. John Doe")}
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
                       />
                     </div>
@@ -240,7 +243,7 @@ export default function Contact() {
                     {/* Email field */}
                     <div className="space-y-2">
                       <label htmlFor="email" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                        Email Address
+                        {t("Email Address")}
                       </label>
                       <input
                         id="email"
@@ -248,7 +251,7 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="e.g. john@company.com"
+                        placeholder={t("e.g. john@company.com")}
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
                       />
                     </div>
@@ -257,7 +260,7 @@ export default function Contact() {
                   {/* Business Type field */}
                   <div className="space-y-2">
                     <label htmlFor="businessType" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                      Business Type
+                      {t("Business Type")}
                     </label>
                     <div className="relative">
                       <select
@@ -276,16 +279,16 @@ export default function Contact() {
                         }}
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium appearance-none pr-10"
                       >
-                        <option value="">Select Business Type</option>
-                        <option value="Retailer">Retailer</option>
-                        <option value="Dealer">Dealer</option>
-                        <option value="Distributor">Distributor</option>
-                        <option value="Wholesaler">Wholesaler</option>
-                        <option value="Contractor">Contractor</option>
-                        <option value="Builder">Builder</option>
-                        <option value="Reseller">Reseller</option>
-                        <option value="Electrical Store">Electrical Store</option>
-                        <option value="Other">Other</option>
+                        <option value="">{t("Select Business Type")}</option>
+                        <option value="Retailer">{t("Retailer")}</option>
+                        <option value="Dealer">{t("Dealer")}</option>
+                        <option value="Distributor">{t("Distributor")}</option>
+                        <option value="Wholesaler">{t("Wholesaler")}</option>
+                        <option value="Contractor">{t("Contractor")}</option>
+                        <option value="Builder">{t("Builder")}</option>
+                        <option value="Reseller">{t("Reseller")}</option>
+                        <option value="Electrical Store">{t("Electrical Store")}</option>
+                        <option value="Other">{t("Other")}</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-500">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -299,7 +302,7 @@ export default function Contact() {
                   {formData.businessType === "Other" && (
                     <div className="space-y-2 animate-fade-in">
                       <label htmlFor="otherBusinessType" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                        Specify Business Type
+                        {t("Specify Business Type")}
                       </label>
                       <input
                         id="otherBusinessType"
@@ -307,7 +310,7 @@ export default function Contact() {
                         required
                         value={formData.otherBusinessType}
                         onChange={(e) => setFormData({ ...formData, otherBusinessType: e.target.value })}
-                        placeholder="e.g. Solar Consultant, Energy Auditor"
+                        placeholder={t("e.g. Solar Consultant, Energy Auditor")}
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
                       />
                     </div>
@@ -353,7 +356,7 @@ export default function Contact() {
                   {/* Message field */}
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
-                      Detailed Message
+                      {t("Detailed Message")}
                     </label>
                     <textarea
                       id="message"
@@ -378,7 +381,7 @@ export default function Contact() {
                     disabled={isSubmitting}
                     className="w-full py-4 bg-red-600 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-red-700 active:scale-[0.99] transition-all shadow-md hover:shadow-lg text-sm cursor-pointer disabled:opacity-50"
                   >
-                    {isSubmitting ? "Transmitting..." : "Transmit Request"}
+                    {isSubmitting ? t("Transmitting...") : t("Transmit Request")}
                   </button>
                 </form>
               );

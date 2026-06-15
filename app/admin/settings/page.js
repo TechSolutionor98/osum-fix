@@ -1,6 +1,6 @@
 import React from 'react';
 import SettingsClient from './SettingsClient';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const metadata = {
   title: 'Website Settings - Admin',
@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function SettingsPage() {
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let settings = {
     phone: '',
@@ -34,7 +35,7 @@ export default async function SettingsPage() {
   };
 
   try {
-    const res = await fetch(`${apiBase}/api/settings`, { cache: 'no-store' });
+    const res = await fetch(`${serverApiBase}/api/settings`, { cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
       if (data && typeof data === 'object') {

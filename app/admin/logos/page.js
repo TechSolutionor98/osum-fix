@@ -1,17 +1,18 @@
 import React from 'react';
 import LogoClient from './LogoClient';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const metadata = { title: 'Logo Management - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function LogosPage() {
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let currentLogo = '/Images/footerlogo.png';
   
   try {
-    const res = await fetch(`${apiBase}/api/logo`, { cache: 'no-store' });
+    const res = await fetch(`${serverApiBase}/api/logo`, { cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
       currentLogo = data.logo || '/Images/footerlogo.png';

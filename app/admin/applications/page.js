@@ -1,16 +1,17 @@
 import React from 'react';
 import ApplicationsTableClient from './ApplicationsTableClient';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const metadata = { title: 'Applications - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function ApplicationsPage() {
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let applications = [];
   try {
-    const res = await fetch(`${apiBase}/api/applications`, { cache: 'no-store' });
+    const res = await fetch(`${serverApiBase}/api/applications`, { cache: 'no-store' });
     console.log('res', res);
     if (res.ok) applications = await res.json();
   } catch (err) { console.error('Failed to fetch applications', err); }

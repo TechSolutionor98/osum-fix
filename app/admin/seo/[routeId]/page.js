@@ -1,7 +1,7 @@
 import React from 'react';
 import SeoEditorClient from './SeoEditorClient';
 import { ObjectId } from 'mongodb';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -12,6 +12,7 @@ export async function generateMetadata({ params }) {
 
 export default async function SeoEditPage({ params }) {
   const { routeId } = await params;
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   
   let seoData = null;
@@ -20,14 +21,14 @@ export default async function SeoEditPage({ params }) {
 
   try {
     // Fetch route info
-    const routesRes = await fetch(`${apiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
+    const routesRes = await fetch(`${serverApiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
     if (routesRes.ok) {
       const routesJson = await routesRes.json();
       routeData = routesJson.routes?.find(r => r._id === routeId) || null;
     }
 
     // Fetch SEO data
-    const seoRes = await fetch(`${apiBase}/api/cms/seo?routeId=${routeId}&websiteId=default`, { cache: 'no-store' });
+    const seoRes = await fetch(`${serverApiBase}/api/cms/seo?routeId=${routeId}&websiteId=default`, { cache: 'no-store' });
     if (seoRes.ok) {
       const seoJson = await seoRes.json();
       seoData = seoJson.seo || null;

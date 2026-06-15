@@ -1,20 +1,21 @@
 import React from 'react';
 import UsersClient from './UsersClient';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const metadata = { title: 'Users - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function UsersPage() {
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let users = [];
   let websites = [];
 
   try {
     const [usersRes, websitesRes] = await Promise.all([
-      fetch(`${apiBase}/api/cms/users`, { cache: 'no-store' }),
-      fetch(`${apiBase}/api/cms/websites`, { cache: 'no-store' }),
+      fetch(`${serverApiBase}/api/cms/users`, { cache: 'no-store' }),
+      fetch(`${serverApiBase}/api/cms/websites`, { cache: 'no-store' }),
     ]);
     if (usersRes.ok) {
       const data = await usersRes.json();

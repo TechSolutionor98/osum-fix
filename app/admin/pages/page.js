@@ -1,18 +1,19 @@
 import React from 'react';
 import PagesClient from './PagesClient';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const metadata = { title: 'Pages - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function PagesPage() {
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let routes = [];
   let scanError = null;
 
   try {
-    const res = await fetch(`${apiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
+    const res = await fetch(`${serverApiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
       routes = data.routes || [];

@@ -1,5 +1,4 @@
-import React from 'react';
-import { getApiBase } from '@/lib/api-helper';
+import { getServerApiBase } from '@/lib/api-helper';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,7 +8,7 @@ export const metadata = {
 
 export default async function CareerSubmissionsPage() {
   let applications = [];
-  const apiBase = getApiBase();
+  const apiBase = getServerApiBase();
   try {
     const res = await fetch(`${apiBase}/api/applications`, { cache: 'no-store' });
     if (res.ok) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ContactTableClient from './ContactTableClient';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const metadata = {
   title: 'Contact Submissions - Admin',
@@ -9,11 +9,12 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function ContactSubmissionsPage() {
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let submissions = [];
 
   try {
-    const res = await fetch(`${apiBase}/api/contact-submissions`, {
+    const res = await fetch(`${serverApiBase}/api/contact-submissions`, {
       cache: 'no-store',
       headers: {
         'Content-Type': 'application/json'

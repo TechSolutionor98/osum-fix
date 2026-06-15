@@ -1,4 +1,4 @@
-import { getApiBase } from '@/lib/api-helper';
+import { getServerApiBase } from '@/lib/api-helper';
 
 // app/admin/dashboard/page.tsx (or pages/admin/dashboard.tsx if using Pages Router)
 
@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 async function fetchCounts() {
   try {
-    const apiBase = getApiBase();
+    const apiBase = getServerApiBase();
     const [appRes, contactRes, reviewRes, routesRes, mediaRes, websitesRes] = await Promise.all([
       fetch(`${apiBase}/api/applications`, { cache: 'no-store' }),
       fetch(`${apiBase}/api/contact-submissions`, { cache: 'no-store' }),

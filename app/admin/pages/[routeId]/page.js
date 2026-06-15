@@ -1,6 +1,6 @@
 import React from 'react';
 import ContentEditorClient from './ContentEditorClient';
-import { getApiBase } from '@/lib/api-helper';
+import { getApiBase, getServerApiBase } from '@/lib/api-helper';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -11,6 +11,7 @@ export async function generateMetadata() {
 
 export default async function PageEditPage({ params }) {
   const { routeId } = await params;
+  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
 
   let contentData = null;
@@ -20,14 +21,14 @@ export default async function PageEditPage({ params }) {
 
   try {
     // Fetch route info
-    const routesRes = await fetch(`${apiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
+    const routesRes = await fetch(`${serverApiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
     if (routesRes.ok) {
       const routesJson = await routesRes.json();
       routeData = routesJson.routes?.find(r => r._id === routeId) || null;
     }
 
     // Fetch content data
-    const contentRes = await fetch(`${apiBase}/api/cms/content?routeId=${routeId}&websiteId=default`, { cache: 'no-store' });
+    const contentRes = await fetch(`${serverApiBase}/api/cms/content?routeId=${routeId}&websiteId=default`, { cache: 'no-store' });
     if (contentRes.ok) {
       const contentJson = await contentRes.json();
       contentData = contentJson.content || null;

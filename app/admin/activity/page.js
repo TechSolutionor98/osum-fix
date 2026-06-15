@@ -14,8 +14,8 @@ export default async function ActivityPage() {
 
   try {
     const result = await getActivityLogs(50);
-    logs = result.logs;
-    total = result.total;
+    logs = JSON.parse(JSON.stringify(result.logs)) || [];
+    total = result.total || 0;
   } catch (err) {
     console.error('Failed to fetch activity logs', err);
   }

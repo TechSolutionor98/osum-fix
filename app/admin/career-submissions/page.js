@@ -1,4 +1,4 @@
-import { getServerApiBase } from '@/lib/api-helper';
+import { getDb } from '@/lib/mongodb';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,16 +8,15 @@ export const metadata = {
 
 export default async function CareerSubmissionsPage() {
   let applications = [];
-  const apiBase = getServerApiBase();
   try {
-    const res = await fetch(`${apiBase}/api/applications`, { cache: 'no-store' });
-    if (res.ok) {
-      applications = await res.json();
-    } else {
-      console.error('Failed to fetch applications', res.status);
-    }
+    const db = await getDb();
+    const data = await db.collection('applications').find({}).sort({ createdAt: -1 }).toArray();
+    applications = JSON.parse(JSON.stringify(data.map(app => ({
+      ...app,
+      id: app._id.toString()
+    })))) || [];
   } catch (err) {
-    console.error('Error fetching applications', err);
+    console.error('Error fetching applications directly from db', err);
   }
 
   return (

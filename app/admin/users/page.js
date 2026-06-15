@@ -1,32 +1,23 @@
 import React from 'react';
 import UsersClient from './UsersClient';
-import { getApiBase, getServerApiBase } from '@/lib/api-helper';
+import { getApiBase } from '@/lib/api-helper';
+import { getUsersList } from '@/lib/cms-service';
 
 export const metadata = { title: 'Users - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function UsersPage() {
-  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let users = [];
-  let websites = [];
+  const websites = [{ _id: 'default', name: 'Voltaria Global (default)' }];
 
   try {
-    const [usersRes, websitesRes] = await Promise.all([
-      fetch(`${serverApiBase}/api/cms/users`, { cache: 'no-store' }),
-      fetch(`${serverApiBase}/api/cms/websites`, { cache: 'no-store' }),
-    ]);
-    if (usersRes.ok) {
-      const data = await usersRes.json();
-      users = data.users || [];
-    }
-    if (websitesRes.ok) {
-      const data = await websitesRes.json();
-      websites = data.websites || [];
-    }
+    const list = await getUsersList();
+    // Ensure clean JSON serialization
+    users = JSON.parse(JSON.stringify(list)) || [];
   } catch (err) {
-    console.error('Failed to fetch data', err);
+    console.error('Failed to fetch users directly from db', err);
   }
 
   return (

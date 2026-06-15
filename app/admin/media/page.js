@@ -1,21 +1,18 @@
 import React from 'react';
 import MediaLibraryClient from './MediaLibraryClient';
-import { getApiBase, getServerApiBase } from '@/lib/api-helper';
+import { getApiBase } from '@/lib/api-helper';
+import { getMediaLibrary } from '@/lib/cms-service';
 
 export const metadata = { title: 'Media Library - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function MediaPage() {
-  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let mediaData = { media: [], total: 0, folders: [] };
 
   try {
-    const res = await fetch(`${serverApiBase}/api/cms/media?websiteId=default&limit=24`, { cache: 'no-store' });
-    if (res.ok) {
-      mediaData = await res.json();
-    }
+    mediaData = await getMediaLibrary(24);
   } catch (err) {
     console.error('Failed to fetch media', err);
   }

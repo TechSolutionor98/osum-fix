@@ -1,50 +1,9 @@
-import { getServerApiBase } from '@/lib/api-helper';
-
-// app/admin/dashboard/page.tsx (or pages/admin/dashboard.tsx if using Pages Router)
+import { getDashboardCounts } from '@/lib/cms-service';
 
 export const dynamic = 'force-dynamic';
 
-async function fetchCounts() {
-  try {
-    const apiBase = getServerApiBase();
-    const [appRes, contactRes, reviewRes, routesRes, mediaRes, websitesRes] = await Promise.all([
-      fetch(`${apiBase}/api/applications`, { cache: 'no-store' }),
-      fetch(`${apiBase}/api/contact-submissions`, { cache: 'no-store' }),
-      fetch(`${apiBase}/api/reviews`, { cache: 'no-store' }),
-      fetch(`${apiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' }).catch(() => null),
-      fetch(`${apiBase}/api/cms/media?websiteId=default&limit=1`, { cache: 'no-store' }).catch(() => null),
-      fetch(`${apiBase}/api/cms/websites`, { cache: 'no-store' }).catch(() => null),
-    ]);
-
-    const [appData, contactData, reviewData] = await Promise.all([
-      appRes.ok ? appRes.json() : [],
-      contactRes.ok ? contactRes.json() : [],
-      reviewRes.ok ? reviewRes.json() : [],
-    ]);
-
-    const routesData = routesRes?.ok ? await routesRes.json() : { total: 0 };
-    const mediaData = mediaRes?.ok ? await mediaRes.json() : { total: 0 };
-    const websitesData = websitesRes?.ok ? await websitesRes.json() : { total: 0 };
-
-    return {
-      applicationCount: appData.length || 0,
-      contactCount: contactData.length || 0,
-      reviewCount: reviewData.length || 0,
-      pagesCount: routesData.total || 0,
-      mediaCount: mediaData.total || 0,
-      websitesCount: websitesData.total || 0,
-    };
-  } catch (err) {
-    console.error("Error fetching counts:", err);
-    return {
-      applicationCount: 0, contactCount: 0, reviewCount: 0,
-      pagesCount: 0, mediaCount: 0, websitesCount: 0,
-    };
-  }
-}
-
 export default async function AdminDashboard() {
-  const { applicationCount, contactCount, reviewCount, pagesCount, mediaCount, websitesCount } = await fetchCounts();
+  const { applicationCount, contactCount, reviewCount, pagesCount, mediaCount, websitesCount } = await getDashboardCounts();
 
   return (
     <div className="space-y-6 overflow-x-hidden">

@@ -1,7 +1,8 @@
 import React from 'react';
 import SeoEditorClient from './SeoEditorClient';
 import { ObjectId } from 'mongodb';
-import { getApiBase, getServerApiBase } from '@/lib/api-helper';
+import { getApiBase } from '@/lib/api-helper';
+import { getRoutesList, getSeoEntry } from '@/lib/cms-service';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -12,7 +13,6 @@ export async function generateMetadata({ params }) {
 
 export default async function SeoEditPage({ params }) {
   const { routeId } = await params;
-  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   
   let seoData = null;
@@ -20,20 +20,12 @@ export default async function SeoEditPage({ params }) {
   let isNew = true;
 
   try {
-    // Fetch route info
-    const routesRes = await fetch(`${serverApiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
-    if (routesRes.ok) {
-      const routesJson = await routesRes.json();
-      routeData = routesJson.routes?.find(r => r._id === routeId) || null;
-    }
+    const routes = await getRoutesList();
+    routeData = routes?.find(r => r._id === routeId) || null;
 
-    // Fetch SEO data
-    const seoRes = await fetch(`${serverApiBase}/api/cms/seo?routeId=${routeId}&websiteId=default`, { cache: 'no-store' });
-    if (seoRes.ok) {
-      const seoJson = await seoRes.json();
-      seoData = seoJson.seo || null;
-      isNew = seoJson.isNew || false;
-    }
+    const result = await getSeoEntry(routeId);
+    seoData = result.seo;
+    isNew = result.isNew;
   } catch (err) {
     console.error('Failed to fetch SEO data', err);
   }

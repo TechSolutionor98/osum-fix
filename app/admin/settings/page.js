@@ -1,6 +1,7 @@
 import React from 'react';
 import SettingsClient from './SettingsClient';
-import { getApiBase, getServerApiBase } from '@/lib/api-helper';
+import { getApiBase } from '@/lib/api-helper';
+import { getSettings } from '@/lib/cms-service';
 
 export const metadata = {
   title: 'Website Settings - Admin',
@@ -9,7 +10,6 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function SettingsPage() {
-  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let settings = {
     phone: '',
@@ -35,14 +35,9 @@ export default async function SettingsPage() {
   };
 
   try {
-    const res = await fetch(`${serverApiBase}/api/settings`, { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && typeof data === 'object') {
-        settings = { ...settings, ...data };
-      }
-    } else {
-      console.error('Failed to fetch settings', res.status);
+    const data = await getSettings();
+    if (data && typeof data === 'object') {
+      settings = { ...settings, ...data };
     }
   } catch (err) {
     console.error('Error fetching settings', err);

@@ -1,22 +1,18 @@
 import React from 'react';
 import SeoOverviewClient from './SeoOverviewClient';
-import { getApiBase, getServerApiBase } from '@/lib/api-helper';
+import { getApiBase } from '@/lib/api-helper';
+import { getSeoList } from '@/lib/cms-service';
 
 export const metadata = { title: 'SEO Manager - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function SeoPage() {
-  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let pages = [];
 
   try {
-    const res = await fetch(`${serverApiBase}/api/cms/seo?all=true&websiteId=default`, { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      pages = data.pages || [];
-    }
+    pages = await getSeoList();
   } catch (err) {
     console.error('Failed to fetch SEO data', err);
   }

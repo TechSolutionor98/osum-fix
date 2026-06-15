@@ -1,19 +1,17 @@
 import React from 'react';
 import ReviewsTableClient from './ReviewsTableClient';
-import { getApiBase, getServerApiBase } from '@/lib/api-helper';
+import { getApiBase } from '@/lib/api-helper';
+import { getReviewsList } from '@/lib/cms-service';
 
 export const metadata = { title: 'Reviews - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function ReviewsPage() {
-  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
   let reviews = [];
   try {
-    const res = await fetch(`${serverApiBase}/api/reviews?all=true`, { cache: 'no-store' });
-    console.log('res', res);
-    if (res.ok) reviews = await res.json();
+    reviews = await getReviewsList();
   } catch (err) { console.error('Failed to fetch reviews', err); }
 
   return (

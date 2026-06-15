@@ -1,6 +1,7 @@
 import React from 'react';
 import ContentEditorClient from './ContentEditorClient';
-import { getApiBase, getServerApiBase } from '@/lib/api-helper';
+import { getApiBase } from '@/lib/api-helper';
+import { getPageContent } from '@/lib/cms-service';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -11,7 +12,6 @@ export async function generateMetadata() {
 
 export default async function PageEditPage({ params }) {
   const { routeId } = await params;
-  const serverApiBase = getServerApiBase();
   const apiBase = getApiBase();
 
   let contentData = null;
@@ -20,21 +20,11 @@ export default async function PageEditPage({ params }) {
   let isNew = true;
 
   try {
-    // Fetch route info
-    const routesRes = await fetch(`${serverApiBase}/api/cms/routes?websiteId=default`, { cache: 'no-store' });
-    if (routesRes.ok) {
-      const routesJson = await routesRes.json();
-      routeData = routesJson.routes?.find(r => r._id === routeId) || null;
-    }
-
-    // Fetch content data
-    const contentRes = await fetch(`${serverApiBase}/api/cms/content?routeId=${routeId}&websiteId=default`, { cache: 'no-store' });
-    if (contentRes.ok) {
-      const contentJson = await contentRes.json();
-      contentData = contentJson.content || null;
-      templates = contentJson.templates || [];
-      isNew = contentJson.isNew || false;
-    }
+    const result = await getPageContent(routeId);
+    contentData = result.content;
+    routeData = result.route;
+    templates = result.templates;
+    isNew = result.isNew;
   } catch (err) {
     console.error('Failed to fetch content data', err);
   }

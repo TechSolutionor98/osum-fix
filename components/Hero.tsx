@@ -8,7 +8,7 @@ export default function Hero() {
       {/* Hero Image Container */}
       <div className="relative w-full aspect-[16/7] md:aspect-[21/9] min-h-[250px] max-h-[450px]">
         <Image
-          src="/images/finalhero.png"
+          src="https://res.cloudinary.com/dqghun7oj/image/upload/v1781241977/cms/default/content/vcbtcnuaoh3k8hxyko2u.png"
           alt="Voltaria Modern Solar Panel House"
           fill
           priority

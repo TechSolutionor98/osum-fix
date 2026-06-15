@@ -32,9 +32,7 @@ export default function Footer() {
 
           {/* Follow Us */}
           <div className="space-y-4">
-            <h4 className="text-xl font-bold text-gray-950 uppercase tracking-wide">
-              Follow Us
-            </h4>
+            <h4 className="text-xl font-bold text-gray-950 uppercase tracking-wide">Follow Us</h4>
             
             {/* Social Icons (Black squircles containing white icons) */}
             <div className="flex items-center gap-3">
@@ -82,9 +80,7 @@ export default function Footer() {
               </a>
             </div>
 
-            <p className="text-zinc-500 text-xs font-semibold tracking-wide mt-3">
-              Stay updated with our latest news and offers
-            </p>
+            <p className="text-zinc-500 text-xs font-semibold tracking-wide mt-3">Stay updated with our latest news and offers</p>
 
             {/* Newsletter Input Box */}
             <form onSubmit={handleSubscribe} className="flex items-center bg-[#e5e7eb] rounded-xl w-full max-w-[280px] p-1">
@@ -112,9 +108,7 @@ export default function Footer() {
 
         {/* Our Products Column */}
         <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">
-            OUR PRODUCTS
-          </h4>
+          <h4 className="text-lg font-black text-black uppercase tracking-wider">OUR PRODUCTS</h4>
           <div className="w-full h-[3px] bg-red-600 mt-2" />
           
           <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
@@ -138,9 +132,7 @@ export default function Footer() {
 
         {/* Company Column */}
         <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">
-            COMPANY
-          </h4>
+          <h4 className="text-lg font-black text-black uppercase tracking-wider">COMPANY</h4>
           <div className="w-full h-[3px] bg-red-600 mt-2" />
 
           <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
@@ -165,9 +157,7 @@ export default function Footer() {
 
         {/* Get In Touch Column */}
         <div className="lg:col-span-4 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">
-            GET IN TOUCH
-          </h4>
+          <h4 className="text-lg font-black text-black uppercase tracking-wider">GET IN TOUCH</h4>
           <div className="w-full h-[3px] bg-red-600 mt-2" />
 
           <div className="space-y-4 text-sm text-black font-bold pt-4">
@@ -178,7 +168,7 @@ export default function Footer() {
               Email: <span className="font-semibold text-gray-700 ml-1">info@voltariaglobal.com</span>
             </p>
             <p>
-              Head Office: <span className="font-semibold text-gray-700 ml-1"> Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai</span>
+              Head Office: <span className="font-semibold text-gray-700 ml-1">Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai</span>
             </p>
           </div>
         </div>

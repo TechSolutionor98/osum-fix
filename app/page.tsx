@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+import WhoWeAre from "@/components/WhoWeAre";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -17,10 +18,13 @@ export default function Home() {
         {/* Section 1: Hero Banner */}
         <Hero />
         
-        {/* Section 2: Who We Are & Why Voltaria */}
-        <About />
+        {/* Section 2: Who We Are */}
+        <WhoWeAre />
 
-        {/* Section 3: What We Offer (Product Portfolio) */}
+        {/* Section 3: Why Choose Us */}
+        <WhyChooseUs />
+
+        {/* Section 4: What We Offer (Product Portfolio) */}
         <Services />
 
         {/* Section 4: Get in Touch (Contact Form) */}

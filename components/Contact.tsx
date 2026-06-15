@@ -9,6 +9,8 @@ export default function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
   const [submittedType, setSubmittedType] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,26 +31,47 @@ export default function Contact() {
     }
   }, [inquiry]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmittedType(formData.businessType);
-    setSubmitted(true);
-    console.log("Form Submitted:", formData);
-    
-    // Auto reset after 8 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        businessType: "",
-        otherBusinessType: "",
-        companyName: "",
-        businessInfo: "",
-        message: ""
+    setIsSubmitting(true);
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact-submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
       });
-      setSubmittedType("");
-    }, 8000);
+      
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Something went wrong");
+      }
+      
+      setSubmittedType(formData.businessType);
+      setSubmitted(true);
+      
+      // Auto reset after 8 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          businessType: "",
+          otherBusinessType: "",
+          companyName: "",
+          businessInfo: "",
+          message: ""
+        });
+        setSubmittedType("");
+      }, 8000);
+    } catch (err: any) {
+      console.error(err);
+      setErrorMsg(err.message || "Something went wrong");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,14 +82,12 @@ export default function Contact() {
           {/* Left Column: Contact info */}
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">
-                GET IN TOUCH
-              </span>
+              <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">GET IN TOUCH</span>
               <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">
                 Let's Discuss Your Requirements
               </h2>
               <p className="mt-4 text-gray-500 text-sm leading-relaxed">
-               Whether you're seeking product information, wholesale pricing, or a dependable distribution partner, Voltaria Global is committed to delivering reliable solutions, consistent supply, and professional support for businesses of every scale.
+                Whether you're seeking product information, wholesale pricing, or a dependable distribution partner, Voltaria Global is committed to delivering reliable solutions, consistent supply, and professional support for businesses of every scale.
               </p>
             </div>
 
@@ -139,9 +160,7 @@ export default function Contact() {
                     ? "Thank you. Our partnership development team will verify your dealer details and reach out within 24 hours with catalog pricing."
                     : submittedType === "Contractor" || submittedType === "Builder"
                     ? "Thank you for your submission. An integration engineer will review your project details and contact you within 24 hours."
-                    : submittedType === "Retailer" || submittedType === "Electrical Store"
-                    ? "Thank you. A retail support specialist will contact you with wholesale pricing lists and merchant accounts within 24 hours."
-                    : "Thank you for connecting. A representative from our project engineering desk will contact you within 24 hours."}
+                    : "Thank you. A retail support specialist will contact you with wholesale pricing lists and merchant accounts within 24 hours."}
                 </p>
                 <div className="pt-4">
                   <button
@@ -347,12 +366,19 @@ export default function Contact() {
                     />
                   </div>
 
+                  {errorMsg && (
+                    <div className="text-red-600 text-sm font-semibold bg-red-50 p-3 rounded-xl border border-red-200">
+                      {errorMsg}
+                    </div>
+                  )}
+
                   {/* Submit button */}
                   <button
                     type="submit"
-                    className="w-full py-4 bg-red-600 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-red-700 active:scale-[0.99] transition-all shadow-md hover:shadow-lg text-sm cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full py-4 bg-red-600 text-white font-bold uppercase tracking-widest rounded-xl hover:bg-red-700 active:scale-[0.99] transition-all shadow-md hover:shadow-lg text-sm cursor-pointer disabled:opacity-50"
                   >
-                    Transmit Request
+                    {isSubmitting ? "Transmitting..." : "Transmit Request"}
                   </button>
                 </form>
               );

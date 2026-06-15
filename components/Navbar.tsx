@@ -219,9 +219,7 @@ export default function Navbar() {
                     ? "font-bold text-red-600"
                     : "text-gray-600 hover:text-red-600"
                 }`}
-              >
-                Products
-              </button>
+              >Products</button>
               <button
                 onClick={() => setProductsOpen(!productsOpen)}
                 type="button"

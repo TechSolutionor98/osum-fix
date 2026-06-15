@@ -73,15 +73,9 @@ export default function Services() {
         
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">
-            WHAT WE OFFER
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">
-            Voltaria Global offers
-          </h2>
-          <p className="mt-4 text-gray-500 text-sm md:text-base leading-relaxed">
-            Voltaria Global manufactures a reliable catalog of electrical products designed to stabilize and safeguard power delivery for any property.
-          </p>
+          <span className="text-red-600 font-bold tracking-widest uppercase text-sm block mb-3">WHAT WE OFFER</span>
+          <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">Voltaria Global offers</h2>
+          <p className="mt-4 text-gray-500 text-sm md:text-base leading-relaxed">Voltaria Global manufactures a reliable catalog of electrical products designed to stabilize and safeguard power delivery for any property.</p>
         </div>
 
         {/* Offerings Grid */}
@@ -108,9 +102,7 @@ export default function Services() {
 
               {/* Configure CTA */}
               <div className="mt-8 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <span className="text-xs font-bold text-gray-400 group-hover:text-red-600 transition-colors uppercase tracking-wider">
-                  Industrial Grade
-                </span>
+                <span className="text-xs font-bold text-gray-400 group-hover:text-red-600 transition-colors uppercase tracking-wider">Industrial Grade</span>
                 <Link
                   href={item.link}
                   className="text-xs font-bold text-red-600 flex items-center gap-1 hover:text-red-700 uppercase tracking-widest"

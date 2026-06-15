@@ -271,9 +271,16 @@ export async function GET(request) {
             const filteredFieldsEntries = Object.entries(originalSection.fields || {})
               .filter(([_, field]) => isValueInBlock(field.originalValue));
 
+            const productNames = [];
+            const nameRegex = /\bname\s*:\s*t\(\s*(['"`])((?:[^\\]|\\.)*?)\1\s*\)/g;
+            let nameMatch;
+            while ((nameMatch = nameRegex.exec(blockText)) !== null) {
+              productNames.push(nameMatch[2].trim());
+            }
+
             let productIdx = 1;
             for (const [key, field] of filteredFieldsEntries) {
-              const isProductName = key.startsWith('js_name_');
+              const isProductName = productNames.includes(field.originalValue?.trim());
               if (isProductName) {
                 if (Object.keys(currentSection.fields).length > 0) {
                   newSections.push(currentSection);

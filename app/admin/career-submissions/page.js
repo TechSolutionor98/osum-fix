@@ -1,4 +1,5 @@
 import React from 'react';
+import { getApiBase } from '@/lib/api-helper';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,8 +9,9 @@ export const metadata = {
 
 export default async function CareerSubmissionsPage() {
   let applications = [];
+  const apiBase = getApiBase();
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/applications`, { cache: 'no-store' });
+    const res = await fetch(`${apiBase}/api/applications`, { cache: 'no-store' });
     if (res.ok) {
       applications = await res.json();
     } else {

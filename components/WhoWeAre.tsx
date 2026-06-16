@@ -11,7 +11,7 @@ export default function WhoWeAre({ cms }: { cms?: any }) {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
-            <span className="text-red-600 font-bold tracking-widest uppercase text-sm block">{t("WHO WE ARE")}</span>
+            <span className="text-red-600 font-bold tracking-widest uppercase text-sm block">{t(`WHO WE  ARE`)}</span>
             <h2 className="text-3xl md:text-5xl font-black text-black uppercase tracking-tight leading-tight">
               {t("A Leading Force in Electrical Product Distribution")}
             </h2>

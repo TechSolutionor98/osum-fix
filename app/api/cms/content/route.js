@@ -363,9 +363,21 @@ export async function GET(request) {
             if (!dbField) {
               mergedSec.fields[key] = { ...parsedField };
             } else {
+              // Use parsed value if DB value is undefined or null
+              if (dbField.value === undefined || dbField.value === null) {
+                dbField.value = parsedField.value;
+              } else {
+                // If the clean texts are identical (meaning only HTML tags/links differ),
+                // sync the DB value with the value parsed from disk (which has the live links)
+                const cleanDbVal = (dbField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                const cleanParsedVal = (parsedField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                if (cleanDbVal.toLowerCase() === cleanParsedVal.toLowerCase()) {
+                  dbField.value = parsedField.value;
+                }
+              }
               mergedSec.fields[key] = {
                 ...parsedField,
-                value: (dbField.value !== undefined && dbField.value !== null) ? dbField.value : parsedField.value,
+                value: dbField.value,
                 alt: dbField.alt !== undefined ? dbField.alt : parsedField.alt,
                 title: dbField.title !== undefined ? dbField.title : parsedField.title,
                 tag: dbField.tag !== undefined ? dbField.tag : parsedField.tag,

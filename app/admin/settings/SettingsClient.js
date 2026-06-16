@@ -2,6 +2,21 @@
 import React, { useState } from 'react';
 import { BarChart3, Code } from 'lucide-react';
 
+const SocialInput = ({ platform, field, settings, handleChange }) => (
+  <div className="flex flex-col">
+    <label htmlFor={field} className="block text-sm font-semibold text-gray-700 mb-2">{platform} URL</label>
+    <input
+      id={field}
+      type="url"
+      value={settings[field] || ''}
+      onChange={(e) => handleChange(field, e.target.value)}
+      placeholder={`https://${platform.toLowerCase()}.com/yourpage`}
+      className="rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
+                 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
+    />
+  </div>
+);
+
 export default function SettingsClient({ initialSettings = {}, apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [settings, setSettings] = useState(initialSettings);
   const [loading, setLoading] = useState(false);
@@ -37,20 +52,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
     }
   };
 
-  const SocialInput = ({ platform, field, settings, handleChange }) => (
-    <div className="flex flex-col">
-      <label htmlFor={field} className="block text-sm font-semibold text-gray-700 mb-2">{platform} URL</label>
-      <input
-        id={field}
-        type="url"
-        value={settings[field] || ''}
-        onChange={(e) => handleChange(field, e.target.value)}
-        placeholder={`https://${platform.toLowerCase()}.com/yourpage`}
-        className="rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                   focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
-      />
-    </div>
-  );
+
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-lg">

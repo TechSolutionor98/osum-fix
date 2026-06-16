@@ -3,6 +3,41 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowLeft, FiSave, FiEye, FiSearch, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 
+const InputField = ({ label, value, onChange, type = 'text', placeholder = '', helpText = '', maxLength, disabled }) => (
+  <div className="flex flex-col mb-4">
+    <label className="block text-sm font-semibold text-gray-700 mb-1.5">{label}</label>
+    {type === 'textarea' ? (
+      <textarea
+        disabled={disabled}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        maxLength={maxLength}
+        rows={3}
+        className={`rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm resize-none
+                   focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${disabled ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+      />
+    ) : (
+      <input
+        disabled={disabled}
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        maxLength={maxLength}
+        className={`rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
+                   focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${disabled ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+      />
+    )}
+    {helpText && <p className="text-xs text-gray-400 mt-1">{helpText}</p>}
+    {maxLength && (
+      <p className={`text-xs mt-1 ${(value || '').length > maxLength * 0.9 ? 'text-red-500' : 'text-gray-400'}`}>
+        {(value || '').length}/{maxLength} characters
+      </p>
+    )}
+  </div>
+);
+
 export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBase, isNew }) {
   const [seo, setSeo] = useState(initialSeo || {
     metaTitle: '',
@@ -103,40 +138,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
     { id: 'preview', label: 'Preview' },
   ];
 
-  const InputField = ({ label, value, onChange, type = 'text', placeholder = '', helpText = '', maxLength }) => (
-    <div className="flex flex-col mb-4">
-      <label className="block text-sm font-semibold text-gray-700 mb-1.5">{label}</label>
-      {type === 'textarea' ? (
-        <textarea
-          disabled={!canEditSeo}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          maxLength={maxLength}
-          rows={3}
-          className={`rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm resize-none
-                     focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditSeo ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-        />
-      ) : (
-        <input
-          disabled={!canEditSeo}
-          type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          maxLength={maxLength}
-          className={`rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                     focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditSeo ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-        />
-      )}
-      {helpText && <p className="text-xs text-gray-400 mt-1">{helpText}</p>}
-      {maxLength && (
-        <p className={`text-xs mt-1 ${(value || '').length > maxLength * 0.9 ? 'text-red-500' : 'text-gray-400'}`}>
-          {(value || '').length}/{maxLength} characters
-        </p>
-      )}
-    </div>
-  );
+
 
   return (
     <div className="space-y-6">
@@ -215,6 +217,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 placeholder="Page title for search engines"
                 helpText="Recommended: 50-60 characters"
                 maxLength={70}
+                disabled={!canEditSeo}
               />
               <InputField
                 label="Meta Description"
@@ -224,6 +227,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 placeholder="Brief description of this page for search engines"
                 helpText="Recommended: 120-160 characters"
                 maxLength={170}
+                disabled={!canEditSeo}
               />
               <InputField
                 label="Meta Keywords"
@@ -231,6 +235,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 onChange={(v) => setKeywordsInput(v)}
                 placeholder="keyword1, keyword2, keyword3"
                 helpText="Comma-separated keywords"
+                disabled={!canEditSeo}
               />
               <InputField
                 label="Canonical URL"
@@ -239,6 +244,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 type="url"
                 placeholder="https://crownexcel.com/products/laptops"
                 helpText="The preferred URL for this page (prevents duplicate content)"
+                disabled={!canEditSeo}
               />
             </div>
           )}
@@ -254,6 +260,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 onChange={(v) => handleChange('openGraph', 'title', v)}
                 placeholder="Title for social sharing"
                 helpText="Leave empty to use meta title"
+                disabled={!canEditSeo}
               />
               <InputField
                 label="OG Description"
@@ -261,6 +268,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 onChange={(v) => handleChange('openGraph', 'description', v)}
                 type="textarea"
                 placeholder="Description for social sharing"
+                disabled={!canEditSeo}
               />
               <InputField
                 label="OG Image URL"
@@ -269,6 +277,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 type="url"
                 placeholder="https://example.com/image.jpg"
                 helpText="Recommended: 1200x630 pixels"
+                disabled={!canEditSeo}
               />
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col mb-4">
@@ -290,6 +299,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                   value={seo.openGraph?.locale || 'en_AE'}
                   onChange={(v) => handleChange('openGraph', 'locale', v)}
                   placeholder="en_AE"
+                  disabled={!canEditSeo}
                 />
               </div>
             </div>
@@ -320,6 +330,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 onChange={(v) => handleChange('twitterCard', 'title', v)}
                 placeholder="Title for Twitter/X"
                 helpText="Leave empty to use meta title"
+                disabled={!canEditSeo}
               />
               <InputField
                 label="Twitter Description"
@@ -327,6 +338,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 onChange={(v) => handleChange('twitterCard', 'description', v)}
                 type="textarea"
                 placeholder="Description for Twitter/X"
+                disabled={!canEditSeo}
               />
               <InputField
                 label="Twitter Image URL"
@@ -334,6 +346,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 onChange={(v) => handleChange('twitterCard', 'image', v)}
                 type="url"
                 placeholder="https://example.com/twitter-image.jpg"
+                disabled={!canEditSeo}
               />
             </div>
           )}

@@ -127,7 +127,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                     <img
                       src={blog.coverImage}
                       alt={blog.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full bg-red-50 flex items-center justify-center text-5xl text-[#E70812]">
@@ -152,7 +152,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-gray-900 hover:text-[#E70812] leading-snug line-clamp-1">
+                    <h2 className="text-xl font-bold text-[#E70812] hover:text-[#E70812] leading-snug line-clamp-1">
                       <Link href={`/blogs/${blog.slug}`} className="hover:text-[#E70812] transition-colors">
                         {blog.title}
                       </Link>

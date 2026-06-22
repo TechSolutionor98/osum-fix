@@ -91,7 +91,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
               type="email"
               value={settings.email || ''}
               onChange={(e) => handleChange('email', e.target.value)}
-              placeholder="contact@crownexcel.com"
+              placeholder="contact@voltariaglobal.com"
               className="rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
                          focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
             />

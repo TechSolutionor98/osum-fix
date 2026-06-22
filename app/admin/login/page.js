@@ -98,7 +98,7 @@ export default function LoginPage() {
           </div>
         )}
         {/* <div style={{ textAlign: "center", color: "#888", fontSize: "13px", marginTop: "10px" }}>
-          <span>Demo: admin@crownexcel.com / admin123</span>
+          <span>Demo: admin@voltariaglobal.com / admin123</span>
         </div> */}
       </form>
     </div>

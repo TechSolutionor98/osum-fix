@@ -83,7 +83,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search articles in real-time..."
-              className="w-full pl-9 pr-4 py-2 text-xs border border-gray-300 rounded-lg focus:ring-1 focus:ring-red-600 focus:border-red-600 outline-none transition-all bg-white"
+              className="w-full pl-9 pr-4 py-2 text-xs border border-gray-300 rounded-lg focus:ring-1 focus:ring-[#E70812] focus:border-[#E70812] outline-none transition-all bg-white"
             />
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg className="h-3.5 w-3.5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
         {/* Blog Cards Grid */}
         {filteredBlogs.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
-            <div className="w-16 h-16 bg-red-50 text-red-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+            <div className="w-16 h-16 bg-red-50 text-[#E70812] rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
               📰
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">No Articles Found</h2>
@@ -130,7 +130,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full bg-red-50 flex items-center justify-center text-5xl">
+                    <div className="w-full h-full bg-red-50 flex items-center justify-center text-5xl text-[#E70812]">
                       ⚡
                     </div>
                   )}
@@ -152,8 +152,8 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-gray-900 hover:text-red-650 leading-snug line-clamp-1">
-                      <Link href={`/blogs/${blog.slug}`} className="hover:text-red-600 transition-colors">
+                    <h2 className="text-xl font-bold text-gray-900 hover:text-[#E70812] leading-snug line-clamp-1">
+                      <Link href={`/blogs/${blog.slug}`} className="hover:text-[#E70812] transition-colors">
                         {blog.title}
                       </Link>
                     </h2>
@@ -168,7 +168,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                   <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-sm">
                     <Link
                       href={`/blogs/${blog.slug}`}
-                      className="font-bold text-red-600 flex items-center gap-1 hover:text-red-700 transition-colors"
+                      className="font-bold text-[#E70812] flex items-center gap-1 hover:text-[#c90710] transition-colors"
                     >
                       Read Article <span className="text-base">→</span>
                     </Link>
@@ -197,7 +197,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
           </p>
           <Link 
             href="/contact"
-            className="inline-block px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-xs shadow-xs transition-all w-full text-center"
+            className="inline-block px-4 py-2.5 bg-[#E70812] hover:bg-[#c90710] text-white font-semibold rounded-lg text-xs shadow-xs transition-all w-full text-center"
           >
             Contact Our Team
           </Link>
@@ -208,14 +208,14 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
           <div className="text-left space-y-4 pb-8 border-b border-gray-100">
             <div className="relative pb-2 border-b border-gray-200">
               <h3 className="text-lg font-bold text-gray-900">Categories</h3>
-              <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-red-600 -mb-px" />
+              <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#E70812] -mb-px" />
             </div>
             <div className="space-y-3 pt-2">
               <button
                 type="button"
                 onClick={() => setCategory('')}
                 className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${
-                  !category ? 'text-red-600' : 'text-gray-800 hover:text-red-600'
+                  !category ? 'text-[#E70812]' : 'text-gray-800 hover:text-[#E70812]'
                 }`}
               >
                 All Posts <span className="text-gray-400 font-normal">({initialBlogs.length})</span>
@@ -228,7 +228,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                     type="button"
                     onClick={() => setCategory(isActive ? '' : cat)}
                     className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${
-                      isActive ? 'text-red-600' : 'text-gray-800 hover:text-red-600'
+                      isActive ? 'text-[#E70812]' : 'text-gray-800 hover:text-[#E70812]'
                     }`}
                   >
                     {cat} <span className="text-gray-400 font-normal">({count})</span>
@@ -243,7 +243,7 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
         <div className="text-left space-y-4 pb-8 border-b border-gray-100">
           <div className="relative pb-2 border-b border-gray-200">
             <h3 className="text-lg font-bold text-gray-900">Recent Posts</h3>
-            <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-red-600 -mb-px" />
+            <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#E70812] -mb-px" />
           </div>
           
           {recentPosts.length === 0 ? (
@@ -260,13 +260,13 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform" 
                       />
                     ) : (
-                      <div className="w-full h-full bg-gray-100 flex items-center justify-center text-xs">⚡</div>
+                      <div className="w-full h-full bg-gray-100 flex items-center justify-center text-xs text-[#E70812]">⚡</div>
                     )}
                   </Link>
                   <div className="min-w-0 space-y-0.5">
                     <Link 
                       href={`/blogs/${b.slug}`}
-                      className="text-xs font-bold text-gray-800 hover:text-red-600 line-clamp-2 leading-tight"
+                      className="text-xs font-bold text-gray-800 hover:text-[#E70812] line-clamp-2 leading-tight"
                     >
                       {b.title}
                     </Link>
@@ -285,18 +285,18 @@ export default function BlogListingClient({ initialBlogs = [] }: BlogListingClie
 
         {/* Help/Support CTA card */}
         <div className="text-left space-y-4">
-          <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider block">
+          <span className="text-[10px] font-bold text-[#E70812] uppercase tracking-wider block">
             Direct Help Desk
           </span>
           <h3 className="text-lg font-bold text-gray-900 leading-snug">Need Immediate Support?</h3>
-          <p className="text-xs text-gray-600 leading-relaxed">
+          <p className="text-xs text-gray-650 leading-relaxed">
             Contact our desk for product inquiries, bulk orders, and customer service support.
           </p>
           
           <div className="pt-2 space-y-2 text-xs">
             <a 
               href={`tel:${companyPhone}`}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-700 rounded-lg text-white font-semibold transition-all w-full"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#E70812] hover:bg-[#c90710] rounded-lg text-white font-semibold transition-all w-full"
             >
               📞 {companyPhone}
             </a>

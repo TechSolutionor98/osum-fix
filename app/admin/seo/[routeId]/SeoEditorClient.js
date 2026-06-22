@@ -242,7 +242,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 value={seo.canonicalUrl}
                 onChange={(v) => handleChange(null, 'canonicalUrl', v)}
                 type="url"
-                placeholder="https://crownexcel.com/products/laptops"
+                placeholder="https://voltariaglobal.com/products/inverters"
                 helpText="The preferred URL for this page (prevents duplicate content)"
                 disabled={!canEditSeo}
               />
@@ -492,10 +492,10 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 </h3>
                 <div className="border border-gray-200 rounded-lg p-4 bg-white">
                   <p className="text-sm text-green-700 mb-1 truncate">
-                    {seo.canonicalUrl || `https://crownexcel.com${routePath}`}
+                    {seo.canonicalUrl || `https://voltariaglobal.com${routePath}`}
                   </p>
                   <h3 className="text-xl text-blue-800 hover:underline cursor-pointer mb-1 line-clamp-1">
-                    {seo.metaTitle || 'Page Title - Crown Excel'}
+                    {seo.metaTitle || 'Page Title - Voltaria Global'}
                   </h3>
                   <p className="text-sm text-gray-600 line-clamp-2">
                     {seo.metaDescription || 'Add a meta description to see how it will appear in search results.'}
@@ -518,7 +518,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                     </div>
                   )}
                   <div className="p-3">
-                    <p className="text-xs text-gray-500 uppercase">crownexcel.com</p>
+                    <p className="text-xs text-gray-500 uppercase">voltariaglobal.com</p>
                     <h4 className="text-sm font-semibold text-gray-900 mt-1 line-clamp-2">
                       {seo.openGraph?.title || seo.metaTitle || 'Page Title'}
                     </h4>

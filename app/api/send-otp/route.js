@@ -38,15 +38,15 @@ export async function POST(request) {
     });
 
     await transporter.sendMail({
-      from: `"Crown Excel" <${process.env.SMTP_EMAIL || 'craboratory@gmail.com'}>`,
+      from: `"Voltaria Global" <${process.env.SMTP_EMAIL || 'craboratory@gmail.com'}>`,
       to: email,
-      subject: 'Your OTP Verification Code - Crown Excel',
+      subject: 'Your OTP Verification Code - Voltaria Global',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #084032; text-align: center;">Crown Excel</h2>
+          <h2 style="color: #E70812; text-align: center;">Voltaria Global</h2>
           <p style="text-align: center; font-size: 16px;">Your OTP verification code is:</p>
           <div style="text-align: center; margin: 20px 0;">
-            <span style="font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #084032; background: #f0f0f0; padding: 15px 30px; border-radius: 10px;">${otp}</span>
+            <span style="font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #E70812; background: #f0f0f0; padding: 15px 30px; border-radius: 10px;">${otp}</span>
           </div>
           <p style="text-align: center; color: #666; font-size: 14px;">This code expires in 5 minutes.</p>
           <p style="text-align: center; color: #999; font-size: 12px;">If you didn't request this, please ignore this email.</p>

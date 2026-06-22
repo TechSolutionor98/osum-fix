@@ -22,10 +22,9 @@ export default async function ClientBlogsPage() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-800">
       {/* Premium Hero Banner */}
-      <section className="bg-gradient-to-br from-red-950 via-red-900 to-zinc-950 text-white py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(220,38,38,0.1),transparent)]" />
+      <section className="bg-[#E70812] text-white py-24 px-6 relative overflow-hidden">
         <div className="max-w-6xl mx-auto text-center relative z-10 space-y-4">
-          <span className="inline-block px-4 py-1.5 bg-red-500/10 border border-red-500/30 text-red-500 rounded-full text-xs font-bold uppercase tracking-wider">
+          <span className="inline-block px-4 py-1.5 bg-white/10 border border-white/30 text-white rounded-full text-xs font-bold uppercase tracking-wider">
             Our Insights
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">

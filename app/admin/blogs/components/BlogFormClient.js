@@ -660,7 +660,7 @@ export default function BlogFormClient({
               type="text"
               value={tagsInput}
               onChange={(e) => setTagsInput(e.target.value)}
-              placeholder="e.g. Technology, Business, Excel"
+              placeholder="e.g. Solar, Batteries, Inverters"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all"
             />
           </div>
@@ -699,7 +699,7 @@ export default function BlogFormClient({
                 type="text"
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
-                placeholder="e.g. excel dashboard, crown excel templates, reporting"
+                placeholder="e.g. solar energy, voltaria global batteries, inverters"
                 className="w-full bg-white px-3 py-1.5 border border-gray-300 rounded-md text-sm outline-none focus:ring-1 focus:ring-[#084032]"
               />
             </div>

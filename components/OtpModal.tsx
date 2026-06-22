@@ -104,9 +104,9 @@ const OtpModal = ({ isOpen, email, onVerified, onClose }: OtpModalProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
       <div className="bg-white rounded-xl p-6 w-[90%] max-w-[420px] shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <h3 className="text-xl font-bold text-red-600 mb-2 text-center">Email Verification</h3>
+        <h3 className="text-xl font-bold text-[#E70812] mb-2 text-center">Email Verification</h3>
         <p className="text-sm text-gray-500 text-center mb-1">We've sent a 6-digit code to</p>
-        <p className="text-sm font-semibold text-red-600 text-center mb-5">{email}</p>
+        <p className="text-sm font-semibold text-[#E70812] text-center mb-5">{email}</p>
 
         {sending && <p className="text-sm text-blue-500 text-center mb-3">Sending OTP...</p>}
 
@@ -121,8 +121,8 @@ const OtpModal = ({ isOpen, email, onVerified, onClose }: OtpModalProps) => {
               value={digit}
               onChange={(e) => handleChange(index, e.target.value)}
               onKeyDown={(e) => handleKeyDown(index, e)}
-              className="w-[45px] h-[50px] text-center text-xl font-bold border-2 rounded-lg outline-none focus:border-red-600 transition-colors"
-              style={{ borderColor: digit ? '#dc2626' : '#d1d5db' , color: 'black'}}
+              className="w-[45px] h-[50px] text-center text-xl font-bold border-2 rounded-lg outline-none focus:border-[#E70812] transition-colors"
+              style={{ borderColor: digit ? '#E70812' : '#d1d5db' , color: 'black'}}
             />
           ))}
         </div>
@@ -133,7 +133,7 @@ const OtpModal = ({ isOpen, email, onVerified, onClose }: OtpModalProps) => {
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 border border-red-600 text-red-600 rounded-full h-[42px] font-semibold text-[14px] cursor-pointer hover:bg-red-50 transition-colors"
+            className="flex-1 border border-[#E70812] text-[#E70812] rounded-full h-[42px] font-semibold text-[14px] cursor-pointer hover:bg-red-50 transition-colors"
           >
             Cancel
           </button>
@@ -141,7 +141,7 @@ const OtpModal = ({ isOpen, email, onVerified, onClose }: OtpModalProps) => {
             type="button"
             onClick={handleVerify}
             disabled={loading || otp.join('').length !== 6}
-            className="flex-1 bg-red-600 hover:bg-red-700 text-white rounded-full h-[42px] font-semibold text-[14px] cursor-pointer disabled:opacity-50 transition-colors"
+            className="flex-1 bg-[#E70812] hover:bg-[#c90710] text-white rounded-full h-[42px] font-semibold text-[14px] cursor-pointer disabled:opacity-50 transition-colors"
           >
             {loading ? 'Verifying...' : 'Verify OTP'}
           </button>
@@ -151,7 +151,7 @@ const OtpModal = ({ isOpen, email, onVerified, onClose }: OtpModalProps) => {
           type="button"
           onClick={sendOtp}
           disabled={timer > 0 || sending}
-          className="w-full text-red-600 text-sm underline cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-center block"
+          className="w-full text-[#E70812] text-sm underline cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-center block"
         >
           {timer > 0 ? `Resend OTP in ${timer}s` : 'Resend OTP'}
         </button>

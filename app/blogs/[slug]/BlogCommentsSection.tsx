@@ -128,13 +128,13 @@ export default function BlogCommentsSection({
         </div>
 
         {success && (
-          <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm font-semibold">
+          <div className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl text-sm font-semibold">
             ✓ Thank you! Your comment has been submitted and is pending moderation before it appears live.
           </div>
         )}
 
         {error && (
-          <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm font-medium">
+          <div className="p-4 bg-red-50 border border-red-200 text-[#E70812] rounded-xl text-sm font-medium">
             ⚠ {error}
           </div>
         )}
@@ -151,7 +151,7 @@ export default function BlogCommentsSection({
                 onChange={(e) => setAuthorName(e.target.value)}
                 placeholder="John Doe"
                 required
-                className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-red-650 focus:border-red-600 outline-none transition-all"
+                className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-[#E70812] focus:border-[#E70812] outline-none transition-all"
               />
             </div>
             <div>
@@ -164,7 +164,7 @@ export default function BlogCommentsSection({
                 onChange={(e) => setAuthorEmail(e.target.value)}
                 placeholder="john@example.com"
                 required
-                className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-red-650 focus:border-red-600 outline-none transition-all"
+                className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-[#E70812] focus:border-[#E70812] outline-none transition-all"
               />
             </div>
           </div>
@@ -179,14 +179,14 @@ export default function BlogCommentsSection({
               placeholder="Write your comment here..."
               rows={4}
               required
-              className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-red-650 focus:border-red-600 outline-none transition-all"
+              className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-[#E70812] focus:border-[#E70812] outline-none transition-all"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow disabled:opacity-60 transition-all cursor-pointer"
+            className="px-5 py-2.5 bg-[#E70812] hover:bg-[#c90710] text-white font-semibold rounded-lg shadow disabled:opacity-60 transition-all cursor-pointer"
           >
             {loading ? 'Submitting...' : 'Post Comment'}
           </button>

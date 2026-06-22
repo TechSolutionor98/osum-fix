@@ -93,7 +93,7 @@ export default async function BlogDetailsPage({ params }: any) {
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center p-6 text-center">
         <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 max-w-md w-full">
-          <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+          <div className="w-16 h-16 bg-red-50 text-[#E70812] rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
             ⚠
           </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Article Not Found</h2>
@@ -102,7 +102,7 @@ export default async function BlogDetailsPage({ params }: any) {
           </p>
           <Link
             href="/blogs"
-            className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow transition-all duration-200 text-sm"
+            className="px-5 py-2.5 bg-[#E70812] hover:bg-[#c90710] text-white font-semibold rounded-lg shadow transition-all duration-200 text-sm"
           >
             Back to Articles
           </Link>
@@ -114,23 +114,23 @@ export default async function BlogDetailsPage({ params }: any) {
   return (
     <main className="min-h-screen bg-white text-gray-800 pb-20">
       {/* Visual Top Header */}
-      <div className="w-full bg-gradient-to-r from-red-950 to-zinc-950 py-16 text-white border-b border-gray-200">
+      <div className="w-full bg-[#E70812] py-16 text-white border-b border-[#c90710]">
         <div className="max-w-7xl mx-auto px-4 md:px-6 text-left">
           <Link
             href="/blogs"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-red-400 hover:text-white uppercase tracking-wider mb-4 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-white/80 hover:text-white uppercase tracking-wider mb-4 transition-colors"
           >
             ← Back to Articles
           </Link>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight max-w-4xl">
             {blog.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-4 text-xs text-gray-300 font-semibold pt-4 mt-2">
+          <div className="flex flex-wrap items-center gap-4 text-xs text-white/90 font-semibold pt-4 mt-2">
             <span className="bg-white/10 px-2.5 py-1 rounded text-white">By {blog.author || 'Admin'}</span>
             {blog.category && (
               <>
                 <span className="w-1 h-1 bg-white/20 rounded-full" />
-                <span className="bg-red-500/20 text-red-400 px-2.5 py-1 rounded text-[10px] font-extrabold uppercase tracking-wider border border-red-500/30">{blog.category}</span>
+                <span className="bg-white/10 text-white px-2.5 py-1 rounded text-[10px] font-extrabold uppercase tracking-wider border border-white/20">{blog.category}</span>
               </>
             )}
             <span className="w-1 h-1 bg-white/20 rounded-full" />
@@ -168,7 +168,7 @@ export default async function BlogDetailsPage({ params }: any) {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-red-50 flex items-center justify-center text-7xl">
+                <div className="w-full h-full bg-red-50 flex items-center justify-center text-7xl text-[#E70812]">
                   ⚡
                 </div>
               )}
@@ -176,7 +176,7 @@ export default async function BlogDetailsPage({ params }: any) {
 
             {/* Excerpt Panel */}
             {blog.excerpt && (
-              <div className="p-5 bg-red-50/20 border-l-4 border-red-600 text-gray-700 rounded-r-xl text-lg italic leading-relaxed text-left mb-8">
+              <div className="p-5 bg-red-50/20 border-l-4 border-[#E70812] text-gray-700 rounded-r-xl text-lg italic leading-relaxed text-left mb-8">
                 {blog.excerpt}
               </div>
             )}
@@ -188,7 +188,7 @@ export default async function BlogDetailsPage({ params }: any) {
                   <Link
                     key={idx}
                     href={`/blogs?search=${encodeURIComponent(tag)}`}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-red-600 hover:bg-red-750 text-white rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 shadow-2xs"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#E70812] hover:bg-[#c90710] text-white rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 shadow-2xs"
                   >
                     <span className="text-white/60 select-none font-bold">#</span>
                     <span>{tag}</span>
@@ -229,7 +229,7 @@ export default async function BlogDetailsPage({ params }: any) {
             </p>
             <Link 
               href="/contact"
-              className="inline-block px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-xs shadow-xs transition-all w-full text-center"
+              className="inline-block px-4 py-2.5 bg-[#E70812] hover:bg-[#c90710] text-white font-semibold rounded-lg text-xs shadow-xs transition-all w-full text-center"
             >
               Contact Our Experts
             </Link>
@@ -240,14 +240,14 @@ export default async function BlogDetailsPage({ params }: any) {
             <div className="text-left space-y-4 pb-8 border-b border-gray-100">
               <div className="relative pb-2 border-b border-gray-200">
                 <h3 className="text-lg font-bold text-gray-900">Categories</h3>
-                <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-red-600 -mb-px" />
+                <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#E70812] -mb-px" />
               </div>
               <div className="space-y-3 pt-2">
                 {categoriesList.map(([cat, count]) => (
                   <Link
                     key={cat}
                     href={`/blogs?category=${encodeURIComponent(cat)}`}
-                    className="block text-xs font-bold text-gray-800 hover:text-red-650 transition-colors uppercase tracking-wider"
+                    className="block text-xs font-bold text-gray-800 hover:text-[#E70812] transition-colors uppercase tracking-wider"
                   >
                     {cat} <span className="text-gray-400 font-normal">({count})</span>
                   </Link>
@@ -260,7 +260,7 @@ export default async function BlogDetailsPage({ params }: any) {
           <div className="text-left space-y-4 pb-8 border-b border-gray-100">
             <div className="relative pb-2 border-b border-gray-200">
               <h3 className="text-lg font-bold text-gray-900">Recent Posts</h3>
-              <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-red-600 -mb-px" />
+              <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#E70812] -mb-px" />
             </div>
             
             {recentBlogs.length === 0 ? (
@@ -269,7 +269,7 @@ export default async function BlogDetailsPage({ params }: any) {
               <div className="space-y-4 pt-2">
                 {recentBlogs.map((b) => (
                   <div key={b._id} className="flex gap-3 group">
-                    <Link href={`/blogs/${b.slug}`} className="w-20 aspect-[16/10] rounded-md overflow-hidden bg-gray-55 border border-gray-100 shrink-0 relative">
+                    <Link href={`/blogs/${b.slug}`} className="w-20 aspect-video rounded-md overflow-hidden bg-gray-55 border border-gray-100 shrink-0 relative">
                       {b.coverImage ? (
                         <img 
                           src={b.coverImage} 
@@ -277,13 +277,13 @@ export default async function BlogDetailsPage({ params }: any) {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform" 
                         />
                       ) : (
-                        <div className="w-full h-full bg-gray-100 flex items-center justify-center text-xs">⚡</div>
+                        <div className="w-full h-full bg-gray-100 flex items-center justify-center text-xs text-[#E70812]">⚡</div>
                       )}
                     </Link>
                     <div className="min-w-0 space-y-0.5">
                       <Link 
                         href={`/blogs/${b.slug}`}
-                        className="text-xs font-bold text-gray-800 hover:text-red-650 line-clamp-2 leading-tight"
+                        className="text-xs font-bold text-gray-800 hover:text-[#E70812] line-clamp-2 leading-tight"
                       >
                         {b.title}
                       </Link>
@@ -302,7 +302,7 @@ export default async function BlogDetailsPage({ params }: any) {
 
           {/* Help/Support CTA card */}
           <div className="text-left space-y-4 pb-8 border-b border-gray-100">
-            <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider block">
+            <span className="text-[10px] font-bold text-[#E70812] uppercase tracking-wider block">
               Direct Help Desk
             </span>
             <h3 className="text-lg font-bold text-gray-900 leading-snug">Need Immediate Support?</h3>
@@ -313,7 +313,7 @@ export default async function BlogDetailsPage({ params }: any) {
             <div className="pt-2 space-y-2 text-xs">
               <a 
                 href={`tel:${companyPhone}`}
-                className="flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-700 rounded-lg text-white font-semibold transition-all w-full"
+                className="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#E70812] hover:bg-[#c90710] rounded-lg text-white font-semibold transition-all w-full"
               >
                 📞 {companyPhone}
               </a>
@@ -331,14 +331,14 @@ export default async function BlogDetailsPage({ params }: any) {
             <div className="text-left space-y-4">
               <div className="relative pb-2 border-b border-gray-200">
                 <h3 className="text-lg font-bold text-gray-900">Popular Tags</h3>
-                <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-red-600 -mb-px" />
+                <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#E70812] -mb-px" />
               </div>
               <div className="flex flex-wrap gap-1.5 pt-2">
                 {popularTags.map((tag) => (
                   <Link
                     key={tag}
                     href={`/blogs?search=${tag}`}
-                    className="px-2.5 py-1 bg-gray-50 hover:bg-red-50 text-xs font-semibold text-gray-650 hover:text-red-600 border border-gray-200 hover:border-red-200 rounded-md transition-all"
+                    className="px-2.5 py-1 bg-gray-50 hover:bg-red-50 text-xs font-semibold text-gray-650 hover:text-[#E70812] border border-gray-200 hover:border-[#E70812] rounded-md transition-all"
                   >
                     {tag}
                   </Link>

@@ -18,6 +18,7 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/settings",
     "/admin/pages",
     "/admin/seo",
+    "/admin/redirects",
     "/admin/media",
     "/admin/activity"
   ],
@@ -29,22 +30,26 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/settings",
     "/admin/pages",
     "/admin/seo",
+    "/admin/redirects",
     "/admin/media"
   ],
   seo: [
     "/admin",
     "/admin/pages",
-    "/admin/seo"
+    "/admin/seo",
+    "/admin/redirects"
   ],
   editor: [
     "/admin",
     "/admin/pages",
+    "/admin/redirects",
     "/admin/media"
   ],
   viewer: [
     "/admin",
     "/admin/pages",
-    "/admin/seo"
+    "/admin/seo",
+    "/admin/redirects"
   ]
 };
 
@@ -92,6 +97,7 @@ export default function AdminLayout({ children, title = '' }) {
     { href: "/admin/settings", label: "Business Settings", group: "Management", hidden: true },
     { href: "/admin/pages", label: "Pages & Routes", group: "CMS" },
     { href: "/admin/seo", label: "SEO Manager", group: "CMS" },
+    { href: "/admin/redirects", label: "URL Redirects", group: "CMS" },
     { href: "/admin/media", label: "Media Library", group: "CMS" },
     { href: "/admin/users", label: "Users", group: "Management" },
     { href: "/admin/activity", label: "Activity Logs", group: "Management" },

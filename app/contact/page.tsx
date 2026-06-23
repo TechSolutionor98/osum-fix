@@ -2,7 +2,9 @@ import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import AppointmentSection from "@/components/AppointmentSection";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
+import { getDb } from "@/lib/mongodb";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +14,16 @@ export default async function ContactPage() {
   const footerCms = await getPublishedContent("[Global] Footer");
 
   const t = (val: string) => getCmsVal(cms, val);
+
+  // Fetch appointment links directly from database
+  let appointmentLinks = [];
+  try {
+    const db = await getDb();
+    const doc = await db.collection("appointments").findOne({ _id: "appointment_links" });
+    appointmentLinks = doc?.links || [];
+  } catch (err) {
+    console.error("Failed to load appointment links:", err);
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F9FAFB] font-sans antialiased text-black">
@@ -34,6 +46,9 @@ export default async function ContactPage() {
         }>
           <Contact cms={cms} />
         </Suspense>
+
+        {/* Book an Appointment Banner */}
+        <AppointmentSection links={appointmentLinks} />
       </main>
 
       {/* Footer Branding and Info */}

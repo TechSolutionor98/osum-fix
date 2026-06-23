@@ -21,7 +21,8 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/redirects",
     "/admin/media",
     "/admin/activity",
-    "/admin/blogs"
+    "/admin/blogs",
+    "/admin/appointments"
   ],
   client: [
     "/admin",
@@ -33,7 +34,8 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/seo",
     "/admin/redirects",
     "/admin/media",
-    "/admin/blogs"
+    "/admin/blogs",
+    "/admin/appointments"
   ],
   blog: [
     "/admin",
@@ -116,6 +118,7 @@ export default function AdminLayout({ children, title = '' }) {
     { href: "/admin/blogs/add", label: "Add Blog", group: "Blogs" },
     { href: "/admin/blogs/comments", label: "Comment List", group: "Blogs" },
     { href: "/admin/blogs/users", label: "Blog Users", group: "Blogs" },
+    { href: "/admin/appointments", label: "Appointment Links", group: "Scheduling" },
     { href: "/admin/users", label: "Users", group: "Management" },
     { href: "/admin/activity", label: "Activity Logs", group: "Management" },
   ];

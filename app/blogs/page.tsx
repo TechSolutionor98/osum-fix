@@ -38,7 +38,7 @@ export default async function ClientBlogsPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
               The Voltaria Blog
             </h1>
-            <p className="text-white/85 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-white text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
               Stay updated with expert guides, industry news, solar energy insights, and product updates from Voltaria Global.
             </p>
           </div>

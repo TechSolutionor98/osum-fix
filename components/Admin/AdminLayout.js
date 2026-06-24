@@ -109,7 +109,7 @@ export default function AdminLayout({ children, title = '' }) {
     { href: "/admin/applications", label: "Job Applications", group: "Management", hidden: true },
     { href: "/admin/contact-submissions", label: "Contact Submissions", group: "Management" },
     { href: "/admin/reviews", label: "Reviews", group: "Management", hidden: true },
-    { href: "/admin/settings", label: "Business Settings", group: "Management", hidden: true },
+    { href: "/admin/settings", label: "Business Settings", group: "Management" },
     { href: "/admin/pages", label: "Pages & Routes", group: "CMS" },
     { href: "/admin/seo", label: "SEO Manager", group: "CMS" },
     { href: "/admin/redirects", label: "URL Redirects", group: "CMS" },

@@ -31,7 +31,8 @@ export default async function SettingsPage() {
     googleTagManagerId: '',
     facebookPixelId: '',
     customHeadScript: '',
-    customBodyScript: ''
+    customBodyScript: '',
+    thirdPartyApps: []
   };
 
   try {
@@ -46,7 +47,7 @@ export default async function SettingsPage() {
   return (
     <div>
       <h1 className='text-[30px] font-bold '>BUSINESS SETTINGS</h1>
-        <p className="text-sm text-gray-600 ">Manage your website contact information and social media links</p>
+        <p className="text-sm text-gray-600 ">Manage your website settings and analytics pixels</p>
 
       <div className="bg-white p-6 rounded shadow mt-5">
         <SettingsClient initialSettings={settings} apiBase={apiBase} />

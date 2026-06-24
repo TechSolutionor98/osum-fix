@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { BarChart3, Code } from 'lucide-react';
+import { BarChart3, Code, Blocks, Plus, Trash2 } from 'lucide-react';
 
 const SocialInput = ({ platform, field, settings, handleChange }) => (
   <div className="flex flex-col">
@@ -24,6 +24,26 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
 
   const handleChange = (field, value) => {
     setSettings(prev => ({ ...prev, [field]: value }));
+  };
+
+  const addThirdPartyApp = () => {
+    const newApps = [...(settings.thirdPartyApps || []), { id: Date.now().toString(), name: '', script: '' }];
+    handleChange('thirdPartyApps', newApps);
+  };
+
+  const removeThirdPartyApp = (id) => {
+    const newApps = (settings.thirdPartyApps || []).filter(app => app.id !== id);
+    handleChange('thirdPartyApps', newApps);
+  };
+
+  const updateThirdPartyApp = (id, field, value) => {
+    const newApps = (settings.thirdPartyApps || []).map(app => {
+      if (app.id === id) {
+        return { ...app, [field]: value };
+      }
+      return app;
+    });
+    handleChange('thirdPartyApps', newApps);
   };
 
   const handleSave = async () => {
@@ -55,7 +75,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
 
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+    <div className="w-full p-6 bg-white rounded-xl shadow-lg">
       {message && (
         <div
           className={`mb-6 rounded-md px-4 py-3 text-center font-medium
@@ -68,7 +88,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
         </div>
       )}
 
-      <section className="mb-10">
+      <section className="mb-10 hidden">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-200 pb-2">Contact Information</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col">
@@ -112,7 +132,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
         </div>
       </section>
 
-      <section className="mb-8">
+      <section className="mb-8 hidden">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-200 pb-2">Social Media Links</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <SocialInput platform="Facebook" field="facebook" settings={settings} handleChange={handleChange} />
@@ -308,6 +328,73 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="mb-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-200 pb-3 mb-6 gap-4 md:gap-0">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2 mb-1">
+              <Blocks className="w-6 h-6 text-[#084032]" />
+              Third-Party Apps & Integrations
+            </h2>
+            <p className="text-sm text-gray-500">Add Microsoft Clarity, Chat Widgets, and other 3rd party scripts by name.</p>
+          </div>
+          <button
+            onClick={addThirdPartyApp}
+            className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-md transition shadow-sm whitespace-nowrap"
+          >
+            <Plus className="w-4 h-4" />
+            Add App
+          </button>
+        </div>
+
+        {(!settings.thirdPartyApps || settings.thirdPartyApps.length === 0) ? (
+          <div className="border border-dashed border-gray-300 rounded-xl p-8 text-center text-gray-500">
+            No 3rd party apps added yet. Click "Add App" to integrate one.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-6 mb-6">
+            {settings.thirdPartyApps.map((app) => (
+              <div key={app.id} className="bg-gray-50/50 hover:bg-gray-50 border border-gray-200 rounded-xl p-5 transition shadow-sm relative group">
+                <button
+                  onClick={() => removeThirdPartyApp(app.id)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-red-600 transition opacity-0 group-hover:opacity-100"
+                  title="Remove App"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pr-8">
+                  <div className="flex flex-col">
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                      App Name
+                    </label>
+                    <input
+                      type="text"
+                      value={app.name || ''}
+                      onChange={(e) => updateThirdPartyApp(app.id, 'name', e.target.value)}
+                      placeholder="e.g. Microsoft Clarity"
+                      className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
+                                 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                      App Script (HTML)
+                    </label>
+                    <textarea
+                      value={app.script || ''}
+                      onChange={(e) => updateThirdPartyApp(app.id, 'script', e.target.value)}
+                      placeholder="<script>...</script>"
+                      rows={3}
+                      className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm font-mono
+                                 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <div className="pt-6 border-t flex justify-end">

@@ -467,18 +467,7 @@ export async function POST(request) {
 
     // Update JSX files on disk with the new values
     if (Array.isArray(sections)) {
-      try {
-        updatePageFiles(sections);
-        
-        // Update originalValue to match the newly written value in files
-        for (const section of sections) {
-          for (const field of Object.values(section.fields || {})) {
-            field.originalValue = field.value;
-          }
-        }
-      } catch (fileErr) {
-        console.error('Failed to update page component files:', fileErr);
-      }
+      /* updatePageFiles disabled to prevent live site desync */
     }
 
     const contentData = {

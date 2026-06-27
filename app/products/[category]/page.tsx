@@ -94,7 +94,7 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-exhaust-fan.png"),
           description: t("Heavy-duty rust-proof ventilation fan designed to rapidly clear air in kitchens, bathrooms, or workspaces."),
           features: [t("Automatic back-draft louvers"), t("Rust-proof ABS body construction"), t("High-velocity suction speed"), t("Easy mount wall installation framework")],
-          specs: { [t("Sweep Size​​")]: t("300mm (12\")"), [t("Speed​")]: t("1400 RPM"), [t("Suction Power")]: t("1200 m³/h"), [t("Power​​")]: t("45W") },
+          specs: { [t("Sweep Size​​")]: t("300mm (12\")"), [t("Speed​")]: t("1400 RPM"), [t("Suction Power")]: t("1200 m³/h"), [t("Power​")]: t("45W") },
           moq: t("100 Units​"),
           capacity: t("8,000 Units / Month"),
           packaging: t("Industrial Cartons (10 units/box)"),

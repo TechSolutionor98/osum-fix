@@ -145,7 +145,7 @@ export default function AdminLayout({ children, title = '' }) {
           </span>
         )}
         <LogoutButton>
-          <div className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-[#084032] text-white text-sm rounded hover:bg-[#0a5c48] transition-colors duration-200">
+          <div className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-[#E7000B] text-white text-sm rounded hover:bg-[#C40009] transition-colors duration-200">
             <IoIosLogOut />
             <span>Logout</span>
           </div>
@@ -187,7 +187,7 @@ export default function AdminLayout({ children, title = '' }) {
                             <p
                               className={`px-3 py-2 text-sm rounded ${
                                 isActive
-                                  ? "bg-[#084032] text-white font-semibold"
+                                  ? "bg-[#E7000B] text-white font-semibold"
                                   : "hover:bg-gray-100 text-gray-800"
                               }`}
                               style={isActive ? { cursor: "default" } : {}}
@@ -212,7 +212,7 @@ export default function AdminLayout({ children, title = '' }) {
                       <p
                         className={`px-3 py-2 rounded ${
                           isActive
-                            ? "bg-[#084032] text-white font-semibold"
+                            ? "bg-[#E7000B] text-white font-semibold"
                             : "hover:bg-gray-100"
                         }`}
                         style={isActive ? { cursor: "default" } : {}}
@@ -246,7 +246,7 @@ export default function AdminLayout({ children, title = '' }) {
                 Your account role <span className="font-semibold text-[#084032] uppercase">({role.replace('_', ' ')})</span> does not have permission to view this section.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link href="/admin" className="px-5 py-2.5 bg-[#084032] hover:bg-[#0a5c48] text-white font-semibold rounded-md transition shadow-md">
+                <Link href="/admin" className="px-5 py-2.5 bg-[#E7000B] hover:bg-[#C40009] text-white font-semibold rounded-md transition shadow-md">
                   Go to Dashboard
                 </Link>
                 {role === 'seo' && (

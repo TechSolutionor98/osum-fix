@@ -77,7 +77,7 @@ export default function ActivityClient({ initialLogs = [], initialTotal = 0, api
             value={actionFilter}
             onChange={(e) => { setActionFilter(e.target.value); fetchLogs(1, e.target.value); }}
             className="px-3 py-2 rounded-md border border-gray-300 text-gray-700 text-sm
-                       focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none"
+                       focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none"
           >
             <option value="">All Actions</option>
             {Object.entries(ACTION_LABELS).map(([key, val]) => (

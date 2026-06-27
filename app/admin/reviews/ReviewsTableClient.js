@@ -66,7 +66,7 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowPopup(true)}
-            className="px-3 py-2 rounded-lg bg-[#084032] hover:bg-[#00a63e] text-white font-semibold shadow transition-all"
+            className="px-3 py-2 rounded-lg bg-[#E7000B] hover:bg-[#C40009] text-white font-semibold shadow transition-all"
           >
             Add Review
           </button>
@@ -93,7 +93,7 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
       <div className="overflow-x-auto w-full">
         <table className="min-w-full text-sm shadow border border-gray-100">
           <thead>
-            <tr className="bg-[#084032] text-white text-left">
+            <tr className="bg-[#E7000B] text-white text-left">
               <th className="px-4 py-3 font-semibold">ID</th>
               <th className="px-4 py-3 font-semibold">Name</th>
               <th className="px-4 py-3 font-semibold">Company</th>
@@ -120,7 +120,7 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
                   {!r.approved && (
                     <button
                       onClick={() => approve(r._id)}
-                      className="px-2 py-1 bg-[#084032] hover:bg-[#00a63e] text-white rounded mr-2 transition-all"
+                      className="px-2 py-1 bg-[#E7000B] hover:bg-[#C40009] text-white rounded mr-2 transition-all"
                     >
                       Approve
                     </button>

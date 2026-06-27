@@ -98,7 +98,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
           />
           <button
             onClick={() => { setQuery(''); setPage(1); }}
-            className="px-3 py-2 bg-gray-100 hover:bg-[#00a63e] hover:text-white rounded-lg transition-all"
+            className="px-3 py-2 bg-gray-100 hover:bg-[#C40009] hover:text-white rounded-lg transition-all"
           >
             Clear
           </button>
@@ -106,7 +106,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
         <div className="flex items-center gap-2">
           <button
             onClick={refresh}
-            className={`px-3 py-2 rounded-lg bg-[#00a63e] hover:bg-[#084032] text-white font-semibold shadow ${loading ? 'opacity-60' : ''} transition-all`}
+            className={`px-3 py-2 rounded-lg bg-[#00a63e] hover:bg-[#E7000B] text-white font-semibold shadow ${loading ? 'opacity-60' : ''} transition-all`}
           >
             Refresh
           </button>
@@ -136,7 +136,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
       <div style={{ overflowX: "auto", maxHeight: "520px", overflowY: "auto" }} className="w-full rounded-lg border border-gray-200">
         <table style={{ whiteSpace: "nowrap" }} className="w-full text-sm overflow-hidden">
           <thead className="sticky top-0 z-10">
-            <tr className="bg-[#084032] text-white">
+            <tr className="bg-[#E7000B] text-white">
               <th className="px-3 py-3 font-semibold text-left">Inquiry #</th>
               <th className="px-3 py-3 font-semibold text-left">Name</th>
               <th className="px-3 py-3 font-semibold text-left">Email</th>
@@ -168,7 +168,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
                 <td className="px-4 py-3 border-b border-gray-100 align-top">
                   <button
                     onClick={() => setViewRow({ ...s, inquiryNo: getGlobalIndex(idx) })}
-                    className="px-3 py-1.5 bg-[#084032] hover:bg-[#0a5a47] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer"
+                    className="px-3 py-1.5 bg-[#E7000B] hover:bg-[#0a5a47] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer"
                   >
                     View
                   </button>
@@ -210,7 +210,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="bg-[#084032] rounded-t-2xl px-6 py-4 flex items-center justify-between">
+            <div className="bg-[#E7000B] rounded-t-2xl px-6 py-4 flex items-center justify-between">
               <h2 className="text-white text-lg font-bold">Inquiry #{viewRow.inquiryNo}</h2>
               <button
                 onClick={() => setViewRow(null)}
@@ -260,7 +260,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
               <button
                 onClick={() => setViewRow(null)}
-                className="w-full bg-[#084032] hover:bg-[#0a5a47] text-white rounded-full h-[42px] font-semibold text-[14px] cursor-pointer transition-colors"
+                className="w-full bg-[#E7000B] hover:bg-[#0a5a47] text-white rounded-full h-[42px] font-semibold text-[14px] cursor-pointer transition-colors"
               >
                 Close
               </button>

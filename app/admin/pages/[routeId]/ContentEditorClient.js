@@ -558,7 +558,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
               placeholder='[\n  { "question": "...", "answer": "..." }\n]'
               rows={8}
               className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm resize-y
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-mono
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition text-sm font-mono
                          ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
             />
           ) : (
@@ -570,7 +570,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
               placeholder={`Enter ${label.toLowerCase()}...`}
               isSingleLine={false}
               className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition text-sm
                          ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
             />
           )
@@ -584,7 +584,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                 onChange={(e) => updateField(sectionIndex, fieldKey, 'value', e.target.value)}
                 placeholder="Image URL (e.g., https://res.cloudinary.com/...)"
                 className={`flex-1 rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               />
               {canEditContent && (
                 <div className="relative">
@@ -615,7 +615,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                 onChange={(e) => updateField(sectionIndex, fieldKey, 'alt', e.target.value)}
                 placeholder="Alt text"
                 className={`rounded-md border border-gray-300 px-3 py-1.5 text-gray-900 placeholder-gray-400 text-sm
-                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               />
               <input
                 disabled={!canEditContent}
@@ -624,7 +624,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                 onChange={(e) => updateField(sectionIndex, fieldKey, 'title', e.target.value)}
                 placeholder="Title attribute"
                 className={`rounded-md border border-gray-300 px-3 py-1.5 text-gray-900 placeholder-gray-400 text-sm
-                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               />
             </div>
             {field.value && (
@@ -649,7 +649,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                 placeholder={`Enter ${label.toLowerCase()}...`}
                 isSingleLine={true}
                 className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               />
             ) : (
               <input
@@ -660,7 +660,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                 onChange={(e) => updateField(sectionIndex, fieldKey, 'value', e.target.value)}
                 placeholder={`Enter ${label.toLowerCase()}...`}
                 className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               />
             )}
             {field.tag && (
@@ -753,7 +753,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                 className={`flex items-center gap-2 px-5 py-2 rounded-md text-white text-sm font-semibold transition
                   ${loading
                     ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                    : 'bg-[#E7000B] hover:bg-[#C40009]'}`}
               >
                 <FiSave size={14} />
                 {loading ? 'Saving...' : 'Publish'}
@@ -787,7 +787,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
           {/* canEditContent && (
             <button
               onClick={() => setShowTemplateModal(true)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#084032] text-white text-sm font-semibold hover:bg-[#0a5c48] transition"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#E7000B] text-white text-sm font-semibold hover:bg-[#C40009] transition"
             >
               <FiPlus /> Add Section
             </button>
@@ -803,7 +803,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                 onClick={() => toggleSection(index)}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono bg-[#084032] text-white px-2 py-0.5 rounded">{index + 1}</span>
+                  <span className="text-xs font-mono bg-[#E7000B] text-white px-2 py-0.5 rounded">{index + 1}</span>
                   <input
                     disabled={!canEditContent}
                     type="text"
@@ -923,7 +923,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
               onClick={() => handleSave('published')}
               disabled={loading}
               className={`flex items-center gap-2 px-5 py-2 rounded-md text-white text-sm font-semibold transition
-                ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#E7000B] hover:bg-[#C40009]'}`}
             >
               <FiSave size={14} />
               {loading ? 'Saving...' : 'Publish'}
@@ -984,7 +984,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                     value={linkText}
                     onChange={(e) => handleLinkTextChange(e.target.value)}
                     placeholder="Enter text to link (e.g. click here)..."
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition text-sm font-medium"
                     autoFocus
                   />
                   {linkText && !canProceed && (
@@ -1004,7 +1004,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                     value={linkUrl}
                     onChange={(e) => setLinkUrl(e.target.value)}
                     placeholder="e.g. /our-services/networking or https://google.com"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition text-sm font-medium"
                   />
                 </div>
 
@@ -1052,7 +1052,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                       onClick={handleSaveLink}
                       disabled={!linkText.trim() || !linkUrl.trim() || !canProceed}
                       className={`px-5 py-2 text-sm text-white rounded-lg transition font-semibold cursor-pointer
-                        ${(!linkText.trim() || !linkUrl.trim() || !canProceed) ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                        ${(!linkText.trim() || !linkUrl.trim() || !canProceed) ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#E7000B] hover:bg-[#C40009]'}`}
                     >
                       Save
                     </button>

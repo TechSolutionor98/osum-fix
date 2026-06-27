@@ -228,14 +228,14 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 text-gray-900 text-sm
-                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition"
               />
             </div>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
               className="px-3 py-2 rounded-md border border-gray-300 text-gray-700 text-sm
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none"
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -245,7 +245,7 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
               className="px-3 py-2 rounded-md border border-gray-300 text-gray-700 text-sm
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none"
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none"
             >
               <option value="all">All Types</option>
               <option value="static">Static</option>
@@ -262,7 +262,7 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
               className={`flex items-center gap-2 px-5 py-2.5 rounded-md text-white text-sm font-semibold transition whitespace-nowrap
                 ${scanning
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-[#084032] hover:bg-[#0a5c48] focus:outline-none focus:ring-2 focus:ring-[#00a63e]'}`}
+                  : 'bg-[#E7000B] hover:bg-[#C40009] focus:outline-none focus:ring-2 focus:ring-[#FF333E]'}`}
             >
               <FiRefreshCw className={scanning ? 'animate-spin' : ''} />
               {scanning ? 'Scanning...' : 'Scan Routes'}
@@ -284,7 +284,7 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
               <button
                 onClick={handleScanRoutes}
                 disabled={scanning}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#084032] text-white text-sm font-semibold hover:bg-[#0a5c48] transition"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#E7000B] text-white text-sm font-semibold hover:bg-[#C40009] transition"
               >
                 <FiRefreshCw className={scanning ? 'animate-spin' : ''} />
                 {scanning ? 'Scanning...' : 'Scan Routes'}
@@ -388,7 +388,7 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
                               e.stopPropagation();
                               setActiveDropdownId(activeDropdownId === route._id ? null : route._id);
                             }}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-gray-300 rounded-md text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#00a63e] shadow-sm transition-colors"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-gray-300 rounded-md text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#FF333E] shadow-sm transition-colors"
                           >
                             Actions
                             <FiChevronDown size={14} className={`transition-transform duration-200 ${activeDropdownId === route._id ? 'rotate-180' : ''}`} />

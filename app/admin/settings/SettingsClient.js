@@ -12,7 +12,7 @@ const SocialInput = ({ platform, field, settings, handleChange }) => (
       onChange={(e) => handleChange(field, e.target.value)}
       placeholder={`https://${platform.toLowerCase()}.com/yourpage`}
       className="rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
+                 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition"
     />
   </div>
 );
@@ -100,7 +100,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
               onChange={(e) => handleChange('phone', e.target.value)}
               placeholder="+971 4-354 0566"
               className="rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition"
             />
           </div>
 
@@ -113,7 +113,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
               onChange={(e) => handleChange('email', e.target.value)}
               placeholder="contact@voltariaglobal.com"
               className="rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition"
             />
           </div>
 
@@ -126,7 +126,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
               placeholder="Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai"
               rows={3}
               className="rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm resize-none
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition"
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition"
             />
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                     onChange={(e) => handleChange('googleAnalyticsId', e.target.value)}
                     placeholder="G-XXXXXXXXXX"
                     className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
-                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition bg-white"
                   />
                   <span className="text-[10px] text-gray-400 mt-1">Starting with "G-"</span>
                 </div>
@@ -210,7 +210,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                     onChange={(e) => handleChange('googleTagManagerId', e.target.value)}
                     placeholder="GTM-XXXXXXX"
                     className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
-                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition bg-white"
                   />
                   <span className="text-[10px] text-gray-400 mt-1">Starting with "GTM-"</span>
                 </div>
@@ -255,7 +255,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                   onChange={(e) => handleChange('facebookPixelId', e.target.value)}
                   placeholder="1234567890"
                   className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
-                             focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                             focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition bg-white"
                 />
                 <span className="text-[10px] text-gray-400 mt-1">Numeric identifier from Meta Ads manager</span>
               </div>
@@ -300,7 +300,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                     placeholder="<!-- Injected inside <head> -->&#10;<script>...</script>"
                     rows={4}
                     className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm font-mono
-                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition bg-white resize-none"
                   />
                   <span className="text-[10px] text-gray-400 mt-1">
                     Raw HTML/scripts injected in &lt;head&gt; (e.g. site ownership keys, web verification tags, hotjar).
@@ -318,7 +318,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                     placeholder="<!-- Injected before </body> -->&#10;<noscript>...</noscript>"
                     rows={4}
                     className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm font-mono
-                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition bg-white resize-none"
                   />
                   <span className="text-[10px] text-gray-400 mt-1">
                     Raw HTML/scripts injected before &lt;/body&gt; (e.g. fallback pixel tracking noscripts, chat icons, tools).
@@ -374,7 +374,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                       onChange={(e) => updateThirdPartyApp(app.id, 'name', e.target.value)}
                       placeholder="e.g. Microsoft Clarity"
                       className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
-                                 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                                 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition bg-white"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -387,7 +387,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                       placeholder="<script>...</script>"
                       rows={3}
                       className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm font-mono
-                                 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
+                                 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition bg-white resize-none"
                     />
                   </div>
                 </div>
@@ -404,7 +404,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
           className={`px-8 py-3 rounded-md text-white font-semibold transition
                       ${loading
               ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-[#084032] hover:bg-[#318d74] focus:outline-none focus:ring-2 focus:ring-[#00a63e]'}`}
+              : 'bg-[#E7000B] hover:bg-[#318d74] focus:outline-none focus:ring-2 focus:ring-[#FF333E]'}`}
         >
           {loading ? 'Saving...' : 'Save Settings'}
         </button>

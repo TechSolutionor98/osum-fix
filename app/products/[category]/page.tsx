@@ -82,7 +82,7 @@ export default async function CategoryPage({ params }: PageProps) {
           image: t("/images/voltaria-pedestal-fan.png"),
           description: t("High-torque portable pedestal fan with telescoping height adjustments and wide-angle oscillation."),
           features: [t("16-inch high-velocity blade set"), t("3-speed remote control interface"), t("Thermal overload fuse protection"), t("Adjustable telescopic stand")],
-          specs: { [t("Sweep Size​")]: t("400mm (16\")"), [t("Speed Options")]: t("3-Speed Settings"), [t("Airflow Capacity")]: t("85 CMM"), [t("Power​")]: t("60W") },
+          specs: { [t("Sweep Size​")]: t("400mm (16\")"), [t("Speed Options")]: t("3-Speed Settings"), [t("Airflow Capacity")]: t("85 CMM"), [t("Blade Span")]: t("1400 mm (56 inches)") },
           moq: t("100 Units"),
           capacity: t("5,000 Units / Month"),
           packaging: t("Standard Cartons (1 unit/box)"),

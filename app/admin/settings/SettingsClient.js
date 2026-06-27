@@ -401,7 +401,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
           className={`px-8 py-3 rounded-md text-white font-semibold transition
                       ${loading
               ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-[#E7000B] hover:bg-[#318d74] focus:outline-none focus:ring-2 focus:ring-[#FF333E]'}`}
+              : 'bg-[#E7000B] hover:bg-[#E7000B] focus:outline-none focus:ring-2 focus:ring-[#FF333E]'}`}
         >
           {loading ? 'Saving...' : 'Save Settings'}
         </button>

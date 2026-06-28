@@ -193,6 +193,20 @@ export async function POST(request) {
       customName: 'Footer'
     });
 
+    // Add global template for the generic texts in products/[category]/page.tsx
+    routes.push({
+      path: '[Global] Product Category Layout',
+      type: 'static',
+      dynamicSegment: null,
+      parentPath: null,
+      depth: 0,
+      fileName: 'page.tsx',
+      filePath: 'app/products/[category]/page.tsx',
+      hasLayout: false,
+      status: 'active',
+      customName: 'Category Template'
+    });
+
     // Add dynamic category sub-routes
     const categories = [
       { id: 'fans', name: 'Fans' },
@@ -209,8 +223,8 @@ export async function POST(request) {
         dynamicSegment: null,
         parentPath: '/products',
         depth: 2,
-        fileName: 'page.tsx',
-        filePath: 'app/products/[category]/page.tsx',
+        fileName: `${cat.id}.ts`,
+        filePath: `app/products/[category]/data/${cat.id}.ts`,
         hasLayout: false,
         status: 'active',
         customName: cat.name

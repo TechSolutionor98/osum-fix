@@ -105,7 +105,7 @@ function getCategoryBlock(fileContent, categoryId) {
   };
 
   const startPos = getPos(categoryId);
-  if (startPos === -1) return '';
+  if (startPos === -1) return fileContent;
 
   let endPos = fileContent.length;
   // Find the start of the next category

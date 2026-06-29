@@ -32,16 +32,30 @@ export default function getInvertersData(t: (val: string) => string) {
         customization: t("Merchant app dashboard integrations")
       },
       {
-        name: t("Voltaria SolX Hybrid 3kVA"),
-        model: t("SX-3.0H"),
-        image: t("/images/voltaria-inverter-3kva.png"),
-        description: t("High-performance hybrid solar inverter designed to power complete household loads and dual-battery packages."),
-        features: [t("3.0 kVA capacity"), t("Intelligent battery charger optimizer"), t("Configurable solar/mains priority flow"), t("Backlit graphical configuration console")],
+        name: t("Voltaria VL-4200 Hybrid MPPT Solar Inverter"),
+        model: t("VL-4200"),
+        image: t("/images/voltaria-inverter-vl4200.png"),
+        description: t("Voltaria VL-4200 is a 4200W Hybrid MPPT Solar Inverter designed for high-performance solar installations. It delivers pure sine wave output, features a high PV capacity of 5kW, works with or without a battery, and supports solar and grid power loads simultaneously."),
+        features: [
+          t("4200W Pure Sine Wave Output"),
+          t("High Voltage MPPT Range (40V–450V)"),
+          t("Works with or without battery"),
+          t("Smart BMS (RS485/CAN) & 1 Year Warranty")
+        ],
         specs: { 
-          [t("Capacity")]: t("3000VA / 2400W"), 
-          [t("Battery Voltage​")]: t("24V DC Input"), 
-          [t("MPPT Voltage")]: t("120V - 450V DC"), 
-          [t("Output Wave")]: t("Pure Sine Wave") 
+          [t("Rated Power​")]: t("4.2kVA / 4.2kW (PF=1.0)"), 
+          [t("Surge Power​")]: t("7.2kVA"), 
+          [t("Battery Voltage​")]: t("24V DC"), 
+          [t("MPPT Voltage Range")]: t("40–450V DC"),
+          [t("Max PV Voltage (VOC)")]: t("500V DC"),
+          [t("PV Start-up Voltage​")]: t("60V DC"),
+          [t("Max PV Input Current​")]: t("18A​"),
+          [t("Max PV Input Power​")]: t("5000W"),
+          [t("Max Charge Current​")]: t("100A​"),
+          [t("AC Output​")]: t("220–230–240V​"),
+          [t("Output Frequency​")]: t("50/60Hz​"),
+          [t("Smart Interface")]: t("RS485 / CAN / RS232"),
+          [t("Operating Temperature")]: t("-10°C to 60°C​")
         },
         moq: t("10 Inverters (2 Crates)​"),
         capacity: t("3,000 Units / Month​"),
@@ -55,10 +69,10 @@ export default function getInvertersData(t: (val: string) => string) {
         description: t("Premium commercial-grade hybrid inverter with built-in Wi-Fi logging and comprehensive mobile app dashboard."),
         features: [t("5.0 kVA capacity"), t("Zero-transfer bypass mode"), t("Parallel expansion options up to 30kVA"), t("Remote web console and Wi-Fi antennas")],
         specs: { 
-          [t("Capacity​")]: t("5000VA / 4000W"), 
+          [t("Capacity")]: t("5000VA / 4000W"), 
           [t("Battery Voltage​​")]: t("48V DC Input"), 
-          [t("MPPT Voltage​")]: t("120V - 450V DC​"), 
-          [t("Output Wave​")]: t("Pure Sine Wave​") 
+          [t("MPPT Voltage")]: t("120V - 450V DC​"), 
+          [t("Output Wave")]: t("Pure Sine Wave​") 
         },
         moq: t("5 Inverters (1 Crate)"),
         capacity: t("2,000 Units / Month"),

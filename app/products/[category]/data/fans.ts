@@ -85,23 +85,30 @@ export default function getFansData(t: (val: string) => string) {
         customization: t("OEM Housing Color Options​")
       },
       {
-        name: t("Voltaria Industrial Bracket Fan"),
-        model: t("IB-18B"),
-        image: t("/images/voltaria-bracket-fan.png"),
-        description: t("Wall-mounted heavy-duty bracket fan designed for high-volume air circulation in commercial spaces and warehouses."),
-        features: [t("18-inch aerodynamic steel blades"), t("3-speed pull cord control system"), t("Heavy-duty metal wall bracket structure"), t("Wide-angle horizontal oscillation")],
+        name: t("18'' PEDESTAL AC DC FAN"),
+        model: t("PED-18"),
+        image: t("/images/voltaria-pedestal-acdc-fan.png"),
+        description: t("Voltaria 18'' Pedestal AC DC Fan is designed for ultimate cooling flexibility and energy efficiency. Powered by a 15W pure copper motor, it offers dual AC/DC functionality, 1350 RPM on Turbo Mode, and support for 12V battery or solar panel setups."),
+        features: [
+          t("18-Inch, 5-Blade Aero Design"),
+          t("15W Ultra-Efficient Pure Copper Motor"),
+          t("Supports AC/DC, Solar & Battery Power"),
+          t("3 Speed Levels + 3 Wind Modes & Remote")
+        ],
         specs: { 
-          [t("Sweep Size​​​")]: t('450mm (18")'), 
-          [t("Motor Type​​​")]: t("100% Pure Copper​​​"), 
-          [t("Speed​​​")]: t("1350 RPM"), 
-          [t("Power​​​")]: t("75W"),
-          [t("Voltage​​​")]: t("220V-240V​​​"),
-          [t("Airflow​")]: t("110 CMM")
+          [t("Dual AC/DC Functionality")]: t("Supported"), 
+          [t("Motor Type​​​")]: t("Energy Saving Pure Copper Motor"), 
+          [t("Blade Design")]: t("18-Inch, 5-Blade Aero Design"), 
+          [t("Speed​​​")]: t("3 Speed Levels + 3 Wind Modes"),
+          [t("Motor Speed")]: t("1350 RPM on Turbo Mode"),
+          [t("Control Options​​")]: t("Timer and Remote Control"),
+          [t("Power Support")]: t("DC 12V power line, battery, solar panel, and AC 110-260V"),
+          [t("Durable Build​")]: t("ABS + PP Body")
         },
         moq: t("50 Units​​​"),
-        capacity: t("5,000 Units / Month​"),
-        packaging: t("Standard Cartons (2 units/box)"),
-        customization: t("OEM Logo & Custom Color Available")
+        capacity: t("5,000 Units / Month"),
+        packaging: t("Standard Cartons (1 unit/box)​​"),
+        customization: t("OEM Housing Color Options​​")
       }
     ]
   };

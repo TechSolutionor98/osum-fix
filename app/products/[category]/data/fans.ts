@@ -4,18 +4,23 @@ export default function getFansData(t: (val: string) => string) {
     description: t("Discover Voltaria's high-efficiency ceiling, pedestal, and exhaust fans. Direct-to-merchant factory supply in container-load sizes, with OEM custom branding available for retail chains and distributors."),
     items: [
       {
-        name: t("Voltaria AeroBreeze Ceiling Fan"),
-        model: t("AB-56C"),
+        name: t("56\" AC Ceiling Fan"),
+        model: t("AC-56"),
         image: t("/images/voltaria-fan.png"),
-        description: t("Aerodynamic high-speed ceiling fan with dual-shielded bearings and 100% copper motor, engineered for silent cooling."),
-        features: [t("56-inch sweep size"), t("Whisper-quiet double-shielded bearings"), t("Energy efficient < 55W consumption"), t("Precision-engineered aluminum alloy blades")],
+        description: t("56\" AC Ceiling Fan is designed to provide powerful airflow with smooth and silent performance. Equipped with a 70W double bearing motor, 330 RPM speed, and 180 m³/min air delivery, it ensures efficient cooling for large rooms. The aerodynamically designed steel blades, 1400mm sweep, and golden cap design deliver premium style, long-lasting durability, and reliable cooling."),
+        features: [
+          t("56\" Elegant Sweep (1400mm)"),
+          t("Double Bearing Motor (192mm, 2.2kg)"),
+          t("70W Power Saving & Universal Voltage"),
+          t("3 Straight Aerodynamic Steel Blades")
+        ],
         specs: { 
-          [t("Sweep Size")]: t('1500mm (60")'), 
-          [t("Motor Type")]: t("100% Pure Copper"), 
-          [t("Speed")]: t("400 RPM"), 
-          [t("Power")]: t("55W"),
-          [t("Voltage")]: t("220V-240V"),
-          [t("Frequency")]: t("50Hz")
+          [t("Sweep Size")]: t("1400mm – Wide Coverage"), 
+          [t("Optimal Speed")]: t("330 RPM"), 
+          [t("High Air Delivery")]: t("180 m³/min"), 
+          [t("Durable Build")]: t("Sturdy Motor (192mm, 2.2kg)"),
+          [t("Golden Cap Design")]: t("Premium Style"),
+          [t("Universal Voltage")]: t("Plug & Relax")
         },
         moq: t("50 Units"),
         capacity: t("10,000 Units / Month"),

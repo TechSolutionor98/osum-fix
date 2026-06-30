@@ -3,14 +3,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import { getCmsVal } from "@/lib/api-helper";
 
 export default function Navbar({ cms }: { cms?: any }) {
   const [isOpen, setIsOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProductsOpen(false);
+      }
+    }
+    if (productsOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [productsOpen]);
 
   const t = (val: string) => getCmsVal(cms, val);
 
@@ -51,7 +66,7 @@ export default function Navbar({ cms }: { cms?: any }) {
           >
             {t("About Us")}
           </Link>
-          <div className="relative flex items-center">
+          <div className="relative flex items-center" ref={dropdownRef}>
             <button
               onClick={() => setProductsOpen(!productsOpen)}
               type="button"
@@ -81,11 +96,7 @@ export default function Navbar({ cms }: { cms?: any }) {
 
             {productsOpen && (
               <>
-                {/* Overlay to close on clicking outside */}
-                <div 
-                  className="fixed inset-0 z-10" 
-                  onClick={() => setProductsOpen(false)} 
-                />
+
                 
                 {/* Dropdown menu */}
                 <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl bg-white border border-gray-100 shadow-xl py-2.5 z-20 animate-fade-in origin-top-left">

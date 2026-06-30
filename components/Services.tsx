@@ -22,6 +22,19 @@ export default function Services({ cms }: { cms?: any }) {
       description: t("Ceiling, pedestal, and exhaust fan models. Engineered with heavy-copper coils and aerodynamic blades for silent, high-output air circulation.")
     },
     {
+      title: t("PEDESTAL AC DC FAN"),
+      link: "/products/fans",
+      image: t("/images/custom-pedestal-fan.png"),
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2v7M12 15v7M2 12h7M15 12h7" />
+          <path d="M16 8l4-4M4 20l4-4M8 4l4 4M12 16l4 4" className="opacity-40" />
+        </svg>
+      ),
+      description: t("High-efficiency AC/DC pedestal fans. Portable cooling solutions designed for low power consumption and optimal airflow in any space.")
+    },
+    {
       title: t("HIGH-SAFETY FUSES"),
       link: "/products/fuses-breakers",
       image: t("/images/voltaria-fuse-breaker.png"),

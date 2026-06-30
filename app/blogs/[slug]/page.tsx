@@ -7,8 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getPublishedContent } from '@/lib/cms-service';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
 // Dynamic SEO Metadata Generator
 export async function generateMetadata({ params }: any) {

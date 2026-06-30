@@ -7,7 +7,7 @@ import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
 import ImageZoom from "@/components/ImageZoom";
 import BackButton from "@/components/BackButton";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 interface ProductItem {
   name: string;

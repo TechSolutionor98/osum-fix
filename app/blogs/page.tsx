@@ -9,8 +9,7 @@ export const metadata = {
   description: 'Read the latest updates, news, and expert articles on solar energy, batteries, fans, and power solutions.',
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function ClientBlogsPage() {
   let blogs = [];

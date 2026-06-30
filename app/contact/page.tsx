@@ -6,7 +6,7 @@ import AppointmentSection from "@/components/AppointmentSection";
 import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
 import { getDb } from "@/lib/mongodb";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function ContactPage() {
   const cms = await getPublishedContent("/contact");

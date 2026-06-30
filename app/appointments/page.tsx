@@ -9,7 +9,7 @@ export const metadata = {
   description: 'Schedule an appointment with Voltaria Global using our easy online booking system.',
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function AppointmentsPublicPage() {
   const navbarCms = await getPublishedContent("[Global] Navbar");

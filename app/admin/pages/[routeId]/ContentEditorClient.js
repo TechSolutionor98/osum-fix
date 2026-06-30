@@ -796,7 +796,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
       ) : (
         <div className="space-y-4">
           {content.sections.map((section, index) => (
-            <div key={section.sectionId || index} className="bg-white rounded-lg shadow overflow-hidden">
+            <div key={`${section.sectionId || 'section'}-${index}`} className="bg-white rounded-lg shadow overflow-hidden">
               {/* Section Header */}
               <div
                 className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-200 cursor-pointer"

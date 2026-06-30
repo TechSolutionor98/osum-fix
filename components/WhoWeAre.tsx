@@ -21,20 +21,14 @@ export default function WhoWeAre({ cms }: { cms?: any }) {
           </div>
 
           <div className="lg:col-span-6 relative">
-            {/* Visual branding showcase with image */}
-            <div className="relative z-10 w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-gray-100 group">
+            <div className="relative z-10 w-full aspect-[4/3] group">
               <Image
                 src={t("/images/about-office.png")}
                 alt={t("Voltaria Global Office and Engineering")}
                 fill
                 sizes="(max-w-768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700"
+                className="object-contain transition-transform duration-700"
               />
-
-              {/* Bottom elegant dark gradient overlay card */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 pt-12 flex flex-col justify-end text-white z-10">
-
-              </div>
             </div>
           </div>
         </div>

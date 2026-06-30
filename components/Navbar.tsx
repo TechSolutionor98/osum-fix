@@ -151,7 +151,7 @@ export default function Navbar({ cms }: { cms?: any }) {
         </nav>
 
         {/* Login Button */}
-        <div className="hidden md:block">
+        <div className="hidden md:block opacity-0 pointer-events-none" aria-hidden="true">
           <Link
             href="/login"
             className="px-8 py-2.5 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 active:scale-95 transition-all shadow-md hover:shadow-lg inline-block"
@@ -328,7 +328,7 @@ export default function Navbar({ cms }: { cms?: any }) {
           >
             {t("Contact Us")}
           </Link>
-          <div className="pt-4 border-t border-gray-100">
+          {/* <div className="pt-4 border-t border-gray-100">
             <Link
               href="/login"
               className="block w-full text-center px-4 py-2.5 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
@@ -336,7 +336,7 @@ export default function Navbar({ cms }: { cms?: any }) {
             >
               {t("Login")}
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>

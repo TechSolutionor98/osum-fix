@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { getCmsVal } from "@/lib/api-helper";
 
@@ -10,6 +11,7 @@ export default function Services({ cms }: { cms?: any }) {
     {
       title: t("PREMIUM FANS"),
       link: "/products/fans",
+      image: t("/images/custom-fan.png"),
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3" />
@@ -19,22 +21,10 @@ export default function Services({ cms }: { cms?: any }) {
       ),
       description: t("Ceiling, pedestal, and exhaust fan models. Engineered with heavy-copper coils and aerodynamic blades for silent, high-output air circulation.")
     },
-    /* {
-      title: t("DEEP-CYCLE BATTERIES"),
-      link: "/products/batteries",
-      icon: (
-        <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="7" width="16" height="10" rx="2" ry="2" />
-          <line x1="22" y1="11" x2="22" y2="13" />
-          <line x1="6" y1="11" x2="10" y2="11" />
-          <line x1="6" y1="13" x2="12" y2="13" />
-        </svg>
-      ),
-      description: t("Heavy-duty tubular and flat-plate battery units. Specially built for long-duration deep discharges in domestic UPS and commercial microgrids.")
-    }, */
     {
       title: t("HIGH-SAFETY FUSES"),
       link: "/products/fuses-breakers",
+      image: t("/images/voltaria-fuse-breaker.png"),
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
@@ -48,6 +38,7 @@ export default function Services({ cms }: { cms?: any }) {
     {
       title: t("AUTOMATIC CHANGEOVERS"),
       link: "/products/changeovers",
+      image: t("/images/custom-changeover.png"),
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 3L21 7L17 11" />
@@ -61,6 +52,7 @@ export default function Services({ cms }: { cms?: any }) {
     {
       title: t("HYBRID INVERTERS"),
       link: "/products/inverters",
+      image: t("/images/custom-inverter.png"),
       icon: (
         <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-600 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
@@ -86,15 +78,27 @@ export default function Services({ cms }: { cms?: any }) {
           {offerings.map((item, index) => (
             <div 
               key={index}
-              className="group flex flex-col justify-between p-8 rounded-3xl border border-gray-100 bg-white hover:shadow-2xl hover:border-red-100 transition-all duration-300 transform hover:-translate-y-1"
+              className="group flex flex-col justify-between p-6 rounded-3xl border border-gray-100 bg-white hover:shadow-2xl hover:border-red-100 transition-all duration-300 transform hover:-translate-y-1"
             >
               <div>
-                {/* Icon Container */}
-                <div className="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {item.icon}
-                </div>
+                {/* Image Container */}
+                {item.image && (
+                  <div className="w-full h-48 mb-6 relative rounded-2xl overflow-hidden bg-white flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                    <Image 
+                      src={item.image} 
+                      alt={item.title} 
+                      fill 
+                      sizes="(max-w-768px) 100vw, 33vw"
+                      unoptimized
+                      className="object-contain p-4 mix-blend-multiply" 
+                    />
+                  </div>
+                )}
                 {/* Title */}
-                <h3 className="text-lg font-bold text-gray-950 tracking-wide mb-3 uppercase">
+                <h3 className="text-lg font-bold text-gray-950 tracking-wide mb-3 uppercase flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-red-600">
+                    {item.icon}
+                  </span>
                   {item.title}
                 </h3>
                 {/* Description */}

@@ -12,8 +12,10 @@ export const metadata = {
 export const revalidate = 60;
 
 export default async function AppointmentsPublicPage() {
-  const navbarCms = await getPublishedContent("[Global] Navbar");
-  const footerCms = await getPublishedContent("[Global] Footer");
+  const [navbarCms, footerCms] = await Promise.all([
+    getPublishedContent("[Global] Navbar"),
+    getPublishedContent("[Global] Footer")
+  ]);
 
   let links = [];
   try {

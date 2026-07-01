@@ -11,9 +11,11 @@ import { getPublishedContent } from "@/lib/cms-service";
 export const revalidate = 60;
 
 export default async function Home() {
-  const cms = await getPublishedContent("/");
-  const navbarCms = await getPublishedContent("[Global] Navbar");
-  const footerCms = await getPublishedContent("[Global] Footer");
+  const [cms, navbarCms, footerCms] = await Promise.all([
+    getPublishedContent("/"),
+    getPublishedContent("[Global] Navbar"),
+    getPublishedContent("[Global] Footer")
+  ]);
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">

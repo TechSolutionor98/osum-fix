@@ -20,8 +20,10 @@ export default async function ClientBlogsPage() {
     console.error('Failed to load public blogs list', err);
   }
 
-  const navbarCms = await getPublishedContent("[Global] Navbar");
-  const footerCms = await getPublishedContent("[Global] Footer");
+  const [navbarCms, footerCms] = await Promise.all([
+    getPublishedContent("[Global] Navbar"),
+    getPublishedContent("[Global] Footer")
+  ]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 font-sans antialiased text-black">

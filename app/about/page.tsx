@@ -7,9 +7,11 @@ import { getPublishedContent, getCmsVal } from "@/lib/cms-service";
 export const revalidate = 60;
 
 export default async function AboutPage() {
-  const cms = await getPublishedContent("/about");
-  const navbarCms = await getPublishedContent("[Global] Navbar");
-  const footerCms = await getPublishedContent("[Global] Footer");
+  const [cms, navbarCms, footerCms] = await Promise.all([
+    getPublishedContent("/about"),
+    getPublishedContent("[Global] Navbar"),
+    getPublishedContent("[Global] Footer")
+  ]);
 
   const t = (val: string) => getCmsVal(cms, val);
 

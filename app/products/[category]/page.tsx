@@ -56,9 +56,11 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
-  const cms = await getPublishedContent(`/products/${category}`);
-  const navbarCms = await getPublishedContent("[Global] Navbar");
-  const footerCms = await getPublishedContent("[Global] Footer");
+  const [cms, navbarCms, footerCms] = await Promise.all([
+    getPublishedContent(`/products/${category}`),
+    getPublishedContent("[Global] Navbar"),
+    getPublishedContent("[Global] Footer")
+  ]);
 
   const t = (val: string) => getCmsVal(cms, val);
 

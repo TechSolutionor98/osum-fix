@@ -9,9 +9,11 @@ import { getDb } from "@/lib/mongodb";
 export const revalidate = 60;
 
 export default async function ContactPage() {
-  const cms = await getPublishedContent("/contact");
-  const navbarCms = await getPublishedContent("[Global] Navbar");
-  const footerCms = await getPublishedContent("[Global] Footer");
+  const [cms, navbarCms, footerCms] = await Promise.all([
+    getPublishedContent("/contact"),
+    getPublishedContent("[Global] Navbar"),
+    getPublishedContent("[Global] Footer")
+  ]);
 
   const t = (val: string) => getCmsVal(cms, val);
 

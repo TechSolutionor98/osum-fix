@@ -33,8 +33,10 @@ export default async function BlogDetailsPage({ params }: any) {
   const apiBase = getApiBase();
 
   // Fetch Navbar & Footer components
-  const navbarCms = await getPublishedContent("[Global] Navbar");
-  const footerCms = await getPublishedContent("[Global] Footer");
+  const [navbarCms, footerCms] = await Promise.all([
+    getPublishedContent("[Global] Navbar"),
+    getPublishedContent("[Global] Footer")
+  ]);
 
   let blog: any = null;
   let comments: any[] = [];

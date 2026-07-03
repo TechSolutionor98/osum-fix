@@ -106,6 +106,8 @@ export default function Home() {
     },
   };
 
+
+
   return (
     <>
       <Navbar />
@@ -116,14 +118,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-slate-900 -z-20"></div>
           {/* Subtle background pattern or gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/90 to-slate-900/80 -z-10"></div>
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div className="max-w-2xl text-left">
               <span className="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-xs font-semibold tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
                 DUBAI&apos;S PREMIER TECHNICAL SERVICES
               </span>
-              
-              <motion.h1 
+
+              <motion.h1
                 variants={sentenceVariants}
                 initial="hidden"
                 animate="visible"
@@ -131,8 +133,8 @@ export default function Home() {
               >
                 <span>OsumFix</span>
                 {titleCharacters.map((item, index) => (
-                  <motion.span 
-                    key={index} 
+                  <motion.span
+                    key={index}
                     variants={letterVariants}
                     className={item.isAccent ? "text-[var(--secondary)]" : ""}
                   >
@@ -140,20 +142,20 @@ export default function Home() {
                   </motion.span>
                 ))}
               </motion.h1>
-              
+
               <p className="text-sm md:text-base text-slate-200 mb-6 max-w-xl leading-relaxed">
                 OsumFix delivers premium technical services for residential and commercial properties across Dubai. Reliable, fast, and guaranteed quality.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-3 justify-start">
-                <Link 
-                  href="/services" 
+                <Link
+                  href="/services"
                   className="bg-[var(--secondary)] hover:bg-[#009bc2] text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg text-center flex items-center justify-center text-sm gap-2"
                 >
                   Explore Services <ArrowRight size={16} />
                 </Link>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="bg-white hover:bg-slate-50 text-[var(--dark)] px-6 py-3 rounded-full font-semibold transition-all shadow-lg text-center flex items-center justify-center text-sm gap-2"
                 >
                   Contact Us <PhoneCall size={16} />
@@ -264,8 +266,8 @@ export default function Home() {
                     <div className="w-full md:w-[calc(50%-3rem)] relative h-[320px]">
                       {/* Little triangle arrow pointing to timeline */}
                       <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white border border-slate-100 transform rotate-45 z-10 ${index % 2 === 0
-                          ? '-right-2 border-l-0 border-b-0'
-                          : '-left-2 border-r-0 border-t-0'
+                        ? '-right-2 border-l-0 border-b-0'
+                        : '-left-2 border-r-0 border-t-0'
                         }`}></div>
 
                       <div className="bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all w-full h-full relative z-20 group overflow-hidden">
@@ -323,24 +325,24 @@ export default function Home() {
         {/* Video Section */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionTitle 
+            <SectionTitle
               subtitle="See Us In Action"
               title="Experience The OsumFix Difference"
               description="Watch how our expert technicians handle complex maintenance challenges with precision and care."
               centered
             />
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="mt-12 w-full mx-auto rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative border-4 border-white bg-slate-900"
             >
-              <video 
-                className="w-full aspect-video object-cover pointer-events-none" 
-                autoPlay 
-                muted 
+              <video
+                className="w-full aspect-video object-cover pointer-events-none"
+                autoPlay
+                muted
                 loop
                 playsInline
                 disablePictureInPicture

@@ -3315,6 +3315,369 @@ export default async function ServiceDetailPage({
     );
   }
 
+  const isHandymanServices = slug === "handyman-services";
+
+  if (isHandymanServices) {
+    return (
+      <>
+        <Navbar />
+        <main className="bg-white">
+          <PageBanner 
+            title="Handyman Services" 
+            breadcrumb={[
+              { label: "Services", href: "/services" },
+              { label: "Handyman Services", href: "/services/handyman-services" }
+            ]} 
+          />
+
+          {/* Section 1: Overview & Hero Image (White Background) */}
+          <section className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-7 space-y-6">
+                  <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+                    PROFESSIONAL HANDYMAN SERVICES IN DUBAI
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">
+                    Reliable Home Maintenance & Installation Solutions by OsumFix
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed text-base">
+                    Every home and workplace requires regular maintenance, repairs, and installations to remain functional, comfortable, and well-organized. From mounting a TV and assembling furniture to installing shelves, curtains, mirrors, and fixtures, small tasks can quickly become time-consuming without the right tools and expertise.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed text-base">
+                    At <span className="font-semibold text-[var(--primary)]">OsumFix</span>, we provide professional handyman services across Dubai for residential and commercial properties. Our skilled technicians handle a wide range of repair, installation, and maintenance tasks with precision, efficiency, and attention to detail.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed text-base">
+                    Whether you are moving into a new property, upgrading your interiors, or simply tackling your maintenance checklist, OsumFix is your trusted partner for hassle-free handyman solutions.
+                  </p>
+                </div>
+                <div className="lg:col-span-5">
+                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/10 to-transparent z-10"></div>
+                    <div className="text-slate-400 font-semibold text-center p-6 z-20">
+                      <Wrench size={48} className="mx-auto text-[var(--primary)] mb-4" />
+                      Service Detail Hero Image Placeholder
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
+          <section className="py-20 bg-slate-50 border-y border-slate-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">
+                  Why OsumFix
+                </span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">
+                  Why Choose OsumFix?
+                </h2>
+                <p className="text-slate-500 mt-4">
+                  Your Trusted Handyman Service Provider in Dubai
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  { title: "Skilled & Experienced Technicians", desc: "Our handyman team is trained to handle a wide variety of installation, repair, and maintenance tasks professionally and safely.", icon: <Wrench size={28} className="text-white" />, gradient: "from-blue-500 to-indigo-600" },
+                  { title: "One Team for Multiple Jobs", desc: "Save time and effort by hiring a single team to complete several maintenance tasks during one single visit.", icon: <Sparkles size={28} className="text-white" />, gradient: "from-cyan-500 to-blue-600" },
+                  { title: "Professional Tools & Equipment", desc: "We arrive fully equipped with all the necessary tools and hardware to complete jobs efficiently on the first attempt.", icon: <Shield size={28} className="text-white" />, gradient: "from-teal-500 to-emerald-600" },
+                  { title: "Clean & Organized Work", desc: "We respect your property and always ensure the work area is cleaned thoroughly before final project completion.", icon: <Layers size={28} className="text-white" />, gradient: "from-purple-500 to-indigo-600" },
+                  { title: "Transparent Pricing", desc: "No hidden fees. We provide clear, itemized quotations detailing costs before any work begins.", icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
+                  { title: "Fast Response & Reliable Service", desc: "We complete tasks efficiently while maintaining high-quality workmanship and flexible scheduling.", icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                      {item.icon}
+                    </div>
+                    <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
+                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 3: Our Handyman Services (White Background) */}
+          <section className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">
+                  Our Expertise
+                </span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">
+                  Our Handyman Services
+                </h2>
+                <p className="text-slate-500 mt-4">
+                  We provide a comprehensive range of handyman solutions for homes, apartments, villas, offices, and commercial properties.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  {
+                    title: "Mounting & Installation",
+                    items: ["TV Wall Mounting", "Mirror Installation", "Picture & Artwork Hanging", "Curtain & Blind Installation", "Shelf Installation", "Wall Bracket Installation", "Whiteboard & Notice Board Install"]
+                  },
+                  {
+                    title: "Furniture Assembly",
+                    items: ["IKEA Furniture Assembly", "Office Workstation Assembly", "Bed & Wardrobe Assembly", "Cabinet Installation", "Desk & Storage Unit Assembly", "Furniture Disassembly"]
+                  },
+                  {
+                    title: "Home & Carpentry Repairs",
+                    items: ["Door Handle Repair", "Lock Replacement", "Cabinet Door & Drawer Repair", "Minor Wall Plaster Repairs", "Silicone & Grout Replacement", "Small Carpentry Repairs"]
+                  },
+                  {
+                    title: "Electrical & Plumbing",
+                    items: ["Light Fixture Installation", "Ceiling Fan Installation", "Smoke Detector Mounts", "Switch & Socket Replacement", "Shower Head & Faucet Replace", "Minor Drain Assistance"]
+                  }
+                ].map((cat, idx) => (
+                  <div key={idx} className="bg-slate-50 p-8 rounded-3xl border border-slate-100/80 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow">
+                    <h4 className="font-bold text-[var(--dark)] text-lg mb-6 pb-2 border-b border-slate-200">{cat.title}</h4>
+                    <ul className="space-y-4 flex-grow">
+                      {cat.items.map((item, sIdx) => (
+                        <li key={sIdx} className="flex gap-3 text-slate-700 text-sm font-medium items-start">
+                          <CheckCircle2 size={16} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 4: Most Popular Handyman Jobs (Dark Theme Accent block) */}
+          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
+            
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-5 space-y-4">
+                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">Popular Jobs</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+                    Most Popular Handyman Jobs We Handle
+                  </h2>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Moving in or moving out? We handle TV installations, mirror hanging, curtain rods, and wall hole filling so you don't have to worry about tools.
+                  </p>
+                </div>
+                <div className="lg:col-span-7 flex flex-wrap gap-2.5">
+                  {[
+                    "TV Mounting", "Curtain Installation", "Mirror Hanging", "Furniture Assembly",
+                    "Shelf Installation", "Door Lock Repairs", "Wall Art Installation", "Ceiling Fan Installation",
+                    "Cabinet Adjustments", "Appliance Connections", "Wall Bracket Installation", "Silicone Replacement",
+                    "Minor Plumbing Repairs", "Home Maintenance Tasks", "Office Maintenance Jobs"
+                  ].map((srv, idx) => (
+                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                      🛠️ {srv}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <hr className="border-white/10" />
+
+              <div className="space-y-8">
+                <div className="text-center max-w-2xl mx-auto">
+                  <h3 className="text-2xl font-bold">Residential & Commercial Handyman</h3>
+                  <p className="text-slate-400 text-sm mt-3">
+                    We serve all homes, offices, retail spaces, and clinics in Dubai:
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+                  {["Apartments", "Villas", "Townhouses", "Offices", "Restaurants & Cafes", "Retail Shops", "Warehouses", "Hotels", "Clinics", "Salons", "Schools", "Commercial Buildings"].map((sec, idx) => (
+                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
+                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 5: Our Handyman Process (Slate-50 Background) */}
+          <section className="py-20 bg-slate-50 border-b border-slate-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">
+                  Our Service Process
+                </span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">
+                  Our Handyman Service Process
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {[
+                  { step: "1", title: "Book Your Service", desc: "Contact OsumFix via phone, WhatsApp, or our online inquiry form." },
+                  { step: "2", title: "Discuss Needs", desc: "Tell us about the jobs you need completed and get a quick quote." },
+                  { step: "3", title: "Schedule Visit", desc: "Choose a convenient date and time for our handyman team to visit." },
+                  { step: "4", title: "Service Delivery", desc: "Our technicians arrive fully equipped and complete tasks efficiently." },
+                  { step: "5", title: "Final Inspection", desc: "We review all completed work to ensure quality and satisfaction." },
+                  { step: "6", title: "Clean-Up & Handover", desc: "The work area is cleaned and organized before final handover." }
+                ].map((p, idx) => (
+                  <div key={idx} className="bg-white p-5 rounded-3xl border border-slate-100/80 shadow-sm text-center flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                      <span className="w-8 h-8 rounded-full bg-blue-50 text-[var(--primary)] text-sm font-bold flex items-center justify-center mx-auto mb-4 border border-blue-100">
+                        {p.step}
+                      </span>
+                      <h4 className="font-bold text-[var(--dark)] text-xs sm:text-sm mb-2">{p.title}</h4>
+                    </div>
+                    <p className="text-slate-500 text-[11px] leading-relaxed mt-2">{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 6: FAQs (White Background) */}
+          <section className="py-20 bg-white">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">
+                  FAQ
+                </span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">
+                  Frequently Asked Questions
+                </h2>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  { q: "What handyman services do you provide?", a: "We offer TV wall mounting, mirror and artwork hanging, curtain and blinds installation, shelves mounting, IKEA furniture assembly, cabinet door realignments, lock replacement, and minor plumbing/electrical repairs." },
+                  { q: "Do you provide TV mounting services?", a: "Yes. We professionally install and mount TVs of all sizes on concrete walls, drywall, or brick walls, ensuring proper bracket alignment and cable management support." },
+                  { q: "Can you assemble furniture?", a: "Absolutely. We assemble IKEA beds, wardrobes, dining sets, study desks, office workstations, shelves, and storage cabinets." },
+                  { q: "Do you install curtains and blinds?", a: "Yes. We mount curtain rods, tracks, roller blinds, Roman blinds, and related window accessories securely." },
+                  { q: "Can I book multiple jobs in one visit?", a: "Yes. Our handyman service is perfect for completing multiple minor maintenance and assembly tasks during a single appointment to save your time." },
+                  { q: "Do you serve commercial properties?", a: "Yes. We handle repairs, mounting, board installations, and general office maintenance for corporate workspaces and commercial buildings in Dubai." }
+                ].map((faq, idx) => (
+                  <details key={idx} className="group border border-slate-150 rounded-2xl p-5 bg-slate-50/50 open:bg-white transition-all duration-300">
+                    <summary className="flex justify-between items-center font-bold text-base md:text-lg text-[var(--dark)] cursor-pointer list-none">
+                      <span>{faq.q}</span>
+                      <span className="transition-transform duration-300 group-open:rotate-180 shrink-0 text-slate-400 ml-4">
+                        <ChevronDown size={20} />
+                      </span>
+                    </summary>
+                    <p className="text-slate-600 mt-3 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-3">
+                      {faq.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
+          <section className="py-20 bg-slate-50 border-t border-slate-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
+                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    We provide fast response times and expert on-site handyman services in all major communities, including:
+                  </p>
+                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
+                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-slate-800 text-lg">Instant Quote via WhatsApp</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                      Need quick TV mounting, furniture assembly, or door lock repairs? Chat with our customer care representatives on WhatsApp.
+                    </p>
+                  </div>
+                  <a 
+                    href="https://wa.me/971501234567" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
+                  >
+                    Send Instant WhatsApp Message
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          <section className="py-20 bg-white border-t border-slate-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-2xl mx-auto mb-12">
+                <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">Explore Our Other Services</h3>
+                <p className="text-slate-500 text-sm mt-3">We are Dubai's trusted one-stop provider for all home and building technical solutions.</p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {[
+                  { name: "AC Work", slug: "ac-work" },
+                  { name: "Electrical Work", slug: "electrical-work" },
+                  { name: "Plumbing Work", slug: "plumbing-work" },
+                  { name: "Painting Work", slug: "painting-work" },
+                  { name: "Masonry Work", slug: "masonry-work" },
+                  { name: "Carpentry Work", slug: "carpentry-work" },
+                  { name: "Steel Fixing", slug: "steel-fixing" },
+                  { name: "Interior Designing", slug: "interior-designing" },
+                  { name: "Ceiling & Gypsum", slug: "ceiling-gypsum" },
+                  { name: "Handyman Services", slug: "handyman-services" }
+                ].map((s, idx) => (
+                  <Link 
+                    key={idx} 
+                    href={`/services/${s.slug}`}
+                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                  >
+                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
+                      {s.name}
+                    </span>
+                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
+                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Call to Action Booking Banner */}
+          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
+              <h2 className="text-2xl md:text-4xl font-bold">Ready to Clear Your Home Maintenance Checklist?</h2>
+              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">
+                Book your handyman site visit or booking appointment today. Enjoy reliable, hassle-free assembly, repairs, and mountings with OsumFix.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+                  Request Callback
+                </Link>
+                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">
+                  Call +971 50 123 4567
+                </a>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
   // Fallback dynamic rendering for other services
   return (
     <>

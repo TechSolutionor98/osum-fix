@@ -11,22 +11,22 @@ export default function ContactPage() {
     <>
       <Navbar />
       <main>
-        <PageBanner 
-          title="Contact Us" 
-          breadcrumb={[{ label: "Contact", href: "/contact" }]} 
+        <PageBanner
+          title="Contact Us"
+          breadcrumb={[{ label: "Contact", href: "/contact" }]}
         />
-        
+
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Contact Info */}
               <div>
-                <SectionTitle 
+                <SectionTitle
                   subtitle="Get In Touch"
                   title="We're Here to Help"
                   description="Have a question or need emergency assistance? Contact our team anytime."
                 />
-                
+
                 <div className="space-y-8 mt-10">
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[var(--primary)] shrink-0">
@@ -40,7 +40,7 @@ export default function ContactPage() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[var(--primary)] shrink-0">
                       <Phone size={28} />
@@ -51,7 +51,7 @@ export default function ContactPage() {
                       <p className="text-sm text-slate-500">Available 24/7 for emergencies</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[var(--primary)] shrink-0">
                       <Mail size={28} />
@@ -72,17 +72,17 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white" 
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
-                      <input 
-                        type="tel" 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white" 
+                      <input
+                        type="tel"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
                         placeholder="+971 50 000 0000"
                       />
                     </div>
@@ -103,30 +103,30 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">Property Location (Dubai)</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white" 
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
                         placeholder="e.g., Jumeirah, Business Bay"
                       />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                    <input 
-                      type="email" 
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white" 
+                    <input
+                      type="email"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
                       placeholder="john@example.com"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                    <textarea 
+                    <textarea
                       rows={4}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white resize-none" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white resize-none"
                       placeholder="How can we help you?"
                     ></textarea>
                   </div>
-                  <button 
+                  <button
                     type="submit"
                     className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white font-semibold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
                   >
@@ -135,7 +135,7 @@ export default function ContactPage() {
                 </form>
               </div>
             </div>
-            
+
             {/* Map Placeholder */}
             <div className="mt-20 w-full h-[400px] bg-slate-200 rounded-3xl overflow-hidden relative shadow-inner">
               <div className="absolute inset-0 flex items-center justify-center flex-col text-slate-400">

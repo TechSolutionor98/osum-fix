@@ -1,182 +1,159 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { getCmsVal } from "@/lib/api-helper";
+import { Mail, Phone, MapPin, Wrench } from "lucide-react";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
-export default function Footer({ cms }: { cms?: any }) {
-  const [email, setEmail] = useState("");
-  const t = (val: string) => getCmsVal(cms, val);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Subscribed: ${email}`);
-    setEmail("");
-  };
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#FFFEFE] border-t border-b border-gray-200 mt-auto py-16 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-        
-        {/* Brand & Socials Column */}
-        <div className="lg:col-span-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <Image
-              src={t("/images/logo1.png")}
-              alt={t("Voltaria Logo")}
-              width={120}
-              height={64}
-              className="h-19 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
-          </Link>
-
-          {/* Follow Us */}
+    <footer className="bg-[var(--dark)] text-slate-300 pt-16 pb-8 border-t-4 border-[var(--primary)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Company Info */}
           <div className="space-y-4">
-            <h4 className="text-xl font-bold text-gray-950 uppercase tracking-wide">{t("Follow Us")}</h4>
-            
-            {/* Social Icons (Black squircles containing white icons) */}
-            <div className="flex items-center gap-3">
-              {/* Facebook */}
-              <a 
-                href="#" 
-                className="w-11 h-11 bg-black rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors"
-                aria-label="Facebook"
-              >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-white">
-                  <path d="M9 8H7v3h2v9h4v-9h3.6l.4-3h-4V6.5c0-.8.2-1.1 1-1.1H15V2h-3C9.7 2 9 3.2 9 5.5V8z"/>
-                </svg>
+            <Link href="/" className="flex items-center gap-2 group mb-6">
+              <div className="bg-[var(--primary)] text-white p-2 rounded-lg">
+                <Wrench size={24} />
+              </div>
+              <div>
+                <span className="font-bold text-xl tracking-tight text-white block">
+                  OsumFix
+                </span>
+                <span className="text-[0.65rem] font-semibold text-[var(--secondary)] uppercase tracking-wider block -mt-1">
+                  Technical Services
+                </span>
+              </div>
+            </Link>
+            <p className="text-sm leading-relaxed text-slate-400">
+              Premium technical services across Dubai. We specialize in electrical, plumbing, HVAC, and general maintenance for residential and commercial properties.
+            </p>
+            <div className="flex space-x-4 pt-2">
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-[var(--primary)] hover:text-white transition-colors">
+                <FaFacebook size={18} />
               </a>
-              {/* X (formerly Twitter) */}
-              <a 
-                href="#" 
-                className="w-11 h-11 bg-black rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors"
-                aria-label="X (Twitter)"
-              >
-                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current text-white">
-                  <path d="M18.2 2.4h3.3L14.3 11l8.5 11.3H16.2l-5.2-6.8-5.9 6.8H1.8l7.6-8.7L1.2 2.4h6.8l4.7 6.2 5.5-6.2zm-1.2 17.6h1.8L7.1 4.2H5.1l11.9 15.8z"/>
-                </svg>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-[var(--primary)] hover:text-white transition-colors">
+                <FaTwitter size={18} />
               </a>
-              {/* Instagram */}
-              <a 
-                href="#" 
-                className="w-11 h-11 bg-black rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors"
-                aria-label="Instagram"
-              >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-white" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-[var(--primary)] hover:text-white transition-colors">
+                <FaInstagram size={18} />
               </a>
-              {/* LinkedIn */}
-              <a 
-                href="#" 
-                className="w-11 h-11 bg-black rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-white">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-[var(--primary)] hover:text-white transition-colors">
+                <FaLinkedin size={18} />
               </a>
             </div>
+          </div>
 
-            <p className="text-zinc-500 text-xs font-semibold tracking-wide mt-3">{t("Stay updated with our latest news and offers")}</p>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-6">Quick Links</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/about" className="text-sm hover:text-[var(--primary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects" className="text-sm hover:text-[var(--primary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Our Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="text-sm hover:text-[var(--primary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/testimonials" className="text-sm hover:text-[var(--primary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers" className="text-sm hover:text-[var(--primary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Careers
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            {/* Newsletter Input Box */}
-            <form onSubmit={handleSubscribe} className="flex items-center bg-[#e5e7eb] rounded-xl w-full max-w-[280px] p-1">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t("Enter your email")}
-                className="bg-transparent border-none outline-none text-xs px-3 py-2 flex-grow text-gray-800 placeholder-gray-500 font-bold"
-              />
-              <button
-                type="submit"
-                className="bg-red-600 text-white w-10 h-10 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors shrink-0"
-                aria-label="Subscribe"
-              >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </button>
-            </form>
+          {/* Services */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-6">Our Services</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/services/ac-work" className="text-sm hover:text-[var(--primary)] transition-colors">
+                  AC Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/electrical-work" className="text-sm hover:text-[var(--primary)] transition-colors">
+                  Electrical Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/plumbing-work" className="text-sm hover:text-[var(--primary)] transition-colors">
+                  Plumbing Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/painting-work" className="text-sm hover:text-[var(--primary)] transition-colors">
+                  Painting Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/masonry-work" className="text-sm hover:text-[var(--primary)] transition-colors">
+                  Masonry Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/carpentry-work" className="text-sm hover:text-[var(--primary)] transition-colors">
+                  Carpentry Work
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/handyman-services" className="text-sm hover:text-[var(--primary)] transition-colors">
+                  Handyman Services
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-6">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-sm">
+                <MapPin className="text-[var(--primary)] shrink-0 mt-0.5" size={18} />
+                <span>
+                  Office 405, Business Bay,<br />
+                  Dubai, United Arab Emirates
+                </span>
+              </li>
+              <li className="flex items-center gap-3 text-sm">
+                <Phone className="text-[var(--primary)] shrink-0" size={18} />
+                <span>+971 50 123 4567</span>
+              </li>
+              <li className="flex items-center gap-3 text-sm">
+                <Mail className="text-[var(--primary)] shrink-0" size={18} />
+                <span>info@osumfix.ae</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Our Products Column */}
-        <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">{t("OUR PRODUCTS")}</h4>
-          <div className="w-full h-[3px] bg-red-600 mt-2" />
-          
-          <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
-            <li>
-              <Link href="/products/fans" className="hover:text-red-600 transition-colors">{t("FANS")}</Link>
-            </li>
-            {/* <li>
-              <Link href="/products/batteries" className="hover:text-red-600 transition-colors">{t("BATTERIES")}</Link>
-            </li> */}
-            <li>
-              <Link href="/products/fuses-breakers" className="hover:text-red-600 transition-colors">{t("FUSES")}</Link>
-            </li>
-            <li>
-              <Link href="/products/changeovers" className="hover:text-red-600 transition-colors">{t("CHANGEOVERS")}</Link>
-            </li>
-            <li>
-              <Link href="/products/inverters" className="hover:text-red-600 transition-colors">{t("INVERTERS")}</Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Company Column */}
-        <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">{t("COMPANY")}</h4>
-          <div className="w-full h-[3px] bg-red-600 mt-2" />
-
-          <ul className="list-disc pl-5 space-y-3.5 text-black font-semibold text-sm pt-4">
-            <li>
-              <Link href="/" className="hover:text-red-600 transition-colors">{t("Home")}</Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-red-600 transition-colors">{t("About Us")}</Link>
-            </li>
-            {/* <li>
-              <Link href="/products" className="hover:text-red-600 transition-colors">{t("Products")}</Link>
-            </li> */}
-            <li>
-              <Link href="/blogs" className="hover:text-red-600 transition-colors">{t("Blog")}</Link>
-            </li>
-            <li>
-              <Link href="/career" className="hover:text-red-600 transition-colors">{t("Career")}</Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-red-600 transition-colors">{t("Contact Us")}</Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Get In Touch Column */}
-        <div className="lg:col-span-4 space-y-4">
-          <h4 className="text-lg font-black text-black uppercase tracking-wider">{t("GET IN TOUCH")}</h4>
-          <div className="w-full h-[3px] bg-red-600 mt-2" />
-
-          <div className="space-y-4 text-sm text-black font-bold pt-4">
-            <p>
-              {t("Phone:")} <span className="font-semibold text-gray-700 ml-1">{t("+971 4 354 0566")}</span>
-            </p>
-            <p>
-              {t("Email:")} <span className="font-semibold text-gray-700 ml-1">{t("info@voltariaglobal.com")}</span>
-            </p>
-            <p>
-              {t("Head Office:")} <span className="font-semibold text-gray-700 ml-1">{t("Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai")}</span>
-            </p>
+        {/* Bottom Bar */}
+        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-slate-500">
+            &copy; {currentYear} OsumFix Technical Services LLC. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-sm text-slate-500">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-conditions" className="hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

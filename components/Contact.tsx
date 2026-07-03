@@ -19,6 +19,8 @@ export default function Contact({ cms }: { cms?: any }) {
     otherBusinessType: "",
     companyName: "",
     businessInfo: "", // handles website, location, or license
+    serviceRequired: "",
+    propertyLocation: "",
     message: ""
   });
 
@@ -65,6 +67,8 @@ export default function Contact({ cms }: { cms?: any }) {
           otherBusinessType: "",
           companyName: "",
           businessInfo: "",
+          serviceRequired: "",
+          propertyLocation: "",
           message: ""
         });
         setSubmittedType("");
@@ -177,6 +181,8 @@ export default function Contact({ cms }: { cms?: any }) {
                         otherBusinessType: "",
                         companyName: "",
                         businessInfo: "",
+                        serviceRequired: "",
+                        propertyLocation: "",
                         message: ""
                       });
                       setSubmittedType("");
@@ -352,6 +358,54 @@ export default function Contact({ cms }: { cms?: any }) {
                       </div>
                     </div>
                   )}
+
+                  {/* Project Details (Added from Request Quote) */}
+                  <div className="pt-6 border-t border-gray-100">
+                    <h3 className="text-lg font-bold text-[var(--dark)] mb-4">{t("Project Details")}</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label htmlFor="serviceRequired" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                          {t("Service Required (Optional)")}
+                        </label>
+                        <div className="relative">
+                          <select
+                            id="serviceRequired"
+                            value={formData.serviceRequired}
+                            onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium appearance-none pr-10"
+                          >
+                            <option value="">{t("Select a service")}</option>
+                            <option value="electrical">{t("Electrical")}</option>
+                            <option value="plumbing">{t("Plumbing")}</option>
+                            <option value="hvac">{t("HVAC Maintenance")}</option>
+                            <option value="painting">{t("Painting")}</option>
+                            <option value="handyman">{t("Handyman")}</option>
+                            <option value="amc">{t("Annual Maintenance Contract (AMC)")}</option>
+                            <option value="other">{t("Other")}</option>
+                          </select>
+                          <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-500">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.0" d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="propertyLocation" className="text-xs font-bold text-gray-950 uppercase tracking-widest">
+                          {t("Property Location in Dubai (Optional)")}
+                        </label>
+                        <input
+                          id="propertyLocation"
+                          type="text"
+                          value={formData.propertyLocation}
+                          onChange={(e) => setFormData({ ...formData, propertyLocation: e.target.value })}
+                          placeholder={t("e.g., Jumeirah, Business Bay")}
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium"
+                        />
+                      </div>
+                    </div>
+                  </div>
 
                   {/* Message field */}
                   <div className="space-y-2">

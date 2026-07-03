@@ -1,355 +1,202 @@
 "use client";
 
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown, Wrench } from "lucide-react";
 
-import { getCmsVal } from "@/lib/api-helper";
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services", hasDropdown: true },
 
-export default function Navbar({ cms }: { cms?: any }) {
+
+  // { name: "Projects", href: "/projects" },
+  // { name: "Gallery", href: "/gallery" },
+  // { name: "Testimonials", href: "/testimonials" },
+  // { name: "FAQ", href: "/faq" }, 
+  { name: "Contact", href: "/contact" },
+];
+
+const serviceLinks = [
+  { name: "AC Work", href: "/services/ac-work" },
+  { name: "Electrical Work", href: "/services/electrical-work" },
+  { name: "Plumbing Work", href: "/services/plumbing-work" },
+  { name: "Painting Work", href: "/services/painting-work" },
+  { name: "Masonry Work", href: "/services/masonry-work" },
+  { name: "Carpentry Work", href: "/services/carpentry-work" },
+  { name: "Steel Fixing", href: "/services/steel-fixing" },
+  { name: "Interior Designing", href: "/services/interior-designing" },
+  { name: "Ceiling & Gypsum", href: "/services/ceiling-gypsum" },
+  { name: "Handyman Services", href: "/services/handyman-services" },
+];
+
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setProductsOpen(false);
-      }
-    }
-    if (productsOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
     };
-  }, [productsOpen]);
-
-  const t = (val: string) => getCmsVal(cms, val);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center group">
-          <Image
-            src={t("/images/logo1.png")}
-            alt={t("Voltaria Logo")}
-            width={120}
-            height={64}
-            priority
-            className="h-19 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-          />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 font-medium">
-          <Link
-            href="/"
-            className={
-              pathname === "/"
-                ? "text-red-600 font-bold tracking-wider transition-colors"
-                : "text-gray-600 hover:text-red-600 transition-colors"
-            }
-          >
-            {t("Home")}
-          </Link>
-          <Link
-            href="/about"
-            className={
-              pathname === "/about"
-                ? "text-red-600 font-bold tracking-wider transition-colors"
-                : "text-gray-600 hover:text-red-600 transition-colors"
-            }
-          >
-            {t("About Us")}
-          </Link>
-          <div className="relative flex items-center" ref={dropdownRef}>
-            <button
-              onClick={() => setProductsOpen(!productsOpen)}
-              type="button"
-              className={`flex items-center focus:outline-none transition-colors cursor-pointer py-2 ${
-                pathname && pathname.startsWith("/products")
-                  ? "text-red-600 font-bold tracking-wider"
-                  : "text-gray-600 hover:text-red-600"
-              }`}
-              aria-label="Toggle Products Menu"
-            >
-              <span>{t("Products")}</span>
-              <span className={`p-1.5 transition-colors rounded-full ml-1 hover:bg-gray-50/50 ${
-                pathname.startsWith("/products")
-                  ? "text-red-600"
-                  : "text-gray-400 hover:text-red-600"
-              }`}>
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                </svg>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-white py-6"
+        }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="bg-[var(--primary)] text-white p-2 rounded-lg group-hover:bg-[var(--secondary)] transition-colors">
+              <Wrench size={24} />
+            </div>
+            <div>
+              <span className="font-bold text-xl tracking-tight text-[var(--dark)] block">
+                OsumFix
               </span>
-            </button>
+              <span className="text-[0.65rem] font-semibold text-[var(--secondary)] uppercase tracking-wider block -mt-1">
+                Technical Services
+              </span>
+            </div>
+          </Link>
 
-            {productsOpen && (
-              <>
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navLinks.map((link) => (
+              <div
+                key={link.name}
+                className="relative"
+                onMouseEnter={() => link.hasDropdown && setDropdownOpen(true)}
+                onMouseLeave={() => link.hasDropdown && setDropdownOpen(false)}
+              >
+                <Link
+                  href={link.href}
+                  className={`px-4 py-2 rounded-md font-medium text-sm transition-colors flex items-center gap-1
+                    ${pathname === link.href || (link.hasDropdown && pathname.startsWith("/services"))
+                      ? "text-[var(--primary)] font-semibold"
+                      : "text-slate-600 hover:text-[var(--primary)]"
+                    }
+                  `}
+                >
+                  {link.name}
+                  {link.hasDropdown && <ChevronDown size={14} />}
+                </Link>
 
-                
-                {/* Dropdown menu */}
-                <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl bg-white border border-gray-100 shadow-xl py-2.5 z-20 animate-fade-in origin-top-left">
-                  <Link
-                    href="/products/fans"
-                    onClick={() => setProductsOpen(false)}
-                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
-                  >
-                    {t("FANS")}
-                  </Link>
-                  {/* <Link
-                    href="/products/batteries"
-                    onClick={() => setProductsOpen(false)}
-                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
-                  >
-                    {t("BATTERIES")}
-                  </Link> */}
-                  <Link
-                    href="/products/fuses-breakers"
-                    onClick={() => setProductsOpen(false)}
-                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
-                  >
-                    {t("FUSES")}
-                  </Link>
-                  <Link
-                    href="/products/changeovers"
-                    onClick={() => setProductsOpen(false)}
-                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
-                  >
-                    {t("CHANGEOVERS")}
-                  </Link>
-                  <Link
-                    href="/products/inverters"
-                    onClick={() => setProductsOpen(false)}
-                    className="block px-5 py-3 text-xs text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold uppercase transition-colors"
-                  >
-                    {t("INVERTERS")}
-                  </Link>
-                </div>
-              </>
-            )}
+                {/* Dropdown for Services */}
+                {link.hasDropdown && (
+                  <AnimatePresence>
+                    {dropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden"
+                      >
+                        <div className="py-2">
+                          {serviceLinks.map((service) => (
+                            <Link
+                              key={service.name}
+                              href={service.href}
+                              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[var(--primary)]"
+                            >
+                              {service.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </div>
+            ))}
           </div>
-          <Link
-            href="/blogs"
-            className={
-              pathname && pathname.startsWith("/blogs")
-                ? "text-red-600 font-bold tracking-wider transition-colors"
-                : "text-gray-600 hover:text-red-600 transition-colors"
-            }
-          >
-            {t("Blog")}
-          </Link>
-          <Link
-            href="/contact"
-            className={
-              pathname === "/contact"
-                ? "text-red-600 font-bold tracking-wider transition-colors"
-                : "text-gray-600 hover:text-red-600 transition-colors"
-            }
-          >
-            {t("Contact Us")}
-          </Link>
-        </nav>
 
-        {/* Login Button */}
-        <div className="hidden md:block opacity-0 pointer-events-none" aria-hidden="true">
-          <Link
-            href="/login"
-            className="px-8 py-2.5 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 active:scale-95 transition-all shadow-md hover:shadow-lg inline-block"
-          >
-            {t("Login")}
-          </Link>
+          {/* CTA Button */}
+          <div className="hidden lg:flex">
+            <Link
+              href="/contact"
+              className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            >
+              Request Quote
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-slate-600 hover:text-[var(--primary)] focus:outline-none"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
-
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          type="button"
-          className="md:hidden p-2 rounded-md text-gray-600 hover:text-red-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-600"
-          aria-controls="mobile-menu"
-          aria-expanded={isOpen}
-        >
-          <span className="sr-only">Open main menu</span>
-          {isOpen ? (
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          )}
-        </button>
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`${
-          isOpen ? "block" : "hidden"
-        } md:hidden border-t border-gray-100 bg-white`}
-        id="mobile-menu"
-      >
-        <div className="space-y-1 px-4 py-4 pb-6">
-          <Link
-            href="/"
-            className={`block rounded-md px-3 py-2 text-base ${
-              pathname === "/"
-                ? "font-bold text-red-600 hover:bg-gray-50"
-                : "font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
-            }`}
-            onClick={() => setIsOpen(false)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white border-t border-slate-100 overflow-hidden"
           >
-            {t("Home")}
-          </Link>
-          <Link
-            href="/about"
-            className={`block rounded-md px-3 py-2 text-base ${
-              pathname === "/about"
-                ? "font-bold text-red-600 hover:bg-gray-50"
-                : "font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
-            }`}
-            onClick={() => setIsOpen(false)}
-          >
-            {t("About Us")}
-          </Link>
-          <div>
-            <div className="flex items-center justify-between rounded-md hover:bg-gray-50 pr-2">
-              <button
-                type="button"
-                onClick={() => setProductsOpen(!productsOpen)}
-                className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors focus:outline-none ${
-                  pathname && pathname.startsWith("/products")
-                    ? "font-bold text-red-600"
-                    : "text-gray-600 hover:text-red-600"
-                }`}
-              >{t("Products")}</button>
-              <button
-                onClick={() => setProductsOpen(!productsOpen)}
-                type="button"
-                className="p-2.5 focus:outline-none text-gray-400 hover:text-red-600 cursor-pointer"
-                aria-label="Toggle Products Menu"
-              >
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            </div>
-            
-            {productsOpen && (
-              <div className="pl-6 pr-4 py-1 space-y-1 bg-gray-50/50 rounded-lg mt-1 border-l-2 border-red-500 animate-fade-in">
+            <div className="px-4 pt-2 pb-6 space-y-1 shadow-inner">
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  <Link
+                    href={link.href}
+                    onClick={() => !link.hasDropdown && setIsOpen(false)}
+                    className={`block px-3 py-3 rounded-md text-base font-medium
+                      ${pathname === link.href
+                        ? "text-[var(--primary)] bg-blue-50"
+                        : "text-slate-700 hover:text-[var(--primary)] hover:bg-slate-50"
+                      }
+                    `}
+                  >
+                    <div className="flex justify-between items-center">
+                      {link.name}
+                    </div>
+                  </Link>
+                  {link.hasDropdown && (
+                    <div className="pl-6 pb-2 space-y-1 border-l-2 border-slate-100 ml-4 mt-1">
+                      {serviceLinks.map((service) => (
+                        <Link
+                          key={service.name}
+                          href={service.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block px-3 py-2 rounded-md text-sm font-medium text-slate-500 hover:text-[var(--primary)] hover:bg-slate-50"
+                        >
+                          {service.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="pt-4 pb-2">
                 <Link
-                  href="/products/fans"
-                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
-                  onClick={() => {
-                    setProductsOpen(false);
-                    setIsOpen(false);
-                  }}
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center bg-[var(--primary)] text-white px-6 py-3 rounded-xl font-medium shadow-md"
                 >
-                  {t("FANS")}
-                </Link>
-                {/* <Link
-                  href="/products/batteries"
-                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
-                  onClick={() => {
-                    setProductsOpen(false);
-                    setIsOpen(false);
-                  }}
-                >
-                  {t("BATTERIES")}
-                </Link> */}
-                <Link
-                  href="/products/fuses-breakers"
-                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
-                  onClick={() => {
-                    setProductsOpen(false);
-                    setIsOpen(false);
-                  }}
-                >
-                  {t("FUSES")}
-                </Link>
-                <Link
-                  href="/products/changeovers"
-                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
-                  onClick={() => {
-                    setProductsOpen(false);
-                    setIsOpen(false);
-                  }}
-                >
-                  {t("CHANGEOVERS")}
-                </Link>
-                <Link
-                  href="/products/inverters"
-                  className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 hover:text-red-600 hover:bg-gray-50 uppercase"
-                  onClick={() => {
-                    setProductsOpen(false);
-                    setIsOpen(false);
-                  }}
-                >
-                  {t("INVERTERS")}
+                  Request a Quote
                 </Link>
               </div>
-            )}
-          </div>
-          <Link
-            href="/blogs"
-            className={`block rounded-md px-3 py-2 text-base ${
-              pathname && pathname.startsWith("/blogs")
-                ? "font-bold text-red-600 hover:bg-gray-50"
-                : "font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
-            }`}
-            onClick={() => setIsOpen(false)}
-          >
-            {t("Blog")}
-          </Link>
-          <Link
-            href="/contact"
-            className={`block rounded-md px-3 py-2 text-base ${
-              pathname === "/contact"
-                ? "font-bold text-red-600 hover:bg-gray-50"
-                : "font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50"
-            }`}
-            onClick={() => setIsOpen(false)}
-          >
-            {t("Contact Us")}
-          </Link>
-          {/* <div className="pt-4 border-t border-gray-100">
-            <Link
-              href="/login"
-              className="block w-full text-center px-4 py-2.5 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              {t("Login")}
-            </Link>
-          </div> */}
-        </div>
-      </div>
-    </header>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 }

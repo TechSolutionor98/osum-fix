@@ -10,7 +10,7 @@ export const revalidate = 0;
 export default async function UsersPage() {
   const apiBase = getApiBase();
   let users = [];
-  const websites = [{ _id: 'default', name: 'Voltaria Global (default)' }];
+  const websites = [{ _id: 'default', name: 'OsumFix (default)' }];
 
   try {
     const list = await getUsersList();

@@ -152,7 +152,7 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
             color: "#999",
             transition: "color 0.2s",
           }}
-          onMouseOver={(e) => (e.currentTarget.style.color = "#084032")}
+          onMouseOver={(e) => (e.currentTarget.style.color = "#20507C")}
           onMouseOut={(e) => (e.currentTarget.style.color = "#999")}
           aria-label="Close"
         >
@@ -163,7 +163,7 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
             marginBottom: 22,
             fontWeight: 700,
             fontSize: 22,
-            color: "#084032",
+            color: "#20507C",
             textAlign: "center",
             letterSpacing: 1,
           }}
@@ -294,7 +294,7 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
             marginTop: 24,
             width: "100%",
             padding: "12px 0",
-            background: "#E7000B",
+            background: "#E46704",
             color: "#fff",
             border: "none",
             borderRadius: 8,

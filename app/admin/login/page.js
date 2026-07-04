@@ -32,7 +32,7 @@ export default function LoginPage() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-    //   background: "linear-gradient(135deg, #084032 0%, #0e6b50 100%)"
+    //   background: "linear-gradient(135deg, #20507C 0%, #0e6b50 100%)"
     }}>
       <form
         onSubmit={handleLogin}
@@ -47,7 +47,7 @@ export default function LoginPage() {
           gap: 18
         }}
       >
-        <h2 style={{ textAlign: "center", color: "#084032", marginBottom: 8 }}>Admin Login</h2>
+        <h2 style={{ textAlign: "center", color: "#20507C", marginBottom: 8 }}>Admin Login</h2>
         <input
           type="email"
           placeholder="Email"
@@ -81,7 +81,7 @@ export default function LoginPage() {
           style={{
             padding: "12px",
             borderRadius: "8px",
-            background: "#E7000B",
+            background: "#E46704",
             color: "#fff",
             fontWeight: "bold",
             fontSize: "16px",
@@ -98,7 +98,7 @@ export default function LoginPage() {
           </div>
         )}
         {/* <div style={{ textAlign: "center", color: "#888", fontSize: "13px", marginTop: "10px" }}>
-          <span>Demo: admin@voltariaglobal.com / admin123</span>
+          <span>Demo: admin@osumfix.ae / admin123</span>
         </div> */}
       </form>
     </div>

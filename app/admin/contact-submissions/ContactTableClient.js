@@ -94,11 +94,11 @@ export default function ContactTableClient({ initialData = [], apiBase = process
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search name, email, phone, subject..."
-            className="border border-[#00a63e] focus:border-[#084032] p-2 rounded-lg w-80 outline-none transition-all"
+            className="border border-[#20507C] focus:border-[#20507C] p-2 rounded-lg w-80 outline-none transition-all"
           />
           <button
             onClick={() => { setQuery(''); setPage(1); }}
-            className="px-3 py-2 bg-gray-100 hover:bg-[#C40009] hover:text-white rounded-lg transition-all"
+            className="px-3 py-2 bg-gray-100 hover:bg-[#E46704] hover:text-white rounded-lg transition-all"
           >
             Clear
           </button>
@@ -106,7 +106,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
         <div className="flex items-center gap-2">
           <button
             onClick={refresh}
-            className={`px-3 py-2 rounded-lg bg-[#00a63e] hover:bg-[#E7000B] text-white font-semibold shadow ${loading ? 'opacity-60' : ''} transition-all`}
+            className={`px-3 py-2 rounded-lg bg-[#20507C] hover:bg-[#E46704] text-white font-semibold shadow ${loading ? 'opacity-60' : ''} transition-all`}
           >
             Refresh
           </button>
@@ -125,7 +125,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
         <select
           value={pageSize}
           onChange={e => { setPageSize(Number(e.target.value)); setPage(1); }}
-          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm outline-none focus:border-[#084032] cursor-pointer"
+          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm outline-none focus:border-[#20507C] cursor-pointer"
         >
           {[10, 25, 50, 100].map(n => (
             <option key={n} value={n}>{n}</option>
@@ -136,7 +136,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
       <div style={{ overflowX: "auto", maxHeight: "520px", overflowY: "auto" }} className="w-full rounded-lg border border-gray-200">
         <table style={{ whiteSpace: "nowrap" }} className="w-full text-sm overflow-hidden">
           <thead className="sticky top-0 z-10">
-            <tr className="bg-[#E7000B] text-white">
+            <tr className="bg-[#E46704] text-white">
               <th className="px-3 py-3 font-semibold text-left">Inquiry #</th>
               <th className="px-3 py-3 font-semibold text-left">Name</th>
               <th className="px-3 py-3 font-semibold text-left">Email</th>
@@ -151,7 +151,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
           <tbody>
             {pageData.map((s, idx) => (
               <tr key={s.id ?? s._id ?? idx} className="hover:bg-[#e6f9f0] align-top transition-all">
-                <td className="px-4 py-3 border-b border-gray-100 align-top font-semibold text-[#084032]">{getGlobalIndex(idx)}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top font-semibold text-[#20507C]">{getGlobalIndex(idx)}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.name}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.email}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.companyName}</td>
@@ -168,7 +168,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
                 <td className="px-4 py-3 border-b border-gray-100 align-top">
                   <button
                     onClick={() => setViewRow({ ...s, inquiryNo: getGlobalIndex(idx) })}
-                    className="px-3 py-1.5 bg-[#E7000B] hover:bg-[#0a5a47] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer"
+                    className="px-3 py-1.5 bg-[#E46704] hover:bg-[#0a5a47] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer"
                   >
                     View
                   </button>
@@ -210,7 +210,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="bg-[#E7000B] rounded-t-2xl px-6 py-4 flex items-center justify-between">
+            <div className="bg-[#E46704] rounded-t-2xl px-6 py-4 flex items-center justify-between">
               <h2 className="text-white text-lg font-bold">Inquiry #{viewRow.inquiryNo}</h2>
               <button
                 onClick={() => setViewRow(null)}
@@ -225,29 +225,29 @@ export default function ContactTableClient({ initialData = [], apiBase = process
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Name</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.name || '—'}</p>
+                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.name || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email</p>
-                  <p className="text-[#084032] font-semibold text-sm break-all">{viewRow.email || '—'}</p>
+                  <p className="text-[#20507C] font-semibold text-sm break-all">{viewRow.email || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Company Name</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.companyName || '—'}</p>
+                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.companyName || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Business Type</p>
-                  <p className="text-[#084032] font-semibold text-sm">
+                  <p className="text-[#20507C] font-semibold text-sm">
                     {viewRow.businessType === 'Other' && viewRow.otherBusinessType ? viewRow.otherBusinessType : viewRow.businessType || '—'}
                   </p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Business Info</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.businessInfo || '—'}</p>
+                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.businessInfo || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Submitted At</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : '—'}</p>
+                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : '—'}</p>
                 </div>
               </div>
 
@@ -260,7 +260,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
               <button
                 onClick={() => setViewRow(null)}
-                className="w-full bg-[#E7000B] hover:bg-[#0a5a47] text-white rounded-full h-[42px] font-semibold text-[14px] cursor-pointer transition-colors"
+                className="w-full bg-[#E46704] hover:bg-[#0a5a47] text-white rounded-full h-[42px] font-semibold text-[14px] cursor-pointer transition-colors"
               >
                 Close
               </button>

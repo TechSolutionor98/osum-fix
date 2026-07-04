@@ -164,7 +164,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-[#E7000B] text-white text-sm font-semibold rounded-md hover:bg-[#C40009] transition"
+          className="flex items-center gap-2 px-4 py-2.5 bg-[#E46704] text-white text-sm font-semibold rounded-md hover:bg-[#E46704] transition"
         >
           <FiPlus /> Add User
         </button>
@@ -195,7 +195,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                 <tr key={user._id} className="hover:bg-gray-50">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#E7000B] flex items-center justify-center text-white text-sm font-bold">
+                      <div className="w-8 h-8 rounded-full bg-[#E46704] flex items-center justify-center text-white text-sm font-bold">
                         {user.name?.charAt(0).toUpperCase() || '?'}
                       </div>
                       <div>
@@ -278,7 +278,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
       {/* Role Permissions Matrix */}
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-100 flex items-center gap-2">
-          <FiShield size={15} className="text-[#084032]" />
+          <FiShield size={15} className="text-[#20507C]" />
           <h3 className="text-sm font-semibold text-gray-700">Role Permissions — What each role can access</h3>
         </div>
 
@@ -391,7 +391,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                   value={editForm.name}
                   onChange={(e) => setEditForm(p => ({ ...p, name: e.target.value }))}
                   placeholder="Full name"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] outline-none"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] outline-none"
                 />
               </div>
               <div>
@@ -401,7 +401,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                   value={editForm.email}
                   onChange={(e) => setEditForm(p => ({ ...p, email: e.target.value }))}
                   placeholder="user@example.com"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] outline-none"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] outline-none"
                 />
               </div>
               <div>
@@ -414,13 +414,13 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                   value={editForm.password}
                   onChange={(e) => setEditForm(p => ({ ...p, password: e.target.value }))}
                   placeholder="Leave blank to keep current password"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] outline-none"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] outline-none"
                 />
               </div>
               <button
                 onClick={handleEdit}
                 disabled={editLoading}
-                className="w-full px-4 py-2.5 bg-[#E7000B] text-white text-sm font-semibold rounded-md hover:bg-[#C40009] transition disabled:opacity-60"
+                className="w-full px-4 py-2.5 bg-[#E46704] text-white text-sm font-semibold rounded-md hover:bg-[#E46704] transition disabled:opacity-60"
               >
                 {editLoading ? 'Saving...' : 'Save Changes'}
               </button>
@@ -444,7 +444,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                   value={form.name}
                   onChange={(e) => setForm(p => ({ ...p, name: e.target.value }))}
                   placeholder="John Doe"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] outline-none"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] outline-none"
                 />
               </div>
               <div>
@@ -454,7 +454,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                   value={form.email}
                   onChange={(e) => setForm(p => ({ ...p, email: e.target.value }))}
                   placeholder="user@example.com"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] outline-none"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] outline-none"
                 />
               </div>
               <div>
@@ -464,7 +464,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                   value={form.password}
                   onChange={(e) => setForm(p => ({ ...p, password: e.target.value }))}
                   placeholder="Min 8 characters"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] outline-none"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] outline-none"
                 />
               </div>
               <div>
@@ -472,7 +472,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                 <select
                   value={form.role}
                   onChange={(e) => setForm(p => ({ ...p, role: e.target.value }))}
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-700 focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] outline-none"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-700 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] outline-none"
                 >
                   {ROLES.map(r => (
                     <option key={r.value} value={r.value}>{r.label} — {r.desc}</option>
@@ -481,7 +481,7 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
               </div>
               <button
                 onClick={handleCreate}
-                className="w-full px-4 py-2.5 bg-[#E7000B] text-white text-sm font-semibold rounded-md hover:bg-[#C40009] transition"
+                className="w-full px-4 py-2.5 bg-[#E46704] text-white text-sm font-semibold rounded-md hover:bg-[#E46704] transition"
               >
                 Create User
               </button>

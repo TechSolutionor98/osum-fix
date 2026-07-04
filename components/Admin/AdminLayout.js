@@ -141,11 +141,11 @@ export default function AdminLayout({ children, title = '' }) {
       <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
         {currentUser && (
           <span className="hidden md:inline-block text-xs text-gray-500 font-medium">
-            Logged in as: <strong className="text-[#084032]">{currentUser.name}</strong> ({role.replace('_', ' ')})
+            Logged in as: <strong className="text-[#20507C]">{currentUser.name}</strong> ({role.replace('_', ' ')})
           </span>
         )}
         <LogoutButton>
-          <div className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-[#E7000B] text-white text-sm rounded hover:bg-[#C40009] transition-colors duration-200">
+          <div className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-[#E46704] text-white text-sm rounded hover:bg-[#E46704] transition-colors duration-200">
             <IoIosLogOut />
             <span>Logout</span>
           </div>
@@ -156,7 +156,7 @@ export default function AdminLayout({ children, title = '' }) {
       <aside className="w-full md:w-64 flex-shrink-0 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
         <div className="mb-6 flex justify-center">
           <Link href="/admin">
-            <Image alt='Voltaria Logo' width={150} height={80} src="/images/logo1.png" className="h-14 w-auto object-contain" priority />
+            <Image alt='OsumFix Logo' width={150} height={80} src="/images/logo1.png" className="h-14 w-auto object-contain" priority />
           </Link>
         </div>
         <hr className='bg-gray-400 text-gray-400 w-full h-[2px] mb-7' />
@@ -187,7 +187,7 @@ export default function AdminLayout({ children, title = '' }) {
                             <p
                               className={`px-3 py-2 text-sm rounded ${
                                 isActive
-                                  ? "bg-[#E7000B] text-white font-semibold"
+                                  ? "bg-[#E46704] text-white font-semibold"
                                   : "hover:bg-gray-100 text-gray-800"
                               }`}
                               style={isActive ? { cursor: "default" } : {}}
@@ -212,7 +212,7 @@ export default function AdminLayout({ children, title = '' }) {
                       <p
                         className={`px-3 py-2 rounded ${
                           isActive
-                            ? "bg-[#E7000B] text-white font-semibold"
+                            ? "bg-[#E46704] text-white font-semibold"
                             : "hover:bg-gray-100"
                         }`}
                         style={isActive ? { cursor: "default" } : {}}
@@ -243,10 +243,10 @@ export default function AdminLayout({ children, title = '' }) {
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Access Restricted</h2>
               <p className="text-gray-600 max-w-md mb-8">
-                Your account role <span className="font-semibold text-[#084032] uppercase">({role.replace('_', ' ')})</span> does not have permission to view this section.
+                Your account role <span className="font-semibold text-[#20507C] uppercase">({role.replace('_', ' ')})</span> does not have permission to view this section.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link href="/admin" className="px-5 py-2.5 bg-[#E7000B] hover:bg-[#C40009] text-white font-semibold rounded-md transition shadow-md">
+                <Link href="/admin" className="px-5 py-2.5 bg-[#E46704] hover:bg-[#E46704] text-white font-semibold rounded-md transition shadow-md">
                   Go to Dashboard
                 </Link>
                 {role === 'seo' && (

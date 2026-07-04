@@ -213,9 +213,9 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white p-4 rounded-lg shadow border-l-4 border-[#084032]">
+        <div className="bg-white p-4 rounded-lg shadow border-l-4 border-[#20507C]">
           <p className="text-sm text-gray-500">Total Redirects</p>
-          <p className="text-2xl font-bold text-[#084032]">{stats.total}</p>
+          <p className="text-2xl font-bold text-[#20507C]">{stats.total}</p>
         </div>
         <div className="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
           <p className="text-sm text-gray-500">Active Rules</p>
@@ -243,13 +243,13 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 text-gray-900 text-sm
-                           focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] focus:outline-none transition"
+                           focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] focus:outline-none transition"
               />
             </div>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-2 rounded-md border border-gray-300 text-gray-700 text-sm focus:outline-none focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E]"
+              className="px-3 py-2 rounded-md border border-gray-300 text-gray-700 text-sm focus:outline-none focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704]"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -258,7 +258,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="px-3 py-2 rounded-md border border-gray-300 text-gray-700 text-sm focus:outline-none focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E]"
+              className="px-3 py-2 rounded-md border border-gray-300 text-gray-700 text-sm focus:outline-none focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704]"
             >
               <option value="all">All Types</option>
               <option value="301">301 - Permanent</option>
@@ -269,7 +269,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
           {canEdit && (
             <button
               onClick={openAddModal}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#E7000B] hover:bg-[#C40009] text-white text-sm font-semibold rounded-md transition whitespace-nowrap shadow-sm"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#E46704] hover:bg-[#E46704] text-white text-sm font-semibold rounded-md transition whitespace-nowrap shadow-sm"
             >
               <FiPlus /> Add URL redirect
             </button>
@@ -289,7 +289,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
             {canEdit && (
               <button
                 onClick={openAddModal}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#E7000B] text-white text-sm font-semibold hover:bg-[#C40009] transition shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#E46704] text-white text-sm font-semibold hover:bg-[#E46704] transition shadow-sm"
               >
                 <FiPlus /> Add URL redirect
               </button>
@@ -314,10 +314,10 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                     {/* Redirect From */}
                     <td className="px-5 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-mono text-[#084032] font-semibold">{redirect.fromPath}</span>
+                        <span className="text-sm font-mono text-[#20507C] font-semibold">{redirect.fromPath}</span>
                         <button
                           onClick={() => handleCopy(redirect.fromPath)}
-                          className="p-1 text-gray-400 hover:text-[#084032] rounded hover:bg-gray-100 transition-colors"
+                          className="p-1 text-gray-400 hover:text-[#20507C] rounded hover:bg-gray-100 transition-colors"
                           title="Copy original link"
                         >
                           {copiedText === redirect.fromPath ? <FiCheck className="text-green-600" size={13} /> : <FiCopy size={13} />}
@@ -335,7 +335,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                           href={redirect.toPath}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-1 text-gray-400 hover:text-[#084032] rounded hover:bg-gray-100 transition-colors flex-shrink-0"
+                          className="p-1 text-gray-400 hover:text-[#20507C] rounded hover:bg-gray-100 transition-colors flex-shrink-0"
                           title="Open Destination URL"
                         >
                           <FiExternalLink size={13} />
@@ -434,7 +434,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                     value={fromPath}
                     onChange={(e) => setFromPath(e.target.value)}
                     placeholder="/old-product-url"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E]"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704]"
                   />
                   <span className="text-xs text-gray-500 mt-1 block">
                     The URL path to redirect from (must start with /). Trailing slashes will be automatically removed.
@@ -452,7 +452,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                     value={toPath}
                     onChange={(e) => setToPath(e.target.value)}
                     placeholder="/new-product-url or https://example.com"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E]"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704]"
                   />
                   <span className="text-xs text-gray-500 mt-1 block">
                     The destination URL (internal path or external URL). Trailing slashes will be automatically removed for internal URLs.
@@ -467,7 +467,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                   <select
                     value={redirectType}
                     onChange={(e) => setRedirectType(e.target.value)}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E]"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704]"
                   >
                     <option value="301">301 - Permanent Redirect</option>
                     <option value="302">302 - Temporary Redirect</option>
@@ -485,7 +485,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E]"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704]"
                   >
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
@@ -505,7 +505,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Add notes about this redirect..."
                     rows={3}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#084032] focus:ring-2 focus:ring-[#FF333E] resize-none"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] resize-none"
                   />
                 </div>
 
@@ -523,7 +523,7 @@ export default function RedirectsClient({ initialRedirects = [], apiBase, initia
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#E7000B] hover:bg-[#C40009] text-white text-sm font-semibold rounded-md transition shadow-sm"
+                  className="px-5 py-2 bg-[#E46704] hover:bg-[#E46704] text-white text-sm font-semibold rounded-md transition shadow-sm"
                   disabled={saving}
                 >
                   {saving ? 'Saving...' : 'Save redirect'}

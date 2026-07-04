@@ -1,15 +1,25 @@
 const fs = require('fs');
 const path = require('path');
 
-const targetDirs = ['app/admin', 'components/Admin'];
+const targetDirs = ['app/admin', 'components/Admin', 'app/api'];
 
 const replacements = [
-  { regex: /bg-\[#084032\]/g, replacement: 'bg-[#E7000B]' }, // Tailwind bg
-  { regex: /hover:bg-\[#0a5c48\]/g, replacement: 'hover:bg-[#C40009]' }, // Tailwind hover bg
-  { regex: /hover:bg-\[#00a63e\]/g, replacement: 'hover:bg-[#C40009]' }, // Tailwind hover green
-  { regex: /focus:ring-\[#00a63e\]/g, replacement: 'focus:ring-[#FF333E]' }, // Tailwind focus ring
-  { regex: /background:\s*['"]#084032['"]/g, replacement: 'background: "#E7000B"' }, // Inline background
-  // NOT matching text-[#084032], border-[#084032], focus:border-[#084032]
+  // 1. Color replacements (Voltaria dark green -> OsumFix dark blue)
+  { regex: /#084032/gi, replacement: '#20507C' },
+  { regex: /#0a5c48/gi, replacement: '#173A5A' },
+  { regex: /#00a63e/gi, replacement: '#20507C' },
+  
+  // 2. Accent color replacements (Voltaria red/orange -> OsumFix orange)
+  { regex: /#FF333E/gi, replacement: '#E46704' },
+  { regex: /#E7000B/gi, replacement: '#E46704' },
+  { regex: /#C40009/gi, replacement: '#E46704' },
+
+  // 3. Branding string replacements
+  { regex: /Voltaria Global/g, replacement: 'OsumFix' },
+  { regex: /Voltaria/g, replacement: 'OsumFix' },
+  { regex: /voltariaglobal\.com/g, replacement: 'osumfix.ae' },
+  { regex: /contact@voltariaglobal\.com/g, replacement: 'info@osumfix.ae' },
+  { regex: /admin@voltariaglobal\.com/g, replacement: 'admin@osumfix.ae' },
 ];
 
 function walkSync(currentDirPath, callback) {
@@ -48,4 +58,4 @@ targetDirs.forEach(dir => {
   });
 });
 
-console.log(`Successfully selectively replaced colors in ${modifiedCount} files.`);
+console.log(`Successfully selectively replaced colors and branding in ${modifiedCount} files.`);

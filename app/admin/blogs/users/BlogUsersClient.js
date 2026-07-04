@@ -143,7 +143,7 @@ export default function BlogUsersClient({ initialComments = [], apiBase = '' }) 
           {/* Download CSV Button */}
           <button
             onClick={downloadCSV}
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#E7000B] hover:bg-[#C40009] text-white font-semibold rounded-lg text-sm transition cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 bg-[#E46704] hover:bg-[#E46704] text-white font-semibold rounded-lg text-sm transition cursor-pointer"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -159,7 +159,7 @@ export default function BlogUsersClient({ initialComments = [], apiBase = '' }) 
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search by name, email, or blog..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none transition"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#20507C] focus:border-[#20507C] outline-none transition"
           />
         </div>
       </div>
@@ -167,13 +167,13 @@ export default function BlogUsersClient({ initialComments = [], apiBase = '' }) 
       {/* Table */}
       <div className="flex-1 overflow-auto w-full rounded-xl border border-gray-150 shadow-sm min-h-[300px]">
         <table className="min-w-full text-sm">
-          <thead className="sticky top-0 z-10 bg-[#E7000B] shadow-sm">
-            <tr className="bg-[#E7000B] text-white text-left font-semibold">
-              <th className="px-4 py-3 bg-[#E7000B]">User Name</th>
-              <th className="px-4 py-3 bg-[#E7000B]">Email Address</th>
-              <th className="px-4 py-3 bg-[#E7000B] text-center">Comments Count</th>
-              <th className="px-4 py-3 bg-[#E7000B]">Blogs Commented On</th>
-              <th className="px-4 py-3 bg-[#E7000B] whitespace-nowrap">Last Comment Date</th>
+          <thead className="sticky top-0 z-10 bg-[#E46704] shadow-sm">
+            <tr className="bg-[#E46704] text-white text-left font-semibold">
+              <th className="px-4 py-3 bg-[#E46704]">User Name</th>
+              <th className="px-4 py-3 bg-[#E46704]">Email Address</th>
+              <th className="px-4 py-3 bg-[#E46704] text-center">Comments Count</th>
+              <th className="px-4 py-3 bg-[#E46704]">Blogs Commented On</th>
+              <th className="px-4 py-3 bg-[#E46704] whitespace-nowrap">Last Comment Date</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 bg-white">
@@ -204,7 +204,7 @@ export default function BlogUsersClient({ initialComments = [], apiBase = '' }) 
                     </td>
 
                     {/* Comment Count */}
-                    <td className="px-4 py-3 text-center font-bold text-[#084032]">
+                    <td className="px-4 py-3 text-center font-bold text-[#20507C]">
                       {u.commentsCount}
                     </td>
 

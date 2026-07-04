@@ -38,12 +38,12 @@ export async function POST(request) {
     });
 
     await transporter.sendMail({
-      from: `"Voltaria Global" <${process.env.SMTP_EMAIL || 'craboratory@gmail.com'}>`,
+      from: `"OsumFix" <${process.env.SMTP_EMAIL || 'craboratory@gmail.com'}>`,
       to: email,
-      subject: 'Your OTP Verification Code - Voltaria Global',
+      subject: 'Your OTP Verification Code - OsumFix',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #E70812; text-align: center;">Voltaria Global</h2>
+          <h2 style="color: #E70812; text-align: center;">OsumFix</h2>
           <p style="text-align: center; font-size: 16px;">Your OTP verification code is:</p>
           <div style="text-align: center; margin: 20px 0;">
             <span style="font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #E70812; background: #f0f0f0; padding: 15px 30px; border-radius: 10px;">${otp}</span>

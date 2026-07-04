@@ -295,13 +295,13 @@ export async function GET(request) {
               // Skip title and description fields for the categories that use image banners
               const isTitleOrDesc = [
                 "PREMIUM AERODYNAMIC FANS",
-                "Discover Voltaria's high-efficiency ceiling, pedestal, and exhaust fans. Direct-to-merchant factory supply in container-load sizes, with OEM custom branding available for retail chains and distributors.",
+                "Discover OsumFix's high-efficiency ceiling, pedestal, and exhaust fans. Direct-to-merchant factory supply in container-load sizes, with OEM custom branding available for retail chains and distributors.",
                 "HYBRID SOLAR INVERTERS",
                 "Pure sine wave hybrid solar inverters available in direct container loads. Offering backup system dealers, solar contractors, and installers factory-direct merchant pricing scales and part warranties.",
                 "HIGH-SAFETY FUSES",
-                "Safeguard retail shelves and commercial contractor stocks with Voltaria's high-speed circuit protection components. Our thermal-magnetic MCBs, fuses, and DB boxes are packed in high-density cases for electrical merchants and wholesale supply houses.",
+                "Safeguard retail shelves and commercial contractor stocks with OsumFix's high-speed circuit protection components. Our thermal-magnetic MCBs, fuses, and DB boxes are packed in high-density cases for electrical merchants and wholesale supply houses.",
                 "AUTOMATIC CHANGEOVERS (ATS)",
-                "Eliminate transition power spikes with Voltaria smart ATS transfer panels. Supplying backup power manufacturers, generator builders, and industrial outlets with rapid changeover relays packed in secure crates."
+                "Eliminate transition power spikes with OsumFix smart ATS transfer panels. Supplying backup power manufacturers, generator builders, and industrial outlets with rapid changeover relays packed in secure crates."
               ].includes(field.originalValue?.trim());
 
               if (['fans', 'inverters', 'fuses-breakers', 'changeovers'].includes(categoryId) && isTitleOrDesc) {

@@ -34,7 +34,7 @@ export default async function PageEditPage({ params }) {
       <h1 className='text-[30px] font-bold'>EDIT PAGE CONTENT</h1>
       <p className="text-sm text-gray-600 mb-1">
         {routeData ? (
-          <>Managing content for: <code className="font-mono bg-gray-100 px-2 py-0.5 rounded text-[#084032]">{routeData.path}</code></>
+          <>Managing content for: <code className="font-mono bg-gray-100 px-2 py-0.5 rounded text-[#20507C]">{routeData.path}</code></>
         ) : (
           'Loading page information...'
         )}

@@ -18,7 +18,7 @@ export async function GET() {
     
     const defaultSettings = {
       phone: '+971 4-354 0566',
-      email: 'contact@voltariaglobal.com',
+      email: 'contact@osumfix.ae',
       address: 'Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai',
       facebook: '',
       twitter: '',

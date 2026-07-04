@@ -13,6 +13,18 @@ interface ServicesProps {
 export default function Services({ cms }: ServicesProps) {
   const t = (val: string) => getCmsVal(cms, val);
 
+  // Define translation strings in the exact top-to-bottom visual layout order:
+
+  // 1. Section headers
+  const sectionSubtitle = t("Our Services");
+  const sectionTitle = t("Comprehensive Maintenance Solutions");
+  const sectionDescription = t("From minor repairs to major installations, we provide a full spectrum of technical services for residential and commercial properties.");
+
+  // 2. Button texts
+  const viewAllBtnText = t("View All Services");
+  const readMoreText = t("Read More");
+
+  // 3. Services array items
   const services = [
     {
       title: t("AC Work"),
@@ -90,9 +102,9 @@ export default function Services({ cms }: ServicesProps) {
     <section className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          subtitle={t("Our Services")}
-          title={t("Comprehensive Maintenance Solutions")}
-          description={t("From minor repairs to major installations, we provide a full spectrum of technical services for residential and commercial properties.")}
+          subtitle={sectionSubtitle}
+          title={sectionTitle}
+          description={sectionDescription}
           centered
         />
 
@@ -155,7 +167,7 @@ export default function Services({ cms }: ServicesProps) {
                         href={`/services/${service.slug}`}
                         className="inline-flex items-center text-[var(--secondary)] font-medium hover:text-[var(--primary)] transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 delay-100"
                       >
-                        {t("Read More")} <ArrowRight size={16} className="ml-2" />
+                        {readMoreText} <ArrowRight size={16} className="ml-2" />
                       </Link>
                     </div>
                   </div>
@@ -170,7 +182,7 @@ export default function Services({ cms }: ServicesProps) {
             href="/services"
             className="inline-flex items-center justify-center px-8 py-3 border-2 border-[var(--primary)] text-[var(--primary)] font-semibold rounded-full hover:bg-[var(--primary)] hover:text-white transition-colors"
           >
-            {t("View All Services")}
+            {viewAllBtnText}
           </Link>
         </div>
       </div>

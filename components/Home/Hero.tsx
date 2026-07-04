@@ -12,8 +12,27 @@ interface HeroProps {
 export default function Hero({ cms }: HeroProps) {
   const t = (val: string) => getCmsVal(cms, val);
 
-  // Dynamically build the animated characters list from parsed title
+  // Define translation strings in the exact top-to-bottom visual layout order:
+  
+  // 1. Top small badge
+  const badgeText = t("DUBAI'S PREMIER TECHNICAL SERVICES");
+
+  // 2. Brand name/logo title
+  const brandText = t("OsumFix");
+
+  // 3. Main heading suffix text
   const mainTitleText = t(" Professional Maintenance & Repair Solutions.");
+
+  // 4. Description paragraph
+  const descriptionText = t("OsumFix delivers premium technical services for residential and commercial properties across Dubai. Reliable, fast, and guaranteed quality.");
+
+  // 5. CTA 1 (Explore Services)
+  const exploreBtnText = t("Explore Services");
+
+  // 6. CTA 2 (Contact Us)
+  const contactBtnText = t("Contact Us");
+
+  // Split and prepare characters for the animation
   const titleParts = mainTitleText.split("Solutions.");
   const firstPart = titleParts[0] || " Professional Maintenance & Repair ";
   const secondPart = mainTitleText.includes("Solutions.") ? "Solutions." : "";
@@ -48,7 +67,7 @@ export default function Hero({ cms }: HeroProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="max-w-2xl text-left">
           <span className="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-xs font-semibold tracking-wider mb-4 border border-white/30 backdrop-blur-sm">
-            {t("DUBAI'S PREMIER TECHNICAL SERVICES")}
+            {badgeText}
           </span>
 
           <motion.h1
@@ -57,7 +76,7 @@ export default function Hero({ cms }: HeroProps) {
             animate="visible"
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
           >
-            <span>{t("OsumFix")}</span>
+            <span>{brandText}</span>
             {titleCharacters.map((item, index) => (
               <motion.span
                 key={index}
@@ -70,7 +89,7 @@ export default function Hero({ cms }: HeroProps) {
           </motion.h1>
 
           <p className="text-sm md:text-base text-slate-200 mb-6 max-w-xl leading-relaxed">
-            {t("OsumFix delivers premium technical services for residential and commercial properties across Dubai. Reliable, fast, and guaranteed quality.")}
+            {descriptionText}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-start">
@@ -78,13 +97,13 @@ export default function Hero({ cms }: HeroProps) {
               href="/services"
               className="bg-[var(--secondary)] hover:bg-[#173A5A] text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg text-center flex items-center justify-center text-sm gap-2"
             >
-              {t("Explore Services")} <ArrowRight size={16} />
+              {exploreBtnText} <ArrowRight size={16} />
             </Link>
             <Link
               href="/contact"
               className="bg-white hover:bg-slate-50 text-[var(--dark)] px-6 py-3 rounded-full font-semibold transition-all shadow-lg text-center flex items-center justify-center text-sm gap-2"
             >
-              {t("Contact Us")} <PhoneCall size={16} />
+              {contactBtnText} <PhoneCall size={16} />
             </Link>
           </div>
         </div>

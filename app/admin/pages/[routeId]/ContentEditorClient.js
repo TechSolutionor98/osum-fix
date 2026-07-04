@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiChevronUp, FiChevronDown, FiEye, FiCheckCircle, FiAlertCircle, FiImage, FiType, FiLink, FiFileText, FiX } from 'react-icons/fi';
+import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiChevronUp, FiChevronDown, FiEye, FiCheckCircle, FiAlertCircle, FiImage, FiType, FiLink, FiFileText, FiX, FiSearch, FiRefreshCw, FiLayers } from 'react-icons/fi';
 
 // Standalone Custom ContentEditable Component for safe rich-text rendering & editing
 function ContentEditable({ value, onChange, disabled, id, className, placeholder, isSingleLine }) {
@@ -134,6 +134,38 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
       }
     }
   }, []);
+
+  // Media Modal States
+  const [showMediaModal, setShowMediaModal] = useState(false);
+  const [mediaList, setMediaList] = useState([]);
+  const [mediaLoading, setMediaLoading] = useState(false);
+  const [mediaSearch, setMediaSearch] = useState('');
+  const [activeMediaFieldContext, setActiveMediaFieldContext] = useState(null);
+
+  const handleOpenMediaModal = async (sectionIndex, fieldKey) => {
+    setActiveMediaFieldContext({ sectionIndex, fieldKey });
+    setShowMediaModal(true);
+    setMediaLoading(true);
+    try {
+      const res = await fetch(`${apiBase}/api/cms/media?websiteId=default&limit=100`);
+      if (res.ok) {
+        const data = await res.json();
+        setMediaList(data.media || []);
+      }
+    } catch (err) {
+      console.error('Failed to fetch media list:', err);
+    } finally {
+      setMediaLoading(false);
+    }
+  };
+
+  const handleSelectMedia = (url) => {
+    if (activeMediaFieldContext) {
+      const { sectionIndex, fieldKey } = activeMediaFieldContext;
+      updateField(sectionIndex, fieldKey, 'value', url);
+    }
+    setShowMediaModal(false);
+  };
 
   const role = currentUser?.role || 'super_admin';
   const canEditContent = role !== 'viewer';
@@ -587,23 +619,32 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                            focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               />
               {canEditContent && (
-                <div className="relative">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e, sectionIndex, fieldKey)}
-                    className="hidden"
-                    id={`file-upload-${sectionIndex}-${fieldKey}`}
-                    disabled={uploadingField === `${sectionIndex}_${fieldKey}`}
-                  />
-                  <label
-                    htmlFor={`file-upload-${sectionIndex}-${fieldKey}`}
-                    className={`px-4 py-2 text-sm font-semibold rounded-md border border-gray-300 bg-white text-gray-700 shadow-sm cursor-pointer hover:bg-gray-50 flex items-center gap-1.5 whitespace-nowrap transition
-                      ${uploadingField === `${sectionIndex}_${fieldKey}` ? 'opacity-60 cursor-not-allowed' : ''}`}
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleOpenMediaModal(sectionIndex, fieldKey)}
+                    className="px-3.5 py-2 text-sm font-semibold rounded-md border border-gray-300 bg-white text-gray-700 shadow-sm cursor-pointer hover:bg-gray-50 flex items-center gap-1.5 whitespace-nowrap transition"
                   >
-                    <FiImage />
-                    {uploadingField === `${sectionIndex}_${fieldKey}` ? 'Uploading...' : 'Upload Image'}
-                  </label>
+                    <FiLayers /> Media Library
+                  </button>
+                  <div className="relative">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e, sectionIndex, fieldKey)}
+                      className="hidden"
+                      id={`file-upload-${sectionIndex}-${fieldKey}`}
+                      disabled={uploadingField === `${sectionIndex}_${fieldKey}`}
+                    />
+                    <label
+                      htmlFor={`file-upload-${sectionIndex}-${fieldKey}`}
+                      className={`px-4 py-2 text-sm font-semibold rounded-md border border-gray-300 bg-white text-gray-700 shadow-sm cursor-pointer hover:bg-gray-50 flex items-center gap-1.5 whitespace-nowrap transition
+                        ${uploadingField === `${sectionIndex}_${fieldKey}` ? 'opacity-60 cursor-not-allowed' : ''}`}
+                    >
+                      <FiImage />
+                      {uploadingField === `${sectionIndex}_${fieldKey}` ? 'Uploading...' : 'Upload Image'}
+                    </label>
+                  </div>
                 </div>
               )}
             </div>
@@ -1063,6 +1104,103 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
           </div>
         );
       })()}
+
+      {/* Media Library Modal */}
+      {showMediaModal && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50"
+          onClick={() => setShowMediaModal(false)}
+        >
+          <div 
+            className="bg-white rounded-xl shadow-2xl p-6 max-w-4xl w-full mx-4 border border-gray-100 flex flex-col max-h-[85vh] relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setShowMediaModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition cursor-pointer"
+            >
+              <FiX size={18} />
+            </button>
+
+            <div className="flex items-center gap-2 mb-4">
+              <span className="p-2 rounded-lg bg-blue-50 text-[#20507C]">
+                <FiLayers size={18} />
+              </span>
+              <h3 className="text-lg font-bold text-gray-900">Select Image from Media Library</h3>
+            </div>
+
+            {/* Search bar */}
+            <div className="relative mb-4">
+              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                value={mediaSearch}
+                onChange={(e) => setMediaSearch(e.target.value)}
+                placeholder="Search images by name or alt text..."
+                className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:border-[#20507C] focus:ring-2 focus:ring-[#E46704] focus:outline-none transition text-sm"
+              />
+            </div>
+
+            {/* Media list grid */}
+            <div className="flex-1 overflow-y-auto min-h-[300px] border border-gray-100 rounded-lg p-3 bg-gray-55">
+              {mediaLoading ? (
+                <div className="flex flex-col items-center justify-center h-64 text-gray-400">
+                  <FiRefreshCw className="animate-spin text-2xl mb-2" />
+                  <p className="text-sm font-semibold">Loading media library...</p>
+                </div>
+              ) : (() => {
+                const filteredMedia = mediaList.filter(item => 
+                  !mediaSearch || 
+                  item.originalName.toLowerCase().includes(mediaSearch.toLowerCase()) || 
+                  (item.alt && item.alt.toLowerCase().includes(mediaSearch.toLowerCase()))
+                );
+
+                if (filteredMedia.length === 0) {
+                  return (
+                    <div className="flex flex-col items-center justify-center h-64 text-gray-400">
+                      <FiImage className="text-4xl mb-2 text-gray-300" />
+                      <p className="text-sm font-semibold">No images found in Media Library</p>
+                      <p className="text-xs text-gray-450 mt-1">Upload files on the Media page to see them here.</p>
+                    </div>
+                  );
+                }
+
+                return (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    {filteredMedia.map((item) => (
+                      <div 
+                        key={item._id}
+                        onClick={() => handleSelectMedia(item.url)}
+                        className="bg-white rounded-lg border border-gray-250 p-2 hover:border-[#20507C] hover:shadow-md cursor-pointer transition-all flex flex-col group"
+                      >
+                        <div className="aspect-square bg-gray-150 rounded overflow-hidden mb-2 relative">
+                          <img 
+                            src={item.thumbnailUrl || item.url} 
+                            alt={item.alt || item.originalName} 
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-350"
+                          />
+                        </div>
+                        <p className="text-xs font-semibold text-gray-700 truncate" title={item.originalName}>
+                          {item.originalName}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
+            </div>
+
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => setShowMediaModal(false)}
+                className="px-4.5 py-2 text-sm text-gray-600 hover:bg-gray-50 border border-gray-300 rounded-lg transition font-semibold cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

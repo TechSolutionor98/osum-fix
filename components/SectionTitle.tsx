@@ -5,6 +5,7 @@ interface SectionTitleProps {
   title: string;
   description?: string;
   centered?: boolean;
+  className?: string;
 }
 
 export default function SectionTitle({
@@ -12,9 +13,10 @@ export default function SectionTitle({
   title,
   description,
   centered = false,
+  className = "mb-12",
 }: SectionTitleProps) {
   return (
-    <div className={`mb-12 ${centered ? "text-center" : ""}`}>
+    <div className={`${className} ${centered ? "text-center" : ""}`}>
       <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">
         {subtitle}
       </span>

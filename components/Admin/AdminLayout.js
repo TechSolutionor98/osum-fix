@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { FiLock } from 'react-icons/fi';
 import { IoIosLogOut } from "react-icons/io";
+import { Wrench } from 'lucide-react';
 
 const ROLE_ALLOWED_ROUTES = {
   super_admin: ["*"],
@@ -155,8 +156,18 @@ export default function AdminLayout({ children, title = '' }) {
       {/* Sidebar */}
       <aside className="w-full md:w-64 flex-shrink-0 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
         <div className="mb-6 flex justify-center">
-          <Link href="/admin">
-            <Image alt='OsumFix Logo' width={150} height={80} src="/images/logo1.png" className="h-14 w-auto object-contain" priority />
+          <Link href="/admin" className="flex items-center gap-2 group justify-center no-underline">
+            <div className="bg-[#20507C] text-white p-2 rounded-lg transition-colors">
+              <Wrench size={22} />
+            </div>
+            <div className="text-left">
+              <span className="font-bold text-lg tracking-tight text-[#20507C] block font-sans leading-none">
+                OsumFix
+              </span>
+              <span className="text-[0.62rem] font-bold text-[#E46704] uppercase tracking-wider block font-sans leading-none mt-0.5">
+                Technical Services
+              </span>
+            </div>
           </Link>
         </div>
         <hr className='bg-gray-400 text-gray-400 w-full h-[2px] mb-7' />

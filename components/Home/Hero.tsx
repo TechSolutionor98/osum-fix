@@ -32,6 +32,9 @@ export default function Hero({ cms }: HeroProps) {
   // 6. CTA 2 (Contact Us)
   const contactBtnText = t("Contact Us");
 
+  // 7. Hero Background Image
+  const heroBgImage = t("/images/heroset.png");
+
   // Split and prepare characters for the animation
   const titleParts = mainTitleText.split("Solutions.");
   const firstPart = titleParts[0] || " Professional Maintenance & Repair ";
@@ -63,7 +66,7 @@ export default function Hero({ cms }: HeroProps) {
   return (
     <section
       className="relative h-[500px] md:h-[550px] flex items-center overflow-hidden pt-16 bg-slate-900 bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/heroset.png')" }}
+      style={{ backgroundImage: `url('${heroBgImage}')` }}
     >
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">

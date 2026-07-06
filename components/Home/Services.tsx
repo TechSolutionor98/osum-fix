@@ -120,31 +120,19 @@ export default function Services({ cms }: ServicesProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className={`flex flex-col md:flex-row items-center w-full ${
-                  index % 2 === 0 ? "md:justify-start" : "md:justify-end"
-                } relative`}
+                className="flex flex-col md:flex-row items-center justify-between w-full relative gap-6 md:gap-0"
               >
                 {/* Center Number Marker */}
                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 items-center justify-center w-12 h-12 rounded-full border-4 border-slate-50 bg-[var(--primary)] text-white font-bold text-lg shadow-md z-10">
                   {index + 1}
                 </div>
 
-                {/* Content Card */}
-                <div className="w-full md:w-[calc(50%-3rem)] relative h-[320px]">
-                  <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white border border-slate-100 transform rotate-45 z-10 ${
-                    index % 2 === 0
-                      ? "-right-2 border-l-0 border-b-0"
-                      : "-left-2 border-r-0 border-t-0"
-                  }`}></div>
-
+                {/* Image Block */}
+                <div className={`w-full md:w-[calc(50%-3rem)] relative h-[320px] ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>
                   <div className="bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all w-full h-full relative z-20 group overflow-hidden">
                     {/* Default State: Image with dynamic zoom and blur on hover */}
                     <div className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:blur-[2px]">
                       <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
-                      <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white z-10 drop-shadow-md transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
-                        {service.title}
-                      </h3>
                     </div>
 
                     {/* Hover State: Premium Content Dark Glassmorphism Overlay */}
@@ -170,6 +158,31 @@ export default function Services({ cms }: ServicesProps) {
                         {readMoreText} <ArrowRight size={16} className="ml-2" />
                       </Link>
                     </div>
+                  </div>
+                </div>
+
+                {/* Content Block */}
+                <div className={`w-full md:w-[calc(50%-3rem)] relative h-full md:h-[320px] ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
+                  <div className="flex flex-col justify-center h-full relative z-20 px-2 md:px-6">
+                    <div className="hidden md:flex items-center gap-4 mb-5">
+                      <div className="w-14 h-14 rounded-xl bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center shrink-0">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold text-[var(--dark)]">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-slate-600 mb-8 text-sm md:text-base leading-relaxed">
+                      {service.description}
+                    </p>
+
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center text-[var(--primary)] font-semibold hover:text-[var(--secondary)] transition-colors mt-2 w-fit group/btn"
+                    >
+                      {readMoreText} <ArrowRight size={16} className="ml-2 transform group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
                 </div>
               </motion.div>

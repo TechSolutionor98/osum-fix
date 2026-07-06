@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import Link from "next/link";
+import BlogComments from "@/components/Blogs/BlogComments";
 import { notFound } from "next/navigation";
 import { 
   Clock, Calendar, User, ArrowLeft, ArrowRight, 
@@ -140,6 +141,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   )}
 
                 </article>
+                <BlogComments slug={blog.slug || slug} />
               </div>
 
               {/* Right Column: Sidebar */}

@@ -31,70 +31,70 @@ export default function Services({ cms }: ServicesProps) {
       description: t("Professional AC installation, maintenance, leak repairs, and deep cleaning to keep your cooling systems running efficiently."),
       slug: "ac-work",
       icon: <Wind size={32} />,
-      image: t("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-ac.jpg")
     },
     {
       title: t("Electrical Work"),
       description: t("Safe and certified electrical repairs, wiring, fixture installations, and troubleshooting for residential and B2B needs."),
       slug: "electrical-work",
       icon: <Zap size={32} />,
-      image: t("https://images.unsplash.com/photo-1621905252507-b354bc25edac?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-electrical.jpg")
     },
     {
       title: t("Plumbing Work"),
       description: t("Expert leak detection, pipe repair, fixture installations, and drainage solutions by experienced plumbers."),
       slug: "plumbing-work",
       icon: <Droplets size={32} />,
-      image: t("https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-plumbing.jpg")
     },
     {
       title: t("Painting Work"),
       description: t("Premium interior and exterior wall painting, wallpaper installation, and surface preparation with high-quality finishes."),
       slug: "painting-work",
       icon: <Paintbrush size={32} />,
-      image: t("https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-painting.jpg")
     },
     {
       title: t("Masonry Work"),
       description: t("Professional bricklaying, plastering, tile installation, stone work, and concrete repairs for walls and floors."),
       slug: "masonry-work",
       icon: <Layers size={32} />,
-      image: t("https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-masonry.jpg")
     },
     {
       title: t("Carpentry Work"),
       description: t("Custom wood work, furniture repair, door and cabinet installation, and custom shelving solutions."),
       slug: "carpentry-work",
       icon: <Hammer size={32} />,
-      image: t("https://images.unsplash.com/photo-1534224039826-c7a0dea0e66a?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-carpentry.jpg")
     },
     {
       title: t("Steel Fixing"),
       description: t("Accurate steel cutting, bending, and assembly of reinforcing rebar grids for structural concrete foundation work."),
       slug: "steel-fixing",
       icon: <Grid size={32} />,
-      image: t("https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-steel.jpg")
     },
     {
       title: t("Interior Designing"),
       description: t("Custom space planning, theme selection, furniture layouts, and architectural lighting layouts for modern interiors."),
       slug: "interior-designing",
       icon: <Layout size={32} />,
-      image: t("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-interior.jpg")
     },
     {
       title: t("Ceiling & Gypsum"),
       description: t("Modern false ceiling designs, gypsum board partitions, decorative plaster molding, and lighting integrations."),
       slug: "ceiling-gypsum",
       icon: <Layers size={32} />,
-      image: t("https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-ceiling.jpg")
     },
     {
       title: t("Handyman Services"),
       description: t("Reliable day-to-day general repairs, mounting, picture hanging, bracket installs, and home maintenance."),
       slug: "handyman-services",
       icon: <Wrench size={32} />,
-      image: t("https://images.unsplash.com/photo-1581141849291-1125c7b692b5?q=80&w=800&auto=format&fit=crop")
+      image: t("/images/service-handyman.jpg")
     }
   ];
 

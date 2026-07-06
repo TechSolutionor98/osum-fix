@@ -4,6 +4,7 @@ import Hero from "@/components/Home/Hero";
 import WhyChooseUs from "@/components/Home/WhyChooseUs";
 import Services from "@/components/Home/Services";
 import VideoSection from "@/components/Home/VideoSection";
+import FAQSection from "@/components/Home/FAQSection";
 import CTA from "@/components/Home/CTA";
 
 interface HomeClientProps {
@@ -17,6 +18,7 @@ export default function HomeClient({ cms }: HomeClientProps) {
       <WhyChooseUs cms={cms} />
       <Services cms={cms} />
       <VideoSection cms={cms} />
+      <FAQSection />
       <CTA cms={cms} />
     </main>
   );

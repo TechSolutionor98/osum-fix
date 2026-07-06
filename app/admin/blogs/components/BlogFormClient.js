@@ -18,7 +18,7 @@ export default function BlogFormClient({
   const [coverImage, setCoverImage] = useState(initialData?.coverImage || '');
   const [author, setAuthor] = useState(initialData?.author || 'Admin');
   const [tagsInput, setTagsInput] = useState(initialData?.tags?.join(', ') || '');
-  const [published, setPublished] = useState(initialData?.published ?? false);
+  const [published, setPublished] = useState(initialData?.published ?? true);
   const [readMinutes, setReadMinutes] = useState(initialData?.readMinutes || '');
   const [category, setCategory] = useState(initialData?.category || '');
 

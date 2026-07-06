@@ -43,7 +43,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <main className="bg-slate-50 min-h-screen">
+      <main className="bg-white min-h-screen">
         
         {/* Banner Section */}
         <PageBanner 
@@ -55,23 +55,19 @@ export default async function BlogDetailPage({ params }: PageProps) {
         />
 
         <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-              
-              {/* Left Column: Blog Content */}
-              <div className="lg:col-span-8 space-y-8">
-                
-                {/* Back Link */}
-                <Link 
-                  href="/blogs" 
-                  className="inline-flex items-center gap-1.5 text-[var(--primary)] hover:text-[var(--secondary)] font-bold text-sm group transition-colors"
-                >
-                  <ArrowLeft size={16} className="transform group-hover:-translate-x-0.5 transition-transform" />
-                  Back to all blogs
-                </Link>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            
+            {/* Back Link */}
+            <Link 
+              href="/blogs" 
+              className="inline-flex items-center gap-1.5 text-[var(--primary)] hover:text-[var(--secondary)] font-bold text-sm group transition-colors"
+            >
+              <ArrowLeft size={16} className="transform group-hover:-translate-x-0.5 transition-transform" />
+              Back to all blogs
+            </Link>
 
-                <div className="bg-white rounded-[2.5rem] border border-slate-150 p-6 sm:p-10 shadow-sm space-y-8">
-                  {/* Category Badge & Details */}
+            <article className="space-y-8">
+              {/* Category Badge & Details */}
                   <div className="flex flex-wrap items-center gap-4">
                     <span className="bg-[var(--secondary)] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                       {blog.category || "General"}
@@ -115,7 +111,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   />
 
                   {/* Custom stylesheet overrides for the parsed HTML tags inside prose container */}
-                  <style jsx global>{`
+                  <style dangerouslySetInnerHTML={{
+                    __html: `
                     .prose p {
                       margin-bottom: 1.5rem;
                       line-height: 1.8;
@@ -139,7 +136,6 @@ export default async function BlogDetailPage({ params }: PageProps) {
                       list-style-type: disc;
                       padding-left: 1.5rem;
                       margin-bottom: 1.5rem;
-                      space-y: 0.5rem;
                     }
                     .prose li {
                       margin-bottom: 0.5rem;
@@ -149,7 +145,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
                       color: #173A5A;
                       font-weight: 700;
                     }
-                  `}</style>
+                    `
+                  }} />
 
                   {/* Tags */}
                   {blog.tags && blog.tags.length > 0 && (
@@ -165,79 +162,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                     </div>
                   )}
 
-                </div>
-
-              </div>
-
-              {/* Right Column: Premium Sidebar */}
-              <div className="lg:col-span-4 space-y-8">
-                
-                {/* Author Card */}
-                <div className="bg-white p-8 rounded-[2rem] border border-slate-150 shadow-sm text-center space-y-4">
-                  <div className="w-20 h-20 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center mx-auto text-3xl font-black shadow-inner">
-                    {blog.author ? blog.author.charAt(0).toUpperCase() : "O"}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[var(--dark)] text-lg">Written By {blog.author || "OsumFix Team"}</h4>
-                    <p className="text-slate-400 text-xs mt-1">Technical Insights Expert</p>
-                  </div>
-                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-                    Sharing practical guidelines and recommendations for property preservation, safety compliance, and construction standards across Dubai.
-                  </p>
-                </div>
-
-                {/* Popular Services Quick Links */}
-                <div className="bg-white p-8 rounded-[2rem] border border-slate-150 shadow-sm">
-                  <h4 className="font-extrabold text-[var(--dark)] text-lg border-b pb-4 mb-6">Our Core Services</h4>
-                  <ul className="space-y-4">
-                    {[
-                      { name: "AC Repair & Work", slug: "ac-work" },
-                      { name: "Plumbing Services", slug: "plumbing-work" },
-                      { name: "Electrical Work", slug: "electrical-work" },
-                      { name: "Handyman Services", slug: "handyman-services" },
-                      { name: "Gypsum False Ceilings", slug: "ceiling-gypsum" },
-                      { name: "Carpentry & Woodwork", slug: "carpentry-work" }
-                    ].map((s, idx) => (
-                      <li key={idx}>
-                        <Link 
-                          href={`/services/${s.slug}`} 
-                          className="flex items-center justify-between text-slate-600 hover:text-[var(--primary)] font-bold text-sm sm:text-base group transition-colors"
-                        >
-                          <span>{s.name}</span>
-                          <ArrowRight size={16} className="transform group-hover:translate-x-0.5 transition-transform text-slate-400 group-hover:text-[var(--primary)]" />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Quick Consultation CTA */}
-                <div className="bg-[var(--dark)] text-white p-8 rounded-[2rem] border border-slate-200/10 shadow-sm relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--primary)]/20 rounded-full blur-xl -mr-12 -mt-12"></div>
-                  
-                  <div className="space-y-2">
-                    <span className="text-[var(--secondary)] font-bold text-xs uppercase tracking-wider flex items-center gap-1">
-                      <ShieldCheck size={14} /> FREE site visit & quotes
-                    </span>
-                    <h4 className="text-xl sm:text-2xl font-extrabold tracking-tight">Need Professional Technical Assistance?</h4>
-                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                      We offer same-day booking inspection visits and transparent estimates for homes and offices in Dubai.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 pt-2">
-                    <a href="tel:+971501234567" className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] py-3 rounded-full font-bold transition-all text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md">
-                      <Phone size={16} /> Call +971 50 123 4567
-                    </a>
-                    <Link href="/contact" className="w-full bg-white text-[var(--dark)] hover:bg-slate-100 py-3 rounded-full font-bold transition-all text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md">
-                      <CalendarRange size={16} /> Schedule Inspection
-                    </Link>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
+            </article>
 
             {/* Bottom Section: Related Articles */}
             {relatedBlogs.length > 0 && (

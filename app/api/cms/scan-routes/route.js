@@ -158,76 +158,48 @@ export async function POST(request) {
     // Scan all routes
     let routes = scanAppDirectory(appDir);
     
-    // Filter out the dynamic /products/[category] template route and blogs routes
-    routes = routes.filter(r => r.path !== '/products/[category]' && r.path !== '/blogs' && !r.path.startsWith('/blogs/'));
+    // Filter to exactly match user's requested pages
+    const allowedPaths = ['/', '/about', '/services', '/blogs', '/contact'];
+    routes = routes.filter(r => 
+      (allowedPaths.includes(r.path) || 
+      r.path.startsWith('/services/') || 
+      r.path.startsWith('/blogs/')) &&
+      r.path !== '/services/[slug]' &&
+      r.path !== '/blogs/[slug]'
+    );
     
     // Add root page if exists
     const rootPage = scanRootPage(appDir);
-    if (rootPage) {
+    if (rootPage && !routes.find(r => r.path === '/')) {
       routes.unshift(rootPage);
     }
 
-    // Add global components for separate editing
-    routes.push({
-      path: '[Global] Navbar',
-      type: 'static',
-      dynamicSegment: null,
-      parentPath: null,
-      depth: 0,
-      fileName: 'Navbar.tsx',
-      filePath: 'components/Navbar.tsx',
-      hasLayout: false,
-      status: 'active',
-      customName: 'Navbar'
-    });
-    routes.push({
-      path: '[Global] Footer',
-      type: 'static',
-      dynamicSegment: null,
-      parentPath: null,
-      depth: 0,
-      fileName: 'Footer.tsx',
-      filePath: 'components/Footer.tsx',
-      hasLayout: false,
-      status: 'active',
-      customName: 'Footer'
-    });
-
-    // Add global template for the generic texts in products/[category]/page.tsx
-    routes.push({
-      path: '[Global] Product Category Layout',
-      type: 'static',
-      dynamicSegment: null,
-      parentPath: null,
-      depth: 0,
-      fileName: 'page.tsx',
-      filePath: 'app/products/[category]/page.tsx',
-      hasLayout: false,
-      status: 'active',
-      customName: 'Category Template'
-    });
-
-    // Add dynamic category sub-routes
-    const categories = [
-      { id: 'fans', name: 'Fans' },
-      // { id: 'batteries', name: 'Batteries' },
-      { id: 'fuses-breakers', name: 'Fuses & Breakers' },
-      { id: 'changeovers', name: 'Changeovers' },
-      { id: 'inverters', name: 'Inverters' }
+    // Add specific dynamic service sub-routes so they appear in Admin
+    const servicePages = [
+      { id: 'ac-work', name: 'AC Work' },
+      { id: 'electrical-work', name: 'Electrical Work' },
+      { id: 'plumbing-work', name: 'Plumbing Work' },
+      { id: 'painting-work', name: 'Painting Work' },
+      { id: 'masonry-work', name: 'Masonry Work' },
+      { id: 'carpentry-work', name: 'Carpentry Work' },
+      { id: 'steel-fixing', name: 'Steel Fixing' },
+      { id: 'interior-designing', name: 'Interior Designing' },
+      { id: 'ceiling-gypsum', name: 'Ceiling & Gypsum' },
+      { id: 'handyman-services', name: 'Handyman Services' }
     ];
 
-    categories.forEach(cat => {
+    servicePages.forEach(srv => {
       routes.push({
-        path: `/products/${cat.id}`,
+        path: `/services/${srv.id}`,
         type: 'static',
         dynamicSegment: null,
-        parentPath: '/products',
+        parentPath: '/services',
         depth: 2,
-        fileName: `${cat.id}.ts`,
-        filePath: `app/products/[category]/data/${cat.id}.ts`,
+        fileName: 'page.tsx',
+        filePath: `app/services/[slug]/page.tsx`,
         hasLayout: false,
         status: 'active',
-        customName: cat.name
+        customName: srv.name
       });
     });
     
@@ -352,10 +324,50 @@ export async function GET() {
     }
     
     let routes = scanAppDirectory(appDir);
-    // Filter out blog routes
-    routes = routes.filter(r => r.path !== '/blogs' && !r.path.startsWith('/blogs/'));
+    
+    // Filter to exactly match user's requested pages
+    const allowedPaths = ['/', '/about', '/services', '/blogs', '/contact'];
+    routes = routes.filter(r => 
+      (allowedPaths.includes(r.path) || 
+      r.path.startsWith('/services/') || 
+      r.path.startsWith('/blogs/')) &&
+      r.path !== '/services/[slug]' &&
+      r.path !== '/blogs/[slug]'
+    );
+    
     const rootPage = scanRootPage(appDir);
-    if (rootPage) routes.unshift(rootPage);
+    if (rootPage && !routes.find(r => r.path === '/')) {
+      routes.unshift(rootPage);
+    }
+
+    // Add specific dynamic service sub-routes so they appear in Admin
+    const servicePages = [
+      { id: 'ac-work', name: 'AC Work' },
+      { id: 'electrical-work', name: 'Electrical Work' },
+      { id: 'plumbing-work', name: 'Plumbing Work' },
+      { id: 'painting-work', name: 'Painting Work' },
+      { id: 'masonry-work', name: 'Masonry Work' },
+      { id: 'carpentry-work', name: 'Carpentry Work' },
+      { id: 'steel-fixing', name: 'Steel Fixing' },
+      { id: 'interior-designing', name: 'Interior Designing' },
+      { id: 'ceiling-gypsum', name: 'Ceiling & Gypsum' },
+      { id: 'handyman-services', name: 'Handyman Services' }
+    ];
+
+    servicePages.forEach(srv => {
+      routes.push({
+        path: `/services/${srv.id}`,
+        type: 'static',
+        dynamicSegment: null,
+        parentPath: '/services',
+        depth: 2,
+        fileName: 'page.tsx',
+        filePath: `app/services/[slug]/page.tsx`,
+        hasLayout: false,
+        status: 'active',
+        customName: srv.name
+      });
+    });
     
     return NextResponse.json({
       total: routes.length,

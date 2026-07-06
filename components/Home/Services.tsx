@@ -138,34 +138,34 @@ export default function Services({ cms }: ServicesProps) {
                   }`}></div>
 
                   <div className="bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all w-full h-full relative z-20 group overflow-hidden">
-                    {/* Default State: Image */}
-                    <div className="absolute inset-0 w-full h-full transition-transform duration-500 group-hover:scale-110">
+                    {/* Default State: Image with dynamic zoom and blur on hover */}
+                    <div className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:blur-[2px]">
                       <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                      <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white z-10 drop-shadow-md">
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
+                      <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white z-10 drop-shadow-md transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
                         {service.title}
                       </h3>
                     </div>
 
-                    {/* Hover State: Content Overlay */}
-                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 md:p-8 flex flex-col justify-center">
+                    {/* Hover State: Premium Content Dark Glassmorphism Overlay */}
+                    <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 md:p-8 flex flex-col justify-center text-white">
                       <div className="flex items-center gap-4 mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div className="w-12 h-12 rounded-xl bg-slate-50 text-[var(--primary)] flex items-center justify-center shrink-0">
+                        <div className="w-12 h-12 rounded-xl bg-white/10 text-[var(--accent)] flex items-center justify-center shrink-0 border border-white/10">
                           {service.icon}
                         </div>
-                        <h3 className="text-xl font-bold text-[var(--dark)]">
-                          <span className="md:hidden text-[var(--secondary)] mr-2">{index + 1}.</span>
+                        <h3 className="text-xl font-bold text-white">
+                          <span className="md:hidden text-[var(--accent)] mr-2">{index + 1}.</span>
                           {service.title}
                         </h3>
                       </div>
 
-                      <p className="text-slate-600 mb-6 line-clamp-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                      <p className="text-slate-200 mb-6 text-sm leading-relaxed line-clamp-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
                         {service.description}
                       </p>
 
                       <Link
                         href={`/services/${service.slug}`}
-                        className="inline-flex items-center text-[var(--secondary)] font-medium hover:text-[var(--primary)] transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 delay-100"
+                        className="inline-flex items-center text-[var(--accent)] font-semibold hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 delay-100"
                       >
                         {readMoreText} <ArrowRight size={16} className="ml-2" />
                       </Link>

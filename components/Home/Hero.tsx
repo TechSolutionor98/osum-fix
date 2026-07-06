@@ -13,7 +13,7 @@ export default function Hero({ cms }: HeroProps) {
   const t = (val: string) => getCmsVal(cms, val);
 
   // Define translation strings in the exact top-to-bottom visual layout order:
-  
+
   // 1. Top small badge
   const badgeText = t("DUBAI'S PREMIER TECHNICAL SERVICES");
 
@@ -61,8 +61,10 @@ export default function Hero({ cms }: HeroProps) {
   };
 
   return (
-    <section className="relative h-[500px] md:h-[550px] flex items-center overflow-hidden pt-16 bg-slate-900">
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/90 to-slate-900/80 z-0"></div>
+    <section
+      className="relative h-[500px] md:h-[550px] flex items-center overflow-hidden pt-16 bg-slate-900 bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/heroset.png')" }}
+    >
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="max-w-2xl text-left">

@@ -291,20 +291,7 @@ export default async function ServiceDetailPage({
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site AC technical services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -655,20 +642,7 @@ export default async function ServiceDetailPage({
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site Electrical technical services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -1023,20 +997,7 @@ export default async function ServiceDetailPage({
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site plumbing services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -1390,20 +1351,7 @@ export default async function ServiceDetailPage({
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site painting services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -1757,20 +1705,7 @@ export default async function ServiceDetailPage({
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site civil maintenance services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -2120,20 +2055,7 @@ export default async function ServiceDetailPage({
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site carpentry services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -2481,20 +2403,7 @@ export default async function ServiceDetailPage({
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site steel fixing reinforcement services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -2849,20 +2758,7 @@ export default async function ServiceDetailPage({
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site design consultancies and renovations in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -3212,20 +3108,7 @@ export default async function ServiceDetailPage({
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site gypsum ceiling & partition services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>
@@ -3575,20 +3458,7 @@ export default async function ServiceDetailPage({
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           <section className="py-20 bg-slate-50 border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <h3 className="text-2xl font-bold text-[var(--dark)] border-b pb-4">Areas We Serve in Dubai</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We provide fast response times and expert on-site handyman services in all major communities, including:
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 text-slate-700 font-semibold text-sm">
-                    {["Dubai Marina", "Downtown Dubai", "Palm Jumeirah", "JLT (Jumeirah Lake Towers)", "Al Barsha", "Arabian Ranches", "Business Bay", "Jumeirah", "Meydan", "Mirdif"].map((area, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check size={16} className="text-[var(--primary)] shrink-0" /> {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="max-w-3xl mx-auto items-center">
 
                 <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
                   <div>

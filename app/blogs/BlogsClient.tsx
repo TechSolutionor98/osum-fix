@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { 
-  Clock, User, Calendar, ArrowRight, Search, 
+import {
+  Clock, User, Calendar, ArrowRight, Search,
   BookOpen, MessageSquare, ChevronRight, Tag
 } from "lucide-react";
 
@@ -34,13 +34,18 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
   const filteredBlogs = initialBlogs.filter(blog => {
     const category = blog.category || "General";
     const matchesCategory = selectedCategory === "All" || category === selectedCategory;
-    const matchesSearch = 
+    const matchesSearch =
       blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (blog.tags && blog.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase())));
-    
+
     return matchesCategory && matchesSearch;
   });
+
+
+
+
+
 
   // Format date helper
   const formatDate = (dateStr: string) => {
@@ -55,14 +60,14 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        
+
         {/* Left Column: Articles */}
         <div className="lg:col-span-8 space-y-10">
-          
+
           {/* Header & Search */}
           <div className="flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center border-b border-slate-200 pb-6">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--dark)] tracking-tight">Articles & Insights</h1>
-            
+
             <div className="relative w-full sm:w-72">
               <input
                 type="text"
@@ -107,13 +112,13 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {filteredBlogs.map((blog) => (
-                <article 
-                  key={blog._id} 
+                <article
+                  key={blog._id}
                   className="bg-white rounded-3xl overflow-hidden border border-slate-150 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group"
                 >
                   <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 shrink-0">
-                    <img 
-                      src={blog.coverImage || "/images/finalhero.png"} 
+                    <img
+                      src={blog.coverImage || "/images/finalhero.png"}
                       alt={blog.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -149,11 +154,11 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
                       <span className="text-xs text-slate-600 font-semibold flex items-center gap-1.5">
                         <User size={13} className="text-[var(--primary)]" /> {blog.author || "OsumFix Team"}
                       </span>
-                      <Link 
-                        href={`/blogs/${blog.slug}`} 
+                      <Link
+                        href={`/blogs/${blog.slug}`}
                         className="inline-flex items-center gap-1 text-xs text-[var(--primary)] hover:text-[var(--secondary)] font-bold"
                       >
-                        Read More 
+                        Read More
                         <ArrowRight size={14} className="transform group-hover:translate-x-0.5 transition-transform" />
                       </Link>
                     </div>
@@ -166,15 +171,15 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
 
         {/* Right Sidebar */}
         <div className="lg:col-span-4 space-y-12 lg:pl-4">
-          
+
           {/* OsumFix Details */}
           <div className="space-y-4">
             <h3 className="font-extrabold text-lg text-[var(--dark)] tracking-tight">OsumFix</h3>
             <p className="text-slate-500 text-sm leading-relaxed">
               We provide professional AC Repair, Plumbing, Electrical Work, Handyman Services, and comprehensive home maintenance solutions across Dubai.
             </p>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="block text-center w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white py-3 rounded-lg font-bold transition-all text-sm shadow-sm mt-2"
             >
               Contact Our Team

@@ -49,28 +49,28 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li>
+                <Link href="/" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Home
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> About Us
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> About
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Our Projects
+                <Link href="/services" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Service
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Gallery
+                <Link href="/blogs" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Blog
                 </Link>
               </li>
               <li>
-                <Link href="/testimonials" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Careers
+                <Link href="/contact" className="text-sm text-slate-300 hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Contact
                 </Link>
               </li>
             </ul>

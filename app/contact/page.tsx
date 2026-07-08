@@ -1,12 +1,54 @@
 "use client";
 
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import SectionTitle from "@/components/SectionTitle";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    serviceRequired: "",
+    propertyLocation: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMsg("");
+    
+    try {
+      const res = await fetch("/api/contact-submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Failed to send message");
+      }
+      
+      setSubmitted(true);
+      setFormData({ name: "", phone: "", serviceRequired: "", propertyLocation: "", email: "", message: "" });
+      
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err: any) {
+      console.error(err);
+      setErrorMsg(err.message || "An error occurred");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -68,75 +110,106 @@ export default function ContactPage() {
               {/* Contact Form */}
               <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm">
                 <h3 className="text-2xl font-bold text-[var(--dark)] mb-6">Send Us a Message</h3>
-                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                
+                {submitted ? (
+                  <div className="text-center py-10 space-y-4">
+                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 size={32} />
+                    </div>
+                    <h4 className="text-2xl font-bold text-[var(--dark)]">Message Sent!</h4>
+                    <p className="text-slate-600">Thank you for reaching out. Our team will get back to you shortly.</p>
+                  </div>
+                ) : (
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    {errorMsg && <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm">{errorMsg}</div>}
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          placeholder="John Doe"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
+                        <input
+                          type="tel"
+                          required
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          placeholder="+971 50 000 0000"
+                        />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Service Required</label>
+                        <select 
+                          value={formData.serviceRequired}
+                          onChange={(e) => setFormData({...formData, serviceRequired: e.target.value})}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                        >
+                          <option value="">Select a service</option>
+                          <option value="ac-work">AC Work</option>
+                          <option value="electrical-work">Electrical Work</option>
+                          <option value="plumbing-work">Plumbing Work</option>
+                          <option value="painting-work">Painting Work</option>
+                          <option value="masonry-work">Masonry Work</option>
+                          <option value="carpentry-work">Carpentry Work</option>
+                          <option value="steel-fixing">Steel Fixing</option>
+                          <option value="interior-designing">Interior Designing</option>
+                          <option value="ceiling-gypsum">Ceiling & Gypsum</option>
+                          <option value="handyman-services">Handyman Services</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Property Location (Dubai)</label>
+                        <input
+                          type="text"
+                          value={formData.propertyLocation}
+                          onChange={(e) => setFormData({...formData, propertyLocation: e.target.value})}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          placeholder="e.g., Jumeirah, Business Bay"
+                        />
+                      </div>
+                    </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
                       <input
-                        type="text"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                        placeholder="John Doe"
+                        placeholder="john@example.com"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
-                      <input
-                        type="tel"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                        placeholder="+971 50 000 0000"
-                      />
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Message *</label>
+                      <textarea
+                        rows={4}
+                        required
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white resize-none"
+                        placeholder="How can we help you?"
+                      ></textarea>
                     </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Service Required</label>
-                      <select className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white">
-                        <option value="">Select a service</option>
-                        <option value="ac-work">AC Work</option>
-                        <option value="electrical-work">Electrical Work</option>
-                        <option value="plumbing-work">Plumbing Work</option>
-                        <option value="painting-work">Painting Work</option>
-                        <option value="masonry-work">Masonry Work</option>
-                        <option value="carpentry-work">Carpentry Work</option>
-                        <option value="steel-fixing">Steel Fixing</option>
-                        <option value="interior-designing">Interior Designing</option>
-                        <option value="ceiling-gypsum">Ceiling & Gypsum</option>
-                        <option value="handyman-services">Handyman Services</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Property Location (Dubai)</label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                        placeholder="e.g., Jumeirah, Business Bay"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white resize-none"
-                      placeholder="How can we help you?"
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white font-semibold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
-                  >
-                    Send Message <Send size={18} />
-                  </button>
-                </form>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white font-semibold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"} <Send size={18} />
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
 

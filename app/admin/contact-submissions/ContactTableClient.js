@@ -30,9 +30,9 @@ export default function ContactTableClient({ initialData = [], apiBase = process
     return sorted.filter(r => (
       (r.name || '').toString().toLowerCase().includes(q) ||
       (r.email || '').toString().toLowerCase().includes(q) ||
-      (r.companyName || '').toString().toLowerCase().includes(q) ||
-      (r.businessType || '').toString().toLowerCase().includes(q) ||
-      (r.businessInfo || '').toString().toLowerCase().includes(q) ||
+      (r.phone || '').toString().toLowerCase().includes(q) ||
+      (r.serviceRequired || '').toString().toLowerCase().includes(q) ||
+      (r.propertyLocation || '').toString().toLowerCase().includes(q) ||
       (r.message || '').toString().toLowerCase().includes(q)
     ));
   }, [sorted, query]);
@@ -59,15 +59,15 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
   function downloadCSV() {
     if (!rows || rows.length === 0) return alert('No data');
-    const headers = ['#', 'Name', 'Email', 'Company Name', 'Business Type', 'Business Info', 'Message', 'Submitted At'];
+    const headers = ['#', 'Name', 'Phone', 'Email', 'Service Required', 'Property Location', 'Message', 'Submitted At'];
     const csv = [headers.join(',')].concat(rows.map((r, i) => {
       const vals = [
         i + 1,
         r.name,
+        r.phone,
         r.email,
-        r.companyName,
-        r.businessType === 'Other' && r.otherBusinessType ? r.otherBusinessType : r.businessType,
-        r.businessInfo,
+        r.serviceRequired,
+        r.propertyLocation,
         r.message,
         r.createdAt ? new Date(r.createdAt).toLocaleString() : ''
       ];
@@ -135,17 +135,17 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
       <div style={{ overflowX: "auto", maxHeight: "520px", overflowY: "auto" }} className="w-full rounded-lg border border-gray-200">
         <table style={{ whiteSpace: "nowrap" }} className="w-full text-sm overflow-hidden">
-          <thead className="sticky top-0 z-10">
-            <tr className="bg-[#E46704] text-white">
-              <th className="px-3 py-3 font-semibold text-left">Inquiry #</th>
-              <th className="px-3 py-3 font-semibold text-left">Name</th>
-              <th className="px-3 py-3 font-semibold text-left">Email</th>
-              <th className="px-3 py-3 font-semibold text-left">Company Name</th>
-              <th className="px-3 py-3 font-semibold text-left">Business Type</th>
-              <th className="px-3 py-3 font-semibold text-left">Business Info</th>
-              <th className="px-3 py-3 font-semibold text-left">Message</th>
-              <th className="px-3 py-3 font-semibold text-left">Submitted At</th>
-              <th className="px-3 py-3 font-semibold text-left">Action</th>
+          <thead className="bg-[#20507C] text-white">
+            <tr>
+              <th className="px-4 py-3 text-left font-semibold text-sm w-16">#</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm">Name</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm">Phone</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm">Email</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm">Service Required</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm">Location</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm max-w-[200px]">Message</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm w-40">Submitted At</th>
+              <th className="px-4 py-3 text-left font-semibold text-sm w-24">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -153,12 +153,12 @@ export default function ContactTableClient({ initialData = [], apiBase = process
               <tr key={s.id ?? s._id ?? idx} className="hover:bg-[#e6f9f0] align-top transition-all">
                 <td className="px-4 py-3 border-b border-gray-100 align-top font-semibold text-[#20507C]">{getGlobalIndex(idx)}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.name}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.phone}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.email}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.companyName}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">
-                  {s.businessType === 'Other' && s.otherBusinessType ? s.otherBusinessType : s.businessType}
+                  {s.serviceRequired}
                 </td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.businessInfo}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.propertyLocation}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis whitespace-nowrap">
                   {(s.message || '').length > 30 ? s.message.substring(0, 30) + '...' : s.message}
                 </td>
@@ -220,7 +220,6 @@ export default function ContactTableClient({ initialData = [], apiBase = process
               </button>
             </div>
 
-            {/* Details */}
             <div className="p-6 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -228,24 +227,22 @@ export default function ContactTableClient({ initialData = [], apiBase = process
                   <p className="text-[#20507C] font-semibold text-sm">{viewRow.name || '—'}</p>
                 </div>
                 <div>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Phone</p>
+                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.phone || '—'}</p>
+                </div>
+                <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email</p>
                   <p className="text-[#20507C] font-semibold text-sm break-all">{viewRow.email || '—'}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Company Name</p>
-                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.companyName || '—'}</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Service Required</p>
+                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.serviceRequired || '—'}</p>
                 </div>
-                <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Business Type</p>
-                  <p className="text-[#20507C] font-semibold text-sm">
-                    {viewRow.businessType === 'Other' && viewRow.otherBusinessType ? viewRow.otherBusinessType : viewRow.businessType || '—'}
-                  </p>
+                <div className="col-span-2">
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Property Location</p>
+                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.propertyLocation || '—'}</p>
                 </div>
-                <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Business Info</p>
-                  <p className="text-[#20507C] font-semibold text-sm">{viewRow.businessInfo || '—'}</p>
-                </div>
-                <div>
+                <div className="col-span-2">
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Submitted At</p>
                   <p className="text-[#20507C] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : '—'}</p>
                 </div>

@@ -40,11 +40,10 @@ export async function GET() {
       id: s._id?.toString?.() || s.id,
       name: s.name,
       email: s.email,
-      businessType: s.businessType || s.service || '',
-      otherBusinessType: s.otherBusinessType || '',
-      companyName: s.companyName || s.subject || '',
-      businessInfo: s.businessInfo || s.phone || '',
-      message: s.message || s.comments || '',
+      phone: s.phone || '',
+      serviceRequired: s.serviceRequired || '',
+      propertyLocation: s.propertyLocation || '',
+      message: s.message || '',
       createdAt: s.createdAt
     })), { headers: CORS_HEADERS });
   } catch (err) {
@@ -56,22 +55,26 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, email, businessType, otherBusinessType, companyName, businessInfo, message } = body || {};
-    if (!name || !email || !businessType || !companyName || !businessInfo || !message) {
-      return NextResponse.json({ error: 'All fields are required' }, { status: 400, headers: CORS_HEADERS });
+    const { name, email, phone, serviceRequired, propertyLocation, message } = body || {};
+    
+    if (!name || !phone || !message) {
+      return NextResponse.json({ error: 'Name, Phone, and Message are required' }, { status: 400, headers: CORS_HEADERS });
     }
 
-    const entry = await saveSubmission({
+    const db = await getDb();
+    const doc = {
       name,
-      email,
-      businessType,
-      otherBusinessType,
-      companyName,
-      businessInfo,
-      message
-    });
+      email: email || '',
+      phone: phone || '',
+      serviceRequired: serviceRequired || '',
+      propertyLocation: propertyLocation || '',
+      message: message || '',
+      createdAt: new Date().toISOString()
+    };
+    const res = await db.collection('contact_submissions').insertOne(doc);
+    const entry = { id: res.insertedId.toString(), ...doc };
 
-    await logActivity(request, 'contact_submission', name, { email, businessType, companyName });
+    await logActivity(request, 'contact_submission', name, { email, phone, serviceRequired });
 
     return NextResponse.json({ ok: true, entry }, { status: 201, headers: CORS_HEADERS });
   } catch (err) {

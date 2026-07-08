@@ -92,12 +92,16 @@ export default function ContactPage() {
                       <label className="block text-sm font-medium text-slate-700 mb-2">Service Required</label>
                       <select className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white">
                         <option value="">Select a service</option>
-                        <option value="electrical">Electrical</option>
-                        <option value="plumbing">Plumbing</option>
-                        <option value="hvac">HVAC Maintenance</option>
-                        <option value="painting">Painting</option>
-                        <option value="handyman">Handyman</option>
-                        <option value="amc">Annual Maintenance Contract (AMC)</option>
+                        <option value="ac-work">AC Work</option>
+                        <option value="electrical-work">Electrical Work</option>
+                        <option value="plumbing-work">Plumbing Work</option>
+                        <option value="painting-work">Painting Work</option>
+                        <option value="masonry-work">Masonry Work</option>
+                        <option value="carpentry-work">Carpentry Work</option>
+                        <option value="steel-fixing">Steel Fixing</option>
+                        <option value="interior-designing">Interior Designing</option>
+                        <option value="ceiling-gypsum">Ceiling & Gypsum</option>
+                        <option value="handyman-services">Handyman Services</option>
                         <option value="other">Other</option>
                       </select>
                     </div>

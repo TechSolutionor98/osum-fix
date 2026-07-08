@@ -375,12 +375,16 @@ export default function Contact({ cms }: { cms?: any }) {
                             className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-red-500 focus:bg-white transition-all text-black font-medium appearance-none pr-10"
                           >
                             <option value="">{t("Select a service")}</option>
-                            <option value="electrical">{t("Electrical")}</option>
-                            <option value="plumbing">{t("Plumbing")}</option>
-                            <option value="hvac">{t("HVAC Maintenance")}</option>
-                            <option value="painting">{t("Painting")}</option>
-                            <option value="handyman">{t("Handyman")}</option>
-                            <option value="amc">{t("Annual Maintenance Contract (AMC)")}</option>
+                            <option value="ac-work">{t("AC Work")}</option>
+                            <option value="electrical-work">{t("Electrical Work")}</option>
+                            <option value="plumbing-work">{t("Plumbing Work")}</option>
+                            <option value="painting-work">{t("Painting Work")}</option>
+                            <option value="masonry-work">{t("Masonry Work")}</option>
+                            <option value="carpentry-work">{t("Carpentry Work")}</option>
+                            <option value="steel-fixing">{t("Steel Fixing")}</option>
+                            <option value="interior-designing">{t("Interior Designing")}</option>
+                            <option value="ceiling-gypsum">{t("Ceiling & Gypsum")}</option>
+                            <option value="handyman-services">{t("Handyman Services")}</option>
                             <option value="other">{t("Other")}</option>
                           </select>
                           <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-500">

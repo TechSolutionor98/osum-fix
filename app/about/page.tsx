@@ -7,7 +7,7 @@ import Advantages from "@/components/About/Advantages";
 import AboutCta from "@/components/About/AboutCta";
 import { getPublishedContent } from "@/lib/cms-service";
 
-export const revalidate = 60; // Revalidate page every 60 seconds
+export const dynamic = 'force-dynamic';
 
 export default async function AboutPage() {
   // Fetch about page CMS sections from database

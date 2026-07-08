@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import HomeClient from "./HomeClient";
 import { getPublishedContent } from "@/lib/cms-service";
 
-export const revalidate = 60; // Revalidate page every 60 seconds
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   // Fetch home page CMS sections from database

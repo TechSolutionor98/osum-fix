@@ -21,6 +21,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} h-full antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-700">
         <main className="flex-grow flex flex-col">

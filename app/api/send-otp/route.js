@@ -32,13 +32,13 @@ export async function POST(request) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.SMTP_EMAIL || 'crownexcelllc@gmail.com',
-        pass: process.env.SMTP_PASSWORD || 'ssaj rcql kigj vqth',
+        user: process.env.SMTP_EMAIL || 'Osumfix@gmail.com',
+        pass: process.env.SMTP_PASSWORD || 'ygre mdup eglu gnou',
       },
     });
 
     await transporter.sendMail({
-      from: `"OsumFix" <${process.env.SMTP_EMAIL || 'craboratory@gmail.com'}>`,
+      from: `"OsumFix" <${process.env.SMTP_EMAIL || 'Osumfix@gmail.com'}>`,
       to: email,
       subject: 'Your OTP Verification Code - OsumFix',
       html: `

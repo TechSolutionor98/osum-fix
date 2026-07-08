@@ -29,8 +29,20 @@ export async function GET(req) {
 
     const filter = {};
     if (blogId) {
-      filter.blogId = blogId;
+      if (ObjectId.isValid(blogId) && blogId.length === 24) {
+        filter.blogId = blogId;
+      } else {
+        // If it's a slug, we need to lookup the actual blog _id first
+        const blogsCol = db.collection('cms_blogs');
+        const blog = await blogsCol.findOne({ slug: blogId });
+        if (blog) {
+          filter.blogId = blog._id.toString();
+        } else {
+          return jsonResponse([]); // No blog found, so no comments
+        }
+      }
     }
+    
     if (!all) {
       filter.approved = true; // client only sees approved comments
     }

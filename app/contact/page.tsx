@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import SectionTitle from "@/components/SectionTitle";
-import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -19,6 +19,19 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [hasActiveAppointments, setHasActiveAppointments] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/appointments')
+      .then(res => res.json())
+      .then(data => {
+        const activeLinks = (data?.links || []).filter((l: any) => l.active !== false);
+        if (activeLinks.length > 0) {
+          setHasActiveAppointments(true);
+        }
+      })
+      .catch(console.error);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -213,8 +226,25 @@ export default function ContactPage() {
               </div>
             </div>
 
+            {/* Appointments CTA */}
+            {hasActiveAppointments && (
+              <div className="mt-24 max-w-4xl mx-auto text-center bg-white p-12 sm:p-14 rounded-[2rem] border border-slate-100 shadow-[0_2px_40px_rgba(0,0,0,0.02)]">
+                <h3 className="text-[28px] sm:text-3xl font-bold text-[#111827] mb-3">Prefer to Schedule a Visit?</h3>
+                <p className="text-slate-500 mb-8 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                  Explore our available appointment options and directly book a technician for a time that suits you best.
+                </p>
+                <a 
+                  href="/appointments" 
+                  className="inline-flex items-center justify-center gap-2 bg-[#1e293b] hover:bg-[#0f172a] text-white px-8 py-3.5 rounded-xl font-medium transition-colors"
+                >
+                  View Appointment Links
+                  <ArrowRight size={18} />
+                </a>
+              </div>
+            )}
+
             {/* Map Placeholder */}
-            <div className="mt-20 w-full h-[400px] bg-slate-200 rounded-3xl overflow-hidden relative shadow-inner">
+            <div className="mt-24 w-full h-[400px] bg-slate-200 rounded-3xl overflow-hidden relative shadow-inner">
               <div className="absolute inset-0 flex items-center justify-center flex-col text-slate-400">
                 <MapPin size={48} className="mb-4 text-slate-300" />
                 <span className="font-medium">Google Map Integration Placeholder</span>

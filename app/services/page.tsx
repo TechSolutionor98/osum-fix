@@ -71,10 +71,11 @@ const allServices = [
   },
   {
     title: "Handyman Services",
-    description: "General home repairs, furniture assembly, TV wall mounting, photo frames hanging, and bracket installs.",
+    description: "Versatile and responsive maintenance solutions for everyday needs. Our technicians are equipped to handle diverse tasks quickly and professionally.",
     slug: "handyman-services",
     icon: <Wrench size={24} />,
-    features: ["General Repairs", "Furniture Assembly", "TV Wall Mounting"]
+    features: ["General Repairs", "Mounting & Fixing", "Assembly Work", "Minor Fixes"],
+    isWide: true
   }
 ];
 

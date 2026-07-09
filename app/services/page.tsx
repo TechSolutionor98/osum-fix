@@ -10,61 +10,71 @@ const allServices = [
     title: "AC Work",
     description: "Complete AC servicing, deep cooling coil cleaning, duct disinfection, gas top-ups, and compressor repair.",
     slug: "ac-work",
-    icon: <Wind size={32} />
+    icon: <Wind size={24} />,
+    features: ["AC Installation & Repair", "Duct Cleaning", "Gas Top-ups"]
   },
   {
     title: "Electrical Work",
     description: "Expert electrical solutions including safe wiring, DB dressing, fault-finding, and fixtures installation.",
     slug: "electrical-work",
-    icon: <Zap size={32} />
+    icon: <Zap size={24} />,
+    features: ["Wiring & Repair", "DB Dressing", "Fixture Installation"]
   },
   {
     title: "Plumbing Work",
     description: "Leak repair, water heater replacement, drainage clearing, and premium sanitary fixtures installation.",
     slug: "plumbing-work",
-    icon: <Droplets size={32} />
+    icon: <Droplets size={24} />,
+    features: ["Leak Repair", "Water Heater Replacement", "Drainage Clearing"]
   },
   {
     title: "Painting Work",
-    description: "Professional interior/exterior wall painting, villa spray painting, wallpaper application, and finishing.",
+    description: "Transform your space with our premium interior and exterior painting services, including specialized waterproofing solutions for durability.",
     slug: "painting-work",
-    icon: <Paintbrush size={32} />
+    icon: <Paintbrush size={24} />,
+    features: ["Interior & Exterior", "Waterproofing", "Wall Finishing"]
   },
   {
     title: "Masonry Work",
     description: "Bricklaying, wall plastering, tile installation, stone cladding, and professional concrete restoration.",
     slug: "masonry-work",
-    icon: <Layers size={32} />
+    icon: <Layers size={24} />,
+    features: ["Bricklaying & Plastering", "Tile Installation", "Concrete Restoration"]
   },
   {
     title: "Carpentry Work",
     description: "Bespoke wood installations, door repairs, custom shelves construction, cabinet fittings, and lock replacement.",
     slug: "carpentry-work",
-    icon: <Hammer size={32} />
+    icon: <Hammer size={24} />,
+    features: ["Wood Installations", "Door & Cabinet Repairs", "Custom Shelving"]
   },
   {
     title: "Steel Fixing",
     description: "Professional concrete reinforcement services including steel bar bending, cutting, and grid alignment.",
     slug: "steel-fixing",
-    icon: <Grid size={32} />
+    icon: <Grid size={24} />,
+    features: ["Steel Bar Bending", "Grid Alignment", "Concrete Reinforcement"]
   },
   {
     title: "Interior Designing",
     description: "Residential and B2B interior designs, detailed 2D space layouts, mood boards, and lighting selections.",
     slug: "interior-designing",
-    icon: <Layout size={32} />
+    icon: <Layout size={24} />,
+    features: ["2D Space Layouts", "Mood Boards", "Lighting Selections"]
   },
   {
     title: "Ceiling & Gypsum",
     description: "Beautiful modern false ceiling installations, decorative plaster boards, and partitions for home and office.",
     slug: "ceiling-gypsum",
-    icon: <Layers size={32} />
+    icon: <Layers size={24} />,
+    features: ["False Ceiling Installations", "Plaster Boards", "Partitions"]
   },
   {
     title: "Handyman Services",
     description: "General home repairs, furniture assembly, TV wall mounting, photo frames hanging, and bracket installs.",
     slug: "handyman-services",
-    icon: <Wrench size={32} />
+    icon: <Wrench size={24} />,
+    features: ["General Repairs", "Furniture Assembly", "TV Wall Mounting"]
   }
 ];
 

@@ -1,30 +1,44 @@
 import Link from "next/link";
-import { ArrowRight, LucideIcon } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface ServiceCardProps {
   title: string;
   description: string;
   slug: string;
   icon: React.ReactNode;
+  features?: string[];
 }
 
-export default function ServiceCard({ title, description, slug, icon }: ServiceCardProps) {
+export default function ServiceCard({ title, description, slug, icon, features }: ServiceCardProps) {
   return (
-    <div className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl border border-slate-100 transition-all duration-300 transform hover:-translate-y-1">
-      <div className="w-16 h-16 rounded-xl bg-blue-50 text-[var(--primary)] flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-300">
+    <div className="bg-[#FBFCFF] rounded-none p-8 shadow-sm border border-slate-200 transition-all duration-300 flex flex-col h-full">
+      <div className="w-12 h-12 rounded bg-slate-100 text-[var(--primary)] flex items-center justify-center mb-6">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-[var(--dark)] mb-3 group-hover:text-[var(--primary)] transition-colors">
+      <h3 className="text-xl font-bold text-[var(--primary)] mb-3">
         {title}
       </h3>
-      <p className="text-slate-600 mb-6 line-clamp-3">
+      <p className="text-slate-600 mb-6 text-sm leading-relaxed">
         {description}
       </p>
+      
+      {features && features.length > 0 && (
+        <ul className="mb-8 space-y-3 flex-grow">
+          {features.map((feature, idx) => (
+            <li key={idx} className="flex items-center text-sm text-slate-700">
+              <CheckCircle2 size={16} className="text-[var(--primary)] mr-3 flex-shrink-0" />
+              {feature}
+            </li>
+          ))}
+        </ul>
+      )}
+
       <Link
         href={`/services/${slug}`}
-        className="inline-flex items-center text-[var(--primary)] font-medium hover:text-[var(--secondary)] transition-colors"
+        className="mt-auto flex items-center justify-between text-[var(--secondary)] font-bold text-sm hover:opacity-80 transition-opacity"
       >
-        Read More <ArrowRight size={16} className="ml-2" />
+        <span>Book Now</span>
+        <ArrowRight size={18} />
       </Link>
     </div>
   );

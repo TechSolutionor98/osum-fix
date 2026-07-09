@@ -29,10 +29,10 @@ export default function AboutCta({ cms }: AboutCtaProps) {
             {t("Contact Us Today")}
           </Link>
           <a
-            href="tel:+971501234567"
+            href="tel:+971551519540"
             className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2"
           >
-            <PhoneCall size={20} /> {t("Call +971 50 123 4567")}
+            <PhoneCall size={20} /> {t("Call 055 1519540 / 056 7910188")}
           </a>
         </div>
       </div>

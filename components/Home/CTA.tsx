@@ -31,13 +31,13 @@ export default function CTA({ cms }: CTAProps) {
             {t("Get a Free Quote")}
           </Link>
           <a
-            href="tel:+971501234567"
+            href="tel:+971551519540"
             className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2"
           >
-            <PhoneCall size={20} /> {t("Call +971 50 123 4567")}
+            <PhoneCall size={20} /> {t("Call 055 1519540 / 056 7910188")}
           </a>
           <a
-            href="https://wa.me/971501234567"
+            href="https://wa.me/971551519540"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2"

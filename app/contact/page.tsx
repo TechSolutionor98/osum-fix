@@ -102,7 +102,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-[var(--dark)] mb-2">Phone</h4>
-                      <p className="text-slate-600 mb-1">+971 50 123 4567</p>
+                      <p className="text-slate-600 mb-1">055 1519540 / 056 7910188</p>
                       <p className="text-sm text-slate-500">Available 24/7 for emergencies</p>
                     </div>
                   </div>

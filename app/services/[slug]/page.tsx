@@ -272,7 +272,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -328,7 +328,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -576,7 +576,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -632,7 +632,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -884,7 +884,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -940,7 +940,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -1191,7 +1191,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repaint or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -1248,7 +1248,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -1498,7 +1498,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need quick masonry repair or partition walls? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -1555,7 +1555,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -1801,7 +1801,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need custom furniture or cabinet repairs? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -1858,7 +1858,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -2102,7 +2102,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need custom reinforcement work or steel tying? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -2159,7 +2159,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -2410,7 +2410,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Want to schedule an interior design consultation or get layout quotes? Chat with our team on WhatsApp.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -2467,7 +2467,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -2713,7 +2713,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need modern false ceilings or sound-reducing office partitions? Chat with our customer care representatives on WhatsApp.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -2770,7 +2770,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -3016,7 +3016,7 @@ export default async function ServiceDetailPage({
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need quick TV mounting, furniture assembly, or door lock repairs? Chat with our customer care representatives on WhatsApp.")}</p>
                   </div>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -3073,7 +3073,7 @@ export default async function ServiceDetailPage({
                 <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
                   Request Callback
                 </Link>
-                <a href="tel:+971501234567" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call +971 50 123 4567")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
               </div>
             </div>
           </section>
@@ -3186,8 +3186,8 @@ export default async function ServiceDetailPage({
                   <div className="relative z-10">
                     <h3 className="text-2xl font-bold mb-4">{t("Need Help Now?")}</h3>
                     <p className="text-slate-300 mb-6 text-sm">{t("Our emergency response team is available 24/7 across Dubai.")}</p>
-                    <a href="tel:+971501234567" className="block w-full bg-[var(--primary)] hover:bg-[var(--secondary)] py-3 rounded-full font-bold transition-colors mb-4 flex items-center justify-center gap-2">
-                      <Phone size={18} /> +971 50 123 4567
+                    <a href="tel:+971551519540" className="block w-full bg-[var(--primary)] hover:bg-[var(--secondary)] py-3 rounded-full font-bold transition-colors mb-4 flex items-center justify-center gap-2">
+                      <Phone size={18} /> 055 1519540 / 056 7910188
                     </a>
                     <Link href="/contact" className="block w-full bg-white text-[var(--dark)] hover:bg-slate-100 py-3 rounded-full font-bold transition-colors flex items-center justify-center gap-2">
                       <Calendar size={18} /> Book a Service
@@ -3207,7 +3207,7 @@ export default async function ServiceDetailPage({
                   </div>
                   <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Have a query or need an instant quote? WhatsApp us directly for quick booking and support.")}</p>
                   <a 
-                    href="https://wa.me/971501234567" 
+                    href="https://wa.me/971551519540" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-3 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2"

@@ -123,7 +123,7 @@ export default function Contact({ cms }: { cms?: any }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-gray-950 uppercase tracking-widest">{t("Call Center")}</h4>
-                  <p className="text-sm text-gray-600 mt-1">{t("+971 4 354 0566")}</p>
+                  <p className="text-sm text-gray-600 mt-1">{t("055 1519540 / 056 7910188")}</p>
                   <p className="text-xs text-gray-400 mt-0.5">{t("Mon - Sun: 8:00 AM - 6:00 PM")}</p>
                 </div>
               </div>

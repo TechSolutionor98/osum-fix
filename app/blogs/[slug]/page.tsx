@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getBlogBySlug, getBlogsList } from "@/lib/cms-service";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -72,11 +73,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
                 <article>
                   {/* Cover Image on Top */}
-                  <div className="aspect-[16/9] w-full rounded-3xl overflow-hidden bg-slate-100 shadow-sm mb-8">
-                    <img 
+                  <div className="aspect-[16/9] w-full rounded-3xl overflow-hidden bg-slate-100 shadow-sm mb-8 relative">
+                    <Image 
                       src={blog.coverImage || "/images/finalhero.png"} 
                       alt={blog.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 66vw"
+                      className="object-cover"
                     />
                   </div>
 

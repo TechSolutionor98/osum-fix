@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Droplets, Wind, Paintbrush, Hammer, Wrench, Grid, Layout, Layers } from "lucide-react";
@@ -132,7 +133,7 @@ export default function Services({ cms }: ServicesProps) {
                   <div className="bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all w-full h-full relative z-20 group overflow-hidden">
                     {/* Default State: Image with dynamic zoom and blur on hover */}
                     <div className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:blur-[2px]">
-                      <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                      <Image src={service.image} alt={service.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                     </div>
 
                     {/* Hover State: Premium Content Dark Glassmorphism Overlay */}

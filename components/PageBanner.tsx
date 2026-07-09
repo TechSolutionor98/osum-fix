@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { motion } from "framer-motion";
@@ -13,16 +14,18 @@ interface PageBannerProps {
 export default function PageBanner({ 
   title, 
   breadcrumb, 
-  bgImage = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2000&auto=format&fit=crop" 
+  bgImage = "/images/page-banner-bg.jpg" 
 }: PageBannerProps) {
   return (
     <section className="relative pt-44 pb-32 md:pt-52 md:pb-36 bg-slate-950 overflow-hidden flex items-center justify-center border-b border-slate-900">
       {/* Dynamic Background with Grid Overlay & Glow */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <Image 
           src={bgImage} 
-          alt={title} 
-          className="w-full h-full object-cover opacity-25 scale-105 filter blur-[1px]"
+          alt={title}
+          fill
+          priority
+          className="object-cover opacity-25 scale-105 blur-[1px]"
         />
         {/* Radial color glow and linear gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950 to-slate-950"></div>

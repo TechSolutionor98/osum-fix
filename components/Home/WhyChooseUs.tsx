@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -76,10 +77,12 @@ export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
           <div className="relative">
             {/* Live CMS Image */}
             <div className="aspect-[4/3] rounded-2xl overflow-hidden relative shadow-2xl bg-slate-100">
-              <img 
+              <Image 
                 src={teamImage} 
                 alt={teamImageAlt} 
-                className="w-full h-full object-cover object-top"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
               />
             </div>
 

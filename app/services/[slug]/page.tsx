@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getCmsVal } from "@/lib/api-helper";
 import { getPublishedContent } from "@/lib/cms-service";
 export const dynamic = 'force-dynamic';
@@ -69,7 +70,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -367,7 +368,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -671,7 +672,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -979,7 +980,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -1287,7 +1288,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -1594,7 +1595,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -1897,7 +1898,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -2198,7 +2199,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -2506,7 +2507,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -2809,7 +2810,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5">
                   <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                   </div>
                 </div>
               </div>
@@ -3105,7 +3106,7 @@ export default async function ServiceDetailPage({
                 
                 {/* Keep Banner Image Placeholder */}
                 <div className="aspect-[21/9] bg-slate-200 rounded-3xl overflow-hidden relative shadow-md">
-                  <img src={t("/images/service-detail-placeholder.jpg")} className="w-full h-full object-cover" alt={t("Service Detail Image")} />
+                  <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                 </div>
 
                 <div className="space-y-12">

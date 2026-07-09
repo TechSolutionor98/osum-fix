@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import { getCmsVal } from "@/lib/api-helper";
 
@@ -35,13 +36,13 @@ export default function WhoWeAre({ cms }: WhoWeAreProps) {
           <div className="grid grid-cols-2 gap-4 relative">
             <div className="absolute -inset-4 bg-slate-100 rounded-[3rem] -z-10 transform rotate-3"></div>
             <div className="space-y-4 pt-10">
-              <div className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
-                <img src={t("/images/about-1.jpg")} alt="Technician working" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <div className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg relative">
+                <Image src={t("/images/about-1.jpg")} alt="Technician working" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
             <div className="space-y-4">
-              <div className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
-                <img src={t("/images/about-2.jpg")} alt="Electrician at work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <div className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg relative">
+                <Image src={t("/images/about-2.jpg")} alt="Electrician at work" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
           </div>

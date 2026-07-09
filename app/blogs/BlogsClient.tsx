@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import {
@@ -117,10 +118,12 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
                   className="bg-white rounded-3xl overflow-hidden border border-slate-150 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group"
                 >
                   <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 shrink-0">
-                    <img
+                    <Image
                       src={blog.coverImage || "/images/finalhero.png"}
                       alt={blog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <span className="absolute top-4 left-4 bg-[var(--primary)] text-white px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm">
                       {blog.category || "General"}

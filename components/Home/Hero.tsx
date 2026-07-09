@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, PhoneCall } from "lucide-react";
@@ -65,9 +66,15 @@ export default function Hero({ cms }: HeroProps) {
 
   return (
     <section
-      className="relative h-[500px] md:h-[550px] flex items-center overflow-hidden pt-16 bg-slate-900 bg-cover bg-center"
-      style={{ backgroundImage: `url('${heroBgImage}')` }}
+      className="relative h-[500px] md:h-[550px] flex items-center overflow-hidden pt-16 bg-slate-900"
     >
+      <Image
+        src={heroBgImage}
+        alt="Hero Background"
+        fill
+        priority
+        className="object-cover z-0"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="max-w-2xl text-left">

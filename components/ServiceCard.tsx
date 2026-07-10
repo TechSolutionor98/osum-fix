@@ -15,7 +15,7 @@ interface ServiceCardProps {
 export default function ServiceCard({ title, description, slug, icon, features, image, isWide }: ServiceCardProps) {
   if (isWide) {
     return (
-      <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-[#FBFCFF] rounded-none p-8 shadow-sm border border-slate-200 transition-all duration-300 flex flex-col w-full">
+      <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-white rounded-none p-8 shadow-sm border border-slate-200 transition-all duration-300 flex flex-col w-full">
         {image && (
           <div className="w-full mb-6 flex justify-center">
             <Image src={image} alt="Service Image" width={800} height={500} className="w-full h-auto object-contain" />
@@ -56,7 +56,7 @@ export default function ServiceCard({ title, description, slug, icon, features, 
   }
 
   return (
-    <div className="bg-[#FBFCFF] rounded-none p-8 shadow-sm border border-slate-200 transition-all duration-300 flex flex-col h-full">
+    <div className="bg-white rounded-none p-8 shadow-sm border border-slate-200 transition-all duration-300 flex flex-col h-full">
       {image && (
         <div className="w-full mb-6 flex justify-center">
           <Image src={image} alt="Service Image" width={600} height={400} className="w-full h-auto object-contain" />

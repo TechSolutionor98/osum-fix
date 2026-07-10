@@ -92,8 +92,7 @@ export default async function ServicesPage() {
       slug: "handyman-services",
       icon: <Wrench size={24} />,
       features: [t("General Repairs"), t("Mounting & Fixing"), t("Assembly Work"), t("Minor Fixes")],
-      image: t("/images/handyman-services.jpg"),
-      isWide: true
+      image: t("/images/handyman-services.jpg")
     }
   ];
 

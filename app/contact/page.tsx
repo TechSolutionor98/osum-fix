@@ -90,8 +90,8 @@ export default function ContactPage() {
                     <div>
                       <h4 className="text-xl font-bold text-[var(--dark)] mb-2">Office Address</h4>
                       <p className="text-slate-600 leading-relaxed">
-                        Office 405, Business Bay,<br />
-                        Dubai, United Arab Emirates
+                        office NO4-173 Al Khabeesi Building,<br />
+                        Deira Dubai, UAE
                       </p>
                     </div>
                   </div>
@@ -113,8 +113,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-[var(--dark)] mb-2">Email</h4>
-                      <p className="text-slate-600">info@osumfix.ae</p>
-                      <p className="text-slate-600">support@osumfix.ae</p>
+                      <p className="text-slate-600">work@osumfix.com</p>
+                     
                     </div>
                   </div>
                 </div>
@@ -243,12 +243,18 @@ export default function ContactPage() {
               </div>
             )}
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <div className="mt-24 w-full h-[400px] bg-slate-200 rounded-3xl overflow-hidden relative shadow-inner">
-              <div className="absolute inset-0 flex items-center justify-center flex-col text-slate-400">
-                <MapPin size={48} className="mb-4 text-slate-300" />
-                <span className="font-medium">Google Map Integration Placeholder</span>
-              </div>
+              <iframe 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }}
+                src="https://maps.google.com/maps?q=Al%20Khabeesi%20Building%20Deira%20Dubai%20UAE&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                allowFullScreen={true} 
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              ></iframe>
             </div>
           </div>
         </section>

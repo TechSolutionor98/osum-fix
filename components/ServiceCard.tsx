@@ -1,22 +1,26 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2, Calendar } from "lucide-react";
 
 interface ServiceCardProps {
-  title: string;
-  description: string;
+  title: string | any;
+  description: string | any;
   slug: string;
   icon: React.ReactNode;
-  features?: string[];
+  features?: any[];
+  image?: string | any;
   isWide?: boolean;
 }
 
-export default function ServiceCard({ title, description, slug, icon, features, isWide }: ServiceCardProps) {
+export default function ServiceCard({ title, description, slug, icon, features, image, isWide }: ServiceCardProps) {
   if (isWide) {
     return (
       <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-[#FBFCFF] rounded-none p-8 shadow-sm border border-slate-200 transition-all duration-300 flex flex-col w-full">
-        <div className="w-12 h-12 rounded bg-slate-100 text-[var(--primary)] flex items-center justify-center mb-6">
-          {icon}
-        </div>
+        {image && (
+          <div className="w-full mb-6 flex justify-center">
+            <Image src={image} alt="Service Image" width={800} height={500} className="w-full h-auto object-contain" />
+          </div>
+        )}
         <h3 className="text-xl font-bold text-[var(--primary)] mb-3">
           {title}
         </h3>
@@ -53,9 +57,11 @@ export default function ServiceCard({ title, description, slug, icon, features, 
 
   return (
     <div className="bg-[#FBFCFF] rounded-none p-8 shadow-sm border border-slate-200 transition-all duration-300 flex flex-col h-full">
-      <div className="w-12 h-12 rounded bg-slate-100 text-[var(--primary)] flex items-center justify-center mb-6">
-        {icon}
-      </div>
+      {image && (
+        <div className="w-full mb-6 flex justify-center">
+          <Image src={image} alt="Service Image" width={600} height={400} className="w-full h-auto object-contain" />
+        </div>
+      )}
       <h3 className="text-xl font-bold text-[var(--primary)] mb-3">
         {title}
       </h3>

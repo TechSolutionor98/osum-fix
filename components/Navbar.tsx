@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Zap, Droplets, Wind, Paintbrush, Hammer, Wrench, Grid, Layout, Layers } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -16,16 +16,16 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { name: "AC Work", href: "/services/ac-work" },
-  { name: "Electrical Work", href: "/services/electrical-work" },
-  { name: "Plumbing Work", href: "/services/plumbing-work" },
-  { name: "Painting Work", href: "/services/painting-work" },
-  { name: "Masonry Work", href: "/services/masonry-work" },
-  { name: "Carpentry Work", href: "/services/carpentry-work" },
-  { name: "Steel Fixing", href: "/services/steel-fixing" },
-  { name: "Interior Designing", href: "/services/interior-designing" },
-  { name: "Ceiling & Gypsum", href: "/services/ceiling-gypsum" },
-  { name: "Handyman Services", href: "/services/handyman-services" },
+  { name: "AC Work", description: "Complete AC servicing and repairs", icon: <Wind size={20} />, href: "/services/ac-work" },
+  { name: "Electrical Work", description: "Safe wiring and fixtures installation", icon: <Zap size={20} />, href: "/services/electrical-work" },
+  { name: "Plumbing Work", description: "Leak repair and sanitary fixtures", icon: <Droplets size={20} />, href: "/services/plumbing-work" },
+  { name: "Painting Work", description: "Premium interior and exterior painting", icon: <Paintbrush size={20} />, href: "/services/painting-work" },
+  { name: "Masonry Work", description: "Bricklaying, plastering, and tiling", icon: <Layers size={20} />, href: "/services/masonry-work" },
+  { name: "Carpentry Work", description: "Bespoke wood installations & repairs", icon: <Hammer size={20} />, href: "/services/carpentry-work" },
+  { name: "Steel Fixing", description: "Concrete reinforcement services", icon: <Grid size={20} />, href: "/services/steel-fixing" },
+  { name: "Interior Designing", description: "Detailed 2D space layouts & designs", icon: <Layout size={20} />, href: "/services/interior-designing" },
+  { name: "Ceiling & Gypsum", description: "Modern false ceiling installations", icon: <Layers size={20} />, href: "/services/ceiling-gypsum" },
+  { name: "Handyman Services", description: "Responsive maintenance solutions", icon: <Wrench size={20} />, href: "/services/handyman-services" },
 ];
 
 export default function Navbar() {
@@ -92,16 +92,26 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden"
+                        className="absolute left-1/2 -translate-x-[40%] mt-2 w-[850px] xl:w-[950px] bg-white rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden"
                       >
-                        <div className="py-2">
+                        <div className="p-5 grid grid-cols-3 gap-x-3 gap-y-1">
                           {serviceLinks.map((service) => (
                             <Link
                               key={service.name}
                               href={service.href}
-                              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[var(--primary)]"
+                              className="group flex items-start p-2.5 rounded-xl hover:bg-[var(--primary)] transition-all duration-300"
                             >
-                              {service.name}
+                              <div className="w-11 h-11 rounded-lg bg-slate-50 flex items-center justify-center text-[var(--primary)] mr-3 flex-shrink-0 group-hover:bg-white/20 group-hover:text-white transition-colors border border-slate-100 group-hover:border-transparent">
+                                {service.icon}
+                              </div>
+                              <div className="flex flex-col">
+                                <h4 className="text-slate-800 font-semibold text-sm group-hover:text-white transition-colors leading-tight mb-0.5">
+                                  {service.name}
+                                </h4>
+                                <p className="text-slate-500 text-[11px] leading-snug group-hover:text-white/80 transition-colors line-clamp-1">
+                                  {service.description}
+                                </p>
+                              </div>
                             </Link>
                           ))}
                         </div>
@@ -168,9 +178,19 @@ export default function Navbar() {
                           key={service.name}
                           href={service.href}
                           onClick={() => setIsOpen(false)}
-                          className="block px-3 py-2 rounded-md text-sm font-medium text-slate-500 hover:text-[var(--primary)] hover:bg-slate-50"
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-[var(--primary)] group transition-colors"
                         >
-                          {service.name}
+                          <div className="w-9 h-9 rounded bg-slate-100 flex items-center justify-center text-[var(--primary)] flex-shrink-0 group-hover:bg-white/20 group-hover:text-white border border-slate-100 group-hover:border-transparent">
+                            {service.icon}
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-sm font-semibold text-slate-700 group-hover:text-white leading-tight">
+                              {service.name}
+                            </span>
+                            <span className="text-[11px] text-slate-500 group-hover:text-white/80 line-clamp-1 mt-0.5">
+                              {service.description}
+                            </span>
+                          </div>
                         </Link>
                       ))}
                     </div>

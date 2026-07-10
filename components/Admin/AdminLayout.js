@@ -155,14 +155,14 @@ export default function AdminLayout({ children, title = '' }) {
 
       {/* Sidebar */}
       <aside className="w-full md:w-64 flex-shrink-0 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
-        <div className="mb-2 -mt-4 flex justify-center">
+        <div className="mb-6 flex justify-center">
           <Link href="/admin" className="inline-block group no-underline">
             <Image 
               src="/images/bgremove.png" 
               alt="OsumFix Logo" 
-              width={250} 
-              height={85} 
-              className="h-16 sm:h-20 w-auto object-contain scale-110"
+              width={280} 
+              height={96} 
+              className="h-20 sm:h-24 w-auto object-contain scale-110"
               priority
             />
           </Link>

@@ -242,20 +242,21 @@ export default function ContactPage() {
               </div>
             )}
 
-            {/* Map */}
-            <div className="mt-24 w-full h-[400px] bg-slate-200 rounded-3xl overflow-hidden relative shadow-inner">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }}
-                src="https://maps.google.com/maps?q=Al%20Khabeesi%20Building%20Deira%20Dubai%20UAE&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-                allowFullScreen={true} 
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-              ></iframe>
-            </div>
           </div>
+        </section>
+
+        {/* Full-width Map Section */}
+        <section className="w-full h-[500px] md:h-[700px] relative">
+          <iframe 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }}
+            src="https://maps.google.com/maps?q=Al%20Khabeesi%20Building%20Deira%20Dubai%20UAE&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+            allowFullScreen={true} 
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-full"
+          ></iframe>
         </section>
       </main>
       <Footer />

@@ -122,7 +122,7 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-sm">
                 <MapPin className="text-[var(--secondary)] shrink-0 mt-0.5" size={18} />
                 <span>
-                Dubai, United Arab Emirates
+                office NO4-173 Al Khabeesi Building,Deira Dubai, UAE
                 </span>
               </li>
               <li className="flex items-center gap-3 text-sm">
@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-white">
-            &copy; {currentYear} OsumFix Technical Services LLC. All rights reserved.
+            &copy; {currentYear} Qemat Al Nawras Technical Services LLC.
           </p>
           <div className="flex gap-6 text-sm text-white">
             <Link href="/privacy-policy" className="hover:text-[var(--secondary)] transition-colors">

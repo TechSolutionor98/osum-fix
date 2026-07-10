@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Wrench } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -43,24 +44,21 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-white py-6"
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-white py-3"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-[var(--primary)] text-white p-2 rounded-lg group-hover:bg-[var(--secondary)] transition-colors">
-              <Wrench size={24} />
-            </div>
-            <div>
-              <span className="font-bold text-xl tracking-tight text-[var(--dark)] block">
-                OsumFix
-              </span>
-              <span className="text-[0.65rem] font-semibold text-[var(--secondary)] uppercase tracking-wider block -mt-1">
-                Technical Services
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group -my-3">
+            <Image 
+              src="/images/bgremove.png" 
+              alt="OsumFix Logo" 
+              width={280} 
+              height={96} 
+              className="h-20 sm:h-24 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Menu */}

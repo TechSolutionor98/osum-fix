@@ -155,19 +155,16 @@ export default function AdminLayout({ children, title = '' }) {
 
       {/* Sidebar */}
       <aside className="w-full md:w-64 flex-shrink-0 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
-        <div className="mb-6 flex justify-center">
-          <Link href="/admin" className="flex items-center gap-2 group justify-center no-underline">
-            <div className="bg-[#20507C] text-white p-2 rounded-lg transition-colors">
-              <Wrench size={22} />
-            </div>
-            <div className="text-left">
-              <span className="font-bold text-lg tracking-tight text-[#20507C] block font-sans leading-none">
-                OsumFix
-              </span>
-              <span className="text-[0.62rem] font-bold text-[#E46704] uppercase tracking-wider block font-sans leading-none mt-0.5">
-                Technical Services
-              </span>
-            </div>
+        <div className="mb-2 -mt-4 flex justify-center">
+          <Link href="/admin" className="inline-block group no-underline">
+            <Image 
+              src="/images/bgremove.png" 
+              alt="OsumFix Logo" 
+              width={250} 
+              height={85} 
+              className="h-16 sm:h-20 w-auto object-contain scale-110"
+              priority
+            />
           </Link>
         </div>
         <hr className='bg-gray-400 text-gray-400 w-full h-[2px] mb-7' />

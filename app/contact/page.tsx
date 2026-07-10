@@ -82,46 +82,45 @@ export default function ContactPage() {
                   description="Have a question or need emergency assistance? Contact our team anytime."
                 />
 
-                <div className="space-y-8 mt-10">
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[var(--primary)] shrink-0">
-                      <MapPin size={28} />
+                <div className="space-y-6 mt-10">
+                  <div className="flex gap-5">
+                    <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] shrink-0 shadow-sm border border-[var(--primary)]/10">
+                      <MapPin size={24} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-[var(--dark)] mb-2">Office Address</h4>
-                      <p className="text-slate-600 leading-relaxed">
+                      <h4 className="text-lg font-semibold text-[var(--dark)] mb-1">Office Address</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
                         office NO4-173 Al Khabeesi Building,<br />
                         Deira Dubai, UAE
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[var(--primary)] shrink-0">
-                      <Phone size={28} />
+                  <div className="flex gap-5">
+                    <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] shrink-0 shadow-sm border border-[var(--primary)]/10">
+                      <Phone size={24} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-[var(--dark)] mb-2">Phone</h4>
-                      <p className="text-slate-600 mb-1">055 1519540 / 056 7910188</p>
-                      <p className="text-sm text-slate-500">Available 24/7 for emergencies</p>
+                      <h4 className="text-lg font-semibold text-[var(--dark)] mb-1">Phone</h4>
+                      <p className="text-slate-600 text-sm mb-0.5">055 1519540 / 056 7910188</p>
+                      <p className="text-xs text-slate-500">Available 24/7 for emergencies</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-[var(--primary)] shrink-0">
-                      <Mail size={28} />
+                  <div className="flex gap-5">
+                    <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] shrink-0 shadow-sm border border-[var(--primary)]/10">
+                      <Mail size={24} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-[var(--dark)] mb-2">Email</h4>
-                      <p className="text-slate-600">work@osumfix.com</p>
-                     
+                      <h4 className="text-lg font-semibold text-[var(--dark)] mb-1">Email</h4>
+                      <p className="text-slate-600 text-sm">work@osumfix.com</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Contact Form */}
-              <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm">
+              <div className="bg-slate-50 p-8 rounded-lg border border-slate-100 shadow-sm">
                 <h3 className="text-2xl font-bold text-[var(--dark)] mb-6">Send Us a Message</h3>
                 
                 {submitted ? (
@@ -144,8 +143,8 @@ export default function ContactPage() {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                          placeholder="John Doe"
+                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          placeholder="Enter Your Name"
                         />
                       </div>
                       <div>
@@ -155,8 +154,8 @@ export default function ContactPage() {
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                          placeholder="+971 50 000 0000"
+                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          placeholder="Enter Your Phone Number"
                         />
                       </div>
                     </div>
@@ -166,7 +165,7 @@ export default function ContactPage() {
                         <select 
                           value={formData.serviceRequired}
                           onChange={(e) => setFormData({...formData, serviceRequired: e.target.value})}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
                         >
                           <option value="">Select a service</option>
                           <option value="ac-work">AC Work</option>
@@ -188,8 +187,8 @@ export default function ContactPage() {
                           type="text"
                           value={formData.propertyLocation}
                           onChange={(e) => setFormData({...formData, propertyLocation: e.target.value})}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                          placeholder="e.g., Jumeirah, Business Bay"
+                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          placeholder="Enter Property Location"
                         />
                       </div>
                     </div>
@@ -199,8 +198,8 @@ export default function ContactPage() {
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
-                        placeholder="john@example.com"
+                        className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                        placeholder="Enter Your Email Address"
                       />
                     </div>
                     <div>
@@ -210,14 +209,14 @@ export default function ContactPage() {
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white resize-none"
-                        placeholder="How can we help you?"
+                        className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white resize-none"
+                        placeholder="Enter Your Message..."
                       ></textarea>
                     </div>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white font-semibold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                      className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white font-semibold py-4 rounded-md transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
                     >
                       {isSubmitting ? "Sending..." : "Send Message"} <Send size={18} />
                     </button>

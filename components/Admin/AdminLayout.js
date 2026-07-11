@@ -23,7 +23,8 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/media",
     "/admin/activity",
     "/admin/blogs",
-    "/admin/appointments"
+    "/admin/appointments",
+    "/admin/quote-submissions"
   ],
   client: [
     "/admin",
@@ -36,7 +37,8 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/redirects",
     "/admin/media",
     "/admin/blogs",
-    "/admin/appointments"
+    "/admin/appointments",
+    "/admin/quote-submissions"
   ],
   blog: [
     "/admin",
@@ -107,6 +109,7 @@ export default function AdminLayout({ children, title = '' }) {
   };
 
   const navLinks = [
+    { href: "/admin/quote-submissions", label: "Quote Requests", group: "Management" },
     { href: "/admin/applications", label: "Job Applications", group: "Management", hidden: true },
     { href: "/admin/contact-submissions", label: "Contact Submissions", group: "Management" },
     { href: "/admin/reviews", label: "Reviews", group: "Management", hidden: true },

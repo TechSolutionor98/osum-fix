@@ -13,10 +13,49 @@ export default function QuoteForm({ address, setAddress }: { address?: string, s
     "Interior Designing", "Ceiling & Gypsum", "Handyman Services"
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real app, this would send data to an API
-    setSubmitted(true);
+    if (!selectedService) {
+      alert("Please select a service required.");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      firstName: formData.get("firstName") as string,
+      lastName: formData.get("lastName") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      service: selectedService,
+      location: address || "",
+      propertyType: formData.get("propertyType") as string,
+      details: formData.get("details") as string,
+    };
+
+    try {
+      const res = await fetch("/api/quote-submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        form.reset();
+        setSelectedService("");
+        if (setAddress) setAddress("");
+      } else {
+        alert("Failed to submit request. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -62,25 +101,26 @@ export default function QuoteForm({ address, setAddress }: { address?: string, s
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">First Name *</label>
-              <input type="text" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your first name" />
+              <input type="text" name="firstName" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your first name" />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">Last Name *</label>
-              <input type="text" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your last name" />
+              <input type="text" name="lastName" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your last name" />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">Email Address *</label>
-              <input type="email" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your email address" />
+              <input type="email" name="email" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your email address" />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
-              <input type="tel" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your phone number" />
+              <input type="tel" name="phone" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Enter your phone number" />
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-2">Service Location (Dubai Community) *</label>
               <input 
                 type="text" 
                 required 
+                name="location"
                 value={address || ""}
                 onChange={(e) => setAddress && setAddress(e.target.value)}
                 className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" 
@@ -120,7 +160,7 @@ export default function QuoteForm({ address, setAddress }: { address?: string, s
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-2">Property Type *</label>
-              <select required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700">
+              <select name="propertyType" required className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700">
                 <option value="">Select property type</option>
                 <option value="apartment">Apartment</option>
                 <option value="villa">Villa / Townhouse</option>
@@ -130,14 +170,14 @@ export default function QuoteForm({ address, setAddress }: { address?: string, s
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-2">Any details to share? *</label>
-              <textarea required rows={4} className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Please describe the issue or project in detail..."></textarea>
+              <textarea name="details" required rows={4} className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Please describe the issue or project in detail..."></textarea>
             </div>
           </div>
         </div>
 
         <div className="pt-6 border-t border-slate-100">
-          <button type="submit" className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-8 py-4.5 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
-            <Send size={20} /> Request Your Free Quote
+          <button disabled={isSubmitting} type="submit" className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-8 py-4.5 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
+            {isSubmitting ? "Submitting..." : <><Send size={20} /> Request Your Free Quote</>}
           </button>
           
           <div className="text-center mt-6 space-y-3">

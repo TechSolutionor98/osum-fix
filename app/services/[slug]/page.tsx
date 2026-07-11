@@ -1635,8 +1635,8 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-          {/* Section 3: Our Masonry & Civil Services (White Background) */}
-          <section className="py-20 bg-white">
+          {/* Section 3: Our Masonry & Civil Services (Premium Alternating Layout) */}
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Expertise")}</span>
@@ -1644,41 +1644,122 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 mt-4">{t("We provide complete masonry solutions for homes, villas, apartments, offices, retail spaces, and commercial buildings.")}</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                {[
-                  {
-                    title: t("Brick & Block Work"),
-                    items: [t("Brick Wall Construction"), t("Block Wall Installation"), t("Boundary Wall Construction"), t("Partition Wall Installation"), t("Wall Extensions")]
-                  },
-                  {
-                    title: t("Plastering Services"),
-                    items: [t("Internal Wall Plastering"), t("External Wall Plastering"), t("Ceiling Plaster Repair"), t("Crack Filling & Wall Repair"), t("Surface Leveling")]
-                  },
-                  {
-                    title: t("Tile Install & Repair"),
-                    items: [t("Floor Tile Installation"), t("Wall Tile Installation"), t("Tile Replacement"), t("Bathroom Tile Install"), t("Kitchen Tile Install"), t("Tile Grouting & Finishing")]
-                  },
-                  {
-                    title: t("Concrete Works"),
-                    items: [t("Concrete Repair"), t("Floor Screeding"), t("Concrete Slab Repair"), t("Cement Construction"), t("Minor Civil Repairs")]
-                  },
-                  {
-                    title: t("Renovation Services"),
-                    items: [t("Bathroom Renovation"), t("Kitchen Renovation"), t("Wall Alterations"), t("Door & Window Adjustments"), t("Structural Repair (Non-Major)")]
-                  }
-                ].map((cat, idx) => (
-                  <div key={idx} className="bg-slate-50 p-6 rounded-3xl border border-slate-100/80 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow">
-                    <h4 className="font-bold text-[var(--dark)] text-base mb-6 pb-2 border-b border-slate-200">{cat.title}</h4>
-                    <ul className="space-y-4 flex-grow">
-                      {cat.items.map((item, sIdx) => (
-                        <li key={sIdx} className="flex gap-2.5 text-slate-700 text-xs sm:text-sm font-medium items-start">
-                          <CheckCircle2 size={14} className="text-[var(--primary)] shrink-0 mt-0.5" />
-                          <span>{item}</span>
+              <div className="space-y-16 lg:space-y-24">
+                {/* 1 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">01</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Brick & Block Work")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Brick Wall Construction"), t("Block Wall Installation"), t("Boundary Wall Construction"), t("Partition Wall Installation"), t("Wall Extensions")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                ))}
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Brick & Block Work")} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Plastering Services")} />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">02</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Plastering Services")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Internal Wall Plastering"), t("External Wall Plastering"), t("Ceiling Plaster Repair"), t("Crack Filling & Wall Repair"), t("Surface Leveling")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 3 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">03</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Tile Install & Repair")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Floor Tile Installation"), t("Wall Tile Installation"), t("Tile Replacement"), t("Bathroom Tile Install"), t("Kitchen Tile Install"), t("Tile Grouting & Finishing")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Tile Install & Repair")} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Concrete Works")} />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">04</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Concrete Works")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Concrete Repair"), t("Floor Screeding"), t("Concrete Slab Repair"), t("Cement Construction"), t("Minor Civil Repairs")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 5 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">05</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Renovation Services")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Bathroom Renovation"), t("Kitchen Renovation"), t("Wall Alterations"), t("Door & Window Adjustments"), t("Structural Repair (Non-Major)")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Renovation Services")} />
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </section>
@@ -1734,25 +1815,34 @@ export default async function ServiceDetailPage({
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">{t("Our Masonry Service Process")}</h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {[
-                  { step: t("1"), title: t("Site Inspection"), desc: t("We assess the project and understand your detailed requirements.") },
-                  { step: t("2"), title: t("Material Planning"), desc: t("We recommend suitable high-quality materials based on budget.") },
-                  { step: t("3"), title: t("Surface Prep"), desc: t("Existing surfaces are cleaned, repaired, and leveled for base prep.") },
-                  { step: t("4"), title: t("Execution"), desc: t("Skilled masons complete the brick, plaster, or tile work with precision.") },
-                  { step: t("5"), title: t("Quality Check"), desc: t("We inspect every detail to ensure a clean, smooth, and durable finish.") },
-                  { step: t("6"), title: t("Cleaning & Handover"), desc: t("The work area is cleaned thoroughly before final handover.") }
-                ].map((p, idx) => (
-                  <div key={idx} className="bg-white p-5 rounded-3xl border border-slate-100/80 shadow-sm text-center flex flex-col justify-between hover:shadow-md transition-shadow">
-                    <div>
-                      <span className="w-8 h-8 rounded-full bg-blue-50 text-[var(--primary)] text-sm font-bold flex items-center justify-center mx-auto mb-4 border border-blue-100">
-                        {p.step}
-                      </span>
-                      <h4 className="font-bold text-[var(--dark)] text-xs sm:text-sm mb-2">{p.title}</h4>
-                    </div>
-                    <p className="text-slate-500 text-[11px] leading-relaxed mt-2">{p.desc}</p>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-7 xl:col-span-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {[
+                      { step: t("1"), title: t("Site Inspection"), desc: t("We assess the project and understand your detailed requirements.") },
+                      { step: t("2"), title: t("Material Planning"), desc: t("We recommend suitable high-quality materials based on budget.") },
+                      { step: t("3"), title: t("Surface Prep"), desc: t("Existing surfaces are cleaned, repaired, and leveled for base prep.") },
+                      { step: t("4"), title: t("Execution"), desc: t("Skilled masons complete the brick, plaster, or tile work with precision.") },
+                      { step: t("5"), title: t("Quality Check"), desc: t("We inspect every detail to ensure a clean, smooth, and durable finish.") },
+                      { step: t("6"), title: t("Cleaning & Handover"), desc: t("The work area is cleaned thoroughly before final handover.") }
+                    ].map((p, idx) => (
+                      <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-100/80 shadow-sm text-center flex flex-col justify-between hover:shadow-md transition-shadow h-full">
+                        <div>
+                          <span className="w-8 h-8 rounded-full bg-blue-50 text-[var(--primary)] text-sm font-bold flex items-center justify-center mx-auto mb-4 border border-blue-100">
+                            {p.step}
+                          </span>
+                          <h4 className="font-bold text-[var(--dark)] text-sm mb-2">{p.title}</h4>
+                        </div>
+                        <p className="text-slate-500 text-xs leading-relaxed mt-2">{p.desc}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+                <div className="lg:col-span-5 xl:col-span-4">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
+                  </div>
+                </div>
               </div>
             </div>
           </section>

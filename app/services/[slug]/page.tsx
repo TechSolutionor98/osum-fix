@@ -6,24 +6,24 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import Link from "next/link";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  Shield, 
-  Clock, 
-  Wrench, 
-  Wind, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  Shield,
+  Clock,
+  Wrench,
+  Wind,
   Zap,
   Droplets,
   Paintbrush,
   Palette,
   Hammer,
-  Check, 
-  AlertTriangle, 
-  Layers, 
-  Sparkles, 
-  Layout, 
-  Phone, 
+  Check,
+  AlertTriangle,
+  Layers,
+  Sparkles,
+  Layout,
+  Phone,
   Calendar,
   ChevronDown
 } from "lucide-react";
@@ -36,7 +36,7 @@ export default async function ServiceDetailPage({
   const { slug } = await params;
   const cms = await getPublishedContent(`/services/${slug}`);
   const t = (val: any) => getCmsVal(cms, val);
-  
+
   // Format title from slug
   const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const formattedTitle = title.endsWith('Services') || title === 'Amc' ? title : `${title} Services`;
@@ -48,29 +48,45 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="AC Repair & Maintenance Services" 
+          <PageBanner
+            title="AC Repair & Maintenance Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("AC Work"), href: "/services/ac-work" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("AC Repair & Maintenance Services")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Professional AC Repair & Maintenance Services in Dubai & UAE")}</h2>
-                  <p className="text-slate-600 leading-relaxed text-base">{t("Your air conditioning system works harder than almost any other appliance in the UAE climate. Without regular maintenance, dust buildup, clogged filters, low refrigerant levels, and worn-out components can reduce cooling performance, increase electricity bills, and shorten the life of your AC.")}</p>
-                  <p className="text-slate-600 leading-relaxed text-base">
-                    {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide reliable AC repair, maintenance, servicing, and installation solutions for homes, apartments, villas, offices, retail stores, and commercial properties. Our certified technicians use professional equipment and proven service procedures to keep your AC system running efficiently throughout the year.")}</p>
-                  <p className="text-slate-600 leading-relaxed text-base">{t("Whether your AC is not cooling, making unusual noises, leaking water, or simply requires routine maintenance, our team is ready to help with fast response times and quality workmanship.")}</p>
+                  <h2 className="text-4xl md:text-5xl font-extrabold text-[var(--dark)] tracking-tight leading-[1.1]">{t("Professional AC Repair & Maintenance in Dubai")}</h2>
+                  <p className="text-slate-600 leading-relaxed text-lg">{t("Your air conditioning system works harder than almost any other appliance in the UAE climate. Regular maintenance prevents unexpected breakdowns and keeps energy bills low.")}</p>
+                  <p className="text-slate-600 leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, our certified technicians use professional equipment and proven procedures for homes, villas, and commercial properties. From basic servicing to complex compressor repairs, we guarantee fast response times and absolute quality.") }}></p>
+
+                  <div className="pt-4 flex flex-wrap gap-4">
+                    <Link href="/contact" className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-md flex items-center gap-2">
+                      Book AC Service <ArrowRight size={18} />
+                    </Link>
+                    <a href="tel:+971551519540" className="bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-3.5 rounded-full font-bold transition-all flex items-center gap-2">
+                      <Phone size={18} /> {t("Call Now")}
+                    </a>
+                  </div>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/ac_hero.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Professional AC Repair Technician")} priority />
+                    <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50 flex items-center gap-4 transform transition-transform duration-500 group-hover:-translate-y-2">
+                      <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shrink-0">
+                        <Shield size={24} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-[var(--dark)]">{t("Guaranteed Service")}</h4>
+                        <p className="text-sm text-slate-500">{t("Certified Professionals")}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -88,76 +104,135 @@ export default async function ServiceDetailPage({
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
-                  { title: t("Experienced & Certified"), desc: t("Our skilled professionals have extensive experience servicing all major AC brands and cooling systems."), icon: <Wrench size={28} className="text-white" />, gradient: "from-blue-500 to-indigo-600" },
-                  { title: t("Fast Response Across Dubai"), desc: t("We understand how uncomfortable AC problems can be. We aim to provide quick appointments and efficient service."), icon: <Clock size={28} className="text-white" />, gradient: "from-cyan-500 to-blue-600" },
-                  { title: t("Honest & Transparent Pricing"), desc: t("No hidden charges. We explain the issue clearly and agree on the cost before starting any repair work."), icon: <Shield size={28} className="text-white" />, gradient: "from-teal-500 to-emerald-600" },
-                  { title: t("Advanced Equipment"), desc: t("We use professional testing tools and modern servicing equipment to ensure accurate diagnosis and effective repairs."), icon: <Layers size={28} className="text-white" />, gradient: "from-purple-500 to-indigo-600" },
-                  { title: t("Quality Workmanship"), desc: t("Every service is completed with absolute attention to detail to maximize cooling performance and system reliability."), icon: <Sparkles className="text-white" />, gradient: "from-pink-500 to-rose-600" }
+                  { title: t("Experienced & Certified"), desc: t("Our skilled professionals have extensive experience servicing all major AC brands and cooling systems."), icon: <Wrench size={26} /> },
+                  { title: t("Fast Response Across Dubai"), desc: t("We understand how uncomfortable AC problems can be. We aim to provide quick appointments and efficient service."), icon: <Clock size={26} /> },
+                  { title: t("Honest & Transparent Pricing"), desc: t("No hidden charges. We explain the issue clearly and agree on the cost before starting any repair work."), icon: <Shield size={26} /> },
+                  { title: t("Advanced Equipment"), desc: t("We use professional testing tools and modern servicing equipment to ensure accurate diagnosis and effective repairs."), icon: <Layers size={26} /> },
+                  { title: t("Quality Workmanship"), desc: t("Every service is completed with absolute attention to detail to maximize cooling performance and system reliability."), icon: <Sparkles size={26} /> }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* Section 3: 14-Step Maintenance Process (White Background) */}
-          <section className="py-20 bg-white">
+          {/* Section 3: Our 3-Phase Maintenance Process */}
+          <section className="py-24 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center max-w-3xl mx-auto mb-16">
-                <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Method")}</span>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">{t("Our Complete AC Maintenance Service")}</h2>
-                <p className="text-slate-500 mt-4">{t("Regular maintenance helps prevent unexpected breakdowns while improving cooling efficiency and reducing energy consumption.")}</p>
+              <div className="text-center max-w-3xl mx-auto mb-20">
+                <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm mb-3 block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full inline-block">{t("Our Methodology")}</span>
+                <h2 className="text-3xl md:text-5xl font-extrabold text-[var(--dark)] tracking-tight">{t("Comprehensive 3-Phase AC Service")}</h2>
+                <p className="text-slate-500 mt-6 text-lg leading-relaxed">{t("We go beyond a simple wash. Our thorough maintenance process ensures your AC operates at peak efficiency, saving energy and preventing future breakdowns.")}</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { title: t("Complete System Inspection"), desc: t("Our technicians inspect the indoor and outdoor units to identify any signs of wear, damage, or performance issues.") },
-                  { title: t("Air Filter Cleaning"), desc: t("Dirty filters reduce airflow and cooling efficiency. We clean or replace filters whenever required.") },
-                  { title: t("Cooling Performance Testing"), desc: t("We measure cooling output to ensure your AC is delivering optimal performance.") },
-                  { title: t("Thermostat Inspection"), desc: t("We verify thermostat accuracy and proper temperature control.") },
-                  { title: t("Evaporator Coil Cleaning"), desc: t("Cleaning the evaporator improves airflow and increases cooling efficiency.") },
-                  { title: t("Condenser Inspection"), desc: t("Outdoor condenser units are checked for dirt, damage, and airflow restrictions.") },
-                  { title: t("Drain Line Cleaning"), desc: t("Blocked drain lines often cause water leakage. We inspect and clean the drainage system thoroughly.") },
-                  { title: t("Refrigerant Level Check"), desc: t("Low refrigerant can reduce cooling and damage the compressor. We inspect gas levels and recommend recharge if required.") },
-                  { title: t("Electrical Safety Inspection"), desc: t("We inspect wiring, terminals, breakers, capacitors, and electrical connections for safety and reliability.") },
-                  { title: t("Fan Motor Inspection"), desc: t("Both indoor and outdoor fan motors are tested for smooth operation.") },
-                  { title: t("Airflow Testing"), desc: t("We ensure balanced airflow throughout your rooms for maximum comfort.") },
-                  { title: t("Noise & Vibration Check"), desc: t("Any unusual sounds or vibrations are inspected to prevent future failures.") },
-                  { title: t("Final Performance Testing"), desc: t("Before completing the job, we perform a complete operational test to ensure everything is functioning correctly.") },
-                  { title: t("Service Report & Recommendations"), desc: t("Our technician explains the condition of your AC and recommends any future maintenance if needed.") }
-                ].map((step, idx) => (
-                  <div key={idx} className="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[var(--primary)] text-white text-sm font-bold flex items-center justify-center shrink-0 shadow-md">
-                      {idx + 1}
+              <div className="space-y-24">
+                {/* Phase 1 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">01</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Inspection & Diagnosis")}</h3>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-[var(--dark)] text-base mb-1">{step.title}</h4>
-                      <p className="text-slate-500 text-xs md:text-sm leading-relaxed">{step.desc}</p>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6">{t("Before we clean, we thoroughly inspect your system to identify any hidden faults or performance drops.")}</p>
+                    <ul className="space-y-4">
+                      {[
+                        t("Complete System Inspection (Indoor & Outdoor)"),
+                        t("Cooling Performance & Airflow Testing"),
+                        t("Thermostat Accuracy Check"),
+                        t("Electrical Connections & Safety Verification"),
+                        t("Refrigerant Level Check")
+                      ].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/ac_inspection.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("AC Inspection")} />
                     </div>
                   </div>
-                ))}
+                </div>
+
+                {/* Phase 2 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/ac_cleaning.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("AC Deep Cleaning")} />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">02</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Deep Cleaning & Optimization")}</h3>
+                    </div>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6">{t("We perform a comprehensive deep clean of all critical components to restore maximum cooling efficiency and air quality.")}</p>
+                    <ul className="space-y-4">
+                      {[
+                        t("Air Filter Cleaning & Replacement"),
+                        t("Evaporator Coil Deep Cleaning"),
+                        t("Condenser Coil Washing"),
+                        t("Drain Line Flushing to prevent leaks"),
+                        t("Fan Motor & Blade Cleaning")
+                      ].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Phase 3 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">03</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Final Testing & Handover")}</h3>
+                    </div>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6">{t("We never leave a job without ensuring everything works perfectly. We run complete performance tests to guarantee your comfort.")}</p>
+                    <ul className="space-y-4">
+                      {[
+                        t("Noise & Vibration Check"),
+                        t("Final Performance Testing"),
+                        t("Balanced Airflow Verification"),
+                        t("Detailed Service Report"),
+                        t("Maintenance Recommendations")
+                      ].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/ac_testing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("AC Final Testing")} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
 
-
-
-          {/* Section 5: Repairs & Sectors (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,187,226,0.06)_0%,transparent_60%)]"></div>
-            
+          {/* Section 5: Repairs & Sectors (Light Theme Accent block) */}
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Our Services")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("AC Repair Services We Provide")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Our technicians are equipped to diagnose and repair almost every common AC problem on the spot.")}</p>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("AC Repair Services We Provide")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Our technicians are equipped to diagnose and repair almost every common AC problem on the spot.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -166,25 +241,25 @@ export default async function ServiceDetailPage({
                     t("PCB Repair"), t("Electrical Fault Repair"), t("Airflow Problems"), t("Strange Noise Repair"),
                     t("Emergency AC Repair"), t("AC Installation"), t("AC Relocation"), t("AC Duct Inspection")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial AC Solutions")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We provide complete AC services for all sectors across Dubai. No project is too small or too large.")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial AC Solutions")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We provide complete AC services for all sectors across Dubai. No project is too small or too large.")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                   {[t("Apartments"), t("Villas"), t("Offices"), t("Restaurants"), t("Retail Shops"), t("Warehouses"), t("Commercial Buildings"), t("Hotels"), t("Clinics"), t("Schools")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -200,25 +275,34 @@ export default async function ServiceDetailPage({
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">{t("Our Service Process")}</h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                {[
-                  { step: t("1"), title: t("Book Appointment"), desc: t("Choose a convenient date and time.") },
-                  { step: t("2"), title: t("Professional Inspection"), desc: t("Our technician performs a complete system diagnosis.") },
-                  { step: t("3"), title: t("Detailed Explanation"), desc: t("We explain the issue and provide transparent pricing.") },
-                  { step: t("4"), title: t("Repair & Maintenance"), desc: t("Our team completes the work using quality tools.") },
-                  { step: t("5"), title: t("Final Testing"), desc: t("We thoroughly test your AC before leaving.") },
-                  { step: t("6"), title: t("Customer Satisfaction"), desc: t("We ensure your cooling system is operating at its best.") }
-                ].map((p, idx) => (
-                  <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-100/80 shadow-sm text-center flex flex-col justify-between hover:shadow-md transition-shadow">
-                    <div>
-                      <span className="w-8 h-8 rounded-full bg-blue-50 text-[var(--primary)] text-sm font-bold flex items-center justify-center mx-auto mb-4 border border-blue-100">
-                        {p.step}
-                      </span>
-                      <h4 className="font-bold text-[var(--dark)] text-sm mb-2">{p.title}</h4>
-                    </div>
-                    <p className="text-slate-500 text-xs leading-relaxed mt-2">{p.desc}</p>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-7 xl:col-span-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {[
+                      { step: t("1"), title: t("Book Appointment"), desc: t("Choose a convenient date and time.") },
+                      { step: t("2"), title: t("Professional Inspection"), desc: t("Our technician performs a complete system diagnosis.") },
+                      { step: t("3"), title: t("Detailed Explanation"), desc: t("We explain the issue and provide transparent pricing.") },
+                      { step: t("4"), title: t("Repair & Maintenance"), desc: t("Our team completes the work using quality tools.") },
+                      { step: t("5"), title: t("Final Testing"), desc: t("We thoroughly test your AC before leaving.") },
+                      { step: t("6"), title: t("Customer Satisfaction"), desc: t("We ensure your cooling system is operating at its best.") }
+                    ].map((p, idx) => (
+                      <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-100/80 shadow-sm text-center flex flex-col justify-between hover:shadow-md transition-shadow h-full">
+                        <div>
+                          <span className="w-8 h-8 rounded-full bg-blue-50 text-[var(--primary)] text-sm font-bold flex items-center justify-center mx-auto mb-4 border border-blue-100">
+                            {p.step}
+                          </span>
+                          <h4 className="font-bold text-[var(--dark)] text-sm mb-2">{p.title}</h4>
+                        </div>
+                        <p className="text-slate-500 text-xs leading-relaxed mt-2">{p.desc}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+                <div className="lg:col-span-5 xl:col-span-4">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border-4 border-white group">
+                    <Image src={t("/images/services/ac_workflow.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -255,33 +339,7 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-          {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
 
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
-                  </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
@@ -291,29 +349,42 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -325,11 +396,17 @@ export default async function ServiceDetailPage({
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Restore Your Cooling Performance?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your AC service today and experience reliable cooling, professional workmanship, and exceptional customer service.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -346,12 +423,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Electrical Repair & Installation Services" 
+          <PageBanner
+            title="Electrical Repair & Installation Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Electrical Work"), href: "/services/electrical-work" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -454,7 +531,7 @@ export default async function ServiceDetailPage({
           {/* Section 5: Emergency & Sectors (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -569,17 +646,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -607,8 +684,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -650,12 +727,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Plumbing Repair & Installation Services" 
+          <PageBanner
+            title="Plumbing Repair & Installation Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Plumbing Work"), href: "/services/plumbing-work" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -762,7 +839,7 @@ export default async function ServiceDetailPage({
           {/* Section 5: Emergency Support & Sectors (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -877,17 +954,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -915,8 +992,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -958,12 +1035,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Painting Repair & Finishing Services" 
+          <PageBanner
+            title="Painting Repair & Finishing Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Painting Work"), href: "/services/painting-work" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -1068,7 +1145,7 @@ export default async function ServiceDetailPage({
           {/* Section 4: Painting Specialties We Offer (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -1184,17 +1261,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repaint or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -1223,8 +1300,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -1266,12 +1343,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Masonry & Civil Works Services" 
+          <PageBanner
+            title="Masonry & Civil Works Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Masonry Work"), href: "/services/masonry-work" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -1376,7 +1453,7 @@ export default async function ServiceDetailPage({
           {/* Section 4: Masonry Problems We Solve (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -1491,17 +1568,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need quick masonry repair or partition walls? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -1530,8 +1607,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -1573,12 +1650,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Carpentry & Woodwork Services" 
+          <PageBanner
+            title="Carpentry & Woodwork Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Carpentry Work"), href: "/services/carpentry-work" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -1679,7 +1756,7 @@ export default async function ServiceDetailPage({
           {/* Section 4: Carpentry Specialties (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -1794,17 +1871,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need custom furniture or cabinet repairs? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -1833,8 +1910,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -1876,12 +1953,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Steel Fixing & Reinforcement Services" 
+          <PageBanner
+            title="Steel Fixing & Reinforcement Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Steel Fixing"), href: "/services/steel-fixing" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -1982,7 +2059,7 @@ export default async function ServiceDetailPage({
           {/* Section 4: Specialties We Provide (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -2095,17 +2172,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need custom reinforcement work or steel tying? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -2134,8 +2211,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -2177,12 +2254,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Interior Designing Services" 
+          <PageBanner
+            title="Interior Designing Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Interior Designing"), href: "/services/interior-designing" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -2287,7 +2364,7 @@ export default async function ServiceDetailPage({
           {/* Section 4: Design Solutions We Offer (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -2403,17 +2480,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Want to schedule an interior design consultation or get layout quotes? Chat with our team on WhatsApp.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -2442,8 +2519,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -2485,12 +2562,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Gypsum Ceiling & Partition Services" 
+          <PageBanner
+            title="Gypsum Ceiling & Partition Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Ceiling & Gypsum"), href: "/services/ceiling-gypsum" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -2591,7 +2668,7 @@ export default async function ServiceDetailPage({
           {/* Section 4: Gypsum Specialties (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -2706,17 +2783,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need modern false ceilings or sound-reducing office partitions? Chat with our customer care representatives on WhatsApp.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -2745,8 +2822,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -2788,12 +2865,12 @@ export default async function ServiceDetailPage({
       <>
         <Navbar />
         <main className="bg-white">
-          <PageBanner 
-            title="Handyman Services" 
+          <PageBanner
+            title="Handyman Services"
             breadcrumb={[
               { label: t("Services"), href: "/services" },
               { label: t("Handyman Services"), href: "/services/handyman-services" }
-            ]} 
+            ]}
           />
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -2894,7 +2971,7 @@ export default async function ServiceDetailPage({
           {/* Section 4: Most Popular Handyman Jobs (Dark Theme Accent block) */}
           <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -3009,17 +3086,17 @@ export default async function ServiceDetailPage({
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
                     </div>
                     <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need quick TV mounting, furniture assembly, or door lock repairs? Chat with our customer care representatives on WhatsApp.")}</p>
                   </div>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
                   >{t("Send Instant WhatsApp Message")}</a>
                 </div>
@@ -3048,8 +3125,8 @@ export default async function ServiceDetailPage({
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
                   { name: t("Handyman Services"), slug: "handyman-services" }
                 ].map((s, idx) => (
-                  <Link 
-                    key={idx} 
+                  <Link
+                    key={idx}
                     href={`/services/${s.slug}`}
                     className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
                   >
@@ -3089,21 +3166,21 @@ export default async function ServiceDetailPage({
     <>
       <Navbar />
       <main>
-        <PageBanner 
-          title={formattedTitle} 
+        <PageBanner
+          title={formattedTitle}
           breadcrumb={[
             { label: t("Services"), href: "/services" },
             { label: formattedTitle, href: `/services/${slug}` }
-          ]} 
+          ]}
         />
-        
+
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              
+
               {/* Main Content */}
               <div className="lg:col-span-2 space-y-12">
-                
+
                 {/* Keep Banner Image Placeholder */}
                 <div className="aspect-[21/9] bg-slate-200 rounded-3xl overflow-hidden relative shadow-md">
                   <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
@@ -3117,7 +3194,7 @@ export default async function ServiceDetailPage({
                     </p>
                     <p className="text-slate-600 leading-relaxed">{t("Whether it's a minor repair, a major installation, or routine maintenance, we use the latest tools and techniques to ensure long-lasting results. We pride ourselves on transparent pricing, clear communication, and leaving your premises clean and tidy after the work is done.")}</p>
                   </div>
-                  
+
                   <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100">
                     <h3 className="text-2xl font-bold text-[var(--dark)] mb-6">{t("Key Benefits")}</h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -3201,16 +3278,16 @@ export default async function ServiceDetailPage({
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z"/>
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
                       </svg>
                     </div>
                     <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote")}</h4>
                   </div>
                   <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Have a query or need an instant quote? WhatsApp us directly for quick booking and support.")}</p>
-                  <a 
-                    href="https://wa.me/971551519540" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/971551519540"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-3 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2"
                   >{t("Chat on WhatsApp")}</a>
                 </div>

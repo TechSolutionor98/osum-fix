@@ -268,7 +268,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: Bookings & Service Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
@@ -339,8 +339,6 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-
-
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -351,6 +349,7 @@ export default async function ServiceDetailPage({
 
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
                   { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
                   { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
                   { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
@@ -360,7 +359,7 @@ export default async function ServiceDetailPage({
                   { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
                   { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
                   { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
-                ].map((s, idx) => (
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
@@ -390,6 +389,8 @@ export default async function ServiceDetailPage({
               </div>
             </div>
           </section>
+
+
 
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
@@ -435,7 +436,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL ELECTRICAL SERVICES IN DUBAI")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Electrical Repair, Installation & Maintenance Services")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Electrical systems are the backbone of every home and business. Whether it's a minor repair, a complete installation, or routine maintenance, electrical work should always be handled by experienced professionals to ensure safety, efficiency, and long-term reliability.")}</p>
@@ -443,9 +444,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional electrical services across Dubai for residential and commercial properties. Our qualified electricians diagnose problems quickly, perform safe repairs, and deliver quality workmanship using industry-standard tools and high-quality materials.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("From faulty sockets and lighting installations to complete electrical troubleshooting, we ensure every job is completed safely, efficiently, and to the highest standards.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/electrical.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -470,12 +471,12 @@ export default async function ServiceDetailPage({
                   { title: t("Quality Materials Only"), desc: t("We use reliable electrical components and trusted brands to ensure long-lasting performance and prevent safety hazards."), icon: <Sparkles size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction"), desc: t("Our goal is to deliver dependable service with quality you can trust, backed by our satisfaction guarantee."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -529,15 +530,14 @@ export default async function ServiceDetailPage({
 
 
           {/* Section 5: Emergency & Sectors (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">{t("Emergency Helpline 24/7")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Emergency Electrical Services")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Electrical emergencies require immediate attention. We respond quickly to restore safety and minimize disruption.")}</p>
+                  <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Emergency Helpline 24/7")}</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Emergency Electrical Services")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Electrical emergencies require immediate attention. We respond quickly to restore safety and minimize disruption.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -545,25 +545,25 @@ export default async function ServiceDetailPage({
                     t("Electrical Short Circuits"), t("Emergency Lighting Failure"), t("Faulty Distribution Boards"),
                     t("Loose Exposed Wires"), t("Voltage Fluctuation"), t("Water Leaked in Outlets")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       ⚠️ {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Electrical Services")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We proudly serve all commercial, retail, residential, and corporate sectors in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Electrical Services")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We proudly serve all commercial, retail, residential, and corporate sectors in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -572,7 +572,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: Bookings & Service Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Process")}</span>
@@ -637,33 +637,6 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -672,45 +645,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Safe-Power Your Home?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your electrical inspection or repair today. Enjoy safe, efficient, and professional technical services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -739,7 +734,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL PLUMBING SERVICES IN DUBAI")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Plumbing Repair, Installation & Maintenance Services")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("A properly functioning plumbing system is essential for the comfort, safety, and hygiene of every home and business. Even a small leak or blocked drain can quickly turn into a costly problem if not repaired on time.")}</p>
@@ -747,9 +742,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional plumbing services across Dubai, delivering fast, reliable, and long-lasting solutions for residential and commercial properties. From emergency plumbing repairs to complete installations and routine maintenance, our experienced plumbers ensure every job is completed with precision and care.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Whether you're dealing with leaking pipes, clogged drains, water heater issues, or bathroom renovations, OsumFix is your trusted plumbing partner.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -774,12 +769,12 @@ export default async function ServiceDetailPage({
                   { title: t("Reliable Workmanship"), desc: t("Every repair and installation is completed according to professional standards with rigorous attention to detail."), icon: <Sparkles size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction Focus"), desc: t("Your comfort, property safety, and peace of mind are always our highest priorities."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -837,15 +832,14 @@ export default async function ServiceDetailPage({
 
 
           {/* Section 5: Emergency Support & Sectors (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("24/7 Emergency Support")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Emergency Plumbing Services")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Some plumbing issues require immediate attention to prevent structural flooding. Our emergency plumbers are ready to assist.")}</p>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Emergency Plumbing Services")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Some plumbing issues require immediate attention to prevent structural flooding. Our emergency plumbers are ready to assist.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -860,18 +854,18 @@ export default async function ServiceDetailPage({
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Plumbing Services")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We serve all kinds of properties and commercial establishments in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Plumbing Services")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We serve all kinds of properties and commercial establishments in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -880,7 +874,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: Bookings & Service Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Workflow")}</span>
@@ -945,33 +939,6 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repair or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -980,45 +947,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Restore Your Plumbing?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your plumbing service or scan leaks today. Enjoy professional, clean, and reliable technical services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -1047,7 +1036,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL PAINTING SERVICES IN DUBAI")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Transform Your Home & Office with Expert Painting Solutions")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("A fresh coat of paint does more than improve appearance—it enhances your property's value, protects surfaces, and creates a clean, welcoming environment. Whether you're renovating your home, refreshing your office, or preparing a property for handover, professional painting makes all the difference.")}</p>
@@ -1055,9 +1044,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide high-quality interior and exterior painting services across Dubai. Our experienced painters deliver smooth finishes, clean workmanship, and long-lasting results using premium paints and professional techniques.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("From a single room to complete villas, apartments, offices, and commercial buildings, we complete every project with precision, efficiency, and attention to detail.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -1082,12 +1071,12 @@ export default async function ServiceDetailPage({
                   { title: t("Timely Project Completion"), desc: t("We work efficiently to complete projects on schedule while maintaining the highest quality standards."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction Guaranteed"), desc: t("Our goal is to deliver results that exceed your expectations and give your property a fresh new look."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -1143,15 +1132,14 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 4: Painting Specialties We Offer (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Services We Offer")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Painting Specialties & Surface Care")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Our experienced painters handle projects of all sizes. Proper surface preparation, premium materials, and expert application ensure a finish that looks beautiful and lasts.")}</p>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Painting Specialties & Surface Care")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Our experienced painters handle projects of all sizes. Proper surface preparation, premium materials, and expert application ensure a finish that looks beautiful and lasts.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -1167,18 +1155,18 @@ export default async function ServiceDetailPage({
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Painting Solutions")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We proudly serve all commercial, retail, residential, and corporate sectors in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Painting Solutions")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We proudly serve all commercial, retail, residential, and corporate sectors in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -1187,7 +1175,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Painting Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Workflow")}</span>
@@ -1252,34 +1240,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need a quick repaint or a consultation? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
@@ -1287,46 +1248,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Transform Your Walls?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your painting consultation today. Enjoy smooth, clean, and reliable painting technical services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -1355,7 +1337,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL MASONRY & CIVIL WORK SERVICES")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Masonry, Brickwork, Plastering & Tile Installation Services")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Strong construction starts with quality masonry work. Whether you're renovating a home, repairing damaged walls, installing new tiles, or building partition walls, professional workmanship is essential for long-lasting results.")}</p>
@@ -1363,9 +1345,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide complete masonry and civil maintenance services across Dubai for residential and commercial properties. Our experienced masons deliver precise workmanship using quality materials to ensure every project is durable, safe, and finished to the highest standards.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("From minor repairs to complete renovation work, we help improve the strength, appearance, and value of your property.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -1390,12 +1372,12 @@ export default async function ServiceDetailPage({
                   { title: t("On-Time Project Completion"), desc: t("We complete masonry and tile installations efficiently while maintaining the highest quality standards."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction"), desc: t("Every project is completed with extreme professionalism, reliability, and customer satisfaction in mind."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -1451,15 +1433,14 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 4: Masonry Problems We Solve (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">{t("Masonry Problems We Solve")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Civil Maintenance & Structural Repair")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Over time, walls, plaster, flooring, and concrete surfaces develop cracks and moisture damage. Our team regularly repairs and restores these issues efficiently.")}</p>
+                  <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Masonry Problems We Solve")}</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Civil Maintenance & Structural Repair")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Over time, walls, plaster, flooring, and concrete surfaces develop cracks and moisture damage. Our team regularly repairs and restores these issues efficiently.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -1468,25 +1449,25 @@ export default async function ServiceDetailPage({
                     t("Boundary Wall Damage"), t("Ceiling Cracks"), t("Tile Grout Damage"), t("Small Civil Repairs"),
                     t("Holes in Concrete"), t("Plaster Peeling"), t("Screed Leveling Issues"), t("Alteration Prep Work")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       🧱 {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Masonry Solutions")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We proudly serve all commercial, retail, residential, and corporate properties in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Masonry Solutions")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We proudly serve all commercial, retail, residential, and corporate properties in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -1495,7 +1476,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Masonry Service Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Process")}</span>
@@ -1559,34 +1540,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need quick masonry repair or partition walls? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
@@ -1594,46 +1548,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Build or Repair Your Walls?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your masonry or civil work consultation today. Enjoy precise, reliable, and solid civil services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -1662,7 +1637,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL CARPENTRY WORK SERVICES IN DUBAI")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Custom Carpentry, Woodwork & Interior Fit-Out Solutions")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Quality carpentry is more than just building furniture—it's about creating practical, stylish, and durable spaces that enhance your home or business. Whether you need custom cabinets, wardrobes, office furniture, wooden flooring, or complete interior woodwork, expert craftsmanship makes all the difference.")}</p>
@@ -1670,9 +1645,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional carpentry services across Dubai for residential and commercial properties. Our experienced carpenters combine skilled workmanship with modern design to deliver customized woodwork solutions that match your space, style, and budget.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("From small repairs to complete fit-out projects, we ensure every detail is crafted with precision, using quality materials and professional finishing techniques.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -1697,12 +1672,12 @@ export default async function ServiceDetailPage({
                   { title: t("Timely Project Completion"), desc: t("We complete custom furniture fabrications and onsite installations efficiently within the agreed timeline."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction"), desc: t("We focus heavily on quality, meticulous attention to detail, and delivering carpentry results that exceed expectations."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -1754,15 +1729,14 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 4: Carpentry Specialties (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">{t("Custom Carpentry Solutions")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Custom Furniture Design & Fit-Out Specialties")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Our team specializes in designing, fabricating, and restoring premium woodwork. We handle projects of all scales with detailed material planning and smooth finishes.")}</p>
+                  <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Custom Carpentry Solutions")}</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Custom Furniture Design & Fit-Out Specialties")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Our team specializes in designing, fabricating, and restoring premium woodwork. We handle projects of all scales with detailed material planning and smooth finishes.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -1771,25 +1745,25 @@ export default async function ServiceDetailPage({
                     t("Wooden Flooring"), t("Wall Paneling"), t("Wooden Partitions"), t("Reception Counters"),
                     t("Display Units"), t("Shop Fit-Out"), t("Office Renovation"), t("Furniture Repair & Restoration")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       🪚 {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Carpentry")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We serve all corporate, retail, residential, and educational sectors across Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Carpentry")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We serve all corporate, retail, residential, and educational sectors across Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -1798,7 +1772,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Carpentry Service Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
@@ -1862,34 +1836,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need custom furniture or cabinet repairs? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
@@ -1897,46 +1844,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Bring Your Ideas to Life?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your carpentry site visit or consultation today. Enjoy custom design, premium wood, and reliable fit-outs with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -1965,7 +1933,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL STEEL FIXING SERVICES IN DUBAI")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Reinforcement Steel Fixing & Structural Support Solutions")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Steel fixing is one of the most important stages of any construction or renovation project. Properly installed reinforcement steel provides the strength, stability, and durability needed to support concrete structures safely and efficiently.")}</p>
@@ -1973,9 +1941,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional steel fixing services across Dubai for residential, commercial, and industrial projects. Our experienced steel fixers work with precision and attention to detail, ensuring every reinforcement structure meets project specifications and industry standards.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Whether you require reinforcement for foundations, slabs, columns, beams, staircases, or structural extensions, our skilled team delivers dependable workmanship and high-quality results.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -2000,12 +1968,12 @@ export default async function ServiceDetailPage({
                   { title: t("Timely Project Completion"), desc: t("We understand construction schedules and complete work efficiently without compromising quality."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction"), desc: t("We focus on delivering reliable workmanship, transparent communication, and long-lasting results."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -2057,15 +2025,14 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 4: Specialties We Provide (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">{t("Solutions We Provide")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Reinforcement Solutions We Provide")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Steel reinforcement forms the backbone of concrete structures. We install slabs, walls, columns, staircases, and extensions safely.")}</p>
+                  <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Solutions We Provide")}</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Reinforcement Solutions We Provide")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Steel reinforcement forms the backbone of concrete structures. We install slabs, walls, columns, staircases, and extensions safely.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -2073,25 +2040,25 @@ export default async function ServiceDetailPage({
                     t("Concrete Slab Reinforcement"), t("Staircase Steel Work"), t("Wall Reinforcement"), t("Structural Extensions"),
                     t("Retaining Wall Reinforcement"), t("Villa Construction Steel"), t("Building Structural Steel"), t("Industrial Projects")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       ⛓️ {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Properties")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We serve all construction sites, extensions, and commercial properties in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Properties")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We serve all construction sites, extensions, and commercial properties in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -2100,7 +2067,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Steel Fixing Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Process")}</span>
@@ -2163,34 +2130,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need custom reinforcement work or steel tying? Chat with our customer care representatives on WhatsApp for instant assistance.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
@@ -2198,46 +2138,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Build Strong Foundations?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your steel fixing site visit or consultation today. Enjoy high-quality reinforcement, precise placement, and reliable civil structures with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -2266,7 +2227,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL INTERIOR DESIGNING SERVICES IN DUBAI")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Creative Interior Design & Space Transformation Solutions")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Every space has the potential to be beautiful, functional, and inspiring. Whether you're designing a new home, renovating an office, or upgrading a commercial property, the right interior design creates comfort, improves functionality, and reflects your unique style.")}</p>
@@ -2274,9 +2235,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional interior designing services across Dubai, offering complete design, renovation, and fit-out solutions for residential and commercial properties. Our experienced designers combine creativity with practical planning to transform ordinary spaces into elegant, functional environments that suit your lifestyle and business needs.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("From concept development to project completion, we focus on quality craftsmanship, premium materials, and attention to every detail.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -2301,12 +2262,12 @@ export default async function ServiceDetailPage({
                   { title: t("Transparent Pricing"), desc: t("Receive a detailed, itemized quotation with clear pricing before any project preparation or execution begins."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("On-Time Project Delivery"), desc: t("We complete interior transformations according to agreed timelines while maintaining the highest quality standards."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -2362,15 +2323,14 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 4: Design Solutions We Offer (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">{t("Solutions We Offer")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Complete Fit-Out & Renovation Solutions")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("A thoughtfully designed interior improves more than appearance—it enhances comfort, productivity, organization, and overall quality of life.")}</p>
+                  <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Solutions We Offer")}</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Complete Fit-Out & Renovation Solutions")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("A thoughtfully designed interior improves more than appearance—it enhances comfort, productivity, organization, and overall quality of life.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -2380,25 +2340,25 @@ export default async function ServiceDetailPage({
                     t("Custom Furniture"), t("Wardrobe Design"), t("Office Workstations"), t("Reception Areas"),
                     t("Retail Interiors"), t("Commercial Renovations")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       ✨ {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Styling")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We serve all residential, retail, corporate, and leisure spaces in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Styling")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We serve all residential, retail, corporate, and leisure spaces in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Salons"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -2407,7 +2367,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Design Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
@@ -2471,34 +2431,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Want to schedule an interior design consultation or get layout quotes? Chat with our team on WhatsApp.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
@@ -2506,46 +2439,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Transform Your Space?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your interior design consultation or site visit today. Create spaces that reflect your style with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -2574,7 +2528,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL GYPSUM CEILING & PARTITION SERVICES")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Modern Gypsum Ceiling, Partition & Interior Finishing Solutions")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("A well-designed gypsum ceiling or partition can completely transform the appearance and functionality of any residential or commercial space. Whether you're renovating your home, designing a modern office, or upgrading a retail space, professional gypsum work adds elegance, improves space utilization, and enhances interior aesthetics.")}</p>
@@ -2582,9 +2536,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide complete gypsum ceiling and partition services across Dubai. Our experienced team specializes in false ceilings, decorative ceiling designs, gypsum partitions, office layouts, and custom interior finishing using premium materials and modern installation techniques.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("From simple ceiling installations to complete interior fit-out projects, we deliver durable craftsmanship with exceptional attention to detail.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -2609,12 +2563,12 @@ export default async function ServiceDetailPage({
                   { title: t("Affordable & Transparent Pricing"), desc: t("Receive detailed itemized quotations with clear, honest pricing and absolutely no hidden costs."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction"), desc: t("Our goal is to deliver stylish, beautiful interiors with professional workmanship and highly reliable project delivery."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -2666,15 +2620,14 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 4: Gypsum Specialties (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">{t("Solutions We Offer")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Modern Gypsum Ceilings & Custom Partitions")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("False ceilings neatly hide wiring, ductwork, and lighting installations for a cleaner, modern finish while partitions divide spaces efficiently.")}</p>
+                  <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Solutions We Offer")}</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Modern Gypsum Ceilings & Custom Partitions")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("False ceilings neatly hide wiring, ductwork, and lighting installations for a cleaner, modern finish while partitions divide spaces efficiently.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -2683,25 +2636,25 @@ export default async function ServiceDetailPage({
                     t("TV Feature Walls"), t("Ceiling Renovation"), t("Ceiling Repair"), t("LED Ceiling Preparation"),
                     t("Sound-Reducing Partitions"), t("Interior Ceiling Finishing"), t("Custom Gypsum Designs")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       📐 {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Sectors")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We serve all residential, office, and commercial properties in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Sectors")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We serve all residential, office, and commercial properties in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Salons"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -2710,7 +2663,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Gypsum Work Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Installation Steps")}</span>
@@ -2774,34 +2727,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need modern false ceilings or sound-reducing office partitions? Chat with our customer care representatives on WhatsApp.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
@@ -2809,46 +2735,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Transform Your Ceilings & Partitions?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your false ceiling consultation or site visit today. Enjoy smooth, durable, and modern gypsum finishing with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>
@@ -2877,7 +2824,7 @@ export default async function ServiceDetailPage({
           <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL HANDYMAN SERVICES IN DUBAI")}</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Home Maintenance & Installation Solutions by OsumFix")}</h2>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Every home and workplace requires regular maintenance, repairs, and installations to remain functional, comfortable, and well-organized. From mounting a TV and assembling furniture to installing shelves, curtains, mirrors, and fixtures, small tasks can quickly become time-consuming without the right tools and expertise.")}</p>
@@ -2885,9 +2832,9 @@ export default async function ServiceDetailPage({
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional handyman services across Dubai for residential and commercial properties. Our skilled technicians handle a wide range of repair, installation, and maintenance tasks with precision, efficiency, and attention to detail.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Whether you are moving into a new property, upgrading your interiors, or simply tackling your maintenance checklist, OsumFix is your trusted partner for hassle-free handyman solutions.")}</p>
                 </div>
-                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg border border-slate-200/80 flex items-center justify-center">
-                    <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                <div className="lg:col-span-6 xl:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Hero Image")} priority />
                   </div>
                 </div>
               </div>
@@ -2912,12 +2859,12 @@ export default async function ServiceDetailPage({
                   { title: t("Transparent Pricing"), desc: t("No hidden fees. We provide clear, itemized quotations detailing costs before any work begins."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Fast Response & Reliable Service"), desc: t("We complete tasks efficiently while maintaining high-quality workmanship and flexible scheduling."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/80 hover:shadow-md transition-shadow">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-6`}>
+                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -2969,15 +2916,14 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 4: Most Popular Handyman Jobs (Dark Theme Accent block) */}
-          <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)]"></div>
-
+          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="text-amber-500 font-bold uppercase tracking-wider text-xs">{t("Popular Jobs")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">{t("Most Popular Handyman Jobs We Handle")}</h2>
-                  <p className="text-slate-400 text-sm leading-relaxed">{t("Moving in or moving out? We handle TV installations, mirror hanging, curtain rods, and wall hole filling so you don't have to worry about tools.")}</p>
+                  <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Popular Jobs")}</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--dark)]">{t("Most Popular Handyman Jobs We Handle")}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed">{t("Moving in or moving out? We handle TV installations, mirror hanging, curtain rods, and wall hole filling so you don't have to worry about tools.")}</p>
                 </div>
                 <div className="lg:col-span-7 flex flex-wrap gap-2.5">
                   {[
@@ -2986,25 +2932,25 @@ export default async function ServiceDetailPage({
                     t("Cabinet Adjustments"), t("Appliance Connections"), t("Wall Bracket Installation"), t("Silicone Replacement"),
                     t("Minor Plumbing Repairs"), t("Home Maintenance Tasks"), t("Office Maintenance Jobs")
                   ].map((srv, idx) => (
-                    <span key={idx} className="bg-white/5 border border-amber-500/20 hover:border-amber-500/40 hover:bg-white/10 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-slate-200">
+                    <span key={idx} className="bg-white border border-slate-200 hover:border-[var(--primary)]/50 hover:shadow-sm px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-700 cursor-default">
                       🛠️ {srv}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <hr className="border-white/10" />
+              <hr className="border-slate-200" />
 
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold">{t("Residential & Commercial Handyman")}</h3>
-                  <p className="text-slate-400 text-sm mt-3">{t("We serve all homes, offices, retail spaces, and clinics in Dubai:")}</p>
+                  <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial Handyman")}</h3>
+                  <p className="text-slate-500 text-sm mt-3">{t("We serve all homes, offices, retail spaces, and clinics in Dubai:")}</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                   {[t("Apartments"), t("Villas"), t("Townhouses"), t("Offices"), t("Restaurants & Cafes"), t("Retail Shops"), t("Warehouses"), t("Hotels"), t("Clinics"), t("Salons"), t("Schools"), t("Commercial Buildings")].map((sec, idx) => (
-                    <div key={idx} className="bg-white/[0.03] border border-white/10 p-5 rounded-2xl text-center hover:bg-white/[0.05] transition-all">
-                      <span className="text-sm font-semibold text-slate-200">{sec}</span>
+                    <div key={idx} className="bg-white border border-slate-100 shadow-sm p-5 rounded-2xl text-center hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                      <span className="text-sm font-semibold text-slate-700">{sec}</span>
                     </div>
                   ))}
                 </div>
@@ -3013,7 +2959,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Handyman Process (Slate-50 Background) */}
-          <section className="py-20 bg-slate-50 border-b border-slate-100">
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Service Process")}</span>
@@ -3077,34 +3023,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
-          <section className="py-20 bg-slate-50 border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto items-center">
-
-                <div className="bg-emerald-50/80 p-8 rounded-3xl border border-emerald-100 shadow-sm flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">{t("Instant Quote via WhatsApp")}</h4>
-                    </div>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{t("Need quick TV mounting, furniture assembly, or door lock repairs? Chat with our customer care representatives on WhatsApp.")}</p>
-                  </div>
-                  <a
-                    href="https://wa.me/971551519540"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-emerald-500 hover:bg-emerald-600 text-white text-center py-4 rounded-full font-bold transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >{t("Send Instant WhatsApp Message")}</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 8: Explore Other Technical Services (Full-width Horizontal Grid) */}
+          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
           <section className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
@@ -3112,46 +3031,67 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
-                  { name: t("AC Work"), slug: "ac-work" },
-                  { name: t("Electrical Work"), slug: "electrical-work" },
-                  { name: t("Plumbing Work"), slug: "plumbing-work" },
-                  { name: t("Painting Work"), slug: "painting-work" },
-                  { name: t("Masonry Work"), slug: "masonry-work" },
-                  { name: t("Carpentry Work"), slug: "carpentry-work" },
-                  { name: t("Steel Fixing"), slug: "steel-fixing" },
-                  { name: t("Interior Designing"), slug: "interior-designing" },
-                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum" },
-                  { name: t("Handyman Services"), slug: "handyman-services" }
-                ].map((s, idx) => (
+                  { name: t("AC Repair & Maintenance"), slug: "ac-work", img: "/images/services/ac_hero.png" },
+                  { name: t("Electrical Work"), slug: "electrical-work", img: "/images/services/electrical.png" },
+                  { name: t("Plumbing Work"), slug: "plumbing-work", img: "/images/services/plumbing.png" },
+                  { name: t("Painting Work"), slug: "painting-work", img: "/images/services/painting.png" },
+                  { name: t("Masonry Work"), slug: "masonry-work", img: "/images/services/masonry.png" },
+                  { name: t("Carpentry Work"), slug: "carpentry-work", img: "/images/services/carpentry.png" },
+                  { name: t("Steel Fixing"), slug: "steel-fixing", img: "/images/services/steel.png" },
+                  { name: t("Interior Designing"), slug: "interior-designing", img: "/images/services/interior.png" },
+                  { name: t("Ceiling & Gypsum"), slug: "ceiling-gypsum", img: "/images/services/gypsum.png" },
+                  { name: t("Handyman Services"), slug: "handyman-services", img: "/images/services/handyman.png" }
+                ].filter(s => s.slug !== slug).map((s, idx) => (
                   <Link
                     key={idx}
                     href={`/services/${s.slug}`}
-                    className="bg-slate-50 hover:bg-white border border-slate-100 hover:border-[var(--primary)] hover:shadow-md p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300"
+                    className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
-                    <span className="font-bold text-[var(--dark)] text-sm md:text-base group-hover:text-[var(--primary)] transition-colors">
-                      {s.name}
-                    </span>
-                    <span className="text-xs text-[var(--primary)] font-medium inline-flex items-center mt-4">
-                      View Service <ArrowRight size={12} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
-                    </span>
+                    <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
+                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      <Image
+                        src={t(s.img)}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        alt={s.name}
+                      />
+                      <div className="absolute inset-0 bg-slate-100 -z-10 flex items-center justify-center">
+                        <span className="text-slate-300 text-xs font-medium uppercase tracking-widest">{t("Image")}</span>
+                      </div>
+                    </div>
+                    <div className="px-1 sm:px-2 pb-1 sm:pb-2">
+                      <h4 className="font-bold text-[var(--dark)] text-sm sm:text-base md:text-lg group-hover:text-[var(--primary)] transition-colors">{s.name}</h4>
+                      <span className="text-xs sm:text-sm text-[var(--primary)] font-medium inline-flex items-center mt-1.5">
+                        {t("View Service")} <ArrowRight size={14} className="ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
 
+
+
           {/* Call to Action Booking Banner */}
           <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
               <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Clear Your Home Maintenance Checklist?")}</h2>
               <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your handyman site visit or booking appointment today. Enjoy reliable, hassle-free assembly, repairs, and mountings with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
+                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
+                  </svg>
+                  {t("WhatsApp")}
+                </a>
+                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
                   Request Callback
                 </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all text-sm sm:text-base">{t("Call 055 1519540 / 056 7910188")}</a>
+                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
               </div>
             </div>
           </section>

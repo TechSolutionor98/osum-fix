@@ -10,7 +10,7 @@ export default function Philosophy({ cms }: PhilosophyProps) {
   const t = (val: string) => getCmsVal(cms, val);
 
   return (
-    <section className="py-20 md:py-32 bg-slate-50">
+    <section className="py-20 md:py-32 bg-[#F6FAFE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 md:mb-24">
           <SectionTitle

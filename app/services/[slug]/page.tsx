@@ -2757,8 +2757,8 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-          {/* Section 3: Our Interior Designing Services (White Background) */}
-          <section className="py-20 bg-white">
+          {/* Section 3: Our Interior Designing Services (Premium Alternating Layout) */}
+          <section className="py-20 bg-white border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Expertise")}</span>
@@ -2766,41 +2766,122 @@ export default async function ServiceDetailPage({
                 <p className="text-slate-500 mt-4">{t("We provide complete interior design and renovation solutions for homes, offices, and commercial spaces.")}</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                {[
-                  {
-                    title: t("Residential Design"),
-                    items: [t("Apartment Interior Design"), t("Villa Interior Design"), t("Bedroom Design & Layouts"), t("Living Room Makeovers"), t("Dining Area Styling"), t("Balcony Landscaping")]
-                  },
-                  {
-                    title: t("Commercial Design"),
-                    items: [t("Office Interior Layouts"), t("Retail Shop Design"), t("Restaurant & Café Styling"), t("Salon & Spa Interior Design"), t("Clinic Interior Setups"), t("Hotel & Showroom Designs")]
-                  },
-                  {
-                    title: t("Space & Fit-Out"),
-                    items: [t("Space Layout Planning"), t("Complete Interior Renovation"), t("Office Fit-Out Execution"), t("Home Remodeling Solutions"), t("Partition Wall Design"), t("Ceiling Layouts")]
-                  },
-                  {
-                    title: t("Decorative Solutions"),
-                    items: [t("Gypsum False Ceilings"), t("Feature Wall Construction"), t("Decorative Wall Panels"), t("Architectural Lighting"), t("Wallpaper Installation"), t("Wooden Wall Cladding")]
-                  },
-                  {
-                    title: t("Custom Furniture"),
-                    items: [t("Custom Furniture Crafting"), t("Sleek TV Units"), t("Modular Wardrobes"), t("Kitchen Cabinets"), t("Office Workstations"), t("Smart Storage Solutions")]
-                  }
-                ].map((cat, idx) => (
-                  <div key={idx} className="bg-slate-50 p-6 rounded-3xl border border-slate-100/80 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow">
-                    <h4 className="font-bold text-[var(--dark)] text-base mb-6 pb-2 border-b border-slate-200">{cat.title}</h4>
-                    <ul className="space-y-4 flex-grow">
-                      {cat.items.map((item, sIdx) => (
-                        <li key={sIdx} className="flex gap-2.5 text-slate-700 text-xs sm:text-sm font-medium items-start">
-                          <CheckCircle2 size={14} className="text-[var(--primary)] shrink-0 mt-0.5" />
-                          <span>{item}</span>
+              <div className="space-y-16 lg:space-y-24">
+                {/* 1 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">01</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Residential Design")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Apartment Interior Design"), t("Villa Interior Design"), t("Bedroom Design & Layouts"), t("Living Room Makeovers"), t("Dining Area Styling"), t("Balcony Landscaping")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                ))}
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Residential Design")} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Commercial Design")} />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">02</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Commercial Design")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Office Interior Layouts"), t("Retail Shop Design"), t("Restaurant & Café Styling"), t("Salon & Spa Interior Design"), t("Clinic Interior Setups"), t("Hotel & Showroom Designs")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 3 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">03</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Space & Fit-Out")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Space Layout Planning"), t("Complete Interior Renovation"), t("Office Fit-Out Execution"), t("Home Remodeling Solutions"), t("Partition Wall Design"), t("Ceiling Layouts")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Space & Fit-Out")} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Decorative Solutions")} />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">04</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Decorative Solutions")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Gypsum False Ceilings"), t("Feature Wall Construction"), t("Decorative Wall Panels"), t("Architectural Lighting"), t("Wallpaper Installation"), t("Wooden Wall Cladding")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 5 */}
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                  <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">05</div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Custom Furniture")}</h3>
+                    </div>
+                    <ul className="space-y-4">
+                      {[t("Custom Furniture Crafting"), t("Sleek TV Units"), t("Modular Wardrobes"), t("Kitchen Cabinets"), t("Office Workstations"), t("Smart Storage Solutions")].map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                          <span className="text-slate-700 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Custom Furniture")} />
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </section>
@@ -2857,25 +2938,34 @@ export default async function ServiceDetailPage({
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">{t("Our Interior Design Process")}</h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {[
-                  { step: t("1"), title: t("Consultation"), desc: t("We discuss your ideas, detailed layout requirements, style preferences, and budget.") },
-                  { step: t("2"), title: t("Site Visit"), desc: t("Our design team visits the property to assess the space and take measurements.") },
-                  { step: t("3"), title: t("Design Planning"), desc: t("We prepare layout concepts, color schemes, material ideas, and space plans.") },
-                  { step: t("4"), title: t("Quote & Approval"), desc: t("We provide an itemized, transparent quotation for fabrication and materials.") },
-                  { step: t("5"), title: t("Project Execution"), desc: t("Our skilled team carries out the layout renovations under professional site management.") },
-                  { step: t("6"), title: t("Styling & Handover"), desc: t("We complete final styling and inspect details before project handover.") }
-                ].map((p, idx) => (
-                  <div key={idx} className="bg-white p-5 rounded-3xl border border-slate-100/80 shadow-sm text-center flex flex-col justify-between hover:shadow-md transition-shadow">
-                    <div>
-                      <span className="w-8 h-8 rounded-full bg-blue-50 text-[var(--primary)] text-sm font-bold flex items-center justify-center mx-auto mb-4 border border-blue-100">
-                        {p.step}
-                      </span>
-                      <h4 className="font-bold text-[var(--dark)] text-xs sm:text-sm mb-2">{p.title}</h4>
-                    </div>
-                    <p className="text-slate-500 text-[11px] leading-relaxed mt-2">{p.desc}</p>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-7 xl:col-span-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {[
+                      { step: t("1"), title: t("Consultation"), desc: t("We discuss your ideas, detailed layout requirements, style preferences, and budget.") },
+                      { step: t("2"), title: t("Site Visit"), desc: t("Our design team visits the property to assess the space and take measurements.") },
+                      { step: t("3"), title: t("Design Planning"), desc: t("We prepare layout concepts, color schemes, material ideas, and space plans.") },
+                      { step: t("4"), title: t("Quote & Approval"), desc: t("We provide an itemized, transparent quotation for fabrication and materials.") },
+                      { step: t("5"), title: t("Project Execution"), desc: t("Our skilled team carries out the layout renovations under professional site management.") },
+                      { step: t("6"), title: t("Styling & Handover"), desc: t("We complete final styling and inspect details before project handover.") }
+                    ].map((p, idx) => (
+                      <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-100/80 shadow-sm text-center flex flex-col justify-between hover:shadow-md transition-shadow h-full">
+                        <div>
+                          <span className="w-8 h-8 rounded-full bg-blue-50 text-[var(--primary)] text-sm font-bold flex items-center justify-center mx-auto mb-4 border border-blue-100">
+                            {p.step}
+                          </span>
+                          <h4 className="font-bold text-[var(--dark)] text-sm mb-2">{p.title}</h4>
+                        </div>
+                        <p className="text-slate-500 text-xs leading-relaxed mt-2">{p.desc}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+                <div className="lg:col-span-5 xl:col-span-4">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
+                    <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
+                  </div>
+                </div>
               </div>
             </div>
           </section>

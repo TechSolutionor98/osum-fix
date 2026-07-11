@@ -126,7 +126,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden lg:flex">
             <Link
-              href="/contact"
+              href="/request-quote"
               className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
               Request Quote
@@ -199,7 +199,7 @@ export default function Navbar() {
               ))}
               <div className="pt-4 pb-2">
                 <Link
-                  href="/contact"
+                  href="/request-quote"
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center bg-[var(--primary)] text-white px-6 py-3 rounded-xl font-medium shadow-md"
                 >

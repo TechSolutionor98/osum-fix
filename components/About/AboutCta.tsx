@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getCmsVal } from "@/lib/api-helper";
 import { PhoneCall } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface AboutCtaProps {
   cms?: any;
@@ -21,10 +22,10 @@ export default function AboutCta({ cms }: AboutCtaProps) {
         <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
           {t("Join hundreds of satisfied property owners in Dubai. Let OsumFix handle your technical maintenance with unmatched professionalism.")}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
           <Link
             href="/contact"
-            className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-4 rounded-full font-bold transition-all shadow-lg"
+            className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-4 rounded-full font-bold transition-all shadow-lg flex items-center justify-center"
           >
             {t("Contact Us Today")}
           </Link>
@@ -33,6 +34,14 @@ export default function AboutCta({ cms }: AboutCtaProps) {
             className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2"
           >
             <PhoneCall size={20} /> {t("Call 055 1519540 / 056 7910188")}
+          </a>
+          <a
+            href="https://wa.me/971551519540"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#25D366] hover:bg-[#128c7e] text-white border-2 border-[#25D366] hover:border-[#128c7e] px-8 py-4 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2"
+          >
+            <FaWhatsapp size={22} /> {t("WhatsApp Us")}
           </a>
         </div>
       </div>

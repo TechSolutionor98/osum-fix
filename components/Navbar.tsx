@@ -151,7 +151,7 @@ export default function Navbar() {
                               href={service.href}
                               className="group flex items-start p-2.5 rounded-xl hover:bg-[var(--primary)] transition-all duration-300"
                             >
-                              <div className="w-11 h-11 rounded-lg bg-white flex items-center justify-center text-[var(--primary)] mr-3 flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] transition-colors border border-[var(--secondary)] group-hover:border-transparent">
+                              <div className="w-11 h-11 rounded-lg bg-white flex items-center justify-center text-[var(--primary)] mr-3 flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] transition-colors border border-[var(--primary)] group-hover:border-transparent">
                                 {service.icon}
                               </div>
                               <div className="flex flex-col">
@@ -233,7 +233,7 @@ export default function Navbar() {
                           onClick={() => setIsOpen(false)}
                           className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-[var(--primary)] group transition-colors"
                         >
-                          <div className="w-9 h-9 rounded bg-white flex items-center justify-center text-[var(--primary)] flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] border border-[var(--secondary)] group-hover:border-transparent">
+                          <div className="w-9 h-9 rounded bg-white flex items-center justify-center text-[var(--primary)] flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] border border-[var(--primary)] group-hover:border-transparent">
                             {service.icon}
                           </div>
                           <div className="flex flex-col">

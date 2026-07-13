@@ -81,23 +81,7 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all border
-                  ${selectedCategory === cat
-                    ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                    : "bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50"
-                  }
-                `}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+
 
           {/* Blogs Grid or Empty State */}
           {filteredBlogs.length === 0 ? (
@@ -115,7 +99,7 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
               {filteredBlogs.map((blog) => (
                 <article
                   key={blog._id}
-                  className="bg-white rounded-3xl overflow-hidden border border-slate-150 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group"
+                  className="bg-white rounded-3xl overflow-hidden border border-[var(--secondary)] shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group"
                 >
                   <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 shrink-0">
                     <Image
@@ -187,6 +171,27 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
             >
               Contact Our Team
             </Link>
+          </div>
+
+          {/* Categories */}
+          <div className="space-y-4">
+            <h3 className="font-extrabold text-lg text-[var(--dark)] tracking-tight">Categories</h3>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all border
+                    ${selectedCategory === cat
+                      ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
+                      : "bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50"
+                    }
+                  `}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Recent Posts */}

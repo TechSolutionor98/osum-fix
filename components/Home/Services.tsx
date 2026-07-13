@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Zap, Droplets, Wind, Paintbrush, Hammer, Wrench, Grid, Layout, Layers } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 import { getCmsVal } from "@/lib/api-helper";
+import ServiceCard from "@/components/ServiceCard";
 
 interface ServicesProps {
   cms?: any;
@@ -109,86 +110,20 @@ export default function Services({ cms }: ServicesProps) {
           centered
         />
 
-        {/* Timeline Layout */}
-        <div className="relative mt-16 max-w-5xl mx-auto">
-          <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-0.5 bg-slate-200 transform -translate-x-1/2 z-0"></div>
-
-          <div className="space-y-8 md:space-y-12 relative z-10">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="flex flex-col md:flex-row items-center justify-between w-full relative gap-6 md:gap-0"
-              >
-                {/* Center Number Marker */}
-                <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 items-center justify-center w-12 h-12 rounded-full border-4 border-slate-50 bg-[var(--primary)] text-white font-bold text-lg shadow-md z-10">
-                  {index + 1}
-                </div>
-
-                {/* Image Block */}
-                <div className={`w-full md:w-[calc(50%-3rem)] relative h-[320px] ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>
-                  <div className="bg-[#F8FAFC] rounded-2xl transition-all w-full h-full relative z-20 group overflow-hidden">
-                    {/* Default State: Image with dynamic zoom and blur on hover */}
-                    <div className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:blur-[2px]">
-                      <Image src={service.image} alt={service.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="bg-cover" />
-                    </div>
-
-                    {/* Hover State: Premium Content Dark Glassmorphism Overlay */}
-                    <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 md:p-8 flex flex-col justify-center text-white">
-                      <div className="flex items-center gap-4 mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div className="w-12 h-12 rounded-xl bg-white/10 text-[var(--accent)] flex items-center justify-center shrink-0 border border-white/10">
-                          {service.icon}
-                        </div>
-                        <h3 className="text-xl font-bold text-white">
-                          <span className="md:hidden text-[var(--accent)] mr-2">{index + 1}.</span>
-                          {service.title}
-                        </h3>
-                      </div>
-
-                      <p className="text-slate-200 mb-6 text-sm leading-relaxed line-clamp-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
-                        {service.description}
-                      </p>
-
-                      <Link
-                        href={`/services/${service.slug}`}
-                        className="inline-flex items-center text-[var(--accent)] font-semibold hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 delay-100"
-                      >
-                        {readMoreText} <ArrowRight size={16} className="ml-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Block */}
-                <div className={`w-full md:w-[calc(50%-3rem)] relative h-full md:h-[320px] ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
-                  <div className="flex flex-col justify-center h-full relative z-20 px-2 md:px-6">
-                    <div className="hidden md:flex items-center gap-4 mb-5">
-                      <div className="w-14 h-14 rounded-xl bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center shrink-0">
-                        {service.icon}
-                      </div>
-                      <h3 className="text-2xl font-bold text-[var(--dark)]">
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-slate-600 mb-8 text-sm md:text-base leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="inline-flex items-center text-[var(--primary)] font-semibold hover:text-[var(--secondary)] transition-colors mt-2 w-fit group/btn"
-                    >
-                      {readMoreText} <ArrowRight size={16} className="ml-2 transform group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Services Grid (Card Type Layout) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.slug}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (index % 3) * 0.1 }}
+              className="h-full"
+            >
+              <ServiceCard {...service} />
+            </motion.div>
+          ))}
         </div>
 
         <div className="text-center mt-12">

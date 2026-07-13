@@ -16,7 +16,12 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { name: "AC Work", description: "Complete AC servicing and repairs", icon: <Wind size={20} />, href: "/services/ac-work" },
+  { 
+    name: "AC Work", 
+    description: "Complete AC servicing and repairs", 
+    icon: <Image src="/images/ac-work.gif" alt="AC" width={32} height={32} className="w-8 h-8 object-contain" unoptimized />, 
+    href: "/services/ac-work" 
+  },
   { name: "Electrical Work", description: "Safe wiring and fixtures installation", icon: <Zap size={20} />, href: "/services/electrical-work" },
   { name: "Plumbing Work", description: "Leak repair and sanitary fixtures", icon: <Droplets size={20} />, href: "/services/plumbing-work" },
   { name: "Painting Work", description: "Premium interior and exterior painting", icon: <Paintbrush size={20} />, href: "/services/painting-work" },
@@ -101,7 +106,7 @@ export default function Navbar() {
                               href={service.href}
                               className="group flex items-start p-2.5 rounded-xl hover:bg-[var(--primary)] transition-all duration-300"
                             >
-                              <div className="w-11 h-11 rounded-lg bg-slate-50 flex items-center justify-center text-[var(--primary)] mr-3 flex-shrink-0 group-hover:bg-white/20 group-hover:text-white transition-colors border border-slate-100 group-hover:border-transparent">
+                              <div className="w-11 h-11 rounded-lg bg-white flex items-center justify-center text-[var(--primary)] mr-3 flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] transition-colors border border-slate-100 group-hover:border-transparent">
                                 {service.icon}
                               </div>
                               <div className="flex flex-col">
@@ -180,7 +185,7 @@ export default function Navbar() {
                           onClick={() => setIsOpen(false)}
                           className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-[var(--primary)] group transition-colors"
                         >
-                          <div className="w-9 h-9 rounded bg-slate-100 flex items-center justify-center text-[var(--primary)] flex-shrink-0 group-hover:bg-white/20 group-hover:text-white border border-slate-100 group-hover:border-transparent">
+                          <div className="w-9 h-9 rounded bg-white flex items-center justify-center text-[var(--primary)] flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] border border-slate-100 group-hover:border-transparent">
                             {service.icon}
                           </div>
                           <div className="flex flex-col">

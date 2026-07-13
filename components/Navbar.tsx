@@ -19,7 +19,7 @@ const serviceLinks = [
   { 
     name: "AC Work", 
     description: "Complete AC servicing and repairs", 
-    icon: <Image src="/images/ac-work.gif" alt="AC" width={32} height={32} className="w-8 h-8 object-contain" unoptimized />, 
+    icon: <Image src="/images/ac-work.gif" alt="AC" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
     href: "/services/ac-work" 
   },
   { name: "Electrical Work", description: "Safe wiring and fixtures installation", icon: <Zap size={20} />, href: "/services/electrical-work" },

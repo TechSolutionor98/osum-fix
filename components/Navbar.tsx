@@ -16,65 +16,65 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { 
-    name: "AC Work", 
-    description: "Complete AC servicing and repairs", 
-    icon: <Image src="/images/ac-work.gif" alt="AC" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/ac-work" 
+  {
+    name: "AC Work",
+    description: "Complete AC servicing and repairs",
+    icon: <Image src="/images/ac-work.gif" alt="AC" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/ac-work"
   },
-  { 
-    name: "Electrical Work", 
-    description: "Safe wiring and fixtures installation", 
-    icon: <Image src="/images/electrical-work.gif" alt="Electrical" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/electrical-work" 
+  {
+    name: "Electrical Work",
+    description: "Safe wiring and fixtures installation",
+    icon: <Image src="/images/electrical-work.gif" alt="Electrical" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/electrical-work"
   },
-  { 
-    name: "Plumbing Work", 
-    description: "Leak repair and sanitary fixtures", 
-    icon: <Image src="/images/plumbing-work.gif" alt="Plumbing" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/plumbing-work" 
+  {
+    name: "Plumbing Work",
+    description: "Leak repair and sanitary fixtures",
+    icon: <Image src="/images/plumbing-work.gif" alt="Plumbing" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/plumbing-work"
   },
-  { 
-    name: "Painting Work", 
-    description: "Premium interior and exterior painting", 
-    icon: <Image src="/images/painting-work.gif" alt="Painting" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/painting-work" 
+  {
+    name: "Painting Work",
+    description: "Premium interior and exterior painting",
+    icon: <Image src="/images/painting-work.gif" alt="Painting" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/painting-work"
   },
-  { 
-    name: "Masonry Work", 
-    description: "Bricklaying, plastering, and tiling", 
-    icon: <Image src="/images/masonry-work.gif" alt="Masonry" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/masonry-work" 
+  {
+    name: "Masonry Work",
+    description: "Bricklaying, plastering, and tiling",
+    icon: <Image src="/images/masonry-work.gif" alt="Masonry" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/masonry-work"
   },
-  { 
-    name: "Carpentry Work", 
-    description: "Bespoke wood installations & repairs", 
-    icon: <Image src="/images/carpentry-work.gif" alt="Carpentry" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/carpentry-work" 
+  {
+    name: "Carpentry Work",
+    description: "Bespoke wood installations & repairs",
+    icon: <Image src="/images/carpentry-work.gif" alt="Carpentry" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/carpentry-work"
   },
-  { 
-    name: "Steel Fixing", 
-    description: "Concrete reinforcement services", 
-    icon: <Image src="/images/steel-fixing.gif" alt="Steel Fixing" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/steel-fixing" 
+  {
+    name: "Steel Fixing",
+    description: "Concrete reinforcement services",
+    icon: <Image src="/images/steel-fixing.gif" alt="Steel Fixing" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/steel-fixing"
   },
-  { 
-    name: "Interior Designing", 
-    description: "Detailed 2D space layouts & designs", 
-    icon: <Image src="/images/interior-designing.gif" alt="Interior" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/interior-designing" 
+  {
+    name: "Interior Designing",
+    description: "Detailed 2D space layouts & designs",
+    icon: <Image src="/images/interior-designing.gif" alt="Interior" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/interior-designing"
   },
-  { 
-    name: "Ceiling & Gypsum", 
-    description: "Modern false ceiling installations", 
-    icon: <Image src="/images/ceiling-gypsum.gif" alt="Ceiling" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/ceiling-gypsum" 
+  {
+    name: "Ceiling & Gypsum",
+    description: "Modern false ceiling installations",
+    icon: <Image src="/images/ceiling-gypsum.gif" alt="Ceiling" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/ceiling-gypsum"
   },
-  { 
-    name: "Handyman Services", 
-    description: "Responsive maintenance solutions", 
-    icon: <Image src="/images/handyman-services.gif" alt="Handyman" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />, 
-    href: "/services/handyman-services" 
+  {
+    name: "Handyman Services",
+    description: "Responsive maintenance solutions",
+    icon: <Image src="/images/handyman-services.gif" alt="Handyman" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    href: "/services/handyman-services"
   },
 ];
 
@@ -101,11 +101,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center group -my-3">
-            <Image 
-              src="/images/bgremove.png" 
-              alt="OsumFix Logo" 
-              width={280} 
-              height={96} 
+            <Image
+              src="/images/bgremove.png"
+              alt="OsumFix Logo"
+              width={280}
+              height={96}
               className="h-20 sm:h-24 w-auto object-contain"
               priority
             />
@@ -176,8 +176,11 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden lg:flex">
             <Link
-              href="/request-quote"
-              className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              href="#request-quote"
+              onClick={() => {
+                window.location.hash = "request-quote";
+              }}
+              className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
             >
               Request Quote
             </Link>
@@ -249,9 +252,12 @@ export default function Navbar() {
               ))}
               <div className="pt-4 pb-2">
                 <Link
-                  href="/request-quote"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center bg-[var(--primary)] text-white px-6 py-3 rounded-xl font-medium shadow-md"
+                  href="#request-quote"
+                  onClick={() => {
+                    setIsOpen(false);
+                    window.location.hash = "request-quote";
+                  }}
+                  className="block w-full text-center bg-[var(--primary)] text-white px-6 py-3 rounded-xl font-medium shadow-md cursor-pointer"
                 >
                   Request a Quote
                 </Link>
@@ -260,6 +266,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
     </nav>
   );
 }

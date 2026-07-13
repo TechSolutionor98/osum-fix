@@ -1,3 +1,4 @@
+import CTA from "@/components/Home/CTA";
 import Image from "next/image";
 import { getCmsVal } from "@/lib/api-helper";
 import { getPublishedContent } from "@/lib/cms-service";
@@ -35,6 +36,7 @@ export default async function ServiceDetailPage({
 }) {
   const { slug } = await params;
   const cms = await getPublishedContent(`/services/${slug}`);
+  const homeCms = await getPublishedContent("/");
   const t = (val: any) => getCmsVal(cms, val);
 
   // Format title from slug
@@ -392,25 +394,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Restore Your Cooling Performance?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your AC service today and experience reliable cooling, professional workmanship, and exceptional customer service.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -761,25 +745,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Safe-Power Your Home?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your electrical inspection or repair today. Enjoy safe, efficient, and professional technical services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -1153,25 +1119,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Restore Your Plumbing?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your plumbing service or scan leaks today. Enjoy professional, clean, and reliable technical services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -1544,25 +1492,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Transform Your Walls?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your painting consultation today. Enjoy smooth, clean, and reliable painting technical services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -1934,25 +1864,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Build or Repair Your Walls?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your masonry or civil work consultation today. Enjoy precise, reliable, and solid civil services with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -2301,25 +2213,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Bring Your Ideas to Life?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your carpentry site visit or consultation today. Enjoy custom design, premium wood, and reliable fit-outs with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -2666,25 +2560,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Build Strong Foundations?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your steel fixing site visit or consultation today. Enjoy high-quality reinforcement, precise placement, and reliable civil structures with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -3057,25 +2933,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Transform Your Space?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your interior design consultation or site visit today. Create spaces that reflect your style with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -3424,25 +3282,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Transform Your Ceilings & Partitions?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your false ceiling consultation or site visit today. Enjoy smooth, durable, and modern gypsum finishing with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -3791,25 +3631,7 @@ export default async function ServiceDetailPage({
 
 
 
-          {/* Call to Action Booking Banner */}
-          <section className="py-16 bg-[var(--primary)] text-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold">{t("Ready to Clear Your Home Maintenance Checklist?")}</h2>
-              <p className="text-blue-100 text-sm md:text-base max-w-xl mx-auto">{t("Book your handyman site visit or booking appointment today. Enjoy reliable, hassle-free assembly, repairs, and mountings with OsumFix.")}</p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center pt-2">
-                <a href="https://wa.me/971551519540" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#1ebd5b] px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.016 14.07 1 11.493 1c-5.448 0-9.876 4.375-9.88 9.8.001 1.77.47 3.5-1.358 5.022l-.768.802 4.062-1.066zm13.11-6.142c-.22-.11-1.302-.642-1.503-.715-.202-.073-.348-.11-.495.11-.147.22-.57.715-.698.86-.128.147-.257.166-.477.056-.22-.11-.93-.342-1.77-1.09-.654-.582-1.096-1.302-1.224-1.523-.128-.22-.014-.34.097-.45.099-.1.22-.256.33-.383.11-.128.146-.22.22-.366.073-.146.037-.274-.018-.383-.056-.11-.495-1.19-.678-1.632-.178-.429-.356-.37-.49-.376-.127-.006-.273-.007-.42-.007-.147 0-.385.056-.587.275-.202.22-.77.752-.77 1.834s.789 2.128.9 2.275c.11.147 1.552 2.37 3.76 3.323.525.226.935.362 1.254.463.527.168 1.008.144 1.387.088.423-.063 1.302-.53 1.486-1.042.183-.513.183-.954.128-1.043-.056-.09-.202-.147-.422-.257z" />
-                  </svg>
-                  {t("WhatsApp")}
-                </a>
-                <Link href="/contact" className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg text-sm sm:text-base flex items-center justify-center">
-                  Request Callback
-                </Link>
-                <a href="tel:+971551519540" className="border-2 border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all text-sm sm:text-base flex items-center justify-center">{t("Call Us")}</a>
-              </div>
-            </div>
-          </section>
+          <CTA cms={homeCms} />
         </main>
         <Footer />
       </>
@@ -3919,8 +3741,8 @@ export default async function ServiceDetailPage({
                   <div className="relative z-10">
                     <h3 className="text-2xl font-bold mb-4">{t("Need Help Now?")}</h3>
                     <p className="text-slate-300 mb-6 text-sm">{t("Our emergency response team is available 24/7 across Dubai.")}</p>
-                    <a href="tel:+971551519540" className="block w-full bg-[var(--primary)] hover:bg-[var(--secondary)] py-3 rounded-full font-bold transition-colors mb-4 flex items-center justify-center gap-2">
-                      <Phone size={18} /> 055 1519540 / 056 7910188
+                    <a href="tel:+971567910188" className="block w-full bg-[var(--primary)] hover:bg-[var(--secondary)] py-3 rounded-full font-bold transition-colors mb-4 flex items-center justify-center gap-2">
+                      <Phone size={18} /> Call 056 7910188
                     </a>
                     <Link href="/contact" className="block w-full bg-white text-[var(--dark)] hover:bg-slate-100 py-3 rounded-full font-bold transition-colors flex items-center justify-center gap-2">
                       <Calendar size={18} /> Book a Service

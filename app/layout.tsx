@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getSettings } from "@/lib/cms-service";
+import GlobalQuoteModal from "@/components/RequestQuote/GlobalQuoteModal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -122,6 +123,7 @@ export default async function RootLayout({
         <main className="flex-grow flex flex-col">
           {children}
         </main>
+        <GlobalQuoteModal />
       </body>
     </html>
   );

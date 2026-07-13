@@ -25,16 +25,19 @@ export default function CTA({ cms }: CTAProps) {
         </p>
         <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center">
           <Link
-            href="/contact"
-            className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-4 rounded-full font-bold transition-all shadow-lg"
+            href="#request-quote"
+            onClick={() => {
+              window.location.hash = "request-quote";
+            }}
+            className="bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-4 rounded-full font-bold transition-all shadow-lg cursor-pointer"
           >
             {t("Get a Free Quote")}
           </Link>
           <a
-            href="tel:+971551519540"
+            href="tel:+971567910188"
             className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2"
           >
-            <PhoneCall size={20} /> {t("Call 055 1519540 / 056 7910188")}
+            <PhoneCall size={20} /> {t("Call 056 7910188")}
           </a>
           <a
             href="https://wa.me/971551519540"

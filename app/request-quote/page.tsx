@@ -21,13 +21,13 @@ export default async function RequestQuotePage() {
           title="Request a Quote"
           breadcrumb={[{ label: "Request Quote", href: "/request-quote" }]}
         />
-        
+
         <section className="py-20 md:py-24">
           <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
             <QuoteWrapper />
           </div>
         </section>
-        
+
         <FAQSection />
 
       </main>

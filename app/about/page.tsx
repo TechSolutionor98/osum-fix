@@ -7,7 +7,7 @@ import Philosophy from "@/components/About/Philosophy";
 import Advantages from "@/components/About/Advantages";
 import Team from "@/components/About/Team";
 import Commitment from "@/components/About/Commitment";
-import AboutCta from "@/components/About/AboutCta";
+import CTA from "@/components/Home/CTA";
 import { getPublishedContent } from "@/lib/cms-service";
 
 export const dynamic = 'force-dynamic';
@@ -15,6 +15,7 @@ export const dynamic = 'force-dynamic';
 export default async function AboutPage() {
   // Fetch about page CMS sections from database
   const cms = await getPublishedContent("/about");
+  const homeCms = await getPublishedContent("/");
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
@@ -30,7 +31,7 @@ export default async function AboutPage() {
         <Commitment cms={cms} />
         <Advantages cms={cms} />
         <Team cms={cms} />
-        <AboutCta cms={cms} />
+        <CTA cms={homeCms} />
       </main>
       <Footer />
     </div>

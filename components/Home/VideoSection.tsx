@@ -26,7 +26,7 @@ export default function VideoSection({ cms }: VideoSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 w-full mx-auto rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative border-4 border-white bg-slate-900"
+          className="mt-12 w-full mx-auto rounded-3xl overflow-hidden  relative border-4 border-white bg-slate-900"
         >
           <video
             className="w-full aspect-video object-cover pointer-events-none"
@@ -38,7 +38,7 @@ export default function VideoSection({ cms }: VideoSectionProps) {
             onContextMenu={(e) => e.preventDefault()}
             poster={t("https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1600&auto=format&fit=crop")}
           >
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            <source src="/video/Untitled.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </motion.div>

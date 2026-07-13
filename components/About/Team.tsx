@@ -22,8 +22,8 @@ export default function Team({ cms }: TeamProps) {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-[var(--primary)] transition-colors group hover:shadow-lg">
-            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform duration-300 border border-slate-100">
+          <div className="bg-slate-50 rounded-3xl p-8 border border-[var(--secondary)] shadow-lg">
+            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 -translate-y-2 border border-slate-100">
               <Wrench size={32} className="text-[var(--primary)]" />
             </div>
             <h3 className="text-xl font-bold text-[var(--dark)] mb-3">{t("Field Operations")}</h3>
@@ -32,8 +32,8 @@ export default function Team({ cms }: TeamProps) {
             </p>
           </div>
 
-          <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-[var(--secondary)] transition-colors group hover:shadow-lg">
-            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform duration-300 border border-slate-100">
+          <div className="bg-slate-50 rounded-3xl p-8 border border-[var(--secondary)] shadow-lg">
+            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 -translate-y-2 border border-slate-100">
               <UserCog size={32} className="text-[var(--secondary)]" />
             </div>
             <h3 className="text-xl font-bold text-[var(--dark)] mb-3">{t("Quality Assurance")}</h3>
@@ -42,8 +42,8 @@ export default function Team({ cms }: TeamProps) {
             </p>
           </div>
 
-          <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-[var(--accent)] transition-colors group hover:shadow-lg">
-            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform duration-300 border border-slate-100">
+          <div className="bg-slate-50 rounded-3xl p-8 border border-[var(--accent)] shadow-lg">
+            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 -translate-y-2 border border-slate-100">
               <HeadphonesIcon size={32} className="text-[var(--accent)]" />
             </div>
             <h3 className="text-xl font-bold text-[var(--dark)] mb-3">{t("Customer Support")}</h3>

@@ -16,7 +16,7 @@ export default function Advantages({ cms }: AdvantagesProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative h-[600px] w-full">
             <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)] to-[var(--secondary)] rounded-3xl transform -rotate-3 -z-10 opacity-20"></div>
-            <Image src={t("/images/about-advantages.jpg")} alt="Why Choose Us" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover rounded-3xl shadow-lg" />
+            <Image src={t("/images/about-advantages.png")} alt="Why Choose Us" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover rounded-3xl shadow-lg" />
           </div>
           <div className="order-1 lg:order-2">
             <SectionTitle

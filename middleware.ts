@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+// Cache redirect lookups in memory to dramatically speed up page requests
+const redirectCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // Cache for 5 minutes
+
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const token = request.cookies.get("jwt")?.value;
@@ -14,21 +18,31 @@ export async function middleware(request: NextRequest) {
   // 2. SEO URL Redirects Check (skip for admin, api, static files, and paths with extensions)
   if (!pathname.startsWith("/admin") && !pathname.startsWith("/api") && !pathname.startsWith("/_next") && !pathname.includes('.')) {
     try {
-      // Query the fast lookup endpoint
-      const checkUrl = new URL(`/api/cms/redirect-check?path=${encodeURIComponent(pathname)}`, request.url);
-      const res = await fetch(checkUrl);
+      const now = Date.now();
+      const cached = redirectCache.get(pathname);
       
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.redirect) {
-          const destination = data.redirect.toPath;
-          const statusCode = data.redirect.type === '302' ? 302 : 301;
-          
-          if (destination.startsWith('http://') || destination.startsWith('https://')) {
-            return NextResponse.redirect(destination, statusCode);
-          } else {
-            return NextResponse.redirect(new URL(destination, request.url), statusCode);
-          }
+      let data = null;
+      if (cached && cached.expiry > now) {
+        data = cached.data;
+      } else {
+        // Query the fast lookup endpoint
+        const checkUrl = new URL(`/api/cms/redirect-check?path=${encodeURIComponent(pathname)}`, request.url);
+        const res = await fetch(checkUrl);
+        
+        if (res.ok) {
+          data = await res.json();
+          redirectCache.set(pathname, { data, expiry: now + CACHE_TTL });
+        }
+      }
+      
+      if (data && data.redirect) {
+        const destination = data.redirect.toPath;
+        const statusCode = data.redirect.type === '302' ? 302 : 301;
+        
+        if (destination.startsWith('http://') || destination.startsWith('https://')) {
+          return NextResponse.redirect(destination, statusCode);
+        } else {
+          return NextResponse.redirect(new URL(destination, request.url), statusCode);
         }
       }
     } catch (err) {

@@ -32,7 +32,9 @@ export async function middleware(request: NextRequest) {
         }
       }
     } catch (err) {
-      console.error("Middleware URL redirect lookup failed:", err);
+      // In development, Next.js intercepts console.error and shows an error overlay.
+      // We use console.warn to avoid the intrusive overlay when fetch fails during server startup.
+      console.warn("Middleware URL redirect lookup failed:", err);
     }
   }
 

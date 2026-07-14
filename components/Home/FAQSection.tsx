@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, MessageCircleQuestion } from "lucide-react";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleIndex = (index: number) => {
+    setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
 
   const faqs = [
     {
@@ -34,57 +39,77 @@ export default function FAQSection() {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="pt-16 pb-24 bg-gradient-to-b from-[#fefaef] to-[#cdeae8] relative">
+      
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center mb-16">
-          <span className="text-sm font-bold tracking-widest text-[var(--primary)] uppercase mb-3 block">Got Questions?</span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[var(--dark)] tracking-tight">
-            Frequently Asked <span className="text-[var(--primary)]">Questions</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center justify-center p-3 bg-teal-50 rounded-full mb-4 text-[#0D4B42]">
+            <MessageCircleQuestion size={28} />
+          </div>
+          <span className="text-sm font-bold tracking-widest text-[#0D4B42] uppercase mb-3 block">Got Questions?</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0B2C3D] tracking-tight">
+            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0D4B42] to-[#FFB700]">Questions</span>
           </h2>
-          <p className="mt-6 text-slate-500 text-lg max-w-2xl mx-auto">
+          <p className="mt-6 text-slate-500 text-lg max-w-2xl mx-auto font-medium">
             Find quick answers to common questions about our technical services, coverage areas, and booking processes.
           </p>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div 
+              <motion.div 
                 key={index}
-                className={`border rounded-2xl transition-all duration-300 ${
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className={`border border-[#E46704] bg-white rounded-2xl transition-all duration-300 ${
                   isOpen 
-                    ? "bg-white border-[var(--primary)]/30 shadow-lg shadow-[var(--primary)]/5" 
-                    : "bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100"
+                    ? "shadow-md ring-1 ring-[#E46704]" 
+                    : "shadow-sm hover:shadow-md"
                 }`}
               >
                 <button
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none"
+                  onClick={() => toggleIndex(index)}
+                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none rounded-2xl"
                 >
-                  <h3 className={`font-bold text-lg transition-colors ${isOpen ? "text-[var(--primary)]" : "text-[var(--dark)]"}`}>
+                  <h3 className={`font-bold text-lg transition-colors pr-8 ${isOpen ? "text-[#0D4B42]" : "text-[#0B2C3D]"}`}>
                     {faq.q}
                   </h3>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${
-                    isOpen ? "bg-[var(--primary)] text-white rotate-180" : "bg-white text-slate-400 border border-slate-200"
+                  <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    isOpen ? "bg-[#FFB700] text-slate-900 rotate-180 shadow-md" : "bg-slate-50 text-slate-400 border border-slate-200 hover:bg-slate-100"
                   }`}>
-                    <ChevronDown size={18} />
+                    <ChevronDown size={20} className={isOpen ? "stroke-[2.5px]" : ""} />
                   </div>
                 </button>
                 
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="px-6 pb-6 pt-2">
-                    <p className="text-slate-600 leading-relaxed">
-                      {faq.a}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden bg-white rounded-b-2xl"
+                    >
+                      <div className="px-6 pb-6 pt-5 border-t border-slate-100 mx-6 mt-1">
+                        <p className="text-slate-600 leading-relaxed font-medium">
+                          {faq.a}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>

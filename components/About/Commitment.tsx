@@ -10,9 +10,7 @@ export default function Commitment({ cms }: CommitmentProps) {
   const t = (val: string) => getCmsVal(cms, val);
 
   return (
-    <section className="py-16 md:py-20 bg-blue-50/50 overflow-hidden relative">
-      {/* Right half pure white background */}
-      <div className="hidden lg:block absolute top-0 right-0 w-1/2 h-full bg-white"></div>
+    <section className="py-16 md:py-20 bg-gradient-to-b from-[#cdeae8] via-[#e2f2f1] to-[#fefaef] overflow-hidden relative">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -27,7 +25,7 @@ export default function Commitment({ cms }: CommitmentProps) {
             
             <div className="space-y-8">
               <div className="flex gap-5">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-slate-100">
+                <div className="w-14 h-14 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shrink-0 shadow-md border border-white">
                   <ShieldCheck size={28} className="text-blue-500" />
                 </div>
                 <div>
@@ -37,7 +35,7 @@ export default function Commitment({ cms }: CommitmentProps) {
               </div>
               
               <div className="flex gap-5">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-slate-100">
+                <div className="w-14 h-14 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shrink-0 shadow-md border border-white">
                   <HardHat size={28} className="text-orange-500" />
                 </div>
                 <div>
@@ -47,7 +45,7 @@ export default function Commitment({ cms }: CommitmentProps) {
               </div>
 
               <div className="flex gap-5">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-slate-100">
+                <div className="w-14 h-14 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shrink-0 shadow-md border border-white">
                   <Recycle size={28} className="text-green-500" />
                 </div>
                 <div>

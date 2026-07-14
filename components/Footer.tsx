@@ -10,15 +10,15 @@ export default function Footer() {
     <footer className="bg-[var(--dark)] text-white pt-16 pb-8 border-t-4 border-[var(--primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          
+
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="inline-block group mb-4 -mt-4">
-              <Image 
-                src="/images/blackbgremove.png" 
-                alt="OsumFix Logo" 
-                width={280} 
-                height={96} 
+              <Image
+                src="/images/blackbgremove.png"
+                alt="OsumFix Logo"
+                width={280}
+                height={96}
                 className="h-20 sm:h-24 w-auto object-contain scale-110 origin-left"
               />
             </Link>
@@ -122,7 +122,7 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-sm">
                 <MapPin className="text-[var(--secondary)] shrink-0 mt-0.5" size={18} />
                 <span>
-                office NO4-173 Al Khabeesi Building,Deira Dubai, UAE
+                  office NO4-173 Al Khabeesi Building,Deira Dubai, UAE
                 </span>
               </li>
               <li className="flex items-center gap-3 text-sm">

@@ -21,10 +21,7 @@ export default async function AboutPage() {
     <div className="min-h-screen flex flex-col bg-white font-sans antialiased text-black">
       <Navbar />
       <main>
-        <PageBanner
-          title="About OsumFix"
-          breadcrumb={[{ label: "About Us", href: "/about" }]}
-        />
+       
         <WhoWeAre cms={cms} />
         <Stats cms={cms} />
         <Philosophy cms={cms} />

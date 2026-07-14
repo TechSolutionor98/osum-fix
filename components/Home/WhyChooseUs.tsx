@@ -1,10 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import SectionTitle from "@/components/SectionTitle";
 import { getCmsVal } from "@/lib/api-helper";
 
 interface WhyChooseUsProps {
@@ -14,91 +10,92 @@ interface WhyChooseUsProps {
 export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
   const t = (val: string) => getCmsVal(cms, val);
 
-  // Left column texts in visual order
-  const subtitleText = t("Why Choose OsumFix");
-  const titleText = t("We Build Trust Through Quality Work");
-  const descriptionText = t("With years of experience in the Dubai market, we understand the high standards our clients expect. Our team of certified professionals is dedicated to exceeding those expectations.");
-  const checkItem1 = t("Certified & Experienced Technicians");
-  const checkItem2 = t("24/7 Emergency Support");
-  const checkItem3 = t("Transparent Pricing & No Hidden Fees");
-  const checkItem4 = t("Guaranteed Satisfaction");
-  const learnMoreText = t("More About Us");
-
-  // Right column image details
-  const teamImage = t("/images/why-choose-us.png");
-  const teamImageAlt = t("Professional Team Image");
-
-  // Quality floating badge texts
-  const qualityPercentText = t("100%");
-  const qualityLabelText = t("Quality Guarantee");
-
   return (
-    <section className="py-12 bg-white">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <SectionTitle
-              subtitle={subtitleText}
-              title={titleText}
-              description={descriptionText}
-              className="mb-4"
-            />
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+          
+          {/* Left Content */}
+          <div className="w-full lg:w-1/2">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-[42px] font-extrabold text-[#0B2C3D] leading-[1.2] mb-10"
+            >
+              {t("Resolution in")} <br />
+              <span className="text-[#E46704]">{t("3 Simple Steps")}</span>
+            </motion.h2>
 
-            <div className="space-y-4 mt-4">
-              {[
-                checkItem1,
-                checkItem2,
-                checkItem3,
-                checkItem4
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="flex items-center gap-4"
-                >
-                  <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-[var(--primary)] shrink-0">
-                    <CheckCircle2 size={24} />
-                  </div>
-                  <span className="text-lg font-medium text-slate-700">{item}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-6">
-              <Link href="/about" className="text-[var(--primary)] font-semibold flex items-center gap-2 hover:text-[var(--secondary)] transition-colors">
-                {learnMoreText} <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative">
-            {/* Live CMS Image */}
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden relative shadow-2xl bg-slate-100">
-              <Image 
-                src={teamImage} 
-                alt={teamImageAlt} 
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-top"
-              />
-            </div>
-
-            {/* Floating Card */}
-            <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs border border-slate-100">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-[var(--accent)] flex items-center justify-center text-white">
-                  <CheckCircle2 size={24} />
-                </div>
+            <div className="space-y-12">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="flex gap-6"
+              >
+                <div className="flex-shrink-0 w-12 h-12 bg-[#0D4B42] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">1</div>
                 <div>
-                  <h4 className="font-bold text-[var(--dark)] text-xl">{qualityPercentText}</h4>
-                  <p className="text-sm text-slate-500 font-medium">{qualityLabelText}</p>
+                  <h4 className="font-extrabold text-[#0B2C3D] text-[24px] mb-2">{t("Choose Your Service")}</h4>
+                  <p className="text-slate-500 text-base leading-relaxed">
+                    {t("Select from our wide range of technical offerings through our app or website.")}
+                  </p>
                 </div>
-              </div>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex gap-6"
+              >
+                <div className="flex-shrink-0 w-12 h-12 bg-[#0D4B42] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">2</div>
+                <div>
+                  <h4 className="font-extrabold text-[#0B2C3D] text-[24px] mb-2">{t("Schedule & Track")}</h4>
+                  <p className="text-slate-500 text-base leading-relaxed">
+                    {t("Pick a convenient time slot and track your technician's arrival in real-time.")}
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex gap-6"
+              >
+                <div className="flex-shrink-0 w-12 h-12 bg-[#0D4B42] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">3</div>
+                <div>
+                  <h4 className="font-extrabold text-[#0B2C3D] text-[24px] mb-2">{t("Sit Back & Relax")}</h4>
+                  <p className="text-slate-500 text-base leading-relaxed">
+                    {t("Expert resolution delivered with a satisfaction guarantee. Pay after the job is done.")}
+                  </p>
+                </div>
+              </motion.div>
             </div>
           </div>
+
+          {/* Right Image */}
+          <div className="w-full lg:w-1/2 relative mt-10 lg:mt-0">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <img 
+                className="relative z-10 w-full rounded-[48px] border-4 border-white shadow-xl" 
+                alt={t("OsumFix mobile app interface")} 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD55kWqSEeRBujP8igboSCInvZhCbP_6k9Qtk3JSbAw7UO90gzttSlCxpv5Bc-hlIQBE9Qaxegj6WtlIIUot-D4_AYkW9hjT1RWikVpaF8ZLlSTHo-RByAg8M4x362HWcaO6BuO7oAMN1VguFrruASexaT9ynNZi83KsdJcULG2kom4gUlrIEq2aQ4YR0_Ghxy-wWSTFlgc6R8R_-YbNy7tetbRlgTSzBXmqriD_vHpzi8u84b-kMPdpSXNXVXI8C1WWiKiN4iLTY4" 
+              />
+            </motion.div>
+          </div>
+          
         </div>
       </div>
     </section>

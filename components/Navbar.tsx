@@ -94,7 +94,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-white py-3"
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -173,16 +173,17 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex">
+          {/* Location & CTA Button */}
+          <div className="hidden lg:flex items-center space-x-4">
+
             <Link
-              href="#request-quote"
+              href="/#request-quote"
               onClick={() => {
                 window.location.hash = "request-quote";
               }}
-              className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
+              className="bg-[#FFB700] hover:bg-[#E5A400] text-slate-900 px-6 py-2.5 rounded-md font-semibold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
             >
-              Request Quote
+              Book Now
             </Link>
           </div>
 
@@ -252,14 +253,14 @@ export default function Navbar() {
               ))}
               <div className="pt-4 pb-2">
                 <Link
-                  href="#request-quote"
+                  href="/#request-quote"
                   onClick={() => {
                     setIsOpen(false);
                     window.location.hash = "request-quote";
                   }}
-                  className="block w-full text-center bg-[var(--primary)] text-white px-6 py-3 rounded-xl font-medium shadow-md cursor-pointer"
+                  className="block w-full text-center bg-[#FFB700] hover:bg-[#E5A400] text-slate-900 px-6 py-3 rounded-xl font-bold shadow-md cursor-pointer transition-colors"
                 >
-                  Request a Quote
+                  Book Now
                 </Link>
               </div>
             </div>

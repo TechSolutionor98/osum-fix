@@ -32,9 +32,9 @@ export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
             <div className="relative w-full max-w-lg mt-8 lg:mt-12 mx-auto lg:mx-0 pr-4 sm:pr-0">
               {/* Grid background lines */}
               <div className="absolute inset-0 grid grid-cols-3 z-0 pointer-events-none pb-4">
-                <div className="border-l border-slate-200"></div>
-                <div className="border-l border-slate-200"></div>
-                <div className="border-l border-r border-slate-200"></div>
+                <div className="border-r border-slate-200"></div>
+                <div className="border-r border-slate-200"></div>
+                <div></div>
               </div>
               
               <div className="relative z-10 flex flex-col w-full">
@@ -83,7 +83,7 @@ export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="relative py-5 border-t border-b border-slate-200"
+                  className="relative py-5 border-t border-slate-200"
                 >
                   <div className="w-[85%] md:w-[50%] ml-[15%] md:ml-[50%] bg-[#0D4B42] text-white rounded-full py-3 px-6 shadow-lg shadow-teal-900/20 transform hover:-translate-y-1 transition-all cursor-default relative z-10">
                     <h4 className="font-extrabold text-sm md:text-base whitespace-nowrap overflow-hidden text-ellipsis">{t("Sit Back & Relax")}</h4>

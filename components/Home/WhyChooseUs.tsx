@@ -53,7 +53,7 @@ export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
                   transition={{ duration: 0.5, delay: 0.1 }}
                   className="relative py-5 border-t border-slate-200"
                 >
-                  <div className="w-[85%] md:w-[50%] bg-[#E46704] text-white rounded-full py-3 px-6 shadow-lg shadow-orange-500/20 transform hover:-translate-y-1 transition-all cursor-default">
+                  <div className="w-[85%] md:w-[50%] bg-[#E46704] text-white rounded-full py-3 px-6 transform hover:-translate-y-1 transition-all cursor-default">
                     <h4 className="font-extrabold text-sm md:text-base whitespace-nowrap overflow-hidden text-ellipsis">{t("Choose Your Service")}</h4>
                   </div>
                   <p className="text-xs md:text-sm text-slate-500 mt-4 max-w-[85%] md:max-w-[45%] pl-4 border-l-2 border-[#E46704] leading-relaxed ml-4">
@@ -69,7 +69,7 @@ export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="relative py-5 border-t border-slate-200"
                 >
-                  <div className="w-[85%] md:w-[50%] ml-[10%] md:ml-[25%] bg-white text-[#0B2C3D] border border-slate-200 rounded-full py-3 px-6 shadow-xl shadow-slate-200/50 transform hover:-translate-y-1 transition-all cursor-default relative z-10">
+                  <div className="w-[85%] md:w-[50%] ml-[10%] md:ml-[25%] bg-white text-[#0B2C3D] border border-slate-200 rounded-full py-3 px-6 transform hover:-translate-y-1 transition-all cursor-default relative z-10">
                     <h4 className="font-extrabold text-sm md:text-base whitespace-nowrap overflow-hidden text-ellipsis">{t("Schedule & Track")}</h4>
                   </div>
                   <p className="text-xs md:text-sm text-slate-500 mt-4 max-w-[85%] md:max-w-[45%] pl-4 border-l-2 border-[#0B2C3D] leading-relaxed ml-[10%] md:ml-[25%] relative left-4">
@@ -85,7 +85,7 @@ export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="relative py-5 border-t border-slate-200"
                 >
-                  <div className="w-[85%] md:w-[50%] ml-[15%] md:ml-[50%] bg-[#0D4B42] text-white rounded-full py-3 px-6 shadow-lg shadow-teal-900/20 transform hover:-translate-y-1 transition-all cursor-default relative z-10">
+                  <div className="w-[85%] md:w-[50%] ml-[15%] md:ml-[50%] bg-[#0D4B42] text-white rounded-full py-3 px-6 transform hover:-translate-y-1 transition-all cursor-default relative z-10">
                     <h4 className="font-extrabold text-sm md:text-base whitespace-nowrap overflow-hidden text-ellipsis">{t("Sit Back & Relax")}</h4>
                   </div>
                   <p className="text-xs md:text-sm text-slate-500 mt-4 max-w-[85%] md:max-w-[45%] pl-4 border-l-2 border-[#0D4B42] leading-relaxed ml-[15%] md:ml-[50%] relative left-4">

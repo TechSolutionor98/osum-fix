@@ -54,20 +54,40 @@ export default function OrbitalServices({ cms }: OrbitalServicesProps) {
             >
               {/* Item container at the top edge */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
-                {/* Counter rotate so icon stays upright */}
-                <div
-                  className={`w-14 h-14 md:w-16 md:h-16 rounded-full border border-slate-200 flex items-center justify-center cursor-pointer transition-all duration-300 animate-[spin_30s_linear_infinite_reverse] ${hoveredIndex === i ? 'scale-125 border-[#E46704] bg-[#E46704]' : 'bg-white hover:scale-110 hover:border-[#E46704]/50'
-                    }`}
+                {/* 1. Counter rotate against the continuous 30s spin */}
+                <div 
+                  className="animate-[spin_30s_linear_infinite_reverse]"
                   style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
                   onMouseEnter={() => {
                     setHoveredIndex(i);
                     setIsPaused(true);
                   }}
                 >
-                  <span className={`material-symbols-outlined text-2xl md:text-3xl transition-colors ${hoveredIndex === i ? 'text-white' : 'text-[#E46704]'
+                  {/* 2. Counter rotate against the static positioning angle so it stays perfectly upright */}
+                  <div 
+                    className="relative flex flex-col items-center w-20 md:w-24"
+                    style={{ transform: `rotate(-${angle}deg)` }}
+                  >
+                    {/* Icon Circle Wrapper to reserve layout space while scaling */}
+                    <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                      <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full border border-slate-200 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+                        hoveredIndex === i ? 'scale-125 border-[#E46704] bg-[#E46704] shadow-lg shadow-orange-500/20' : 'bg-white hover:scale-110 hover:border-[#E46704]/50 shadow-sm'
+                      }`}>
+                        <span className={`material-symbols-outlined text-2xl md:text-3xl transition-all duration-300 ${
+                          hoveredIndex === i ? 'text-white scale-[0.8]' : 'text-[#E46704] scale-100'
+                        }`}>
+                          {service.icon}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Label below */}
+                    <span className={`mt-3 text-[10px] md:text-[11px] font-bold whitespace-nowrap transition-colors duration-300 drop-shadow-sm text-center ${
+                      hoveredIndex === i ? 'text-[#E46704]' : 'text-slate-600'
                     }`}>
-                    {service.icon}
-                  </span>
+                      {t(service.title)}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,10 +109,10 @@ export default function OrbitalServices({ cms }: OrbitalServicesProps) {
             </Link>
           </div>
         ) : (
-          <div className="animate-in fade-in duration-500 flex flex-col items-center">
-            <span className="material-symbols-outlined text-white/20 text-4xl md:text-5xl mb-2">touch_app</span>
-            <h4 className="text-white font-bold text-sm md:text-base leading-tight">{t("Hover on any")}</h4>
-            <p className="text-white/60 text-xs md:text-sm mt-1">{t("service to view")}</p>
+          <div className="flex flex-col items-center justify-center animate-in fade-in duration-500">
+            <span className="material-symbols-outlined text-4xl md:text-5xl text-[#E46704] mb-2 opacity-90">home_repair_service</span>
+            <h3 className="text-white font-extrabold text-base md:text-xl uppercase tracking-wider">{t("Our Services")}</h3>
+            <p className="text-slate-400 text-xs md:text-sm mt-2">{t("Explore our offerings")}</p>
           </div>
         )}
       </div>

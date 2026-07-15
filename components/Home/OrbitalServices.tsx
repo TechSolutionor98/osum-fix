@@ -71,7 +71,7 @@ export default function OrbitalServices({ cms }: OrbitalServicesProps) {
                     {/* Icon Circle Wrapper to reserve layout space while scaling */}
                     <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                       <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full border border-slate-200 flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                        hoveredIndex === i ? 'scale-125 border-[#E46704] bg-[#E46704] shadow-lg shadow-orange-500/20' : 'bg-white hover:scale-110 hover:border-[#E46704]/50 shadow-sm'
+                        hoveredIndex === i ? 'scale-125 border-[#E46704] bg-[#E46704]' : 'bg-white hover:scale-110 hover:border-[#E46704]/50'
                       }`}>
                         <span className={`material-symbols-outlined text-2xl md:text-3xl transition-all duration-300 ${
                           hoveredIndex === i ? 'text-white scale-[0.8]' : 'text-[#E46704] scale-100'
@@ -82,8 +82,8 @@ export default function OrbitalServices({ cms }: OrbitalServicesProps) {
                     </div>
                     
                     {/* Label below */}
-                    <span className={`mt-3 text-[10px] md:text-[11px] font-bold whitespace-nowrap transition-colors duration-300 drop-shadow-sm text-center ${
-                      hoveredIndex === i ? 'text-[#E46704]' : 'text-slate-600'
+                    <span className={`mt-2 md:mt-3 text-[11px] md:text-xs font-extrabold whitespace-nowrap transition-colors duration-300 text-center ${
+                      hoveredIndex === i ? 'text-[#E46704]' : 'text-[#0B2C3D]'
                     }`}>
                       {t(service.title)}
                     </span>
@@ -112,7 +112,7 @@ export default function OrbitalServices({ cms }: OrbitalServicesProps) {
           <div className="flex flex-col items-center justify-center animate-in fade-in duration-500">
             <span className="material-symbols-outlined text-4xl md:text-5xl text-[#E46704] mb-2 opacity-90">home_repair_service</span>
             <h3 className="text-white font-extrabold text-base md:text-xl uppercase tracking-wider">{t("Our Services")}</h3>
-            <p className="text-slate-400 text-xs md:text-sm mt-2">{t("Explore our offerings")}</p>
+            <p className="text-slate-300 text-xs md:text-sm mt-2 font-medium">{t("Explore our offerings")}</p>
           </div>
         )}
       </div>

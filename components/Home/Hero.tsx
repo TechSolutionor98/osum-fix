@@ -23,34 +23,44 @@ export default function Hero({ cms }: HeroProps) {
           
           {/* Left Content */}
           <div className="w-full md:w-[55%] lg:w-[60%] text-left pb-12 md:pb-24 pt-10 md:pt-0">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0B2C3D] leading-[1.2] mb-6"
-            >
-              <span className="block">{t("OsumFix Professional")}</span>
-              <span className="block">{t("Maintenance & Repair")}</span>
-              <span className="block text-[#E46704]">{t("Solutions.")}</span>
-            </motion.h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0B2C3D] leading-[1.2] mb-6">
+              <span className="block space-x-3">
+                <span className="text-[#E46704]">{t("OsumFix")}</span>
+                <span className="inline-block">
+                  {String(t("Professional") || "").split("").map((char, i) => (
+                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 + (i * 0.03), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              </span>
+              <span className="block pt-2">
+                <span className="inline-block">
+                  {String(t("Maintenance & Repair") || "").split("").map((char, i) => (
+                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.4 + (i * 0.03), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              </span>
+              <span className="block pt-2">
+                <span className="inline-block">
+                  {String(t("Solutions.") || "").split("").map((char, i) => (
+                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.8 + (i * 0.03), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              </span>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-lg text-slate-700 mb-8 max-w-lg leading-relaxed font-medium"
-            >
+            <p className="text-base md:text-lg text-slate-700 mb-8 max-w-lg leading-relaxed font-medium">
               {t("Professional. Reliable. Affordable.")} <br />
               {t("Your comfort is our priority.")}
-            </motion.p>
+            </p>
 
             {/* Trust Badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="grid grid-cols-2 gap-3 sm:gap-4 mt-8 w-full sm:w-fit"
-            >
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-8 w-full sm:w-fit">
               <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
                 <div className="bg-teal-50 p-2 rounded-full">
                   <CheckCircle size={22} className="text-[#0D4B42]" />
@@ -78,15 +88,15 @@ export default function Hero({ cms }: HeroProps) {
                 </div>
                 <span className="text-sm font-bold text-[#0B2C3D] leading-tight">Satisfaction<br />Guaranteed</span>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Content / Image */}
           <div className="w-full md:w-[45%] lg:w-[40%] relative flex justify-center md:justify-end mt-10 md:mt-0">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
               className="relative w-[300px] h-[400px] md:w-[500px] md:h-[600px] z-10"
             >
               {/* Replace with the handyman image from the theme */}
@@ -94,17 +104,13 @@ export default function Hero({ cms }: HeroProps) {
                 src={t("/images/hro.png")} 
                 alt="Professional Handyman"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 priority
                 className="object-contain object-bottom drop-shadow-2xl"
               />
               
               {/* Floating Review Badge */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                className="absolute bottom-10 right-0 md:-right-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white"
-              >
+              <div className="absolute bottom-10 right-0 md:-right-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-2xl font-bold text-slate-800">4.9</span>
                   <Star size={20} className="fill-[#FFB700] text-[#FFB700]" />
@@ -115,7 +121,7 @@ export default function Hero({ cms }: HeroProps) {
                   <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src="/images/about-2.png" alt="user" width={32} height={32} className="object-cover" /></div>
                   <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src="/images/about-man.png" alt="user" width={32} height={32} className="object-cover" /></div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
           

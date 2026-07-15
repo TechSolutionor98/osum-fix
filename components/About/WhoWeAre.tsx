@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import { getCmsVal } from "@/lib/api-helper";
+import { motion } from "framer-motion";
 
 interface WhoWeAreProps {
   cms?: any;
@@ -33,17 +36,35 @@ export default function WhoWeAre({ cms }: WhoWeAreProps) {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 relative">
+          <div className="grid grid-cols-2 gap-4 relative" style={{ perspective: "1000px" }}>
             <div className="absolute -inset-4 bg-[#0D4B42] rounded-[3rem] -z-10 transform rotate-3 shadow-2xl"></div>
+            
             <div className="space-y-4 pt-10">
-              <div className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg relative">
-                <Image src={t("/images/about-1.png")} alt="Technician working" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-500" />
-              </div>
+              <motion.div 
+                animate={{ 
+                  y: [0, -30, 0],
+                  rotateX: [0, 8, 0],
+                  rotateY: [0, 8, 0],
+                }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.2)] relative border-4 border-white/50"
+              >
+                <Image src={t("/images/about-1.png")} alt="Technician working" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover" />
+              </motion.div>
             </div>
+            
             <div className="space-y-4">
-              <div className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg relative">
-                <Image src={t("/images/about-2.png")} alt="Electrician at work" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-500" />
-              </div>
+              <motion.div 
+                animate={{ 
+                  y: [0, 30, 0],
+                  rotateX: [0, -8, 0],
+                  rotateY: [0, -8, 0],
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="bg-slate-200 aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.2)] relative border-4 border-white/50"
+              >
+                <Image src={t("/images/about-2.png")} alt="Electrician at work" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover" />
+              </motion.div>
             </div>
           </div>
         </div>

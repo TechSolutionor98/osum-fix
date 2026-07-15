@@ -33,6 +33,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
         {/* Custom Head Script */}
         {settings?.customHeadScript && (
           <script dangerouslySetInnerHTML={{ __html: settings.customHeadScript }} />

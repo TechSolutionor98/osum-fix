@@ -11,13 +11,11 @@ export default function VideoSection({ cms }: VideoSectionProps) {
   const t = (val: string) => getCmsVal(cms, val);
 
   return (
-    <section className="pt-24 pb-16 relative overflow-hidden bg-gradient-to-b from-[#cdeae8] to-[#fefaef]">
-      {/* Decorative Background Patterns */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white rounded-full blur-[120px] opacity-40 pointer-events-none"></div>
+    <section className="pt-24 pb-16 relative overflow-hidden bg-[#0d1b2a]">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -27,10 +25,10 @@ export default function VideoSection({ cms }: VideoSectionProps) {
           <span className="text-sm font-bold tracking-widest text-[#E46704] uppercase mb-4 block">
             {t("See Us In Action")}
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0B2C3D] tracking-tight mb-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
             {t("Experience The OsumFix Difference")}
           </h2>
-          <p className="text-slate-600 font-medium text-lg">
+          <p className="text-slate-300 font-medium text-lg">
             {t("Watch how our expert technicians handle complex maintenance challenges with precision and care.")}
           </p>
         </motion.div>

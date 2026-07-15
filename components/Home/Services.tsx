@@ -99,14 +99,14 @@ export default function Services({ cms }: ServicesProps) {
         {/* Services Grid mapping */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 lg:gap-6">
           {services.map((service) => (
-            <Link key={service.slug} href={`/services/${service.slug}`} className="group cursor-pointer">
-              <div className="aspect-square bg-slate-50 rounded-3xl mb-4 flex items-center justify-center border border-slate-200 group-hover:border-[#E46704] transition-all group-hover:shadow-xl group-hover:-translate-y-2 relative overflow-hidden">
+            <Link key={service.slug} href={`/services/${service.slug}`} className="group cursor-pointer block">
+              <div className="aspect-square bg-slate-50 rounded-3xl mb-4 flex items-center justify-center border border-slate-200 group-hover:border-[#E46704] transition-all duration-300 group-hover:shadow-2xl group-hover:animate-bounce relative overflow-hidden">
                 <img 
                   className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
                   alt={service.title} 
                   src={service.image} 
                 />
-                <span className="material-symbols-outlined text-4xl text-black group-hover:text-white relative z-10 transition-colors">
+                <span className="material-symbols-outlined text-4xl text-black group-hover:text-white relative z-10 transition-all">
                   {service.icon}
                 </span>
               </div>

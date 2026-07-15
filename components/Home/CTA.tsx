@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { getCmsVal } from "@/lib/api-helper";
 
@@ -16,18 +16,22 @@ const RINGS = [
   { w: 900, h: 480 }, // Ring 3 (Outer)
 ];
 
-const AVAILABLE_POSITIONS = [
-  // Ring 1 positions (w: 660, h: 240)
-  { x: 0, y: -120 }, { x: 330, y: 0 }, { x: 0, y: 120 }, { x: -330, y: 0 },
-  { x: 100, y: -120 }, { x: -100, y: -120 }, { x: 100, y: 120 }, { x: -100, y: 120 },
-
-  // Ring 2 positions (w: 780, h: 360)
-  { x: 180, y: -180 }, { x: 180, y: 180 }, { x: -180, y: -180 }, { x: -180, y: 180 },
-  { x: 390, y: 0 }, { x: -390, y: 0 }, { x: 0, y: -180 }, { x: 0, y: 180 },
-
-  // Ring 3 positions (w: 900, h: 480)
-  { x: 150, y: -240 }, { x: -150, y: -240 }, { x: 450, y: 0 }, { x: -450, y: 0 },
-  { x: 150, y: 240 }, { x: -150, y: 240 }, { x: 250, y: -240 }, { x: -250, y: -240 }
+// 7 distinct, non-overlapping zones (each zone has coordinates for Ring 1, 2, and 3)
+const ZONES = [
+  // 0: Far Left
+  [ { x: -330, y: 0 }, { x: -390, y: 0 }, { x: -450, y: 0 } ],
+  // 1: Far Right
+  [ { x: 330, y: 0 }, { x: 390, y: 0 }, { x: 450, y: 0 } ],
+  // 2: Top Left (x = -180 sits perfectly on the straight top edge of all rings)
+  [ { x: -180, y: -120 }, { x: -180, y: -180 }, { x: -180, y: -240 } ],
+  // 3: Top Right
+  [ { x: 180, y: -120 }, { x: 180, y: -180 }, { x: 180, y: -240 } ],
+  // 4: Bottom Left
+  [ { x: -180, y: 120 }, { x: -180, y: 180 }, { x: -180, y: 240 } ],
+  // 5: Bottom Right
+  [ { x: 180, y: 120 }, { x: 180, y: 180 }, { x: 180, y: 240 } ],
+  // 6: Top Center
+  [ { x: 0, y: -120 }, { x: 0, y: -180 }, { x: 0, y: -240 } ],
 ];
 
 const LOCATIONS = [
@@ -43,14 +47,41 @@ const LOCATIONS = [
 export default function CTA({ cms }: CTAProps) {
   const t = (val: string) => getCmsVal(cms, val);
   
-  const [positions, setPositions] = useState(AVAILABLE_POSITIONS.slice(0, 7));
+  // Assign each location to a unique zone initially with deterministic ring index for SSR hydration
+  const [assignments, setAssignments] = useState(() => 
+    LOCATIONS.map((_, i) => ({ zoneIndex: i, ringIndex: i % 3 }))
+  );
+  
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const hoveredRef = useRef<number | null>(null);
+  
+  useEffect(() => {
+    hoveredRef.current = hoveredIndex;
+  }, [hoveredIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPositions((prev) => {
-        // Shuffle the available positions to randomly pick 7 new ones
-        const shuffled = [...AVAILABLE_POSITIONS].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, 7);
+      setAssignments((prev) => {
+        const next = [...prev];
+        const hIndex = hoveredRef.current;
+        
+        // Find which zone is locked by the hovered item
+        const lockedZone = hIndex !== null ? prev[hIndex].zoneIndex : -1;
+        
+        // Get all free zones
+        const freeZones = [0, 1, 2, 3, 4, 5, 6].filter(z => z !== lockedZone);
+        // Shuffle free zones
+        freeZones.sort(() => 0.5 - Math.random());
+        
+        for (let i = 0; i < next.length; i++) {
+          if (i === hIndex) continue; // Hovered item stays exactly where it is
+          
+          next[i] = {
+            zoneIndex: freeZones.pop()!,
+            ringIndex: Math.floor(Math.random() * 3) // Pick a random ring (1, 2, or 3)
+          };
+        }
+        return next;
       });
     }, 5000); // Float to a new ring every 5 seconds
     
@@ -99,11 +130,14 @@ export default function CTA({ cms }: CTAProps) {
 
           {/* Render Location Nodes */}
           {LOCATIONS.map((loc, i) => {
-            const pos = positions[i] || AVAILABLE_POSITIONS[i];
+            const assignment = assignments[i];
+            const pos = ZONES[assignment.zoneIndex][assignment.ringIndex];
             
             return (
               <motion.div
                 key={loc.name}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
                 initial={{ opacity: 0, scale: 0, left: `calc(50% + ${pos.x}px)`, top: `calc(50% + ${pos.y}px)` }}
                 animate={{ 
                   opacity: 1, 

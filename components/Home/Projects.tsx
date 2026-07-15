@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { getCmsVal } from "@/lib/api-helper";
 
 interface ProjectsProps {
@@ -13,56 +12,37 @@ export default function Projects({ cms }: ProjectsProps) {
   return (
     <section className="py-24 bg-[#0d1b2a] text-white overflow-hidden" id="projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">
             {t("Project Excellence")}
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto font-medium">
             {t("Take a look at our recent high-end transformations across the UAE's most prestigious communities.")}
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative rounded-[2rem] overflow-hidden group h-[400px] sm:h-[500px]"
-          >
+          <div className="relative rounded-[2rem] overflow-hidden group h-[400px] sm:h-[500px]">
             <img 
               alt={t("Villa Renovation")} 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp6egzR5S8BkS7u8LFO_7c-SpKjdIXd2W-Y74LY9POQswK-A6f5uhpq4qeOAMMeH4WF879c1FzvULU_nsTQeZ1I3pviesdJRIaNM98b0_FGvnjI8WeQrMhAZHKi2GFTvW78OUp6UzIh2AZaJ1TgnuwEXLRlgpOC79jo6WJ4693s2zCoo1IdtQ8KlWmEV6QLFfPhmeIMi_D8DCLtYdAp64b2loUw3z4hXysFDdbXxQAKf45CjY9GE3yTGSw3g2--KGNv3nQP2Wtij8"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90 transition-opacity group-hover:opacity-100"></div>
-            <div className="absolute bottom-8 left-8 right-8">
+            <div className="absolute bottom-8 left-8 right-8 z-10">
               <p className="text-[#E46704] font-bold text-sm uppercase tracking-widest mb-2">
                 {t("Villa Renovation • Emirates Hills")}
               </p>
-              <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight text-white">
                 {t("Full Interior Painting & Lighting")}
               </h3>
             </div>
             <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl font-bold text-xs uppercase tracking-wider border border-white/10 shadow-sm">
               {t("Premium Finish")}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="rounded-2xl overflow-hidden h-56 relative group">
                 <img 
@@ -100,11 +80,11 @@ export default function Projects({ cms }: ProjectsProps) {
               <p className="text-white/60 mb-8 leading-relaxed font-medium">
                 {t("Our project team handles everything from minor repairs to major aesthetic transformations, ensuring every detail meets the \"OsumFix Standard\".")}
               </p>
-              <button className="px-8 py-4 bg-white text-[#0B2C3D] font-extrabold rounded-xl hover:bg-[#E46704] hover:text-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <button className="px-8 py-4 bg-[#E46704] text-white font-extrabold rounded-xl  transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 {t("View Project Gallery")}
               </button>
             </div>
-          </motion.div>
+          </div>
           
         </div>
       </div>

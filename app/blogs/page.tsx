@@ -12,7 +12,7 @@ export default async function BlogsPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-slate-50 min-h-screen">
+      <main className="min-h-screen">
         <PageBanner 
           title="Our Blogs & Insights" 
           breadcrumb={[{ label: "Blogs", href: "/blogs" }]} 

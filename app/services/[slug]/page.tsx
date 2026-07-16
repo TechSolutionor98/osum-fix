@@ -6,6 +6,7 @@ export const dynamic = 'force-dynamic';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
+import AnimatedCard from "@/components/AnimatedCard";
 import Link from "next/link";
 import {
   CheckCircle2,
@@ -49,24 +50,18 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <main className="bg-white">
-          <PageBanner
-            title="AC Repair & Maintenance Services"
-            breadcrumb={[
-              { label: t("Services"), href: "/services" },
-              { label: t("AC Work"), href: "/services/ac-work" }
-            ]}
-          />
-
-          {/* Section 1: Overview & Hero Image (White Background) */}
-          <section className="py-20 bg-white">
+        <main className="min-h-screen">
+          {/* Section 1: Overview & Hero Image */}
+          <section className="pt-28 pb-20 md:pt-32 lg:pt-36 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("AC Repair & Maintenance Services")}</span>
                   <h2 className="text-4xl md:text-5xl font-extrabold text-[var(--dark)] tracking-tight leading-[1.1]">{t("Professional AC Repair & Maintenance in Dubai")}</h2>
                   <p className="text-slate-600 leading-relaxed text-lg">{t("Your air conditioning system works harder than almost any other appliance in the UAE climate. Regular maintenance prevents unexpected breakdowns and keeps energy bills low.")}</p>
-                  <p className="text-slate-600 leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, our certified technicians use professional equipment and proven procedures for homes, villas, and commercial properties. From basic servicing to complex compressor repairs, we guarantee fast response times and absolute quality.") }}></p>
+                  <p className="text-slate-600 leading-relaxed text-lg">
+                    At <span className="font-semibold text-[var(--primary)]">OsumFix</span>, our certified technicians use professional equipment and proven procedures for homes, villas, and commercial properties. From basic servicing to complex compressor repairs, we guarantee fast response times and absolute quality.
+                  </p>
 
                   <div className="pt-4 flex flex-wrap gap-4">
                     <Link href="/contact" className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-md flex items-center gap-2">
@@ -78,9 +73,11 @@ export default async function ServiceDetailPage({
                   </div>
                 </div>
                 <div className="lg:col-span-6 xl:col-span-5">
-                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border-4 border-slate-200 group">
-                    <Image src={t("/images/services/ac_hero.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Professional AC Repair Technician")} priority />
-                    <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50 flex items-center gap-4 transform transition-transform duration-500 group-hover:-translate-y-2">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden group">
+                    <div className="absolute inset-0 animate-float">
+                      <Image src={t("/images/services/ac_hero.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain object-bottom transition-transform duration-700 group-hover:scale-105" alt={t("Professional AC Repair Technician")} priority />
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50 flex items-center gap-4 transform transition-transform duration-500 group-hover:-translate-y-2 z-10">
                       <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shrink-0">
                         <Shield size={24} />
                       </div>
@@ -95,8 +92,8 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-          {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section className="py-20 bg-slate-50 border-y border-slate-100">
+          {/* Section 2: Why Choose Us */}
+          <section className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -112,20 +109,20 @@ export default async function ServiceDetailPage({
                   { title: t("Advanced Equipment"), desc: t("We use professional testing tools and modern servicing equipment to ensure accurate diagnosis and effective repairs."), icon: <Layers size={26} /> },
                   { title: t("Quality Workmanship"), desc: t("Every service is completed with absolute attention to detail to maximize cooling performance and system reliability."), icon: <Sparkles size={26} /> }
                 ].map((item, idx) => (
-                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                  <AnimatedCard key={idx} delay={idx * 0.1} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
                     <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
                     <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
+                  </AnimatedCard>
                 ))}
               </div>
             </div>
           </section>
 
           {/* Section 3: Our 3-Phase Maintenance Process */}
-          <section className="py-24 bg-white relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#cdeae8] to-[#e2f2f1] relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-20">
                 <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm mb-3 block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full inline-block">{t("Our Methodology")}</span>
@@ -135,13 +132,13 @@ export default async function ServiceDetailPage({
 
               <div className="space-y-24">
                 {/* Phase 1 */}
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-                  <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6">
-                    <div className="inline-flex items-center gap-3 mb-2">
-                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">01</div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Inspection & Diagnosis")}</h3>
+                <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
+                  <div className="w-full lg:w-1/2 p-10 lg:p-16 order-2 lg:order-1 space-y-6 flex flex-col justify-center relative z-10 bg-white">
+                    <div className="inline-flex items-center gap-4 mb-2">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Inspection & Diagnosis")}</h3>
                     </div>
-                    <p className="text-slate-600 text-lg leading-relaxed mb-6">{t("Before we clean, we thoroughly inspect your system to identify any hidden faults or performance drops.")}</p>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6 font-medium">{t("Before we clean, we thoroughly inspect your system to identify any hidden faults or performance drops.")}</p>
                     <ul className="space-y-4">
                       {[
                         t("Complete System Inspection (Indoor & Outdoor)"),
@@ -150,33 +147,33 @@ export default async function ServiceDetailPage({
                         t("Electrical Connections & Safety Verification"),
                         t("Refrigerant Level Check")
                       ].map((item, idx) => (
-                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
-                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
-                          <span className="text-slate-700 font-medium">{item}</span>
+                        <li key={idx} className="flex gap-4 items-center bg-slate-50/50 hover:bg-white p-4 rounded-2xl border border-slate-100 transition-all duration-300 hover:shadow-lg hover:shadow-[var(--primary)]/5 hover:scale-[1.02] hover:-translate-y-0.5">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0" />
+                          <span className="text-slate-700 font-semibold">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="w-full lg:w-1/2 order-1 lg:order-2">
-                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
-                      <Image src={t("/images/services/ac_inspection.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("AC Inspection")} />
-                    </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2 relative min-h-[350px] lg:min-h-full overflow-hidden">
+                    <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
+                    <Image src={t("/images/services/ac_inspection.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1" alt={t("AC Inspection")} />
                   </div>
-                </div>
+                </AnimatedCard>
 
                 {/* Phase 2 */}
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-                  <div className="w-full lg:w-1/2">
-                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
-                      <Image src={t("/images/services/ac_cleaning.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("AC Deep Cleaning")} />
-                    </div>
+                <AnimatedCard delay={0.2} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
+                  <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
+                    <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-white to-transparent lg:block hidden z-10 w-24" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
+                    <Image src={t("/images/services/ac_cleaning.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("AC Deep Cleaning")} />
                   </div>
-                  <div className="w-full lg:w-1/2 space-y-6">
-                    <div className="inline-flex items-center gap-3 mb-2">
-                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">02</div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Deep Cleaning & Optimization")}</h3>
+                  <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
+                    <div className="inline-flex items-center gap-4 mb-2">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Deep Cleaning & Optimization")}</h3>
                     </div>
-                    <p className="text-slate-600 text-lg leading-relaxed mb-6">{t("We perform a comprehensive deep clean of all critical components to restore maximum cooling efficiency and air quality.")}</p>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6 font-medium">{t("We perform a comprehensive deep clean of all critical components to restore maximum cooling efficiency and air quality.")}</p>
                     <ul className="space-y-4">
                       {[
                         t("Air Filter Cleaning & Replacement"),
@@ -185,23 +182,23 @@ export default async function ServiceDetailPage({
                         t("Drain Line Flushing to prevent leaks"),
                         t("Fan Motor & Blade Cleaning")
                       ].map((item, idx) => (
-                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
-                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
-                          <span className="text-slate-700 font-medium">{item}</span>
+                        <li key={idx} className="flex gap-4 items-center bg-slate-50/50 hover:bg-white p-4 rounded-2xl border border-slate-100 transition-all duration-300 hover:shadow-lg hover:shadow-[var(--primary)]/5 hover:scale-[1.02] hover:-translate-y-0.5">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0" />
+                          <span className="text-slate-700 font-semibold">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                </div>
+                </AnimatedCard>
 
                 {/* Phase 3 */}
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-                  <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-6">
-                    <div className="inline-flex items-center gap-3 mb-2">
-                      <div className="w-12 h-12 rounded-full bg-blue-50 text-[var(--primary)] font-bold text-xl flex items-center justify-center border border-blue-100">03</div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-[var(--dark)]">{t("Final Testing & Handover")}</h3>
+                <AnimatedCard delay={0.3} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
+                  <div className="w-full lg:w-1/2 p-10 lg:p-16 order-2 lg:order-1 space-y-6 flex flex-col justify-center relative z-10 bg-white">
+                    <div className="inline-flex items-center gap-4 mb-2">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Final Testing & Handover")}</h3>
                     </div>
-                    <p className="text-slate-600 text-lg leading-relaxed mb-6">{t("We never leave a job without ensuring everything works perfectly. We run complete performance tests to guarantee your comfort.")}</p>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-6 font-medium">{t("We never leave a job without ensuring everything works perfectly. We run complete performance tests to guarantee your comfort.")}</p>
                     <ul className="space-y-4">
                       {[
                         t("Noise & Vibration Check"),
@@ -210,25 +207,25 @@ export default async function ServiceDetailPage({
                         t("Detailed Service Report"),
                         t("Maintenance Recommendations")
                       ].map((item, idx) => (
-                        <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-xl border border-slate-100 transition-colors hover:border-[var(--primary)]/30">
-                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0 mt-0.5" />
-                          <span className="text-slate-700 font-medium">{item}</span>
+                        <li key={idx} className="flex gap-4 items-center bg-slate-50/50 hover:bg-white p-4 rounded-2xl border border-slate-100 transition-all duration-300 hover:shadow-lg hover:shadow-[var(--primary)]/5 hover:scale-[1.02] hover:-translate-y-0.5">
+                          <CheckCircle2 size={22} className="text-[var(--primary)] shrink-0" />
+                          <span className="text-slate-700 font-semibold">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="w-full lg:w-1/2 order-1 lg:order-2">
-                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-4 border-slate-200 group">
-                      <Image src={t("/images/services/ac_testing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("AC Final Testing")} />
-                    </div>
+                  <div className="w-full lg:w-1/2 order-1 lg:order-2 relative min-h-[350px] lg:min-h-full overflow-hidden">
+                    <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
+                    <Image src={t("/images/services/ac_testing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1" alt={t("AC Final Testing")} />
                   </div>
-                </div>
+                </AnimatedCard>
               </div>
             </div>
           </section>
 
-          {/* Section 5: Repairs & Sectors (Light Theme Accent block) */}
-          <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+          {/* Section 5: Repairs & Sectors */}
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
@@ -269,8 +266,8 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-          {/* Section 6: Bookings & Service Process (Slate-50 Background) */}
-          <section className="py-20 bg-white border-b border-slate-100">
+          {/* Section 6: Bookings & Service Process */}
+          <section className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
@@ -309,8 +306,8 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-          {/* Section 7: FAQs (White Background) */}
-          <section className="py-20 bg-white">
+          {/* Section 7: FAQs */}
+          <section className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -341,8 +338,8 @@ export default async function ServiceDetailPage({
             </div>
           </section>
 
-          {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section className="py-20 bg-white border-t border-slate-100">
+          {/* Section 9: Explore Other Technical Services */}
+          <section className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -455,13 +452,13 @@ export default async function ServiceDetailPage({
                   { title: t("Quality Materials Only"), desc: t("We use reliable electrical components and trusted brands to ensure long-lasting performance and prevent safety hazards."), icon: <Sparkles size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction"), desc: t("Our goal is to deliver dependable service with quality you can trust, backed by our satisfaction guarantee."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
-                  <div key={idx} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
+                  <AnimatedCard key={idx} delay={idx * 0.1} className="group p-8 rounded-none bg-white border border-[var(--primary)] shadow-sm hover:shadow-xl hover:shadow-[var(--primary)]/20 transition-all duration-300 hover:-translate-y-1">
                     <div className="w-14 h-14 rounded-none bg-[var(--primary)] border border-[var(--primary)] flex items-center justify-center mb-6 text-white transition-colors duration-300">
                       {item.icon}
                     </div>
                     <h4 className="text-xl font-bold text-[var(--dark)] mb-3">{item.title}</h4>
                     <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
+                  </AnimatedCard>
                 ))}
               </div>
             </div>
@@ -693,7 +690,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section className="py-20 bg-white border-t border-slate-100">
+          <section className="py-20 bg-gradient-to-b from-white to-[#cdeae8] border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>

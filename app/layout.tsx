@@ -90,7 +90,7 @@ export default async function RootLayout({
           <script key={`head-${app.id}`} dangerouslySetInnerHTML={{ __html: app.headCode }} />
         ))}
       </head>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-700">
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-700" suppressHydrationWarning>
         {/* GTM Body */}
         {settings?.googleTagManagerBodyCode ? (
           <noscript dangerouslySetInnerHTML={{ __html: settings.googleTagManagerBodyCode }} />

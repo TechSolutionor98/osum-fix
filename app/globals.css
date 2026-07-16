@@ -55,3 +55,13 @@
 .heading-3 {
   @apply text-2xl md:text-3xl font-bold text-[var(--dark)];
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-25px) scale(1.04); }
+}
+
+.animate-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+

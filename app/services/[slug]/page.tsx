@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import AnimatedCard from "@/components/AnimatedCard";
+import StickySidebar from "@/components/StickySidebar";
 import Link from "next/link";
 import {
   CheckCircle2,
@@ -47,12 +48,22 @@ export default async function ServiceDetailPage({
   const isAcWork = slug === "ac-work";
 
   if (isAcWork) {
+    const acSections = [
+      { id: "why-choose-us", label: t("Why Choose Us") },
+      { id: "methodology", label: t("Our Methodology") },
+      { id: "services", label: t("Our Services") },
+      { id: "workflow", label: t("Our Workflow") },
+      { id: "faqs", label: t("FAQs") },
+      { id: "explore-services", label: t("Other Services") }
+    ];
+
     return (
       <>
         <Navbar />
+        <StickySidebar sections={acSections} />
         <main className="min-h-screen">
           {/* Section 1: Overview & Hero Image */}
-          <section className="pt-28 pb-20 md:pt-32 lg:pt-36 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="hero" className="pt-28 pb-20 md:pt-32 lg:pt-36 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
@@ -93,8 +104,8 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us */}
-          <section className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">{t("Why Choose OsumFix?")}</h2>
@@ -122,8 +133,8 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 3: Our 3-Phase Maintenance Process */}
-          <section className="py-24 bg-gradient-to-b from-[#cdeae8] to-[#e2f2f1] relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section id="methodology" className="py-24 bg-gradient-to-b from-[#cdeae8] to-[#e2f2f1] relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-20">
                 <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm mb-3 block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full inline-block">{t("Our Methodology")}</span>
                 <h2 className="text-3xl md:text-5xl font-extrabold text-[var(--dark)] tracking-tight">{t("Comprehensive 3-Phase AC Service")}</h2>
@@ -225,8 +236,8 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Repairs & Sectors */}
-          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+          <section id="services" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Our Services")}</span>
@@ -267,8 +278,8 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: Bookings & Service Process */}
-          <section className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">{t("Our Service Process")}</h2>
@@ -307,8 +318,8 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: FAQs */}
-          <section className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)]">{t("Frequently Asked Questions")}</h2>
@@ -339,8 +350,8 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 9: Explore Other Technical Services */}
-          <section className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
                 <p className="text-slate-500 text-sm mt-3">{t("We are Dubai's trusted one-stop provider for all home and building technical solutions.")}</p>

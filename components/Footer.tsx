@@ -70,6 +70,16 @@ export default function Footer() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Contact
                 </Link>
               </li>
+              <li>
+                <Link href="/privacy-policy" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-conditions" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Terms & Conditions
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -138,18 +148,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-sm text-white">
             &copy; {currentYear} Qemat Al Nawras Technical Services LLC.
           </p>
-          <div className="flex gap-6 text-sm text-white">
-            <Link href="/privacy-policy" className="hover:text-[var(--secondary)] transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-conditions" className="hover:text-[var(--secondary)] transition-colors">
-              Terms & Conditions
-            </Link>
-          </div>
+          <p className="text-sm text-white md:text-right">
+            Developed by <span className="font-semibold text-[var(--secondary)]">Tech Solutionor</span>
+          </p>
         </div>
       </div>
     </footer>

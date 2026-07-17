@@ -10,28 +10,28 @@ interface CTAProps {
 }
 
 const RINGS = [
-  { w: 540, h: 120 }, // Ring 0 (Inner)
-  { w: 660, h: 240 }, // Ring 1
-  { w: 780, h: 360 }, // Ring 2
-  { w: 900, h: 480 }, // Ring 3 (Outer)
+  { w: 400, h: 100 }, // Ring 0 (Inner)
+  { w: 520, h: 180 }, // Ring 1
+  { w: 640, h: 260 }, // Ring 2
+  { w: 760, h: 340 }, // Ring 3 (Outer)
 ];
 
 // 7 distinct, non-overlapping zones (each zone has coordinates for Ring 1, 2, and 3)
 const ZONES = [
   // 0: Far Left
-  [ { x: -330, y: 0 }, { x: -390, y: 0 }, { x: -450, y: 0 } ],
+  [ { x: -260, y: 0 }, { x: -320, y: 0 }, { x: -380, y: 0 } ],
   // 1: Far Right
-  [ { x: 330, y: 0 }, { x: 390, y: 0 }, { x: 450, y: 0 } ],
-  // 2: Top Left (x = -180 sits perfectly on the straight top edge of all rings)
-  [ { x: -180, y: -120 }, { x: -180, y: -180 }, { x: -180, y: -240 } ],
+  [ { x: 260, y: 0 }, { x: 320, y: 0 }, { x: 380, y: 0 } ],
+  // 2: Top Left
+  [ { x: -120, y: -90 }, { x: -120, y: -130 }, { x: -120, y: -170 } ],
   // 3: Top Right
-  [ { x: 180, y: -120 }, { x: 180, y: -180 }, { x: 180, y: -240 } ],
+  [ { x: 120, y: -90 }, { x: 120, y: -130 }, { x: 120, y: -170 } ],
   // 4: Bottom Left
-  [ { x: -180, y: 120 }, { x: -180, y: 180 }, { x: -180, y: 240 } ],
+  [ { x: -120, y: 90 }, { x: -120, y: 130 }, { x: -120, y: 170 } ],
   // 5: Bottom Right
-  [ { x: 180, y: 120 }, { x: 180, y: 180 }, { x: 180, y: 240 } ],
+  [ { x: 120, y: 90 }, { x: 120, y: 130 }, { x: 120, y: 170 } ],
   // 6: Top Center
-  [ { x: 0, y: -120 }, { x: 0, y: -180 }, { x: 0, y: -240 } ],
+  [ { x: 0, y: -90 }, { x: 0, y: -130 }, { x: 0, y: -170 } ],
 ];
 
 const LOCATIONS = [
@@ -89,7 +89,7 @@ export default function CTA({ cms }: CTAProps) {
   }, []);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-[#cdeae8] to-[#fefaef] min-h-[600px] flex items-center justify-center">
+    <section className="py-12 md:py-16 relative overflow-hidden bg-gradient-to-b from-[#cdeae8] to-[#fefaef] min-h-[480px] flex items-center justify-center">
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
@@ -99,9 +99,9 @@ export default function CTA({ cms }: CTAProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-9 md:mb-9"
         >
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0B2C3D] tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0B2C3D] tracking-tight mb-3">
             {t("Professional Services Across the UAE")}
           </h2>
           <p className="text-slate-500 font-medium text-lg">
@@ -110,7 +110,7 @@ export default function CTA({ cms }: CTAProps) {
         </motion.div>
 
         {/* Main Node Graph Container */}
-        <div className="relative w-full h-[520px] flex items-center justify-center overflow-visible">
+        <div className="relative w-full h-[380px] flex items-center justify-center overflow-visible">
           
           {/* Render Concentric Capsule Rings */}
           {RINGS.map((ring, idx) => (
@@ -161,7 +161,7 @@ export default function CTA({ cms }: CTAProps) {
                 </div>
                 
                 {/* Text Label */}
-                <div className="mt-3 text-center transition-all duration-300 group-hover:-translate-y-1">
+                <div className="mt-1.5 text-center transition-all duration-300 group-hover:-translate-y-0.5">
                   <h4 className="text-[#0B2C3D] font-bold text-sm whitespace-nowrap">{t(loc.name)}</h4>
                   <p className="text-slate-500 font-medium text-[10px] uppercase tracking-wider">{t(loc.title)}</p>
                 </div>

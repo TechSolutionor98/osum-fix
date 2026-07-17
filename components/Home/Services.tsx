@@ -55,11 +55,11 @@ export default function Services({ cms }: ServicesProps) {
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD0cVxb5Oz_TS11CxMHOwRHmzQKo-ohe9aFNtqXyPFce7uqeYU_22ageudQeqsOHunq1vQTnh63LLmnQf4SAvEWvqup4X29FLzTRC15soiHC0eNkNco9WB5KnyJ4KDREgEIh20lTjGlAKjhN5ByB1xgpuzc4bYnF-9s0XZn7HP2-gph690HMgDkAWGIJk-XyeWYsCM1r1VFCi13JBqoLWzUbZ_Rs87QnqTl6bCYUTDg-yy_lCyLi5LmjwOqLcLmio5PG4R20vaRugo"
     },
     {
-      title: t("Pest Control"),
+      title: t("Interior Design"),
       description: t("From AED 99"),
-      slug: "pest-control",
-      icon: "pest_control",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAq8FPpsaDsn9Eb2WThcCVoBF3R539Es7y2lZ3v4aIGWeyJa-vpi9khteYUFuGgdq_4T-tnuNh8WvLrByHIlN798O5HERLpMK_QB4JtRbFMKdVgTe6PFpgq2uxZuSFR2JHZTHmEq7kL88Uv51MPAe7IgKBFmlB_SZ-Beqgb_1t66zvITuUX8Be2E6N7yu_IJOsHVEIgUfelM8Db2_-mNUOzzFxASDN9qQ0rlo_3pxq3EYFVE3hJz0DD0-7qBQL6O8yWTzmC1ndMclM"
+      slug: "interior-design",
+      icon: "chair",
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&q=80"
     },
     {
       title: t("Handyman"),
@@ -74,9 +74,9 @@ export default function Services({ cms }: ServicesProps) {
     <section className="py-20" id="services">
       {/* Include Material Symbols font */}
       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
-      
+
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-16">
-        
+
         {/* Header matching provided code */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-16">
           <div>
@@ -101,10 +101,10 @@ export default function Services({ cms }: ServicesProps) {
           {services.map((service) => (
             <Link key={service.slug} href={`/services/${service.slug}`} className="group cursor-pointer block">
               <div className="aspect-square bg-slate-50 rounded-3xl mb-4 flex items-center justify-center border border-slate-200 group-hover:border-[#E46704] transition-all duration-300 group-hover:shadow-2xl group-hover:animate-bounce relative overflow-hidden">
-                <img 
-                  className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
-                  alt={service.title} 
-                  src={service.image} 
+                <img
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  alt={service.title}
+                  src={service.image}
                 />
                 <span className="material-symbols-outlined text-4xl text-black group-hover:text-white relative z-10 transition-all">
                   {service.icon}

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { getCmsVal } from "@/lib/api-helper";
-import { Play, Settings, X } from "lucide-react";
+import { Play } from "lucide-react";
+import Link from "next/link";
 
 interface VideoSectionProps {
   cms?: any;
@@ -11,7 +11,6 @@ interface VideoSectionProps {
 
 export default function VideoSection({ cms }: VideoSectionProps) {
   const t = (val: string) => getCmsVal(cms, val);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   return (
     <>
@@ -73,91 +72,44 @@ export default function VideoSection({ cms }: VideoSectionProps) {
                 </div>
 
                 {/* Discover Us Button */}
-                <button 
-                  onClick={() => setIsVideoModalOpen(true)}
+                <Link 
+                  href="/services"
                   className="bg-[#E46704] hover:bg-[#c95b03] text-white px-8 py-4 rounded-full font-bold transition-all flex items-center gap-3 text-lg group"
                 >
                   <div className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Play size={14} className="fill-white ml-0.5" />
                   </div>
                   {t("Discover Us")}
-                </button>
+                </Link>
               </div>
             </motion.div>
 
-            {/* Right Column: Animated Image Illustration */}
+            {/* Right Column: Video Section */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="relative w-full aspect-square flex items-center justify-center lg:translate-x-10 mt-10 lg:mt-0"
-              style={{ perspective: "1500px" }}
+              className="relative w-full aspect-video flex items-center justify-center lg:translate-x-10 mt-10 lg:mt-0"
             >
-              {/* Lightbulb Image with built-in rings and text */}
-              <motion.div
-                animate={{
-                  y: [0, -20, 0],
-                  rotateX: [0, 8, 0, -8, 0],
-                  rotateY: [0, 12, 0, -12, 0],
-                  rotateZ: [0, 3, 0, -3, 0]
-                }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 flex items-center justify-center pointer-events-none"
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                <img 
-                  src={t("/images/download.webp")} 
-                  alt="Innovation" 
-                  className="w-[130%] max-w-[700px] xl:max-w-[850px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" 
-                />
-              </motion.div>
+              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 z-10">
+                <video
+                  className="w-full h-full object-cover pointer-events-none"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src="/video/Untitled.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </motion.div>
 
           </div>
         </div>
       </section>
 
-      {/* Video Modal */}
-      <AnimatePresence>
-        {isVideoModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-[#0a121e]/60 backdrop-blur-md"
-          >
-            <div
-              className="absolute inset-0 cursor-pointer"
-              onClick={() => setIsVideoModalOpen(false)}
-            />
-
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-[95%] max-w-4xl xl:max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 z-10"
-            >
-              <button
-                onClick={() => setIsVideoModalOpen(false)}
-                className="absolute top-4 right-4 z-20 w-12 h-12 bg-black/40 hover:bg-black/70 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors border border-white/20"
-              >
-                <X size={28} />
-              </button>
-
-              <video
-                className="w-full h-full object-cover pointer-events-none"
-                autoPlay
-                loop
-                playsInline
-              >
-                <source src="/video/Untitled.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

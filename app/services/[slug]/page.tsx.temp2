@@ -5,6 +5,7 @@ import { getPublishedContent } from "@/lib/cms-service";
 export const dynamic = 'force-dynamic';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageBanner from "@/components/PageBanner";
 import AnimatedCard from "@/components/AnimatedCard";
 import StickySidebar from "@/components/StickySidebar";
 import Link from "next/link";
@@ -411,11 +412,10 @@ export default async function ServiceDetailPage({
   const isElectricalWork = slug === "electrical-work";
 
   if (isElectricalWork) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -423,7 +423,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -448,7 +448,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -491,7 +491,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Electrical Repairs")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -506,20 +506,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/electrical_repairs.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Electrical Repairs")} />
+                    <Image src={t("/images/services/electrical_repairs.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Electrical Repairs")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* Installations */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/electrical_installations.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Electrical Installations")} />
+                    <Image src={t("/images/services/electrical_installations.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Electrical Installations")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Electrical Installations")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -531,13 +531,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* Maintenance */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Electrical Maintenance")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -552,20 +552,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/electrical_maintenance.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Electrical Maintenance")} />
+                    <Image src={t("/images/services/electrical_maintenance.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Electrical Maintenance")} />
                   </div>
-                </AnimatedCard>
+                </div>
                 
                 {/* Additional */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/electrical.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Additional Services")} />
+                    <Image src={t("/images/services/electrical.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Additional Services")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Additional Services")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -577,7 +577,7 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
@@ -586,9 +586,9 @@ export default async function ServiceDetailPage({
 
 
           {/* Section 5: Emergency & Sectors (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Emergency Helpline 24/7")}</span>
@@ -628,7 +628,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: Bookings & Service Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
@@ -669,7 +669,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -703,7 +703,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-gradient-to-b from-white to-[#cdeae8] border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -765,11 +765,10 @@ export default async function ServiceDetailPage({
   const isPlumbingWork = slug === "plumbing-work";
 
   if (isPlumbingWork) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -777,7 +776,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -802,7 +801,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -845,7 +844,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Plumbing Repairs")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -860,20 +859,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing_repairs.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Plumbing Repairs")} />
+                    <Image src={t("/images/services/plumbing_repairs.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Plumbing Repairs")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Drainage Services")} />
+                    <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Drainage Services")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Drainage Services")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -885,13 +884,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Water Heater Services")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -906,20 +905,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Water Heater Services")} />
+                    <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Water Heater Services")} />
                   </div>
-                </AnimatedCard>
+                </div>
                 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Plumbing Installs")} />
+                    <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Plumbing Installs")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Plumbing Installs")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -931,13 +930,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 5 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Preventive Care")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -952,9 +951,9 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Preventive Care")} />
+                    <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Preventive Care")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
@@ -963,9 +962,9 @@ export default async function ServiceDetailPage({
 
 
           {/* Section 5: Emergency Support & Sectors (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("24/7 Emergency Support")}</span>
@@ -1005,7 +1004,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: Bookings & Service Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Workflow")}</span>
@@ -1046,7 +1045,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 7: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -1080,7 +1079,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 8: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -1142,11 +1141,10 @@ export default async function ServiceDetailPage({
   const isPaintingWork = slug === "painting-work";
 
   if (isPaintingWork) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -1154,7 +1152,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -1179,7 +1177,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -1222,7 +1220,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Interior Painting")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1237,20 +1235,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Interior Painting")} />
+                    <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Interior Painting")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Exterior Painting")} />
+                    <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Exterior Painting")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Exterior Painting")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1262,13 +1260,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Residential Painting")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1283,20 +1281,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Residential Painting")} />
+                    <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Residential Painting")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Commercial Painting")} />
+                    <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Commercial Painting")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Commercial Painting")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1308,13 +1306,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 5 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Decorative Finishes")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1329,18 +1327,18 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Decorative Finishes")} />
+                    <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Decorative Finishes")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
           </section>
 
           {/* Section 4: Painting Specialties We Offer (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Services We Offer")}</span>
@@ -1381,7 +1379,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Painting Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Workflow")}</span>
@@ -1422,7 +1420,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -1456,7 +1454,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -1518,11 +1516,10 @@ export default async function ServiceDetailPage({
   const isMasonryWork = slug === "masonry-work";
 
   if (isMasonryWork) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -1530,7 +1527,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -1555,7 +1552,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -1598,7 +1595,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Brick & Block Work")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1613,20 +1610,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Brick & Block Work")} />
+                    <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Brick & Block Work")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Plastering Services")} />
+                    <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Plastering Services")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Plastering Services")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1638,13 +1635,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Tile Install & Repair")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1659,20 +1656,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Tile Install & Repair")} />
+                    <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Tile Install & Repair")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Concrete Works")} />
+                    <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Concrete Works")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Concrete Works")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1684,13 +1681,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 5 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Renovation Services")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1705,18 +1702,18 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Renovation Services")} />
+                    <Image src={t("/images/services/masonry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Renovation Services")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
           </section>
 
           {/* Section 4: Masonry Problems We Solve (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Masonry Problems We Solve")}</span>
@@ -1757,7 +1754,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Masonry Service Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Process")}</span>
@@ -1797,7 +1794,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -1831,7 +1828,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -1893,11 +1890,10 @@ export default async function ServiceDetailPage({
   const isCarpentryWork = slug === "carpentry-work";
 
   if (isCarpentryWork) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -1905,7 +1901,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -1930,7 +1926,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -1973,7 +1969,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Custom Furniture & Fit-Out")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -1988,20 +1984,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Custom Furniture & Fit-Out")} />
+                    <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Custom Furniture & Fit-Out")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Kitchen Carpentry")} />
+                    <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Kitchen Carpentry")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Kitchen Carpentry")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2013,13 +2009,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Doors, Partitions & Panels")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2034,20 +2030,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Doors, Partitions & Panels")} />
+                    <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Doors, Partitions & Panels")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Flooring & Furniture Repairs")} />
+                    <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Flooring & Furniture Repairs")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Flooring & Furniture Repairs")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2059,16 +2055,16 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
           </section>
 
           {/* Section 4: Carpentry Specialties (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Custom Carpentry Solutions")}</span>
@@ -2109,7 +2105,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Carpentry Service Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
@@ -2149,7 +2145,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -2183,7 +2179,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -2245,11 +2241,10 @@ export default async function ServiceDetailPage({
   const isSteelFixing = slug === "steel-fixing";
 
   if (isSteelFixing) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -2257,7 +2252,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -2282,7 +2277,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -2325,7 +2320,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Reinforcement Steel")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2340,20 +2335,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Reinforcement Steel")} />
+                    <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Reinforcement Steel")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Structural Steel")} />
+                    <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Structural Steel")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Structural Steel")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2365,13 +2360,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Steel Fabrication")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2386,20 +2381,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Steel Fabrication")} />
+                    <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Steel Fabrication")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Civil Support Services")} />
+                    <Image src={t("/images/services/steel.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Civil Support Services")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Civil Support Services")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2411,16 +2406,16 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
           </section>
 
           {/* Section 4: Specialties We Provide (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Solutions We Provide")}</span>
@@ -2460,7 +2455,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Steel Fixing Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Process")}</span>
@@ -2499,7 +2494,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -2533,7 +2528,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -2595,11 +2590,10 @@ export default async function ServiceDetailPage({
   const isInteriorDesigning = slug === "interior-designing";
 
   if (isInteriorDesigning) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -2607,7 +2601,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -2632,7 +2626,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -2675,7 +2669,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Residential Design")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2690,20 +2684,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Residential Design")} />
+                    <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Residential Design")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Commercial Design")} />
+                    <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Commercial Design")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Commercial Design")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2715,13 +2709,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Space & Fit-Out")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2736,20 +2730,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Space & Fit-Out")} />
+                    <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Space & Fit-Out")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Decorative Solutions")} />
+                    <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Decorative Solutions")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Decorative Solutions")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2761,13 +2755,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 5 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">05</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Custom Furniture")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -2782,18 +2776,18 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Custom Furniture")} />
+                    <Image src={t("/images/services/interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Custom Furniture")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
           </section>
 
           {/* Section 4: Design Solutions We Offer (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Solutions We Offer")}</span>
@@ -2835,7 +2829,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Design Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Workflow")}</span>
@@ -2875,7 +2869,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -2909,7 +2903,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -2971,11 +2965,10 @@ export default async function ServiceDetailPage({
   const isCeilingGypsum = slug === "ceiling-gypsum";
 
   if (isCeilingGypsum) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -2983,7 +2976,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -3008,7 +3001,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -3051,7 +3044,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Ceiling Installation")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3066,20 +3059,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Ceiling Installation")} />
+                    <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Ceiling Installation")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Partition Services")} />
+                    <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Partition Services")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Partition Services")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3091,13 +3084,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Interior Finishing")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3112,20 +3105,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Interior Finishing")} />
+                    <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Interior Finishing")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Repair & Maintenance")} />
+                    <Image src={t("/images/services/gypsum.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Repair & Maintenance")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Repair & Maintenance")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3137,16 +3130,16 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
           </section>
 
           {/* Section 4: Gypsum Specialties (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Solutions We Offer")}</span>
@@ -3187,7 +3180,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Gypsum Work Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Installation Steps")}</span>
@@ -3227,7 +3220,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -3261,7 +3254,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -3323,11 +3316,10 @@ export default async function ServiceDetailPage({
   const isHandymanServices = slug === "handyman-services";
 
   if (isHandymanServices) {
-    const sidebarSections = [
+    const serviceSections = [
       { id: "why-choose-us", label: t("Why Choose Us") },
       { id: "services", label: t("Our Services") },
-      { id: "specialties", label: t("Specialties") },
-      { id: "process", label: t("Our Process") },
+      { id: "workflow", label: t("Our Process") },
       { id: "faqs", label: t("FAQs") },
       { id: "explore-services", label: t("Other Services") }
     ];
@@ -3335,7 +3327,7 @@ export default async function ServiceDetailPage({
     return (
       <>
         <Navbar />
-        <StickySidebar sections={sidebarSections} />
+        <StickySidebar sections={serviceSections} />
         <main className="bg-white">
 
           {/* Section 1: Overview & Hero Image (White Background) */}
@@ -3360,7 +3352,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 2: Why Choose Us (Light Blue-Grey Background) */}
-          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="why-choose-us" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8] border-y border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Why OsumFix")}</span>
@@ -3403,7 +3395,7 @@ export default async function ServiceDetailPage({
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">01</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Mounting & Installation")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3418,20 +3410,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Mounting & Installation")} />
+                    <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Mounting & Installation")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 2 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Furniture Assembly")} />
+                    <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Furniture Assembly")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">02</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Furniture Assembly")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3443,13 +3435,13 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 3 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">03</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Home & Carpentry Repairs")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3464,20 +3456,20 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Home & Carpentry Repairs")} />
+                    <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Home & Carpentry Repairs")} />
                   </div>
-                </AnimatedCard>
+                </div>
 
                 {/* 4 */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Electrical & Plumbing")} />
+                    <Image src={t("/images/services/handyman.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-1" alt={t("Electrical & Plumbing")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[var(--primary)] font-black text-2xl flex items-center justify-center shadow-inner border border-blue-200/50 transform group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500">04</div>
                       <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)] bg-clip-text text-transparent bg-gradient-to-r from-[var(--dark)] to-[var(--primary)]">{t("Electrical & Plumbing")}</h3>
                     </div>
                     <ul className="space-y-4">
@@ -3489,16 +3481,16 @@ export default async function ServiceDetailPage({
                       ))}
                     </ul>
                   </div>
-                </AnimatedCard>
+                </div>
 
               </div>
             </div>
           </section>
 
           {/* Section 4: Most Popular Handyman Jobs (Dark Theme Accent block) */}
-          <section id="specialties" className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-b from-[#e2f2f1] to-[#fefaef] border-y border-slate-100 relative overflow-hidden">
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28 relative z-10 space-y-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5 space-y-4">
                   <span className="text-[var(--secondary)] font-bold uppercase tracking-wider text-xs">{t("Popular Jobs")}</span>
@@ -3539,7 +3531,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 5: Our Handyman Process (Slate-50 Background) */}
-          <section id="process" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
+          <section id="workflow" className="py-20 bg-gradient-to-b from-[#fefaef] to-[#e2f2f1]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("Our Service Process")}</span>
@@ -3579,7 +3571,7 @@ export default async function ServiceDetailPage({
           </section>
 
           {/* Section 6: FAQs (White Background) */}
-          <section id="faqs" className="py-20 bg-gradient-to-b from-[#e2f2f1] to-[#cdeae8]">
+          <section id="faqs" className="py-20 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center mb-16">
                 <span className="text-[var(--secondary)] font-semibold tracking-wider uppercase text-sm mb-2 block">{t("FAQ")}</span>
@@ -3613,7 +3605,7 @@ export default async function ServiceDetailPage({
 
           {/* Section 7: Areas We Serve & WhatsApp (Emerald/Light Blue theme) */}
           {/* Section 9: Explore Other Technical Services (Full-width Horizontal Grid) */}
-          <section id="explore-services" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
+          <section id="explore-services" className="py-20 bg-white border-t border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--dark)]">{t("Explore Our Other Services")}</h3>
@@ -3678,8 +3670,8 @@ export default async function ServiceDetailPage({
       <Navbar />
       <main>
 
-        <section id="overview" className="py-20 bg-gradient-to-b from-[#cdeae8] via-[#fefaef] to-[#cdeae8]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8 lg:pl-28">
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
               {/* Main Content */}

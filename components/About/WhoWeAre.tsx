@@ -37,7 +37,7 @@ export default function WhoWeAre({ cms }: WhoWeAreProps) {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4 relative" style={{ perspective: "1000px" }}>
-            <div className="absolute -inset-4 bg-[#0D4B42] rounded-[3rem] -z-10 transform rotate-3 shadow-2xl"></div>
+            <div className="absolute -inset-4 bg-[#E46704] rounded-[3rem] -z-10 transform rotate-3 shadow-2xl"></div>
             
             <div className="space-y-4 pt-10">
               <motion.div 

@@ -39,17 +39,17 @@ export default function Philosophy({ cms }: PhilosophyProps) {
           </div>
           
           {/* Our Vision */}
-          <div className="md:col-span-4 bg-[#0D4B42] text-white rounded-3xl p-10 md:p-12 flex flex-col justify-between group overflow-hidden relative shadow-xl">
+          <div className="md:col-span-4 bg-[#E46704] text-white rounded-3xl p-10 md:p-12 flex flex-col justify-between group overflow-hidden relative shadow-xl">
             <div className="relative z-10">
-              <Eye className="text-[#FFB700] w-12 h-12 mb-6" />
+              <Eye className="text-white w-12 h-12 mb-6" />
               <h3 className="text-3xl font-extrabold text-white mb-4">{t("Our Vision")}</h3>
-              <p className="text-teal-50 text-base font-medium leading-relaxed">
+              <p className="text-white/90 text-base font-medium leading-relaxed">
                 {t("To become the UAE's most trusted partner for technical solutions, known for our precision and customer-centric approach.")}
               </p>
             </div>
             <div className="mt-12 h-24 flex items-end relative z-10">
               <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden">
-                <div className="w-2/3 h-full bg-[#FFB700] transition-all duration-1000 group-hover:w-full"></div>
+                <div className="w-2/3 h-full bg-white transition-all duration-1000 group-hover:w-full"></div>
               </div>
             </div>
           </div>

@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Send, CheckCircle, ArrowLeft, ArrowRight, User, Mail, Phone, MapPin, Building, MessageSquare, AlertCircle, ChevronDown, Map, Clock, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function QuoteForm() {
+interface QuoteFormProps {
+  onStepChange?: (step: number) => void;
+}
+
+export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
   const [submitted, setSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedService, setSelectedService] = useState("");
@@ -26,6 +30,11 @@ export default function QuoteForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Notify parent of step changes for animation
+  useEffect(() => {
+    onStepChange?.(currentStep);
+  }, [currentStep, onStepChange]);
+
   const services = [
     "AC Work", "Electrical Work", "Plumbing Work", "Painting Work", 
     "Masonry Work", "Carpentry Work", "Steel Fixing", 
@@ -39,7 +48,7 @@ export default function QuoteForm() {
     setErrorMsg(null); // Clear error on edit
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     setErrorMsg(null);
     if (currentStep === 1) {
       if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim()) {
@@ -71,6 +80,32 @@ export default function QuoteForm() {
           return;
         }
       }
+
+      // Capture Lead Data as a Contact Submission
+      setIsSubmitting(true);
+      try {
+        const formattedPhone = phoneNumber.startsWith("0") 
+          ? `+971 ${phoneNumber.slice(1)}` 
+          : `+971 ${phoneNumber}`;
+        
+        await fetch("/api/contact-submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: `${formData.firstName} ${formData.lastName}`.trim(),
+            email: formData.email,
+            phone: formattedPhone,
+            message: "Partial Quote Request (Lead Capture from Step 1)",
+            serviceRequired: "Pending completion",
+            propertyLocation: "Pending completion"
+          }),
+        });
+      } catch (err) {
+        console.error("Failed to capture lead", err);
+      } finally {
+        setIsSubmitting(false);
+      }
+
       setCurrentStep(2);
     } else if (currentStep === 2) {
       if (!selectedService) {
@@ -103,7 +138,7 @@ export default function QuoteForm() {
 
   const handleBack = () => {
     setErrorMsg(null);
-    if (currentStep > 1) {
+    if (currentStep > 2) {
       setCurrentStep(prev => prev - 1);
     }
   };
@@ -191,7 +226,7 @@ export default function QuoteForm() {
         </p>
         <button
           onClick={() => setSubmitted(false)}
-          className="bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-md"
+          className="bg-[#e36704] hover:bg-[#c25602] text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-md"
         >
           Submit Another Request
         </button>
@@ -201,108 +236,47 @@ export default function QuoteForm() {
 
   return (
     <div className="w-full relative">
-      {/* Decorative background element */}
-      <div className="absolute  top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-[100px] opacity-50 pointer-events-none -mr-32 -mt-32"></div>
-
-      <div className="mb-10 text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] mb-4 tracking-tight">Request Quote</h2>
-        <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed">
-          Free Home Maintenance & Repair Estimate. Get your free*, no-obligation maintenance or repair service estimate today.        </p>
-      </div>
-
-      {/* Step Indicator Progress Bar */}
-      <div className="max-w-md mx-auto  mb-10 relative z-10">
-        <div className="flex items-center justify-between relative">
-          {/* Progress Line Behind Circles */}
-          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-slate-200 z-0"></div>
-          <div 
-            className="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 bg-[var(--primary)] transition-all duration-300 z-0"
-            style={{ width: `${((currentStep - 1) / 2) * 100}%` }}
-          ></div>
-
-          {/* Step 1 */}
-          <div className="flex flex-col items-center  z-10">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${
-              currentStep > 1 
-                ? "bg-green-500 text-white" 
-                : currentStep === 1 
-                  ? "bg-[var(--primary)] text-white ring-4 ring-blue-100" 
-                  : "bg-slate-100 text-slate-400 border border-slate-200"
-            }`}>
-              {currentStep > 1 ? <CheckCircle size={16} /> : "1"}
-            </div>
-            <span className="text-xs font-semibold mt-2 text-slate-600 bg-white px-2">Details</span>
-          </div>
-
-          {/* Step 2 */}
-          <div className="flex flex-col items-center z-10">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${
-              currentStep > 2 
-                ? "bg-green-500 text-white" 
-                : currentStep === 2 
-                  ? "bg-[var(--primary)] text-white ring-4 ring-blue-100" 
-                  : "bg-slate-100 text-slate-400 border border-slate-200"
-            }`}>
-              {currentStep > 2 ? <CheckCircle size={16} /> : "2"}
-            </div>
-            <span className="text-xs font-semibold mt-2 text-slate-600 bg-white px-2">Service & Location</span>
-          </div>
-
-          {/* Step 3 */}
-          <div className="flex flex-col items-center z-10">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${
-              currentStep === 3 
-                ? "bg-[var(--primary)] text-white ring-4 ring-blue-100" 
-                : "bg-slate-100 text-slate-400 border border-slate-200"
-            }`}>
-              3
-            </div>
-            <span className="text-xs font-semibold mt-2 text-slate-600 bg-white px-2">Describe</span>
-          </div>
-        </div>
-      </div>
-
       {/* Form wrapper */}
-      <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+      <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
         
         {/* STEP 1: Personal Details */}
         {currentStep === 1 && (
-          <div className="space-y-6">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-xl font-bold text-[var(--primary)] pb-2 flex items-center gap-2">
-                <User size={20} className="text-[var(--secondary)]" />
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
+                <User size={28} className="text-[#e36704]" />
                 Your Contact Details
-              </h3>
+              </h2>
               <p className="text-slate-400 text-xs">Please provide your contact details so we can get in touch with you.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-3">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">First Name *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">First Name *</label>
                 <input 
                   type="text" 
                   name="firstName" 
                   value={formData.firstName}
                   onChange={handleChange}
                   required 
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
+                  className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
                   placeholder="Enter your first name" 
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Last Name *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">Last Name *</label>
                 <input 
                   type="text" 
                   name="lastName" 
                   value={formData.lastName}
                   onChange={handleChange}
                   required 
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
+                  className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
                   placeholder="Enter your last name" 
                 />
               </div>
               <div>
-                <div className="h-8 flex items-center mb-2">
+                <div className="h-8 flex items-center mb-0.5">
                   <label className="block text-sm font-medium text-slate-700">Email Address *</label>
                 </div>
                 <input 
@@ -311,12 +285,12 @@ export default function QuoteForm() {
                   value={formData.email}
                   onChange={handleChange}
                   required 
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800 text-sm font-semibold" 
+                  className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800 text-sm font-semibold" 
                   placeholder="Enter your email address" 
                 />
               </div>
               <div>
-                <div className="h-8 flex justify-between items-center mb-2">
+                <div className="h-8 flex justify-between items-center mb-0.5">
                   <label className="block text-sm font-medium text-slate-700">Phone Number *</label>
                   
                   {/* Premium Segmented Control */}
@@ -329,7 +303,7 @@ export default function QuoteForm() {
                       }}
                       className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
                         phoneType === "mobile" 
-                          ? "bg-white text-[var(--primary)] shadow-sm font-bold" 
+                          ? "bg-[#e36704] text-white shadow-sm font-bold" 
                           : "text-slate-500 hover:text-slate-800"
                       }`}
                     >
@@ -343,7 +317,7 @@ export default function QuoteForm() {
                       }}
                       className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
                         phoneType === "landline" 
-                          ? "bg-white text-[var(--primary)] shadow-sm font-bold" 
+                          ? "bg-[#e36704] text-white shadow-sm font-bold" 
                           : "text-slate-500 hover:text-slate-800"
                       }`}
                     >
@@ -352,7 +326,7 @@ export default function QuoteForm() {
                   </div>
                 </div>
 
-                <div className="flex items-stretch rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[var(--primary)] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
+                <div className="flex items-stretch rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[#e36704] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
                   <div className="px-4 bg-slate-100/70 border-r border-slate-200 text-slate-500 font-bold text-sm select-none flex items-center justify-center">
                     +971
                   </div>
@@ -365,7 +339,7 @@ export default function QuoteForm() {
                       const val = e.target.value.replace(/\D/g, "");
                       setPhoneNumber(val);
                     }}
-                    className="flex-grow px-4 py-3.5 focus:outline-none text-slate-800 font-semibold tracking-wider text-sm bg-transparent" 
+                    className="flex-grow px-4 py-2 focus:outline-none text-slate-800 font-semibold tracking-wider text-sm bg-transparent" 
                     placeholder={phoneType === "mobile" ? "0501234567" : "041234567"} 
                   />
                 </div>
@@ -376,16 +350,16 @@ export default function QuoteForm() {
 
         {/* STEP 2: Service & Location */}
         {currentStep === 2 && (
-          <div className="space-y-6">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-xl font-bold text-[var(--primary)] pb-2 flex items-center gap-2">
-                <MapPin size={20} className="text-[var(--secondary)]" />
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
+                <MapPin size={28} className="text-[#e36704]" />
                 Service Requirements & Location
-              </h3>
+              </h2>
               <p className="text-slate-400 text-xs">Select your service, choose the location and property type.</p>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
               <label className="block text-sm font-medium text-slate-700">What service do you require? *</label>
               <div className="flex flex-wrap gap-2.5">
                 {services.map((srv) => (
@@ -396,10 +370,10 @@ export default function QuoteForm() {
                       setSelectedService(srv);
                       setErrorMsg(null);
                     }}
-                    className={`px-4 py-2.5 rounded-full text-xs font-semibold transition-all border ${
+                    className={`px-4 py-2 rounded-full text-xs font-semibold transition-all border ${
                       selectedService === srv 
-                      ? "bg-[var(--primary)] border-[var(--primary)] text-white shadow-md" 
-                      : "bg-white border-slate-200 text-slate-600 hover:border-[var(--primary)] hover:text-[var(--primary)]"
+                      ? "bg-[#e36704] border-[#e36704] text-white shadow-md" 
+                      : "bg-white border-slate-200 text-slate-600 hover:border-[#e36704] hover:text-[#e36704]"
                     }`}
                   >
                     {srv}
@@ -414,7 +388,7 @@ export default function QuoteForm() {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-3"
                 >
-                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">Specify Service *</label>
+                  <label className="block text-xs font-semibold text-slate-500 mb-0.5.5">Specify Service *</label>
                   <input 
                     type="text" 
                     required 
@@ -423,16 +397,16 @@ export default function QuoteForm() {
                       setCustomService(e.target.value);
                       setErrorMsg(null);
                     }}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent bg-slate-50 focus:bg-white text-slate-800 text-sm font-semibold" 
+                    className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent bg-slate-50 focus:bg-white text-slate-800 text-sm font-semibold" 
                     placeholder="Enter the service type" 
                   />
                 </motion.div>
               )}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+            <div className="grid grid-cols-1 gap-3 pt-2">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Emirate (State) *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">Emirate (State) *</label>
                 <div className="relative flex items-center">
                   <Map size={18} className="absolute left-4 text-slate-400 pointer-events-none" />
                   <select 
@@ -440,7 +414,7 @@ export default function QuoteForm() {
                     value={formData.emirate}
                     onChange={handleChange}
                     required 
-                    className="w-full pl-11 pr-10 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700 font-semibold appearance-none cursor-pointer text-sm"
+                    className="w-full pl-11 pr-10 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700 font-semibold appearance-none cursor-pointer text-sm"
                   >
                     <option value="Dubai">Dubai</option>
                     <option value="Abu Dhabi">Abu Dhabi</option>
@@ -454,8 +428,8 @@ export default function QuoteForm() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Service Location (Community / Area) *</label>
-                <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[var(--primary)] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">Service Location (Community / Area) *</label>
+                <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[#e36704] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
                   <MapPin size={18} className="text-slate-400 ml-4 shrink-0" />
                   <input 
                     type="text" 
@@ -464,13 +438,13 @@ export default function QuoteForm() {
                     value={formData.location}
                     onChange={handleChange}
                     autoComplete="off"
-                    className="w-full px-3 py-3.5 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold" 
+                    className="w-full px-3 py-2 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold" 
                     placeholder="Enter Your  (Community / Area).." 
                   />
                 </div>
               </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-slate-700 mb-2">Property Type *</label>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">Property Type *</label>
                 <div className="relative flex items-center">
                   <Building size={18} className="absolute left-4 text-slate-400 pointer-events-none" />
                   <select 
@@ -478,7 +452,7 @@ export default function QuoteForm() {
                     value={formData.propertyType}
                     onChange={handleChange}
                     required 
-                    className="w-full pl-11 pr-10 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700 font-semibold appearance-none cursor-pointer text-sm"
+                    className="w-full pl-11 pr-10 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700 font-semibold appearance-none cursor-pointer text-sm"
                   >
                     <option value="">Select property type</option>
                     <option value="apartment">Apartment</option>
@@ -497,8 +471,8 @@ export default function QuoteForm() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-3"
                   >
-                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">Specify Property Type *</label>
-                    <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[var(--primary)] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
+                    <label className="block text-xs font-semibold text-slate-500 mb-0.5.5">Specify Property Type *</label>
+                    <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[#e36704] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
                       <Building size={16} className="text-slate-400 ml-4 shrink-0" />
                       <input 
                         type="text" 
@@ -508,7 +482,7 @@ export default function QuoteForm() {
                           setCustomPropertyType(e.target.value);
                           setErrorMsg(null);
                         }}
-                        className="w-full px-3 py-2.5 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold" 
+                        className="w-full px-3 py-2 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold" 
                         placeholder="e.g. Warehouse, Penthouse, Retail Shop" 
                       />
                     </div>
@@ -521,19 +495,19 @@ export default function QuoteForm() {
 
         {/* STEP 3: Details & Submit */}
         {currentStep === 3 && (
-          <div className="space-y-6">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-xl font-bold text-[var(--primary)] pb-2 flex items-center gap-2">
-                <MessageSquare size={20} className="text-[var(--secondary)]" />
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
+                <MessageSquare size={28} className="text-[#e36704]" />
                 Appointment Schedule & Details
-              </h3>
+              </h2>
               <p className="text-slate-400 text-xs">Choose your preferred date, time slot, and explain the requirements in detail.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-3">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Preferred Date *</label>
-                <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[var(--primary)] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">Preferred Date *</label>
+                <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[#e36704] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
                   <Calendar size={18} className="text-slate-400 ml-4 shrink-0 pointer-events-none" />
                   <input 
                     type="date" 
@@ -544,13 +518,13 @@ export default function QuoteForm() {
                       setPreferredDate(e.target.value);
                       setErrorMsg(null);
                     }}
-                    className="w-full px-3 py-3.5 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold cursor-pointer"
+                    className="w-full px-3 py-2 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold cursor-pointer"
                   />
                 </div>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Preferred Time Slot *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">Preferred Time Slot *</label>
                 <div className="relative flex items-center">
                   <Clock size={18} className="absolute left-4 text-slate-400 pointer-events-none" />
                   <select 
@@ -560,7 +534,7 @@ export default function QuoteForm() {
                       setPreferredTime(e.target.value);
                       setErrorMsg(null);
                     }}
-                    className="w-full pl-11 pr-10 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700 font-semibold appearance-none cursor-pointer text-sm"
+                    className="w-full pl-11 pr-10 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700 font-semibold appearance-none cursor-pointer text-sm"
                   >
                     <option value="Morning (8:00 AM - 12:00 PM)">Morning (8:00 AM - 12:00 PM)</option>
                     <option value="Afternoon (12:00 PM - 4:00 PM)">Afternoon (12:00 PM - 4:00 PM)</option>
@@ -573,14 +547,14 @@ export default function QuoteForm() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Describe Your Requirements *</label>
+              <label className="block text-sm font-medium text-slate-700 mb-0.5">Describe Your Requirements *</label>
               <textarea 
                 name="details" 
                 value={formData.details}
                 onChange={handleChange}
                 required 
                 rows={5} 
-                className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
+                className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
                 placeholder="Describe the issue, work scope, or any other preferences in detail..."
               ></textarea>
             </div>
@@ -609,8 +583,8 @@ export default function QuoteForm() {
         )}
 
         {/* Step Control Buttons */}
-        <div className="pt-6 border-t border-slate-100 flex items-center justify-between gap-4">
-          {currentStep > 1 ? (
+        <div className="pt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+          {currentStep > 2 ? (
             <button
               type="button"
               onClick={handleBack}
@@ -625,31 +599,24 @@ export default function QuoteForm() {
           {currentStep < 3 ? (
             <button
               type="button"
+              disabled={isSubmitting}
               onClick={handleNext}
-              className="flex items-center gap-2 bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all shadow-md ml-auto cursor-pointer"
+              className="flex items-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all shadow-md ml-auto cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Continue <ArrowRight size={16} />
+              {isSubmitting ? "Submitting..." : currentStep === 1 ? "Submit" : "Continue"} <ArrowRight size={16} />
             </button>
           ) : (
             <button 
               disabled={isSubmitting} 
               type="submit" 
-              className="flex items-center gap-2 bg-[var(--primary)] hover:bg-[var(--secondary)] text-white px-8 py-3.5 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl ml-auto disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+              className="flex items-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-8 py-2 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl ml-auto disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
             >
-              {isSubmitting ? "Submitting..." : <><Send size={18} /> Request Your Free Quote</>}
+              {isSubmitting ? "Submitting..." : <><Send size={18} /> Submit</>}
             </button>
           )}
         </div>
         
-        {/* Sub-note message */}
-        <div className="text-center mt-6 space-y-3 pt-2 border-t border-slate-50">
-          <p className="text-green-600 font-medium text-xs">
-            Our team will get back to you within 60 minutes during business hours.
-          </p>
-          <p className="text-slate-400 text-[10px] leading-relaxed max-w-3xl mx-auto">
-            *Free estimates are available for many jobs. In some cases, a site visit may be needed to assess the work properly, and this will incur a fee. If you proceed with the job, that fee will be deducted from the final cost.
-          </p>
-        </div>
+
       </form>
     </div>
   );

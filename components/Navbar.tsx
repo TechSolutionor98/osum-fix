@@ -181,7 +181,7 @@ export default function Navbar() {
               onClick={() => {
                 window.location.hash = "request-quote";
               }}
-              className="bg-[#FFB700] hover:bg-[#E5A400] text-slate-900 px-6 py-2.5 rounded-md font-semibold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
+              className="bg-[#e36704] hover:bg-[#c25602] text-white px-6 py-2.5 rounded-md font-semibold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
             >
               Book Now
             </Link>
@@ -258,7 +258,7 @@ export default function Navbar() {
                     setIsOpen(false);
                     window.location.hash = "request-quote";
                   }}
-                  className="block w-full text-center bg-[#FFB700] hover:bg-[#E5A400] text-slate-900 px-6 py-3 rounded-xl font-bold shadow-md cursor-pointer transition-colors"
+                  className="block w-full text-center bg-[#e36704] hover:bg-[#c25602] text-white px-6 py-3 rounded-xl font-bold shadow-md cursor-pointer transition-colors"
                 >
                   Book Now
                 </Link>

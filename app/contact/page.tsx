@@ -65,13 +65,8 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main>
-        <PageBanner
-          title="Contact Us"
-          breadcrumb={[{ label: "Contact", href: "/contact" }]}
-        />
-
-        <section className="py-20 bg-white">
+      <main className="min-h-screen bg-gradient-to-br from-[#cdeae8] via-[#e2f2f1] to-[#fefaef] pt-32">
+        <section className="py-20 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Contact Info */}
@@ -120,11 +115,11 @@ export default function ContactPage() {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-slate-50 p-8 rounded-lg border border-slate-100 shadow-sm">
-                <h3 className="text-2xl font-bold text-[var(--dark)] mb-6">Send Us a Message</h3>
+              <div className="bg-gradient-to-br from-[#e36704] via-[#e89050] to-[#d1ecea] p-8 rounded-2xl shadow-xl border border-white/20">
+                <h3 className="text-3xl font-extrabold text-white mb-6 drop-shadow-md">Send Us a Message</h3>
                 
                 {submitted ? (
-                  <div className="text-center py-10 space-y-4">
+                  <div className="text-center py-10 space-y-4 bg-white/90 rounded-xl p-8 backdrop-blur-sm">
                     <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <CheckCircle2 size={32} />
                     </div>
@@ -133,39 +128,39 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form className="space-y-6" onSubmit={handleSubmit}>
-                    {errorMsg && <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm">{errorMsg}</div>}
+                    {errorMsg && <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-semibold">{errorMsg}</div>}
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
+                        <label className="block text-sm font-bold text-white mb-2 drop-shadow-sm">Full Name *</label>
                         <input
                           type="text"
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                           placeholder="Enter Your Name"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
+                        <label className="block text-sm font-bold text-white mb-2 drop-shadow-sm">Phone Number *</label>
                         <input
                           type="tel"
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                           placeholder="Enter Your Phone Number"
                         />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Service Required</label>
+                        <label className="block text-sm font-bold text-white/90 mb-2 drop-shadow-sm">Service Required</label>
                         <select 
                           value={formData.serviceRequired}
                           onChange={(e) => setFormData({...formData, serviceRequired: e.target.value})}
-                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                         >
                           <option value="">Select a service</option>
                           <option value="ac-work">AC Work</option>
@@ -182,41 +177,41 @@ export default function ContactPage() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Property Location (Dubai)</label>
+                        <label className="block text-sm font-bold text-white/90 mb-2 drop-shadow-sm">Property Location (Dubai)</label>
                         <input
                           type="text"
                           value={formData.propertyLocation}
                           onChange={(e) => setFormData({...formData, propertyLocation: e.target.value})}
-                          className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                           placeholder="Enter Property Location"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                      <label className="block text-sm font-bold text-white mb-2 drop-shadow-sm">Email Address</label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                         placeholder="Enter Your Email Address"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Message *</label>
+                      <label className="block text-sm font-bold text-white mb-2 drop-shadow-sm">Message *</label>
                       <textarea
                         rows={4}
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all bg-white resize-none"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500 resize-none"
                         placeholder="Enter Your Message..."
                       ></textarea>
                     </div>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] text-white font-semibold py-4 rounded-md transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                      className="w-full bg-white hover:bg-slate-50 text-[#e36704] font-extrabold py-4 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-70 shadow-xl hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
                     >
                       {isSubmitting ? "Sending..." : "Send Message"} <Send size={18} />
                     </button>

@@ -290,20 +290,20 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
                 />
               </div>
               <div>
-                <div className="h-8 flex justify-between items-center mb-0.5">
-                  <label className="block text-sm font-medium text-slate-700">Phone Number *</label>
-                  
-                  {/* Premium Segmented Control */}
-                  <div className="flex bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-[11px] font-semibold">
+                <label className="block text-sm font-medium text-slate-700 mb-3">Phone Number *</label>
+                
+                {/* Premium Segmented Control Centered */}
+                <div className="flex justify-center mb-4">
+                  <div className="flex bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs font-semibold w-full max-w-[320px]">
                     <button
                       type="button"
                       onClick={() => {
                         setPhoneType("mobile");
                         setPhoneNumber("");
                       }}
-                      className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
+                      className={`flex-1 py-2 rounded-lg transition-all cursor-pointer text-center ${
                         phoneType === "mobile" 
-                          ? "bg-[#e36704] text-white shadow-sm font-bold" 
+                          ? "bg-[#e36704] text-white shadow-md font-bold" 
                           : "text-slate-500 hover:text-slate-800"
                       }`}
                     >
@@ -315,9 +315,9 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
                         setPhoneType("landline");
                         setPhoneNumber("");
                       }}
-                      className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
+                      className={`flex-1 py-2 rounded-lg transition-all cursor-pointer text-center ${
                         phoneType === "landline" 
-                          ? "bg-[#e36704] text-white shadow-sm font-bold" 
+                          ? "bg-[#e36704] text-white shadow-md font-bold" 
                           : "text-slate-500 hover:text-slate-800"
                       }`}
                     >
@@ -583,17 +583,15 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
         )}
 
         {/* Step Control Buttons */}
-        <div className="pt-6 border-t border-slate-100 flex items-center justify-between gap-3">
-          {currentStep > 2 ? (
+        <div className="pt-6 border-t border-slate-100 flex items-center justify-center gap-3 relative">
+          {currentStep > 2 && (
             <button
               type="button"
               onClick={handleBack}
-              className="flex items-center gap-2 px-6 py-3 border border-slate-300 rounded-xl font-semibold text-sm text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+              className="absolute left-0 flex items-center gap-2 px-5 py-3 border border-slate-300 rounded-xl font-semibold text-sm text-slate-700 hover:bg-slate-50 transition cursor-pointer"
             >
               <ArrowLeft size={16} /> Back
             </button>
-          ) : (
-            <div />
           )}
 
           {currentStep < 3 ? (
@@ -601,17 +599,17 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
               type="button"
               disabled={isSubmitting}
               onClick={handleNext}
-              className="flex items-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all shadow-md ml-auto cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+              className="flex items-center justify-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-12 py-3.5 rounded-xl font-bold text-[15px] transition-all shadow-md mx-auto cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed w-full sm:w-auto min-w-[200px]"
             >
-              {isSubmitting ? "Submitting..." : currentStep === 1 ? "Submit" : "Continue"} <ArrowRight size={16} />
+              {isSubmitting ? "Submitting..." : currentStep === 1 ? "Submit" : "Continue"} <ArrowRight size={18} />
             </button>
           ) : (
             <button 
               disabled={isSubmitting} 
               type="submit" 
-              className="flex items-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-8 py-2 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl ml-auto disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+              className="flex items-center justify-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-12 py-3.5 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl mx-auto disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer w-full sm:w-auto min-w-[200px]"
             >
-              {isSubmitting ? "Submitting..." : <><Send size={18} /> Submit</>}
+              {isSubmitting ? "Submitting..." : <><Send size={18} /> Submit Request</>}
             </button>
           )}
         </div>

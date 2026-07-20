@@ -61,7 +61,7 @@ export default function GlobalQuoteModal() {
             animate={{ opacity: 1, scale: 1, rotateX: 0, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, rotateX: -10, y: -40 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="relative w-full max-w-5xl bg-white rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/50 overflow-hidden z-10 h-[85vh] max-h-[750px] flex flex-col md:block"
+            className="relative w-full max-w-[820px] bg-white rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/50 overflow-hidden z-10 h-[85vh] max-h-[750px] flex flex-col md:block"
             style={{ perspective: "1200px" }}
           >
             {/* Close Button */}
@@ -108,10 +108,10 @@ export default function GlobalQuoteModal() {
               {/* Form Panel (White/Gradient Area) */}
               <motion.div 
                 animate={{ 
-                  x: currentStep % 2 === 0 ? "0%" : "66.666667%"
+                  x: currentStep % 2 === 0 ? "0%" : "100%"
                 }}
                 transition={{ duration: 0.8, type: "spring", bounce: 0.15 }}
-                className="absolute top-0 left-0 w-3/5 h-full overflow-y-auto overflow-x-hidden px-10 py-8 z-10 scrollbar-hide"
+                className="absolute top-0 left-0 w-1/2 h-full overflow-y-auto overflow-x-hidden px-8 py-8 z-10 scrollbar-hide"
                 style={{ transformOrigin: "right center", scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
                 <style dangerouslySetInnerHTML={{__html: `
@@ -125,10 +125,10 @@ export default function GlobalQuoteModal() {
               {/* Colored Image/Visual Panel */}
               <motion.div 
                 animate={{ 
-                  x: currentStep % 2 === 0 ? "150%" : "0%"
+                  x: currentStep % 2 === 0 ? "100%" : "0%"
                 }}
                 transition={{ duration: 0.8, type: "spring", bounce: 0.15 }}
-                className="absolute top-0 left-0 w-2/5 h-full items-center justify-center p-10 z-20 flex flex-col"
+                className="absolute top-0 left-0 w-1/2 h-full items-center justify-center p-10 z-20 flex flex-col"
                 style={{ transformOrigin: currentStep % 2 === 0 ? "left center" : "right center" }}
               >
 

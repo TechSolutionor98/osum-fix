@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Send, CheckCircle, ArrowLeft, ArrowRight, User, Mail, Phone, MapPin, Building, MessageSquare, AlertCircle, ChevronDown, Map, Clock, Calendar } from "lucide-react";
+import { Send, CheckCircle, ArrowLeft, ArrowRight, User, Mail, Phone, MapPin, Building, MessageSquare, AlertCircle, ChevronDown, Map, Clock, Calendar, Wrench } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface QuoteFormProps {
@@ -20,8 +20,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
   const [preferredTime, setPreferredTime] = useState("Morning (8:00 AM - 12:00 PM)");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     location: "",
     emirate: "Dubai",
@@ -51,7 +50,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
   const handleNext = async () => {
     setErrorMsg(null);
     if (currentStep === 1) {
-      if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim()) {
+      if (!formData.fullName.trim() || !formData.email.trim()) {
         setErrorMsg("Please fill in all personal details.");
         return;
       }
@@ -92,7 +91,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name: `${formData.firstName} ${formData.lastName}`.trim(),
+            name: formData.fullName.trim(),
             email: formData.email,
             phone: formattedPhone,
             message: "Partial Quote Request (Lead Capture from Step 1)",
@@ -167,9 +166,13 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
     const formattedDetails = `[Date: ${preferredDate} | Time: ${preferredTime}]\n\n${formData.details.trim()}`;
 
     setIsSubmitting(true);
+    const nameParts = formData.fullName.trim().split(" ");
+    const firstName = nameParts[0];
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
+
     const data = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
+      firstName: firstName,
+      lastName: lastName,
       email: formData.email,
       phone: formattedPhone,
       service: selectedService === "Other" ? customService.trim() : selectedService,
@@ -187,8 +190,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
       if (res.ok) {
         setSubmitted(true);
         setFormData({
-          firstName: "",
-          lastName: "",
+          fullName: "",
           email: "",
           location: "",
           emirate: "Dubai",
@@ -243,36 +245,24 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
         {currentStep === 1 && (
           <div className="space-y-3">
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
+              <h2 className="text-xl md:text-2xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
                 <User size={28} className="text-[#e36704]" />
-                Your Contact Details
+                Personal  Details
               </h2>
               <p className="text-slate-400 text-xs">Please provide your contact details so we can get in touch with you.</p>
             </div>
             
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 gap-3 w-[92%]">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-0.5">First Name *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">Full Name *</label>
                 <input 
                   type="text" 
-                  name="firstName" 
-                  value={formData.firstName}
+                  name="fullName" 
+                  value={formData.fullName}
                   onChange={handleChange}
                   required 
                   className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
-                  placeholder="Enter your first name" 
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-0.5">Last Name *</label>
-                <input 
-                  type="text" 
-                  name="lastName" 
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required 
-                  className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-800" 
-                  placeholder="Enter your last name" 
+                  placeholder="Enter your full name" 
                 />
               </div>
               <div>
@@ -352,33 +342,32 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
         {currentStep === 2 && (
           <div className="space-y-3">
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
+              <h2 className="text-xl md:text-2xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
                 <MapPin size={28} className="text-[#e36704]" />
-                Service Requirements & Location
+                Services & Location
               </h2>
               <p className="text-slate-400 text-xs">Select your service, choose the location and property type.</p>
             </div>
             
-            <div className="space-y-3">
-              <label className="block text-sm font-medium text-slate-700">What service do you require? *</label>
-              <div className="flex flex-wrap gap-2.5">
-                {services.map((srv) => (
-                  <button
-                    key={srv}
-                    type="button"
-                    onClick={() => {
-                      setSelectedService(srv);
+            <div className="space-y-3 w-[92%]">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-0.5">What service do you require? *</label>
+                <div className="relative flex items-center">
+                  <Wrench size={18} className="absolute left-4 text-slate-400 pointer-events-none" />
+                  <select 
+                    required 
+                    value={selectedService}
+                    onChange={(e) => {
+                      setSelectedService(e.target.value);
                       setErrorMsg(null);
                     }}
-                    className={`px-4 py-2 rounded-full text-xs font-semibold transition-all border ${
-                      selectedService === srv 
-                      ? "bg-[#e36704] border-[#e36704] text-white shadow-md" 
-                      : "bg-white border-slate-200 text-slate-600 hover:border-[#e36704] hover:text-[#e36704]"
-                    }`}
+                    className="w-full pl-11 pr-10 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#e36704] focus:border-transparent transition-all bg-slate-50 focus:bg-white text-slate-700 font-semibold appearance-none cursor-pointer text-sm"
                   >
-                    {srv}
-                  </button>
-                ))}
+                    <option value="">Select a service</option>
+                    {services.map(srv => <option key={srv} value={srv}>{srv}</option>)}
+                  </select>
+                  <ChevronDown size={18} className="absolute right-4 text-slate-400 pointer-events-none" />
+                </div>
               </div>
 
               {/* Custom specify input for 'Other' option */}
@@ -404,7 +393,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
               )}
             </div>
 
-            <div className="grid grid-cols-1 gap-3 pt-2">
+            <div className="grid grid-cols-1 gap-3 pt-2 w-[92%]">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-0.5">Emirate (State) *</label>
                 <div className="relative flex items-center">
@@ -497,18 +486,17 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
         {currentStep === 3 && (
           <div className="space-y-3">
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
+              <h2 className="text-xl md:text-2xl font-extrabold text-[var(--dark)] mb-0.5 tracking-tight flex items-center gap-3">
                 <MessageSquare size={28} className="text-[#e36704]" />
                 Appointment Schedule & Details
               </h2>
               <p className="text-slate-400 text-xs">Choose your preferred date, time slot, and explain the requirements in detail.</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-2 gap-3 w-[92%]">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-0.5">Preferred Date *</label>
                 <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[#e36704] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">
-                  <Calendar size={18} className="text-slate-400 ml-4 shrink-0 pointer-events-none" />
                   <input 
                     type="date" 
                     required 
@@ -518,7 +506,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
                       setPreferredDate(e.target.value);
                       setErrorMsg(null);
                     }}
-                    className="w-full px-3 py-2 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold cursor-pointer"
+                    className="w-full px-4 py-2 focus:outline-none text-slate-800 bg-transparent text-sm font-semibold cursor-pointer"
                   />
                 </div>
               </div>
@@ -546,7 +534,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
               </div>
             </div>
             
-            <div>
+            <div className="w-[92%]">
               <label className="block text-sm font-medium text-slate-700 mb-0.5">Describe Your Requirements *</label>
               <textarea 
                 name="details" 
@@ -583,12 +571,12 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
         )}
 
         {/* Step Control Buttons */}
-        <div className="pt-6 border-t border-slate-100 flex items-center justify-center gap-3 relative">
+        <div className="pt-6 border-t border-slate-100 flex items-center justify-center gap-4">
           {currentStep > 2 && (
             <button
               type="button"
               onClick={handleBack}
-              className="absolute left-0 flex items-center gap-2 px-5 py-3 border border-slate-300 rounded-xl font-semibold text-sm text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+              className="flex items-center gap-2 px-6 py-3.5 border border-slate-300 rounded-xl font-semibold text-sm text-slate-700 hover:bg-slate-50 transition cursor-pointer"
             >
               <ArrowLeft size={16} /> Back
             </button>
@@ -599,17 +587,17 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
               type="button"
               disabled={isSubmitting}
               onClick={handleNext}
-              className="flex items-center justify-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-12 py-3.5 rounded-xl font-bold text-[15px] transition-all shadow-md mx-auto cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed w-full sm:w-auto min-w-[200px]"
+              className="flex items-center justify-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-12 py-3.5 rounded-xl font-bold text-[15px] transition-all shadow-md cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed w-full sm:w-auto min-w-[180px]"
             >
-              {isSubmitting ? "Submitting..." : currentStep === 1 ? "Submit" : "Continue"} <ArrowRight size={18} />
+              {isSubmitting ? "Next..." : "Next"} <ArrowRight size={18} />
             </button>
           ) : (
             <button 
               disabled={isSubmitting} 
               type="submit" 
-              className="flex items-center justify-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-12 py-3.5 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl mx-auto disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer w-full sm:w-auto min-w-[200px]"
+              className="flex items-center justify-center gap-2 bg-[#e36704] hover:bg-[#c25602] text-white px-12 py-3.5 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed w-full sm:w-auto min-w-[180px]"
             >
-              {isSubmitting ? "Submitting..." : <><Send size={18} /> Submit Request</>}
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           )}
         </div>

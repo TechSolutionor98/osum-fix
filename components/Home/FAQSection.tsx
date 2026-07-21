@@ -50,14 +50,14 @@ export default function FAQSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center justify-center p-3 bg-teal-50 rounded-full mb-4 text-[#0D4B42]">
-            <MessageCircleQuestion size={28} />
+          <div className="inline-flex items-center justify-center p-2.5 sm:p-3 bg-teal-50 rounded-full mb-3 sm:mb-4 text-[#0D4B42]">
+            <MessageCircleQuestion className="w-6 h-6 sm:w-7 sm:h-7" />
           </div>
-          <span className="text-sm font-bold tracking-widest text-[#0D4B42] uppercase mb-3 block">Got Questions?</span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0B2C3D] tracking-tight">
+          <span className="text-xs sm:text-sm font-bold tracking-widest text-[#0D4B42] uppercase mb-2 sm:mb-3 block">Got Questions?</span>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#0B2C3D] tracking-tight leading-tight">
             Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0D4B42] to-[#FFB700]">Questions</span>
           </h2>
-          <p className="mt-6 text-slate-500 text-lg max-w-2xl mx-auto font-medium">
+          <p className="mt-4 sm:mt-6 text-slate-500 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-medium px-2">
             Find quick answers to common questions about our technical services, coverage areas, and booking processes.
           </p>
         </motion.div>
@@ -80,15 +80,15 @@ export default function FAQSection() {
               >
                 <button
                   onClick={() => toggleIndex(index)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none rounded-2xl"
+                  className="w-full text-left px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-3 sm:gap-4 focus:outline-none rounded-2xl"
                 >
-                  <h3 className={`font-bold text-lg transition-colors pr-8 ${isOpen ? "text-[#0D4B42]" : "text-[#0B2C3D]"}`}>
+                  <h3 className={`font-bold text-sm sm:text-base md:text-lg transition-colors pr-2 sm:pr-8 ${isOpen ? "text-[#0D4B42]" : "text-[#0B2C3D]"}`}>
                     {faq.q}
                   </h3>
-                  <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  <div className={`shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                     isOpen ? "bg-[#FFB700] text-slate-900 rotate-180 shadow-md" : "bg-slate-50 text-slate-400 border border-slate-200 hover:bg-slate-100"
                   }`}>
-                    <ChevronDown size={20} className={isOpen ? "stroke-[2.5px]" : ""} />
+                    <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 ${isOpen ? "stroke-[2.5px]" : ""}`} />
                   </div>
                 </button>
                 
@@ -101,8 +101,8 @@ export default function FAQSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden bg-white rounded-b-2xl"
                     >
-                      <div className="px-6 pb-6 pt-5 border-t border-slate-100 mx-6 mt-1">
-                        <p className="text-slate-600 leading-relaxed font-medium">
+                      <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-4 sm:pt-5 border-t border-slate-100 mx-2 sm:mx-6 mt-1">
+                        <p className="text-slate-600 leading-relaxed font-medium text-xs sm:text-sm md:text-base">
                           {faq.a}
                         </p>
                       </div>

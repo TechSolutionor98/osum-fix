@@ -41,33 +41,33 @@ export default function Hero({ cms }: HeroProps) {
             </p>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-8 w-full sm:w-fit">
-              <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
-                <div className="bg-teal-50 p-2 rounded-full">
-                  <CheckCircle size={22} className="text-[#0D4B42]" />
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-8 w-full sm:w-fit">
+              <div className="flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
+                <div className="bg-teal-50 p-1.5 sm:p-2 rounded-full shrink-0">
+                  <CheckCircle className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-[#0D4B42]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[100px]">{t("Trusted Professionals")}</span>
+                <span className="text-[11px] sm:text-sm font-bold text-[#0B2C3D] leading-tight max-w-[85px] sm:max-w-[110px] break-words">{t("Trusted Professionals")}</span>
               </div>
               
-              <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
-                <div className="bg-amber-50 p-2 rounded-full">
-                  <Clock size={22} className="text-[#E46704]" />
+              <div className="flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
+                <div className="bg-amber-50 p-1.5 sm:p-2 rounded-full shrink-0">
+                  <Clock className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-[#E46704]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[100px]">{t("On-Time Service")}</span>
+                <span className="text-[11px] sm:text-sm font-bold text-[#0B2C3D] leading-tight max-w-[85px] sm:max-w-[110px] break-words">{t("On-Time Service")}</span>
               </div>
               
-              <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
-                <div className="bg-teal-50 p-2 rounded-full">
-                  <ShieldCheck size={22} className="text-[#0D4B42]" />
+              <div className="flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
+                <div className="bg-teal-50 p-1.5 sm:p-2 rounded-full shrink-0">
+                  <ShieldCheck className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-[#0D4B42]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[100px]">{t("Secure Payments")}</span>
+                <span className="text-[11px] sm:text-sm font-bold text-[#0B2C3D] leading-tight max-w-[85px] sm:max-w-[110px] break-words">{t("Secure Payments")}</span>
               </div>
               
-              <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
-                <div className="bg-amber-50 p-2 rounded-full">
-                  <ThumbsUp size={22} className="text-[#E46704]" />
+              <div className="flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
+                <div className="bg-amber-50 p-1.5 sm:p-2 rounded-full shrink-0">
+                  <ThumbsUp className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-[#E46704]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[110px]">{t("Satisfaction Guaranteed")}</span>
+                <span className="text-[11px] sm:text-sm font-bold text-[#0B2C3D] leading-tight max-w-[85px] sm:max-w-[110px] break-words">{t("Satisfaction Guaranteed")}</span>
               </div>
             </div>
           </div>

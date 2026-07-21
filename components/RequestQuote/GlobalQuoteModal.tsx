@@ -73,7 +73,7 @@ export default function GlobalQuoteModal() {
             </button>
 
             {/* Mobile View: Stacked (Hidden on MD and up) */}
-            <div className="md:hidden flex flex-col h-full overflow-y-auto bg-gradient-to-br from-[#f5f6ed] to-[#d1ecea]">
+            <div className="md:hidden flex flex-col h-full overflow-y-auto scrollbar-hide bg-gradient-to-br from-[#f5f6ed] to-[#d1ecea]">
                <div className="w-full bg-gradient-to-br from-[#e36704] to-[#cc5803] p-8 text-white flex flex-col items-center justify-center text-center">
                   <h3 className="text-2xl font-bold mb-2">Premium Service</h3>
                   <p className="font-medium opacity-90">Dubai's Trusted Technical Experts</p>
@@ -114,11 +114,6 @@ export default function GlobalQuoteModal() {
                 className="absolute top-0 left-0 w-1/2 h-full overflow-y-auto overflow-x-hidden px-8 py-8 z-10 scrollbar-hide"
                 style={{ transformOrigin: "right center", scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
-                <style dangerouslySetInnerHTML={{__html: `
-                  .scrollbar-hide::-webkit-scrollbar {
-                      display: none;
-                  }
-                `}} />
                 <QuoteForm onStepChange={(step) => setCurrentStep(step)} />
               </motion.div>
 

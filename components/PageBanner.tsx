@@ -17,7 +17,7 @@ export default function PageBanner({
   bgImage = "/images/page-banner-bg.jpg"
 }: PageBannerProps) {
   return (
-    <section className="relative pt-44 pb-32 md:pt-52 md:pb-36 bg-gradient-to-b from-[#cdeae8] via-[#e2f2f1] to-[#fefaef] overflow-hidden flex items-center justify-center">
+    <section className="relative pt-36 pb-12 md:pt-52 md:pb-36 bg-gradient-to-b from-[#cdeae8] via-[#e2f2f1] to-[#fefaef] overflow-hidden flex items-center justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col items-center text-center">
         {/* Glowing Decorative Line */}
         <motion.div

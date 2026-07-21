@@ -60,29 +60,28 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
 
   return (
     <div className="bg-gradient-to-b from-[#fefaef] to-[#cdeae8] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16 md:py-16">
+        
+        {/* Header & Search (Always on Top) */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center border-b border-slate-200/60 pb-6 mb-10">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--dark)] tracking-tight">Articles & Insights</h1>
+
+          <div className="relative w-full sm:w-72">
+            <input
+              type="text"
+              placeholder="Search articles in real-time..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] bg-white/80 backdrop-blur-sm text-sm transition-all"
+            />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
           {/* Left Column: Articles */}
-          <div className="lg:col-span-8 space-y-10">
-
-            {/* Header & Search */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center border-b border-slate-200/60 pb-6">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--dark)] tracking-tight">Articles & Insights</h1>
-
-              <div className="relative w-full sm:w-72">
-                <input
-                  type="text"
-                  placeholder="Search articles in real-time..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] bg-white/80 backdrop-blur-sm text-sm transition-all"
-                />
-                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-              </div>
-            </div>
-
-
+          <div className="lg:col-span-8 space-y-10 order-2 lg:order-1">
 
             {/* Blogs Grid or Empty State */}
             {filteredBlogs.length === 0 ? (
@@ -158,10 +157,10 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
           </div>
 
           {/* Right Sidebar */}
-          <div className="lg:col-span-4 space-y-12 lg:pl-4">
+          <div className={`lg:col-span-4 space-y-12 lg:pl-4 order-1 lg:order-2 ${searchQuery.trim() !== "" ? "hidden lg:block" : ""}`}>
 
             {/* OsumFix Details */}
-            <div className="space-y-4">
+            <div className="hidden lg:block space-y-4">
               <h3 className="font-extrabold text-lg text-[var(--dark)] tracking-tight">OsumFix</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
                 We provide professional AC Repair, Plumbing, Electrical Work, Handyman Services, and comprehensive home maintenance solutions across Dubai.
@@ -222,7 +221,7 @@ export default function BlogsClient({ initialBlogs }: { initialBlogs: Blog[] }) 
             </div>
 
             {/* Direct Help Desk */}
-            <div className="space-y-4 pt-8 border-t border-slate-200/60">
+            <div className="hidden lg:block space-y-4 pt-8 border-t border-slate-200/60">
               <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--primary)]">DIRECT HELP DESK</span>
               <h3 className="font-extrabold text-lg text-[var(--dark)] tracking-tight">Need Immediate Support?</h3>
               <p className="text-slate-500 text-sm leading-relaxed">

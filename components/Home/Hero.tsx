@@ -23,35 +23,16 @@ export default function Hero({ cms }: HeroProps) {
           
           {/* Left Content */}
           <div className="w-full md:w-[55%] lg:w-[60%] text-left pb-12 md:pb-24 pt-10 md:pt-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0B2C3D] leading-[1.2] mb-6">
-              <span className="block space-x-3">
-                <span className="text-[#E46704]">{t("OsumFix")}</span>
-                <span className="inline-block">
-                  {String(t("Professional") || "").split("").map((char, i) => (
-                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 + (i * 0.03), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0B2C3D] leading-[1.2] mb-6 max-w-2xl">
+              {String(t("OsumFix Professional Maintenance & Repair Solutions.") || "").split(" ").map((word, wIdx) => (
+                <span key={wIdx} className={`inline-block mr-3 mb-2 ${wIdx === 0 ? "text-[#E46704]" : ""}`}>
+                  {word.split("").map((char, i) => (
+                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 + ((wIdx * 5 + i) * 0.02), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
                       {char}
                     </motion.span>
                   ))}
                 </span>
-              </span>
-              <span className="block pt-2">
-                <span className="inline-block">
-                  {String(t("Maintenance & Repair") || "").split("").map((char, i) => (
-                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.4 + (i * 0.03), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
-              </span>
-              <span className="block pt-2">
-                <span className="inline-block">
-                  {String(t("Solutions.") || "").split("").map((char, i) => (
-                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.8 + (i * 0.03), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
-              </span>
+              ))}
             </h1>
 
             <p className="text-base md:text-lg text-slate-700 mb-8 max-w-lg leading-relaxed font-medium">
@@ -65,28 +46,28 @@ export default function Hero({ cms }: HeroProps) {
                 <div className="bg-teal-50 p-2 rounded-full">
                   <CheckCircle size={22} className="text-[#0D4B42]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight">Trusted<br />Professionals</span>
+                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[100px]">{t("Trusted Professionals")}</span>
               </div>
               
               <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
                 <div className="bg-amber-50 p-2 rounded-full">
                   <Clock size={22} className="text-[#E46704]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight">On-Time<br />Service</span>
+                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[100px]">{t("On-Time Service")}</span>
               </div>
               
               <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
                 <div className="bg-teal-50 p-2 rounded-full">
                   <ShieldCheck size={22} className="text-[#0D4B42]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight">Secure<br />Payments</span>
+                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[100px]">{t("Secure Payments")}</span>
               </div>
               
               <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white shadow-sm hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
                 <div className="bg-amber-50 p-2 rounded-full">
                   <ThumbsUp size={22} className="text-[#E46704]" />
                 </div>
-                <span className="text-sm font-bold text-[#0B2C3D] leading-tight">Satisfaction<br />Guaranteed</span>
+                <span className="text-sm font-bold text-[#0B2C3D] leading-tight max-w-[110px]">{t("Satisfaction Guaranteed")}</span>
               </div>
             </div>
           </div>
@@ -117,9 +98,9 @@ export default function Hero({ cms }: HeroProps) {
                 </div>
                 <p className="text-xs font-medium text-slate-500 mb-2">Customer Rating</p>
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src="/images/about-1.png" alt="user" width={32} height={32} className="object-cover" /></div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src="/images/about-2.png" alt="user" width={32} height={32} className="object-cover" /></div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src="/images/about-man.png" alt="user" width={32} height={32} className="object-cover" /></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-1.png"} alt="user" width={32} height={32} className="object-cover" /></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-2.png"} alt="user" width={32} height={32} className="object-cover" /></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-man.png"} alt="user" width={32} height={32} className="object-cover" /></div>
                 </div>
               </div>
             </motion.div>

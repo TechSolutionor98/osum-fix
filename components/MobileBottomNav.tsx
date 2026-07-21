@@ -24,10 +24,10 @@ export default function MobileBottomNav() {
 
   const tabs = [
     { name: "Home", href: "/", icon: Home, isActive: pathname === "/" && !isBookNowActive },
+    { name: "About Us", href: "/about", icon: Info, isActive: pathname === "/about" && !isBookNowActive },
     { name: "Services", href: "/services", icon: Wrench, isActive: pathname?.startsWith("/services") && !isBookNowActive },
     { name: "Book Now", href: "#request-quote", icon: CalendarCheck, isActive: isBookNowActive },
     { name: "Blogs", href: "/blogs", icon: Newspaper, isActive: pathname?.startsWith("/blogs") && !isBookNowActive },
-    { name: "About Us", href: "/about", icon: Info, isActive: pathname === "/about" && !isBookNowActive },
   ];
 
   return (

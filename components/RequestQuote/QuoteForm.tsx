@@ -493,7 +493,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
               <p className="text-slate-400 text-xs">Choose your preferred date, time slot, and explain the requirements in detail.</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 w-[92%]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-[92%]">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-0.5">Preferred Date *</label>
                 <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 focus-within:ring-2 focus-within:ring-[#e36704] focus-within:border-transparent focus-within:bg-white overflow-hidden transition-all">

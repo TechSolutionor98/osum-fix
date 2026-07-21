@@ -35,10 +35,10 @@ export default function HomeQuoteSection() {
           </motion.p>
         </div>
 
-        <div className="w-full max-w-[820px] mx-auto bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden flex flex-col md:flex-row relative h-[85vh] max-h-[750px]">
+        <div className="w-full max-w-[820px] mx-auto bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden flex flex-col md:flex-row relative h-auto md:h-[85vh] max-h-none md:max-h-[750px]">
 
           {/* Image Side */}
-          <div className="w-full md:w-1/2 bg-slate-900 relative min-h-[250px] md:min-h-0 flex flex-col justify-end p-8">
+          <div className="hidden md:flex w-full md:w-1/2 bg-slate-900 relative min-h-[250px] md:min-h-0 flex-col justify-end p-8">
             <img
               src="/images/about-2.png"
               alt="Technical Service Quote"
@@ -66,7 +66,7 @@ export default function HomeQuoteSection() {
           </div>
 
           {/* Form Side */}
-          <div className="w-full md:w-1/2 p-6 md:p-8 bg-gradient-to-br from-[#d1ecea] via-[#eef6f5] to-[#ffe3c7] relative overflow-y-auto scrollbar-hide flex flex-col">
+          <div className="w-full md:w-1/2 p-6 md:p-8 bg-gradient-to-br from-[#d1ecea] via-[#eef6f5] to-[#ffe3c7] relative overflow-visible md:overflow-y-auto scrollbar-hide flex flex-col">
             {/* Subtle decorative glows for the orange/blue theme combo */}
             <div className="absolute top-0 right-0 w-72 h-72 bg-[#e36704]/15 rounded-full blur-[70px] pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#0B2C3D]/10 rounded-full blur-[80px] pointer-events-none"></div>

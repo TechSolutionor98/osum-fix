@@ -141,7 +141,7 @@ export default async function ServiceDetailPage({
               </div>
 
               <div className="space-y-24">
-                {/* Phase 1 */}
+                {/* {Phase 1} */}
                 <AnimatedCard delay={0.1} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 order-2 lg:order-1 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -171,7 +171,7 @@ export default async function ServiceDetailPage({
                   </div>
                 </AnimatedCard>
 
-                {/* Phase 2 */}
+                {/* {Phase 2} */}
                 <AnimatedCard delay={0.2} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-white to-transparent lg:block hidden z-10 w-24" />
@@ -201,7 +201,7 @@ export default async function ServiceDetailPage({
                   </div>
                 </AnimatedCard>
 
-                {/* Phase 3 */}
+                {/* {Phase 3} */}
                 <AnimatedCard delay={0.3} className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(32,80,124,0.2)] transition-all duration-500 hover:-translate-y-3 relative overflow-hidden border border-slate-100/50 group">
                   <div className="w-full lg:w-1/2 p-10 lg:p-16 order-2 lg:order-1 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -259,6 +259,7 @@ export default async function ServiceDetailPage({
 
               <hr className="border-slate-200" />
 
+              {/* Section: Residential & Commercial AC Solutions */}
               <div className="space-y-8">
                 <div className="text-center max-w-2xl mx-auto">
                   <h3 className="text-2xl font-bold text-[var(--dark)]">{t("Residential & Commercial AC Solutions")}</h3>
@@ -375,7 +376,7 @@ export default async function ServiceDetailPage({
                     className="bg-white border border-slate-100 hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-3 sm:p-4 rounded-3xl flex flex-col group transition-all duration-300"
                   >
                     <div className="relative aspect-square sm:aspect-[4/3] w-full rounded-2xl overflow-hidden mb-4 sm:mb-5 bg-slate-50 border border-slate-100/50">
-                      {/* Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust */}
+                      {/* {Using unoptimized for placeholder rendering if image doesn't exist, though Next.js Image is robust} */}
                       <Image
                         src={t(s.img)}
                         fill

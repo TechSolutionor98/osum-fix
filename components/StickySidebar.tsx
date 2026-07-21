@@ -102,7 +102,7 @@ export default function StickySidebar({ sections }: StickySidebarProps) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="fixed left-6 top-1/2 -translate-y-1/2 z-[60]"
+          className="hidden md:block fixed left-6 top-1/2 -translate-y-1/2 z-[60]"
         >
           <motion.div
             animate={{ width: isOpen ? 260 : 56 }}

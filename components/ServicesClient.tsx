@@ -90,14 +90,14 @@ export default function ServicesClient({ services, dict }: ServicesClientProps) 
                         </p>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                           {[
-                            "24/7 Priority Support",
-                            "Free Parts Replacement",
-                            "Bi-annual AC Servicing",
-                            "No Hidden Call-out Fees"
+                            t("24/7 Priority Support"),
+                            t("Free Parts Replacement"),
+                            t("Bi-annual AC Servicing"),
+                            t("No Hidden Call-out Fees")
                           ].map((feature, i) => (
                             <li key={i} className="flex items-center gap-2 text-white/90 font-medium">
                               <CheckCircle2 className="w-5 h-5 text-[#CDEAE8]" />
-                              {t(feature)}
+                              {feature}
                             </li>
                           ))}
                         </ul>

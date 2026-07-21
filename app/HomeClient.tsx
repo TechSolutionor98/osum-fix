@@ -7,6 +7,7 @@ import Projects from "@/components/Home/Projects";
 import VideoSection from "@/components/Home/VideoSection";
 import FAQSection from "@/components/Home/FAQSection";
 import CTA from "@/components/Home/CTA";
+import HomeQuoteSection from "@/components/Home/HomeQuoteSection";
 
 interface HomeClientProps {
   cms?: any;
@@ -22,6 +23,7 @@ export default function HomeClient({ cms }: HomeClientProps) {
       <VideoSection cms={cms} />
       <FAQSection />
       <CTA cms={cms} />
+      <HomeQuoteSection />
     </main>
   );
 }

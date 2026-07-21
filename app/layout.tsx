@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { getSettings } from "@/lib/cms-service";
 import GlobalQuoteModal from "@/components/RequestQuote/GlobalQuoteModal";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,6 +31,7 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} h-full antialiased scroll-smooth`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>
@@ -121,10 +123,11 @@ export default async function RootLayout({
           <script dangerouslySetInnerHTML={{ __html: settings.customBodyScript }} />
         )}
 
-        <main className="flex-grow flex flex-col">
+        <main className="flex-grow flex flex-col pb-20 md:pb-0">
           {children}
         </main>
         <GlobalQuoteModal />
+        <MobileBottomNav />
       </body>
     </html>
   );

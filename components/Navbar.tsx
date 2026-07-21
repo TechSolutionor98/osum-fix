@@ -220,7 +220,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white border-t border-slate-100 overflow-y-auto max-h-[calc(100vh-76px)]"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1 shadow-inner">
+            <div className="px-4 pt-2 pb-24 space-y-1 shadow-inner">
               {navLinks.map((link) => (
                 <div key={link.name}>
                   <Link

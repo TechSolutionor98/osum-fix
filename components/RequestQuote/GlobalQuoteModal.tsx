@@ -40,6 +40,7 @@ export default function GlobalQuoteModal() {
     setIsOpen(false);
     if (window.location.hash === "#request-quote") {
       window.history.pushState({}, document.title, window.location.pathname + window.location.search);
+      window.dispatchEvent(new Event("hashchange"));
     }
   };
 

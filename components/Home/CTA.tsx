@@ -110,7 +110,25 @@ export default function CTA({ cms }: CTAProps) {
         </motion.div>
 
         {/* Main Node Graph Container */}
-        <div className="relative w-full h-[380px] flex items-center justify-center overflow-visible">
+        <div className="relative w-full h-[600px] lg:h-[380px] flex items-center justify-center overflow-visible graph-vars">
+          <style>{`
+            .graph-vars {
+              --graph-scale-x: 0.42;
+              --graph-scale-y: 1.5;
+            }
+            @media (min-width: 640px) {
+              .graph-vars {
+                --graph-scale-x: 0.65;
+                --graph-scale-y: 1.2;
+              }
+            }
+            @media (min-width: 1024px) {
+              .graph-vars {
+                --graph-scale-x: 1;
+                --graph-scale-y: 1;
+              }
+            }
+          `}</style>
           
           {/* Render Concentric Capsule Rings */}
           {RINGS.map((ring, idx) => (
@@ -120,10 +138,10 @@ export default function CTA({ cms }: CTAProps) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: idx * 0.1, ease: "easeOut" }}
-              className="absolute border border-[#0B2C3D]/20 rounded-[50px] md:rounded-[90px] pointer-events-none"
+              className="absolute border border-[#0B2C3D]/20 rounded-[120px] md:rounded-[90px] pointer-events-none"
               style={{
-                width: `${ring.w}px`,
-                height: `${ring.h}px`,
+                width: `calc(${ring.w}px * var(--graph-scale-x))`,
+                height: `calc(${ring.h}px * var(--graph-scale-y))`,
               }}
             />
           ))}
@@ -138,12 +156,12 @@ export default function CTA({ cms }: CTAProps) {
                 key={loc.name}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                initial={{ opacity: 0, scale: 0, left: `calc(50% + ${pos.x}px)`, top: `calc(50% + ${pos.y}px)` }}
+                initial={{ opacity: 0, scale: 0, left: `calc(50% + calc(${pos.x}px * var(--graph-scale-x)))`, top: `calc(50% + calc(${pos.y}px * var(--graph-scale-y)))` }}
                 animate={{ 
                   opacity: 1, 
                   scale: 1,
-                  left: `calc(50% + ${pos.x}px)`,
-                  top: `calc(50% + ${pos.y}px)`
+                  left: `calc(50% + calc(${pos.x}px * var(--graph-scale-x)))`,
+                  top: `calc(50% + calc(${pos.y}px * var(--graph-scale-y)))`
                 }}
                 transition={{ 
                   opacity: { duration: 0.6, delay: loc.delay + 0.5 },
@@ -154,16 +172,16 @@ export default function CTA({ cms }: CTAProps) {
                 className="absolute flex flex-col items-center justify-center -translate-x-1/2 -translate-y-1/2 group z-20 cursor-pointer"
               >
                 {/* Node Icon Circle */}
-                <div className="w-14 h-14 bg-[#0B2C3D] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 border border-[#0B2C3D]/20 group-hover:border-[#E46704] group-hover:scale-110 relative group-hover:bg-[#E46704]">
-                  <span className="material-symbols-outlined text-2xl text-white transition-colors relative z-10">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-[#0B2C3D] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 border border-[#0B2C3D]/20 group-hover:border-[#E46704] group-hover:scale-110 relative group-hover:bg-[#E46704]">
+                  <span className="material-symbols-outlined text-xl md:text-2xl text-white transition-colors relative z-10">
                     {loc.icon}
                   </span>
                 </div>
                 
                 {/* Text Label */}
                 <div className="mt-1.5 text-center transition-all duration-300 group-hover:-translate-y-0.5">
-                  <h4 className="text-[#0B2C3D] font-bold text-sm whitespace-nowrap">{t(loc.name)}</h4>
-                  <p className="text-slate-500 font-medium text-[10px] uppercase tracking-wider">{t(loc.title)}</p>
+                  <h4 className="text-[#0B2C3D] font-bold text-xs md:text-sm whitespace-nowrap">{t(loc.name)}</h4>
+                  <p className="text-slate-500 font-medium text-[9px] md:text-[10px] uppercase tracking-wider">{t(loc.title)}</p>
                 </div>
               </motion.div>
             );
@@ -182,13 +200,12 @@ export default function CTA({ cms }: CTAProps) {
               onClick={() => {
                 window.location.hash = "request-quote";
               }}
-              className="bg-[#E46704] hover:bg-[#c45600] text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-extrabold transition-all shadow-xl flex items-center justify-center gap-3 text-lg md:text-xl group"
+              className="bg-[#E46704] hover:bg-[#c45600] text-white px-5 md:px-12 py-2.5 md:py-5 rounded-full font-extrabold transition-all shadow-xl flex items-center justify-center gap-1.5 md:gap-3 text-xs md:text-xl group"
             >
-              <span className="material-symbols-outlined text-2xl md:text-3xl transition-transform group-hover:scale-110">engineering</span>
+              <span className="material-symbols-outlined text-base md:text-3xl transition-transform group-hover:scale-110">engineering</span>
               {t("Book a Service")}
             </Link>
           </motion.div>
-
         </div>
       </div>
     </section>

@@ -1,18 +1,26 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ChevronDown } from "lucide-react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    setOpenSection(openSection === section ? null : section);
+  };
 
   return (
-    <footer className="bg-[var(--dark)] text-white pt-16 pb-8 border-t-4 border-[var(--primary)]">
+    <footer className="bg-[var(--dark)] text-white pt-16 pb-24 md:pb-8 border-t-4 border-[var(--primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-2 md:gap-12 mb-12">
 
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 mb-8 md:mb-0">
             <Link href="/" className="inline-block group mb-4 -mt-4">
               <Image
                 src="/images/blackbgremove.png"
@@ -42,109 +50,140 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Service
-                </Link>
-              </li>
-              <li>
-                <Link href="/blogs" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-conditions" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Terms & Conditions
-                </Link>
-              </li>
-            </ul>
+          <div className="border-b border-white/10 md:border-none">
+            <h3 
+              className="text-white font-semibold text-lg py-4 md:py-0 md:mb-6 flex justify-between items-center cursor-pointer md:cursor-default"
+              onClick={() => toggleSection('quick-links')}
+            >
+              Quick Links
+              <ChevronDown className={`md:hidden transition-transform duration-300 ${openSection === 'quick-links' ? 'rotate-180' : ''}`} size={20} />
+            </h3>
+            <div className={`overflow-hidden transition-all duration-300 md:!max-h-[1000px] md:opacity-100 ${
+              openSection === 'quick-links' ? 'max-h-[500px] opacity-100 pb-4' : 'max-h-0 opacity-0 md:pb-0'
+            }`}>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blogs" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy-policy" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms-conditions" className="text-sm text-white hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Terms & Conditions
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Our Services</h3>
-            <ul className="space-y-3 text-white">
-              <li>
-                <Link href="/services/ac-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> AC Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/electrical-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Electrical Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/plumbing-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Plumbing Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/painting-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Painting Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/masonry-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Masonry Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/carpentry-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Carpentry Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/handyman-services" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Handyman Services
-                </Link>
-              </li>
-            </ul>
+          <div className="border-b border-white/10 md:border-none">
+            <h3 
+              className="text-white font-semibold text-lg py-4 md:py-0 md:mb-6 flex justify-between items-center cursor-pointer md:cursor-default"
+              onClick={() => toggleSection('services')}
+            >
+              Our Services
+              <ChevronDown className={`md:hidden transition-transform duration-300 ${openSection === 'services' ? 'rotate-180' : ''}`} size={20} />
+            </h3>
+            <div className={`overflow-hidden transition-all duration-300 md:!max-h-[1000px] md:opacity-100 ${
+              openSection === 'services' ? 'max-h-[500px] opacity-100 pb-4' : 'max-h-0 opacity-0 md:pb-0'
+            }`}>
+              <ul className="space-y-3 text-white">
+                <li>
+                  <Link href="/services/ac-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> AC Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/electrical-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Electrical Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/plumbing-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Plumbing Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/painting-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Painting Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/masonry-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Masonry Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/carpentry-work" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Carpentry Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/handyman-services" className="text-sm hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span> Handyman Services
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Contact Us</h3>
-            <ul className="space-y-4 text-white">
-              <li className="flex items-start gap-3 text-sm">
-                <MapPin className="text-[var(--secondary)] shrink-0 mt-0.5" size={18} />
-                <span>
-                  office NO4-173 Al Khabeesi Building,Deira Dubai, UAE
-                </span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Phone className="text-[var(--secondary)] shrink-0" size={18} />
-                <span>(+971) 055 1519540 <br /> (+971) 056 7910188</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Mail className="text-[var(--secondary)] shrink-0" size={18} />
-                <span>work@osumfix.com</span>
-              </li>
-            </ul>
+          <div className="border-b border-white/10 md:border-none">
+            <h3 
+              className="text-white font-semibold text-lg py-4 md:py-0 md:mb-6 flex justify-between items-center cursor-pointer md:cursor-default"
+              onClick={() => toggleSection('contact')}
+            >
+              Contact Us
+              <ChevronDown className={`md:hidden transition-transform duration-300 ${openSection === 'contact' ? 'rotate-180' : ''}`} size={20} />
+            </h3>
+            <div className={`overflow-hidden transition-all duration-300 md:!max-h-[1000px] md:opacity-100 ${
+              openSection === 'contact' ? 'max-h-[500px] opacity-100 pb-4' : 'max-h-0 opacity-0 md:pb-0'
+            }`}>
+              <ul className="space-y-4 text-white">
+                <li className="flex items-start gap-3 text-sm">
+                  <MapPin className="text-[var(--secondary)] shrink-0 mt-0.5" size={18} />
+                  <span>
+                    office NO4-173 Al Khabeesi Building,Deira Dubai, UAE
+                  </span>
+                </li>
+                <li className="flex items-center gap-3 text-sm">
+                  <Phone className="text-[var(--secondary)] shrink-0" size={18} />
+                  <span>(+971) 055 1519540 <br /> (+971) 056 7910188</span>
+                </li>
+                <li className="flex items-center gap-3 text-sm">
+                  <Mail className="text-[var(--secondary)] shrink-0" size={18} />
+                  <span>work@osumfix.com</span>
+                </li>
+              </ul>
+            </div>
           </div>
+
         </div>
 
         {/* Bottom Bar */}

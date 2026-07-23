@@ -5,6 +5,7 @@ import { getCmsVal } from "@/lib/api-helper";
 import { Play } from "lucide-react";
 import Link from "next/link";
 import { Caveat } from "next/font/google";
+import { useState } from "react";
 
 const caveat = Caveat({
   weight: "600",
@@ -17,6 +18,7 @@ interface VideoSectionProps {
 
 export default function VideoSection({ cms }: VideoSectionProps) {
   const t = (val: string) => getCmsVal(cms, val);
+  const [loadVideo, setLoadVideo] = useState(false);
 
   return (
     <>
@@ -90,22 +92,27 @@ export default function VideoSection({ cms }: VideoSectionProps) {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "200px" }}
+              onViewportEnter={() => setLoadVideo(true)}
               transition={{ duration: 1 }}
               className="relative w-full aspect-video flex items-center justify-center lg:translate-x-10 mt-10 lg:mt-0"
             >
-              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 z-10">
-                <video
-                  className="w-full h-full object-cover pointer-events-none"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
-                  <source src="/video/Untitled.mp4" type="video/mp4" />
-                  <track kind="captions" srcLang="en" label="English" default />
-                  Your browser does not support the video tag.
-                </video>
+              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 z-10 bg-slate-800 flex items-center justify-center">
+                {loadVideo ? (
+                  <video
+                    className="w-full h-full object-cover pointer-events-none"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/video/Untitled.mp4" type="video/mp4" />
+                    <track kind="captions" srcLang="en" label="English" default />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <div className="w-12 h-12 border-4 border-[#E46704] border-t-transparent rounded-full animate-spin"></div>
+                )}
               </div>
             </motion.div>
 

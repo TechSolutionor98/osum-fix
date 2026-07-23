@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import QuoteForm from "@/components/RequestQuote/QuoteForm";
 
 export default function HomeQuoteSection() {
@@ -39,11 +40,14 @@ export default function HomeQuoteSection() {
 
           {/* Image Side */}
           <div className="hidden md:flex w-full md:w-1/2 bg-slate-900 relative min-h-[250px] md:min-h-0 flex-col justify-end p-8">
-            <img
+            <Image
               src="/images/about-2.png"
               alt="Technical Service Quote"
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              sizes="50vw"
+              className="object-cover"
               onError={(e) => {
+                (e.target as HTMLImageElement).srcset = "";
                 (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop";
               }}
             />

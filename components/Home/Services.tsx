@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { getCmsVal } from "@/lib/api-helper";
 
 interface ServicesProps {
@@ -72,9 +73,6 @@ export default function Services({ cms }: ServicesProps) {
 
   return (
     <section className="py-20" id="services">
-      {/* Include Material Symbols font */}
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
-
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-16">
 
         {/* Header matching provided code */}
@@ -101,7 +99,9 @@ export default function Services({ cms }: ServicesProps) {
           {services.map((service) => (
             <Link key={service.slug} href={`/services/${service.slug}`} className="group cursor-pointer block">
               <div className="aspect-square bg-slate-50 rounded-3xl mb-4 flex items-center justify-center border border-slate-200 group-hover:border-[#E46704] transition-all duration-300 group-hover:shadow-2xl group-hover:animate-bounce relative overflow-hidden">
-                <img
+                <Image
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 12vw"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   alt={service.title}
                   src={service.image}

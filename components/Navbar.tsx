@@ -82,7 +82,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const pathname = usePathname();
+
+  const toggleMobileDropdown = (name: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setMobileDropdownOpen(prev => prev === name ? null : name);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -221,47 +228,65 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white border-t border-slate-100 overflow-y-auto max-h-[calc(100vh-76px)]"
           >
-            <div className="px-4 pt-2 pb-24 space-y-1 shadow-inner">
+            <div className="px-4 pt-2 pb-6 space-y-1 shadow-inner">
               {navLinks.map((link) => (
                 <div key={link.name}>
-                  <Link
-                    href={link.href}
-                    onClick={() => !link.hasDropdown && setIsOpen(false)}
-                    className={`block px-3 py-3 rounded-md text-base font-medium
-                      ${pathname === link.href
-                        ? "text-[var(--primary)] bg-blue-50"
-                        : "text-slate-700 hover:text-[var(--primary)] hover:bg-slate-50"
-                      }
-                    `}
-                  >
-                    <div className="flex justify-between items-center">
+                  <div className={`flex items-center rounded-md ${pathname === link.href ? "bg-blue-50" : "hover:bg-slate-50"}`}>
+                    <Link
+                      href={link.href}
+                      onClick={() => !link.hasDropdown && setIsOpen(false)}
+                      className={`block px-3 py-3 text-base font-medium flex-1
+                        ${pathname === link.href
+                          ? "text-[var(--primary)]"
+                          : "text-slate-700 hover:text-[var(--primary)]"
+                        }
+                      `}
+                    >
                       {link.name}
-                    </div>
-                  </Link>
-                  {link.hasDropdown && (
-                    <div className="pl-6 pb-2 space-y-1 border-l-2 border-slate-100 ml-4 mt-1">
-                      {serviceLinks.map((service) => (
-                        <Link
-                          key={service.name}
-                          href={service.href}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-[var(--primary)] group transition-colors"
-                        >
-                          <div className="w-9 h-9 rounded bg-white flex items-center justify-center text-[var(--primary)] flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] border border-[var(--primary)] group-hover:border-transparent">
-                            {service.icon}
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-sm font-semibold text-slate-700 group-hover:text-white leading-tight">
-                              {service.name}
-                            </span>
-                            <span className="text-[11px] text-slate-500 group-hover:text-white/80 line-clamp-1 mt-0.5">
-                              {service.description}
-                            </span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                    </Link>
+                    {link.hasDropdown && (
+                      <button
+                        onClick={(e) => toggleMobileDropdown(link.name, e)}
+                        className="px-4 py-3 text-slate-500 hover:text-[var(--primary)] focus:outline-none flex items-center justify-center"
+                        aria-label={`Toggle ${link.name} dropdown`}
+                      >
+                        <ChevronDown size={20} className={`transition-transform duration-300 ${mobileDropdownOpen === link.name ? "rotate-180" : ""}`} />
+                      </button>
+                    )}
+                  </div>
+                  <AnimatePresence>
+                    {link.hasDropdown && mobileDropdownOpen === link.name && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-6 pb-2 space-y-1 border-l-2 border-slate-100 ml-4 mt-1">
+                          {serviceLinks.map((service) => (
+                            <Link
+                              key={service.name}
+                              href={service.href}
+                              onClick={() => setIsOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-[var(--primary)] group transition-colors"
+                            >
+                              <div className="w-9 h-9 rounded bg-white flex items-center justify-center text-[var(--primary)] flex-shrink-0 group-hover:bg-white group-hover:text-[var(--primary)] border border-[var(--primary)] group-hover:border-transparent">
+                                {service.icon}
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="text-sm font-semibold text-slate-700 group-hover:text-white leading-tight">
+                                  {service.name}
+                                </span>
+                                <span className="text-[11px] text-slate-500 group-hover:text-white/80 line-clamp-1 mt-0.5">
+                                  {service.description}
+                                </span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
               <div className="pt-4 pb-2">

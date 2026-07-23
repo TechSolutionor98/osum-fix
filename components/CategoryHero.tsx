@@ -13,7 +13,6 @@ export default function CategoryHero({ category, categoryData, cms, t }: any) {
             height={600} 
             className="w-full h-auto object-cover" 
             priority
-            unoptimized
           />
         </section>
       ) : (

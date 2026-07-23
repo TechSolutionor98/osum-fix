@@ -102,7 +102,6 @@ export default function Services({ cms }: { cms?: any }) {
                       alt={item.title} 
                       fill 
                       sizes="(max-w-768px) 100vw, 33vw"
-                      unoptimized
                       className="object-contain p-4 mix-blend-multiply" 
                     />
                   </div>

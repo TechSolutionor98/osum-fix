@@ -44,17 +44,17 @@ export default function PageBanner({
           transition={{ duration: 0.6, delay: 0.15 }}
           className="inline-flex items-center space-x-2 text-xs md:text-sm text-[#0B2C3D] bg-white/50 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/60 shadow-sm hover:bg-white/70 transition-all duration-300"
         >
-          <Link href="/" className="flex items-center gap-1.5 text-slate-500 hover:text-[#0B2C3D] transition-colors font-medium">
+          <Link href="/" className="flex items-center gap-1.5 text-slate-600 hover:text-[#0B2C3D] transition-colors font-medium">
             <Home size={14} className="opacity-80" />
             <span>Home</span>
           </Link>
           {breadcrumb.map((item, index) => (
             <div key={index} className="flex items-center space-x-2">
-              <ChevronRight size={14} className="text-slate-400" />
+              <ChevronRight size={14} className="text-slate-500" />
               {index === breadcrumb.length - 1 ? (
                 <span className="text-[#E46704] font-semibold">{item.label}</span>
               ) : (
-                <Link href={item.href} className="text-slate-500 hover:text-[#0B2C3D] transition-colors font-medium">
+                <Link href={item.href} className="text-slate-600 hover:text-[#0B2C3D] transition-colors font-medium">
                   {item.label}
                 </Link>
               )}

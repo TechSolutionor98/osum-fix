@@ -118,6 +118,7 @@ export default function StickySidebar({ sections }: StickySidebarProps) {
                   : "w-[56px] mx-0 h-10 bg-transparent text-orange-500 hover:text-orange-600 border border-transparent"
               }`}
               title={isOpen ? "Collapse" : "Expand"}
+              aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}
             >
               {isOpen ? <ArrowLeft size={18} /> : <ArrowRight size={18} />}
             </button>
@@ -132,6 +133,7 @@ export default function StickySidebar({ sections }: StickySidebarProps) {
                     onClick={() => scrollToSection(section.id)}
                     className="flex items-center gap-4 transition-colors text-left px-[21px]"
                     title={!isOpen ? section.label : ""}
+                    aria-label={section.label}
                   >
                     <div
                       className={`shrink-0 w-3.5 h-3.5 rounded-full transition-colors duration-300 ${

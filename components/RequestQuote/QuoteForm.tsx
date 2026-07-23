@@ -564,6 +564,7 @@ export default function QuoteForm({ onStepChange }: QuoteFormProps = {}) {
               type="button" 
               onClick={() => setErrorMsg(null)}
               className="text-red-400 hover:text-red-700 shrink-0 font-bold text-sm cursor-pointer"
+              aria-label="Dismiss error"
             >
               &times;
             </button>

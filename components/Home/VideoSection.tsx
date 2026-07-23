@@ -4,6 +4,12 @@ import { motion } from "framer-motion";
 import { getCmsVal } from "@/lib/api-helper";
 import { Play } from "lucide-react";
 import Link from "next/link";
+import { Caveat } from "next/font/google";
+
+const caveat = Caveat({
+  weight: "600",
+  subsets: ["latin"],
+});
 
 interface VideoSectionProps {
   cms?: any;
@@ -14,10 +20,6 @@ export default function VideoSection({ cms }: VideoSectionProps) {
 
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
-        .font-cursive { font-family: 'Caveat', cursive; }
-      `}</style>
 
       <section className="pt-10 pb-24 relative overflow-x-clip bg-[#0a121e]">
         {/* Background ambient glows */}
@@ -62,7 +64,7 @@ export default function VideoSection({ cms }: VideoSectionProps) {
 
                 {/* Handwritten Arrow & Text */}
                 <div className="flex items-end gap-3 text-white/90">
-                  <span className="font-cursive text-3xl rotate-[-5deg] mb-3">
+                  <span className={`${caveat.className} text-3xl rotate-[-5deg] mb-3`}>
                     {t("Why Choose Osumfix")}
                   </span>
                   <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="mb-2 opacity-80">
@@ -101,6 +103,7 @@ export default function VideoSection({ cms }: VideoSectionProps) {
                   playsInline
                 >
                   <source src="/video/Untitled.mp4" type="video/mp4" />
+                  <track kind="captions" srcLang="en" label="English" default />
                   Your browser does not support the video tag.
                 </video>
               </div>

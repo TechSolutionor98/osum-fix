@@ -27,11 +27,11 @@ export default function WhoWeAre({ cms }: WhoWeAreProps) {
             </p>
             <div className="grid grid-cols-2 gap-6 mt-10">
               <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white hover:shadow-xl hover:-translate-y-1 transition-all shadow-sm">
-                <h4 className="text-4xl font-black text-[#E46704] mb-2">{t("500+")}</h4>
+                <h3 className="text-4xl font-black text-[#E46704] mb-2">{t("500+")}</h3>
                 <p className="text-slate-600 font-medium">{t("Projects Completed")}</p>
               </div>
               <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white hover:shadow-xl hover:-translate-y-1 transition-all shadow-sm">
-                <h4 className="text-4xl font-black text-[#E46704] mb-2">{t("100%")}</h4>
+                <h3 className="text-4xl font-black text-[#E46704] mb-2">{t("100%")}</h3>
                 <p className="text-slate-600 font-medium">{t("Client Satisfaction")}</p>
               </div>
             </div>

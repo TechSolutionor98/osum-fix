@@ -19,61 +19,61 @@ const serviceLinks = [
   {
     name: "AC Work",
     description: "Complete AC servicing and repairs",
-    icon: <Image src="/images/ac-work.gif" alt="AC" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/ac-work.gif" alt="AC" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/ac-work"
   },
   {
     name: "Electrical Work",
     description: "Safe wiring and fixtures installation",
-    icon: <Image src="/images/electrical-work.gif" alt="Electrical" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/electrical-work.gif" alt="Electrical" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/electrical-work"
   },
   {
     name: "Plumbing Work",
     description: "Leak repair and sanitary fixtures",
-    icon: <Image src="/images/plumbing-work.gif" alt="Plumbing" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/plumbing-work.gif" alt="Plumbing" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/plumbing-work"
   },
   {
     name: "Painting Work",
     description: "Premium interior and exterior painting",
-    icon: <Image src="/images/painting-work.gif" alt="Painting" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/painting-work.gif" alt="Painting" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/painting-work"
   },
   {
     name: "Masonry Work",
     description: "Bricklaying, plastering, and tiling",
-    icon: <Image src="/images/masonry-work.gif" alt="Masonry" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/masonry-work.gif" alt="Masonry" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/masonry-work"
   },
   {
     name: "Carpentry Work",
     description: "Bespoke wood installations & repairs",
-    icon: <Image src="/images/carpentry-work.gif" alt="Carpentry" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/carpentry-work.gif" alt="Carpentry" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/carpentry-work"
   },
   {
     name: "Steel Fixing",
     description: "Concrete reinforcement services",
-    icon: <Image src="/images/steel-fixing.gif" alt="Steel Fixing" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/steel-fixing.gif" alt="Steel Fixing" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/steel-fixing"
   },
   {
     name: "Interior Designing",
     description: "Detailed 2D space layouts & designs",
-    icon: <Image src="/images/interior-designing.gif" alt="Interior" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/interior-designing.gif" alt="Interior" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/interior-designing"
   },
   {
     name: "Ceiling & Gypsum",
     description: "Modern false ceiling installations",
-    icon: <Image src="/images/ceiling-gypsum.gif" alt="Ceiling" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/ceiling-gypsum.gif" alt="Ceiling" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/ceiling-gypsum"
   },
   {
     name: "Handyman Services",
     description: "Responsive maintenance solutions",
-    icon: <Image src="/images/handyman-services.gif" alt="Handyman" width={40} height={40} className="w-10 h-10 object-contain" unoptimized />,
+    icon: <Image src="/images/handyman-services.gif" alt="Handyman" width={40} height={40} className="w-10 h-10 object-contain" />,
     href: "/services/handyman-services"
   },
 ];
@@ -204,6 +204,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-600 hover:text-[var(--primary)] focus:outline-none"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>

@@ -3,6 +3,16 @@ import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import SectionTitle from "@/components/SectionTitle";
 import { Star, Quote } from "lucide-react";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/testimonials", {
+    title: "Client Testimonials & Reviews - OsumFix Dubai",
+    description: "Read genuine customer reviews and ratings about OsumFix home maintenance, electrical, plumbing, and AC repair services in Dubai.",
+  });
+}
 
 const testimonials = [
   {

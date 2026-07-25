@@ -2,7 +2,26 @@ import CTA from "@/components/Home/CTA";
 import Image from "next/image";
 import { getCmsVal } from "@/lib/api-helper";
 import { getPublishedContent } from "@/lib/cms-service";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const formattedTitle = slug
+    ? slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+    : 'Service';
+    
+  return await generateCmsMetadata(`/services/${slug}`, {
+    title: `${formattedTitle} Services - OsumFix Dubai`,
+    description: `Professional ${formattedTitle} services in Dubai. Expert technical solutions for residential and commercial properties.`,
+  });
+}
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedCard from "@/components/AnimatedCard";

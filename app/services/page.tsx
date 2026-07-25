@@ -5,8 +5,16 @@ import CTA from "@/components/Home/CTA";
 import { Zap, Droplets, Wind, Paintbrush, Hammer, Wrench, Grid, Layout, Layers } from "lucide-react";
 import { getPublishedContent } from "@/lib/cms-service";
 import { getCmsVal } from "@/lib/api-helper";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/services", {
+    title: "Our Maintenance Services - OsumFix Dubai",
+    description: "Explore our technical services: AC Repair, Plumbing, Electrical, Painting, Carpentry, Masonry, and Handyman solutions.",
+  });
+}
 
 export default async function ServicesPage() {
   const cms = await getPublishedContent("/services");

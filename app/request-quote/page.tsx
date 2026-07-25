@@ -3,13 +3,16 @@ import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import QuoteWrapper from "@/components/RequestQuote/QuoteWrapper";
 import FAQSection from "@/components/Home/FAQSection";
-
-export const metadata = {
-  title: "Request a Quote | OsumFix",
-  description: "Get a free, no-obligation estimate for your technical maintenance and repair needs in Dubai. Fast response and competitive pricing.",
-};
+import { generateCmsMetadata } from "@/lib/cms-fetch";
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/request-quote", {
+    title: "Request a Quote | OsumFix",
+    description: "Get a free, no-obligation estimate for your technical maintenance and repair needs in Dubai. Fast response and competitive pricing.",
+  });
+}
 
 export default async function RequestQuotePage() {
 

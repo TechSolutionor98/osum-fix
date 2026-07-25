@@ -1,6 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/terms-conditions", {
+    title: "Terms & Conditions - OsumFix Dubai",
+    description: "Terms and conditions governing the technical maintenance and repair services provided by OsumFix in Dubai.",
+  });
+}
 
 export default function TermsConditionsPage() {
   return (

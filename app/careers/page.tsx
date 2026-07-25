@@ -3,6 +3,16 @@ import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
 import SectionTitle from "@/components/SectionTitle";
 import { Briefcase, ArrowRight } from "lucide-react";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/careers", {
+    title: "Careers - Join OsumFix Team in Dubai",
+    description: "Explore open job opportunities for HVAC technicians, electricians, plumbers, and maintenance specialists in Dubai.",
+  });
+}
 
 export default function CareersPage() {
   const jobs = [

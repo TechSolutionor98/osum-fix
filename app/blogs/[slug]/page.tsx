@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getBlogBySlug, getBlogsList } from "@/lib/cms-service";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
@@ -16,6 +17,19 @@ interface PageProps {
 }
 
 export const revalidate = 60; // Revalidate page every 60 seconds
+
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
+
+  const defaults = {
+    title: blog ? `${blog.metaTitle || blog.title} - OsumFix` : "Blog - OsumFix Dubai",
+    description: blog?.metaDescription || blog?.excerpt || "Read our technical articles and maintenance guides.",
+    ...(blog?.coverImage ? { openGraph: { images: [{ url: blog.coverImage }] } } : {})
+  };
+
+  return await generateCmsMetadata(`/blogs/${slug}`, defaults);
+}
 
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;

@@ -1,6 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBanner from "@/components/PageBanner";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/privacy-policy", {
+    title: "Privacy Policy - OsumFix Dubai",
+    description: "Read the Privacy Policy of OsumFix Technical Services LLC regarding your personal data protection.",
+  });
+}
 
 export default function PrivacyPolicyPage() {
   return (

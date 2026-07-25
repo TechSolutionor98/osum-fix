@@ -2,13 +2,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AppointmentLinksView from "./AppointmentLinksView";
 import { getDb } from "@/lib/mongodb";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
 
-export const metadata = {
-  title: 'Book an Appointment - OsumFix',
-  description: 'Schedule an appointment with OsumFix using our easy online booking system.',
-};
+export const dynamic = 'force-dynamic';
 
-export const revalidate = 60;
+export async function generateMetadata() {
+  return await generateCmsMetadata("/appointments", {
+    title: "Book an Appointment - OsumFix",
+    description: "Schedule an appointment with OsumFix using our easy online booking system.",
+  });
+}
 
 export default async function AppointmentsPublicPage() {
   let links = [];

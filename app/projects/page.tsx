@@ -4,6 +4,16 @@ import PageBanner from "@/components/PageBanner";
 import SectionTitle from "@/components/SectionTitle";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
+
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/projects", {
+    title: "Our Completed Projects - OsumFix Dubai",
+    description: "Explore our recent maintenance, HVAC, plumbing, and villa renovation projects across Dubai.",
+  });
+}
 
 const projects = [
   { id: 1, title: "Villa Complete Renovation", category: "Renovation", location: "Jumeirah" },

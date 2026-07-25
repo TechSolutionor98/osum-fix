@@ -9,8 +9,16 @@ import Team from "@/components/About/Team";
 import Commitment from "@/components/About/Commitment";
 import CTA from "@/components/Home/CTA";
 import { getPublishedContent } from "@/lib/cms-service";
+import { generateCmsMetadata } from "@/lib/cms-fetch";
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata("/about", {
+    title: "About Us - OsumFix Maintenance & Technical Services",
+    description: "Learn more about OsumFix, Dubai's trusted property maintenance and repair service provider.",
+  });
+}
 
 export default async function AboutPage() {
   // Fetch about page CMS sections from database

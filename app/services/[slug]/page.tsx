@@ -3693,6 +3693,19 @@ export default async function ServiceDetailPage({
   }
 
   // Fallback dynamic rendering for other services
+  const getFallbackBannerImage = (s: string) => {
+    if (s.includes("cleaning")) return "/images/cleaning_service_new.png";
+    if (s.includes("interior")) return "/images/interior_design_new.png";
+    if (s.includes("electrical")) return "/images/electrical_service.png";
+    if (s.includes("plumbing")) return "/images/plumbing_service.png";
+    if (s.includes("masonry")) return "/images/masonry_service_new.png";
+    if (s.includes("steel")) return "/images/steel_fixing_new.png";
+    if (s.includes("gypsum") || s.includes("ceiling")) return "/images/ceiling_gypsum_new.png";
+    if (s.includes("hvac") || s.includes("ac")) return "/images/hvac_service.png";
+    return "/images/service-detail-placeholder.jpg";
+  };
+  const fallbackBanner = getFallbackBannerImage(slug);
+
   return (
     <>
       <Navbar />
@@ -3707,7 +3720,7 @@ export default async function ServiceDetailPage({
 
                 {/* Keep Banner Image Placeholder */}
                 <div className="aspect-[21/9] bg-slate-200 rounded-3xl overflow-hidden relative shadow-md">
-                  <Image src={t("/images/service-detail-placeholder.jpg")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
+                  <Image src={t(fallbackBanner)} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" alt={t("Service Detail Image")} />
                 </div>
 
                 <div className="space-y-12">

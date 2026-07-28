@@ -56,6 +56,18 @@ export default async function BlogDetailPage({ params }: PageProps) {
     });
   };
 
+  const ensureAltTags = (html: string, title: string) => {
+    if (!html) return "";
+    const escapedTitle = title ? title.replace(/"/g, "&quot;") : "OsumFix Technical Services";
+    return html
+      .replace(/<img\b(?![^>]*\balt=)[^>]*>/gi, (imgTag) => {
+        return imgTag.replace(/<img\b/i, `<img alt="${escapedTitle}" `);
+      })
+      .replace(/<img\b([^>]*\balt=["']\s*["'][^>]*)>/gi, (imgTag) => {
+        return imgTag.replace(/alt=["']\s*["']/i, `alt="${escapedTitle}"`);
+      });
+  };
+
   return (
     <>
       <Navbar />
@@ -125,7 +137,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   {/* Main Rich Text Content */}
                   <div 
                     className="prose prose-lg max-w-none text-slate-600 leading-[1.8] focus:outline-none"
-                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                    dangerouslySetInnerHTML={{ __html: ensureAltTags(blog.content, blog.title) }}
                     style={{
                       wordBreak: "break-word"
                     }}

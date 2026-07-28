@@ -4,7 +4,7 @@ import { getDb } from '@/lib/mongodb';
 export const revalidate = 3600; // Revalidate sitemap every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://osumfix.com';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.osumfix.com').replace(/\/+$/, '');
 
   // Base static pages
   const defaultPages = [

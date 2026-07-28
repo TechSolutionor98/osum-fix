@@ -242,7 +242,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 value={seo.canonicalUrl}
                 onChange={(v) => handleChange(null, 'canonicalUrl', v)}
                 type="url"
-                placeholder="https://osumfix.ae/products/inverters"
+                placeholder="https://www.osumfix.com/services/ac-work"
                 helpText="The preferred URL for this page (prevents duplicate content)"
                 disabled={!canEditSeo}
               />
@@ -492,7 +492,7 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
                 </h3>
                 <div className="border border-gray-200 rounded-lg p-4 bg-white">
                   <p className="text-sm text-green-700 mb-1 truncate">
-                    {seo.canonicalUrl || `https://osumfix.ae${routePath}`}
+                    {seo.canonicalUrl || `https://www.osumfix.com${routePath}`}
                   </p>
                   <h3 className="text-xl text-blue-800 hover:underline cursor-pointer mb-1 line-clamp-1">
                     {seo.metaTitle || 'Page Title - OsumFix'}

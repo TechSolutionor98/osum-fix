@@ -18,6 +18,7 @@ export default function WhoWeAre({ cms }: WhoWeAreProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <SectionTitle
+              as="h1"
               subtitle={t("Who We Are")}
               title={t("Dubai's Most Trusted Technical Services Provider")}
               description={t("At OsumFix Technical Services LLC, we are committed to delivering top-tier maintenance, installation, and repair services to residential, commercial, and industrial properties across Dubai.")}

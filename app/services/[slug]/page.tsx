@@ -86,7 +86,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("AC Repair & Maintenance Services")}</span>
-                  <h2 className="text-4xl md:text-5xl font-extrabold text-[var(--dark)] tracking-tight leading-[1.1]">{t("Professional AC Repair & Maintenance in Dubai")}</h2>
+                  <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--dark)] tracking-tight leading-[1.1]">{t("Professional AC Repair & Maintenance in Dubai")}</h1>
                   <p className="text-slate-600 leading-relaxed text-lg">{t("Your air conditioning system works harder than almost any other appliance in the UAE climate. Regular maintenance prevents unexpected breakdowns and keeps energy bills low.")}</p>
                   <p className="text-slate-600 leading-relaxed text-lg">
                     At <span className="font-semibold text-[var(--primary)]">OsumFix</span>, our certified technicians use professional equipment and proven procedures for homes, villas, and commercial properties. From basic servicing to complex compressor repairs, we guarantee fast response times and absolute quality.
@@ -452,7 +452,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL ELECTRICAL SERVICES IN DUBAI")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Electrical Repair, Installation & Maintenance Services")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Electrical Repair, Installation & Maintenance Services")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Electrical systems are the backbone of every home and business. Whether it's a minor repair, a complete installation, or routine maintenance, electrical work should always be handled by experienced professionals to ensure safety, efficiency, and long-term reliability.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional electrical services across Dubai for residential and commercial properties. Our qualified electricians diagnose problems quickly, perform safe repairs, and deliver quality workmanship using industry-standard tools and high-quality materials.")}</p>
@@ -806,7 +806,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL PLUMBING SERVICES IN DUBAI")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Plumbing Repair, Installation & Maintenance Services")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Plumbing Repair, Installation & Maintenance Services")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("A properly functioning plumbing system is essential for the comfort, safety, and hygiene of every home and business. Even a small leak or blocked drain can quickly turn into a costly problem if not repaired on time.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional plumbing services across Dubai, delivering fast, reliable, and long-lasting solutions for residential and commercial properties. From emergency plumbing repairs to complete installations and routine maintenance, our experienced plumbers ensure every job is completed with precision and care.")}</p>
@@ -1183,7 +1183,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL PAINTING SERVICES IN DUBAI")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Transform Your Home & Office with Expert Painting Solutions")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Transform Your Home & Office with Expert Painting Solutions")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("A fresh coat of paint does more than improve appearance—it enhances your property's value, protects surfaces, and creates a clean, welcoming environment. Whether you're renovating your home, refreshing your office, or preparing a property for handover, professional painting makes all the difference.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide high-quality interior and exterior painting services across Dubai. Our experienced painters deliver smooth finishes, clean workmanship, and long-lasting results using premium paints and professional techniques.")}</p>
@@ -1559,7 +1559,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL MASONRY & CIVIL WORK SERVICES")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Masonry, Brickwork, Plastering & Tile Installation Services")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Masonry, Brickwork, Plastering & Tile Installation Services")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Strong construction starts with quality masonry work. Whether you're renovating a home, repairing damaged walls, installing new tiles, or building partition walls, professional workmanship is essential for long-lasting results.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide complete masonry and civil maintenance services across Dubai for residential and commercial properties. Our experienced masons deliver precise workmanship using quality materials to ensure every project is durable, safe, and finished to the highest standards.")}</p>
@@ -1934,7 +1934,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL CARPENTRY WORK SERVICES IN DUBAI")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Custom Carpentry, Woodwork & Interior Fit-Out Solutions")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Custom Carpentry, Woodwork & Interior Fit-Out Solutions")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Quality carpentry is more than just building furniture—it's about creating practical, stylish, and durable spaces that enhance your home or business. Whether you need custom cabinets, wardrobes, office furniture, wooden flooring, or complete interior woodwork, expert craftsmanship makes all the difference.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional carpentry services across Dubai for residential and commercial properties. Our experienced carpenters combine skilled workmanship with modern design to deliver customized woodwork solutions that match your space, style, and budget.")}</p>
@@ -2286,7 +2286,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL STEEL FIXING SERVICES IN DUBAI")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Reinforcement Steel Fixing & Structural Support Solutions")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Reinforcement Steel Fixing & Structural Support Solutions")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Steel fixing is one of the most important stages of any construction or renovation project. Properly installed reinforcement steel provides the strength, stability, and durability needed to support concrete structures safely and efficiently.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional steel fixing services across Dubai for residential, commercial, and industrial projects. Our experienced steel fixers work with precision and attention to detail, ensuring every reinforcement structure meets project specifications and industry standards.")}</p>
@@ -2636,7 +2636,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL INTERIOR DESIGNING SERVICES IN DUBAI")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Creative Interior Design & Space Transformation Solutions")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Creative Interior Design & Space Transformation Solutions")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Every space has the potential to be beautiful, functional, and inspiring. Whether you're designing a new home, renovating an office, or upgrading a commercial property, the right interior design creates comfort, improves functionality, and reflects your unique style.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional interior designing services across Dubai, offering complete design, renovation, and fit-out solutions for residential and commercial properties. Our experienced designers combine creativity with practical planning to transform ordinary spaces into elegant, functional environments that suit your lifestyle and business needs.")}</p>
@@ -3012,7 +3012,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL GYPSUM CEILING & PARTITION SERVICES")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Modern Gypsum Ceiling, Partition & Interior Finishing Solutions")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Modern Gypsum Ceiling, Partition & Interior Finishing Solutions")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("A well-designed gypsum ceiling or partition can completely transform the appearance and functionality of any residential or commercial space. Whether you're renovating your home, designing a modern office, or upgrading a retail space, professional gypsum work adds elegance, improves space utilization, and enhances interior aesthetics.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide complete gypsum ceiling and partition services across Dubai. Our experienced team specializes in false ceilings, decorative ceiling designs, gypsum partitions, office layouts, and custom interior finishing using premium materials and modern installation techniques.")}</p>
@@ -3364,7 +3364,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-6 xl:col-span-7 space-y-6">
                   <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm px-3 py-1 rounded-full bg-blue-50 border border-blue-100">{t("PROFESSIONAL HANDYMAN SERVICES IN DUBAI")}</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Home Maintenance & Installation Solutions by OsumFix")}</h2>
+                  <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--dark)] tracking-tight">{t("Reliable Home Maintenance & Installation Solutions by OsumFix")}</h1>
                   <p className="text-slate-600 leading-relaxed text-base">{t("Every home and workplace requires regular maintenance, repairs, and installations to remain functional, comfortable, and well-organized. From mounting a TV and assembling furniture to installing shelves, curtains, mirrors, and fixtures, small tasks can quickly become time-consuming without the right tools and expertise.")}</p>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {t("At <span class=\"font-semibold text-[var(--primary)]\">OsumFix</span>, we provide professional handyman services across Dubai for residential and commercial properties. Our skilled technicians handle a wide range of repair, installation, and maintenance tasks with precision, efficiency, and attention to detail.")}</p>
@@ -3725,7 +3725,7 @@ export default async function ServiceDetailPage({
 
                 <div className="space-y-12">
                   <div>
-                    <h2 className="text-3xl font-bold text-[var(--dark)] mb-6">{t("Overview")}</h2>
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--dark)] mb-6">{t(formattedTitle)}</h1>
                     <p className="text-slate-600 leading-relaxed mb-4">
                       At OsumFix Technical Services, our {formattedTitle.toLowerCase()} are designed to meet the highest standards of quality and safety. We understand that issues can cause significant disruption to your daily life or business operations. That's why our certified technicians are trained to identify and resolve problems quickly and efficiently.
                     </p>

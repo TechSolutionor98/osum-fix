@@ -72,6 +72,7 @@ export default function ContactClient() {
               {/* Contact Info */}
               <div>
                 <SectionTitle
+                  as="h1"
                   subtitle="Get In Touch"
                   title="We're Here to Help"
                   description="Have a question or need emergency assistance? Contact our team anytime."

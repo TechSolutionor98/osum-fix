@@ -6,6 +6,7 @@ interface SectionTitleProps {
   description?: string;
   centered?: boolean;
   className?: string;
+  as?: "h1" | "h2" | "h3";
 }
 
 export default function SectionTitle({
@@ -14,15 +15,17 @@ export default function SectionTitle({
   description,
   centered = false,
   className = "mb-12",
+  as = "h2",
 }: SectionTitleProps) {
+  const HeadingTag = as;
   return (
     <div className={`${className} ${centered ? "text-center" : ""}`}>
       <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">
         {subtitle}
       </span>
-      <h2 className="text-3xl md:text-4xl font-bold text-[var(--dark)] mb-4">
+      <HeadingTag className="text-3xl md:text-4xl font-bold text-[var(--dark)] mb-4">
         {title}
-      </h2>
+      </HeadingTag>
       {description && (
         <p className={`text-slate-600 max-w-2xl ${centered ? "mx-auto" : ""}`}>
           {description}

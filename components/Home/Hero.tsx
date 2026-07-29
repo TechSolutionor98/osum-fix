@@ -65,31 +65,29 @@ export default function Hero({ cms }: HeroProps) {
           </div>
 
           {/* Right Content / Image */}
-          <div className="w-full md:w-[45%] lg:w-[40%] relative flex justify-center md:justify-end mt-10 md:mt-0">
-            <div className="relative w-[300px] h-[400px] md:w-[500px] md:h-[600px] z-10">
+          <div className="w-full md:w-[45%] lg:w-[40%] relative flex justify-center md:justify-end mt-6 md:mt-0">
+            <div className="relative w-full max-w-[300px] sm:max-w-[350px] md:max-w-[500px] aspect-[3/4] md:aspect-auto md:h-[600px] z-10 shrink-0">
               <Image
                 src={t("/images/hro.png")} 
                 alt="Professional Handyman Maintenance Services in Dubai"
                 fill
-                sizes="(max-width: 768px) 300px, 500px"
+                sizes="(max-width: 640px) 300px, (max-width: 1024px) 450px, 500px"
                 priority
-                // @ts-ignore
-                fetchPriority="high"
-                quality={85}
+                quality={80}
                 className="object-contain object-bottom drop-shadow-2xl"
               />
               
               {/* Floating Review Badge */}
-              <div className="absolute bottom-10 right-0 md:-right-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white">
+              <div className="absolute bottom-6 right-0 md:-right-4 bg-white/90 backdrop-blur-md p-3 sm:p-4 rounded-2xl shadow-xl border border-white">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-2xl font-bold text-slate-800">4.9</span>
-                  <Star size={20} className="fill-[#FFB700] text-[#FFB700]" />
+                  <span className="text-xl sm:text-2xl font-bold text-slate-800">4.9</span>
+                  <Star size={18} className="fill-[#FFB700] text-[#FFB700]" />
                 </div>
                 <p className="text-xs font-medium text-slate-500 mb-2">Customer Rating</p>
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-1.png"} alt="user" width={32} height={32} className="object-cover" /></div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-2.png"} alt="user" width={32} height={32} className="object-cover" /></div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-man.png"} alt="user" width={32} height={32} className="object-cover" /></div>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-1.png"} alt="user rating" width={32} height={32} sizes="32px" className="object-cover" /></div>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-2.png"} alt="user rating" width={32} height={32} sizes="32px" className="object-cover" /></div>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-man.png"} alt="user rating" width={32} height={32} sizes="32px" className="object-cover" /></div>
                 </div>
               </div>
             </div>

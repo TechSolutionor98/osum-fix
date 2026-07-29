@@ -125,6 +125,7 @@ export default function Navbar() {
               alt="OsumFix Logo"
               width={280}
               height={96}
+              sizes="(max-width: 640px) 140px, 280px"
               className="h-20 sm:h-24 w-auto object-contain"
               style={{ width: "auto" }}
               priority

@@ -3,7 +3,11 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import QuoteForm from "./QuoteForm";
+import dynamic from "next/dynamic";
+
+const QuoteForm = dynamic(() => import("./QuoteForm"), {
+  ssr: false,
+});
 
 export default function GlobalQuoteModal() {
   const [isOpen, setIsOpen] = useState(false);

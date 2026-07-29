@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import QuoteForm from "@/components/RequestQuote/QuoteForm";
+import dynamic from "next/dynamic";
+
+const QuoteForm = dynamic(() => import("@/components/RequestQuote/QuoteForm"), {
+  ssr: false,
+});
 
 export default function HomeQuoteSection() {
   const [currentStep, setCurrentStep] = useState(1);

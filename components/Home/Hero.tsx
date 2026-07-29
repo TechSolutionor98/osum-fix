@@ -24,15 +24,7 @@ export default function Hero({ cms }: HeroProps) {
           {/* Left Content */}
           <div className="w-full md:w-[55%] lg:w-[60%] text-left pb-12 md:pb-24 pt-10 md:pt-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0B2C3D] leading-[1.2] mb-6 max-w-2xl">
-              {String(t("OsumFix Professional Maintenance & Repair Solutions.") || "").split(" ").map((word, wIdx) => (
-                <span key={wIdx} className={`inline-block mr-3 mb-2 ${wIdx === 0 ? "text-[#E46704]" : ""}`}>
-                  {word.split("").map((char, i) => (
-                    <motion.span key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 + ((wIdx * 5 + i) * 0.02), type: "spring", bounce: 0.5 }} className="inline-block whitespace-pre">
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
-              ))}
+              <span className="text-[#E46704]">OsumFix</span> {t("Professional Maintenance & Repair Solutions.")}
             </h1>
 
             <p className="text-base md:text-lg text-slate-700 mb-8 max-w-lg leading-relaxed font-medium">
@@ -74,19 +66,16 @@ export default function Hero({ cms }: HeroProps) {
 
           {/* Right Content / Image */}
           <div className="w-full md:w-[45%] lg:w-[40%] relative flex justify-center md:justify-end mt-10 md:mt-0">
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-              className="relative w-[300px] h-[400px] md:w-[500px] md:h-[600px] z-10"
-            >
-              {/* Replace with the handyman image from the theme */}
+            <div className="relative w-[300px] h-[400px] md:w-[500px] md:h-[600px] z-10">
               <Image
                 src={t("/images/hro.png")} 
-                alt="Professional Handyman"
+                alt="Professional Handyman Maintenance Services in Dubai"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 300px, 500px"
                 priority
+                // @ts-ignore
+                fetchPriority="high"
+                quality={85}
                 className="object-contain object-bottom drop-shadow-2xl"
               />
               
@@ -103,7 +92,7 @@ export default function Hero({ cms }: HeroProps) {
                   <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><Image src={"/images/about-man.png"} alt="user" width={32} height={32} className="object-cover" /></div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
           
         </div>

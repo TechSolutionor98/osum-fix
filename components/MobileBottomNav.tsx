@@ -16,12 +16,6 @@ export default function MobileBottomNav() {
     const handleHashChange = () => setHash(window.location.hash);
     window.addEventListener("hashchange", handleHashChange);
 
-    // Dynamically load Material Symbols font asynchronously to prevent render blocking and hydration mismatch
-    const fontLink = document.createElement("link");
-    fontLink.href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap";
-    fontLink.rel = "stylesheet";
-    document.head.appendChild(fontLink);
-
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
     };

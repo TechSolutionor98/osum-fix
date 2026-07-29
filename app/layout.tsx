@@ -8,6 +8,7 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -35,6 +36,16 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Preload Hero LCP Image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hro.png"
+          type="image/png"
+          // @ts-ignore
+          fetchPriority="high"
+        />
+
         {/* Custom Head Script */}
         {settings?.customHeadScript && (
           <script dangerouslySetInnerHTML={{ __html: settings.customHeadScript }} />

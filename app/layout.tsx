@@ -37,11 +37,18 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Network Preconnect Hints */}
+        {/* Network Preconnect & Font File Preload Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/materialsymbolsoutlined/v236/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIceeII9v6sb6X3A.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
 
         {/* Preload Hero LCP Image */}
         <link

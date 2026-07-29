@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getDb } from '@/lib/mongodb';
 import { ObjectId } from 'mongodb';
 import { parsePageContent, updatePageFiles } from '@/lib/cms-parser';
@@ -518,6 +519,15 @@ export async function POST(request) {
     );
 
     await logActivity(request, 'update_content', path || `Route ID: ${routeId}`, { status, version });
+
+    try {
+      if (path) {
+        revalidatePath(path);
+      }
+      revalidatePath('/', 'layout');
+    } catch (revalErr) {
+      console.error('Revalidation error:', revalErr);
+    }
 
     return jsonResponse({ ok: true, version });
   } catch (err) {

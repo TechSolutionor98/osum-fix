@@ -4,7 +4,7 @@ import HomeClient from "./HomeClient";
 import { getPublishedContent } from "@/lib/cms-service";
 import { generateCmsMetadata } from "@/lib/cms-fetch";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Revalidate static HTML cache once per hour in background
 
 export async function generateMetadata() {
   return await generateCmsMetadata("/", {

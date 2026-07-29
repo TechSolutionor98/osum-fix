@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { generateCmsMetadata } from "@/lib/cms-fetch";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   return await generateCmsMetadata("/projects", {

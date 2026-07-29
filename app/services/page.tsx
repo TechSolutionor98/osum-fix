@@ -7,7 +7,7 @@ import { getPublishedContent } from "@/lib/cms-service";
 import { getCmsVal } from "@/lib/api-helper";
 import { generateCmsMetadata } from "@/lib/cms-fetch";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   return await generateCmsMetadata("/services", {

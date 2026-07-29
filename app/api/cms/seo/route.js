@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getDb } from '@/lib/mongodb';
 import { ObjectId } from 'mongodb';
 import { logActivity } from '@/lib/activity-logger';
@@ -242,6 +243,15 @@ export async function POST(request) {
     const score = calculateSeoScore(seoData);
 
     await logActivity(request, 'update_seo', path || `Route ID: ${routeId}`, { score });
+
+    try {
+      if (path) {
+        revalidatePath(path);
+      }
+      revalidatePath('/', 'layout');
+    } catch (revalErr) {
+      console.error('Revalidation error:', revalErr);
+    }
 
     return jsonResponse({
       ok: true,

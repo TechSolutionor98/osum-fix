@@ -5,7 +5,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Briefcase, ArrowRight } from "lucide-react";
 import { generateCmsMetadata } from "@/lib/cms-fetch";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   return await generateCmsMetadata("/careers", {

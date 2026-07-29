@@ -36,6 +36,12 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Material Symbols Font for Service Icons */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+        />
+
         {/* Custom Head Script */}
         {settings?.customHeadScript && (
           <script dangerouslySetInnerHTML={{ __html: settings.customHeadScript }} />

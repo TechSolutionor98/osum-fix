@@ -56,10 +56,18 @@ export default async function RootLayout({
           fetchPriority="high"
         />
 
-        {/* Material Symbols Font for All Site Icons */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+        {/* Asynchronous Non-Render-Blocking Material Symbols Font Loader */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap';
+                document.head.appendChild(link);
+              })();
+            `,
+          }}
         />
 
         {/* Custom Head Script */}

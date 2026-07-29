@@ -73,6 +73,8 @@ export default function Hero({ cms }: HeroProps) {
                 fill
                 sizes="(max-width: 640px) 300px, (max-width: 1024px) 450px, 500px"
                 priority
+                // @ts-ignore
+                fetchPriority="high"
                 quality={80}
                 className="object-contain object-bottom drop-shadow-2xl"
               />

@@ -1,13 +1,15 @@
 "use client";
 
 import Hero from "@/components/Home/Hero";
-import WhyChooseUs from "@/components/Home/WhyChooseUs";
 import Services from "@/components/Home/Services";
-import Projects from "@/components/Home/Projects";
-import VideoSection from "@/components/Home/VideoSection";
-import FAQSection from "@/components/Home/FAQSection";
-import CTA from "@/components/Home/CTA";
-import HomeQuoteSection from "@/components/Home/HomeQuoteSection";
+import WhyChooseUs from "@/components/Home/WhyChooseUs";
+import dynamic from "next/dynamic";
+
+const Projects = dynamic(() => import("@/components/Home/Projects"));
+const VideoSection = dynamic(() => import("@/components/Home/VideoSection"));
+const FAQSection = dynamic(() => import("@/components/Home/FAQSection"));
+const CTA = dynamic(() => import("@/components/Home/CTA"));
+const HomeQuoteSection = dynamic(() => import("@/components/Home/HomeQuoteSection"));
 
 interface HomeClientProps {
   cms?: any;

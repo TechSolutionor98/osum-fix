@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getSettings } from "@/lib/cms-service";
+
 import GlobalQuoteModal from "@/components/RequestQuote/GlobalQuoteModal";
 import MobileBottomNav from "@/components/MobileBottomNav";
 
@@ -36,6 +37,25 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Network Preconnect Hints */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+        {/* Preload Hero LCP Image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/_next/image?url=%2Fimages%2Fhro.png&w=640&q=80"
+          // @ts-ignore
+          imageSrcSet="/_next/image?url=%2Fimages%2Fhro.png&w=384&q=80 384w, /_next/image?url=%2Fimages%2Fhro.png&w=640&q=80 640w"
+          // @ts-ignore
+          imageSizes="(max-width: 640px) 300px, 500px"
+          // @ts-ignore
+          fetchPriority="high"
+        />
+
         {/* Material Symbols Font for Service Icons */}
         <link
           rel="stylesheet"

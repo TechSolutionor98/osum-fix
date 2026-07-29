@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
     inlineCss: true,
   },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,

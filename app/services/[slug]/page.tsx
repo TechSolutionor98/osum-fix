@@ -834,7 +834,7 @@ export default async function ServiceDetailPage({
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
                   { title: t("Experienced & Skilled Plumbers"), desc: t("Our trained professionals have extensive experience handling all types of residential and commercial plumbing systems."), icon: <Wrench size={28} className="text-white" />, gradient: "from-blue-500 to-indigo-600" },
-                  { title: t("Fast Response Across Dubai"), desc: "We understand that plumbing issues can't wait. Our team responds quickly to minimize damage and restore your water system.", icon: <Clock size={28} className="text-white" />, gradient: "from-cyan-500 to-blue-600" },
+                  { title: t("Fast Response Across Dubai"), desc: t("We understand that plumbing issues can't wait. Our team responds quickly to minimize damage and restore your water system."), icon: <Clock size={28} className="text-white" />, gradient: "from-cyan-500 to-blue-600" },
                   { title: t("Honest & Transparent Pricing"), desc: t("No hidden charges. We provide clear quotations and explanations before starting any plumbing work."), icon: <Shield size={28} className="text-white" />, gradient: "from-teal-500 to-emerald-600" },
                   { title: t("Quality Materials & Spare Parts"), desc: t("We use durable plumbing materials and trusted brands to ensure reliable, long-lasting repairs and installations."), icon: <Layers size={28} className="text-white" />, gradient: "from-purple-500 to-indigo-600" },
                   { title: t("Reliable Workmanship"), desc: t("Every repair and installation is completed according to professional standards with rigorous attention to detail."), icon: <Sparkles size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
@@ -890,7 +890,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Drainage Services")} />
+                      <Image src={t("/images/services/plumbing_drainage.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Drainage Services")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -927,7 +927,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Water Heater Services")} />
+                      <Image src={t("/images/services/plumbing_heater.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Water Heater Services")} />
                   </div>
                 </AnimatedCard>
                 
@@ -936,7 +936,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Plumbing Installs")} />
+                      <Image src={t("/images/services/plumbing_installs.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Plumbing Installs")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -973,7 +973,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Preventive Care")} />
+                      <Image src={t("/images/services/plumbing_maintenance.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Preventive Care")} />
                   </div>
                 </AnimatedCard>
 
@@ -1059,7 +1059,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5 xl:col-span-4">
                   <div className="relative aspect-[4/5] rounded-3xl overflow-hidden group">
-                    <Image src={t("/images/services/plumbing.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
+                    <Image src={t("/images/services/plumbing_workflow.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
                   </div>
                 </div>
               </div>

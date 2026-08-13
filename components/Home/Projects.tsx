@@ -24,12 +24,12 @@ export default function Projects({ cms }: ProjectsProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          <div className="relative rounded-[2rem] overflow-hidden group h-[400px] sm:h-[500px]">
+          <div className="relative rounded-[2rem] overflow-hidden h-[400px] sm:h-[500px]">
             <Image 
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               alt={String(t("Villa Renovation"))} 
-              className="object-cover transition-transform duration-700 group-hover:scale-110" 
+              className="object-cover" 
               src={String(t("https://lh3.googleusercontent.com/aida-public/AB6AXuCp6egzR5S8BkS7u8LFO_7c-SpKjdIXd2W-Y74LY9POQswK-A6f5uhpq4qeOAMMeH4WF879c1FzvULU_nsTQeZ1I3pviesdJRIaNM98b0_FGvnjI8WeQrMhAZHKi2GFTvW78OUp6UzIh2AZaJ1TgnuwEXLRlgpOC79jo6WJ4693s2zCoo1IdtQ8KlWmEV6QLFfPhmeIMi_D8DCLtYdAp64b2loUw3z4hXysFDdbXxQAKf45CjY9GE3yTGSw3g2--KGNv3nQP2Wtij8"))}
             />
             <div className="absolute bottom-8 left-8 right-8 z-10">
@@ -40,22 +40,21 @@ export default function Projects({ cms }: ProjectsProps) {
                 {t("Full Interior Painting & Lighting")}
               </h3>
             </div>
-            <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl font-bold text-xs uppercase tracking-wider border border-white/10 shadow-sm">
+            <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl font-bold text-xs uppercase tracking-wider border border-white/10 shadow-sm text-white">
               {t("Premium Finish")}
             </div>
           </div>
 
           <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="rounded-2xl overflow-hidden h-56 relative group">
+              <div className="rounded-2xl overflow-hidden h-56 relative">
                 <Image 
                   fill
                   sizes="(max-width: 1024px) 100vw, 25vw"
                   alt={String(t("AC Project"))} 
-                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  className="object-cover" 
                   src={String(t("https://lh3.googleusercontent.com/aida-public/AB6AXuCLiQsbcp9CIvalj5HlgjAve6IxUGPSM4J-rGQq130UOkUMQG3RJJCQ2VxXErbDVyZwlWwoozwli_5Mv_hiHzR9zCo-40P8adNutOjMh5UhTfpRgW6pQ4W_MPc5Oz_F5Q6dBk4Vx6FHUikwhJpMBY0uG8hPWprKrjWOPxqsmVNqoIkbd9076ARuMQDzyUF4uTjIqE1SdWHtss1QEihvuapg3LfDvz_4hZPH2R2gu1DvRx1xbdRqnmlIckfa_SmVFDLyVLHVKqK7qm8"))}
                 />
-                {/* Removed overlay to show pure image color */}
                 <div className="absolute bottom-4 left-4">
                   <p className="text-xs font-bold bg-white/20 text-white backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-lg shadow-sm">
                     {t("AC Overhaul")}
@@ -63,15 +62,14 @@ export default function Projects({ cms }: ProjectsProps) {
                 </div>
               </div>
 
-              <div className="rounded-2xl overflow-hidden h-56 relative group">
+              <div className="rounded-2xl overflow-hidden h-56 relative">
                 <Image 
                   fill
                   sizes="(max-width: 1024px) 100vw, 25vw"
                   alt={String(t("Plumbing Project"))} 
-                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  className="object-cover" 
                   src={String(t("https://lh3.googleusercontent.com/aida-public/AB6AXuCelodmM1FwEyBLvvhwDxzmyF0fjretE3ZQEgmJJXMAdjPt014WY6Q8ywRyMelt9kaxzIbiLWsxzDMOWu7lOXUKBk4lml5zPmiUWxCz4No6C1Aqw-PsOOO77IXgDOHYTGBNmzBrPLJZXZ0nthZSBAZJrvSY9KgyiS76qNShEwYwI2bzWSv-XJtVq3S5LRyPRhGqS5J5uB60OKFrii9Mj3P1PoTKCMoObud-YcYw7jx968ppGjstF6V57LDLPPyK_NAY9kk3GA7YMFc"))}
                 />
-                {/* Removed overlay to show pure image color */}
                 <div className="absolute bottom-4 left-4">
                   <p className="text-xs font-bold bg-white/20 text-white backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-lg shadow-sm">
                     {t("Kitchen Plumbing")}

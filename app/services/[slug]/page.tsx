@@ -1213,7 +1213,7 @@ export default async function ServiceDetailPage({
                   { title: t("Experienced Painting Professionals"), desc: t("Our skilled painters are trained to deliver clean, even finishes with attention to every detail."), icon: <Wrench size={28} className="text-white" />, gradient: "from-blue-500 to-indigo-600" },
                   { title: t("Premium Quality Materials"), desc: t("We use high-quality paints and trusted brands to ensure vibrant colors, excellent coverage, and long-lasting durability."), icon: <Sparkles size={28} className="text-white" />, gradient: "from-cyan-500 to-blue-600" },
                   { title: t("Clean & Hassle-Free Service"), desc: t("We carefully protect your furniture, floors, doors, windows, and fixtures before painting and leave your space clean after completion."), icon: <Shield size={28} className="text-white" />, gradient: "from-teal-500 to-emerald-600" },
-                  { title: t("Affordable & Transparent Pricing"), desc: "Receive clear quotations with no hidden charges, whether it's a single room or a full property repaint.", icon: <Layers size={28} className="text-white" />, gradient: "from-purple-500 to-indigo-600" },
+                  { title: t("Affordable & Transparent Pricing"), desc: t("Receive clear quotations with no hidden charges, whether it's a single room or a full property repaint."), icon: <Layers size={28} className="text-white" />, gradient: "from-purple-500 to-indigo-600" },
                   { title: t("Timely Project Completion"), desc: t("We work efficiently to complete projects on schedule while maintaining the highest quality standards."), icon: <Clock size={28} className="text-white" />, gradient: "from-pink-500 to-rose-600" },
                   { title: t("Customer Satisfaction Guaranteed"), desc: t("Our goal is to deliver results that exceed your expectations and give your property a fresh new look."), icon: <CheckCircle2 size={28} className="text-white" />, gradient: "from-emerald-500 to-teal-600" }
                 ].map((item, idx) => (
@@ -1258,7 +1258,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Interior Painting")} />
+                      <Image src={t("/images/services/painting_interior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Interior Painting")} />
                   </div>
                 </AnimatedCard>
 
@@ -1267,7 +1267,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Exterior Painting")} />
+                      <Image src={t("/images/services/painting_exterior.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Exterior Painting")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -1304,7 +1304,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Residential Painting")} />
+                      <Image src={t("/images/services/painting_residential.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Residential Painting")} />
                   </div>
                 </AnimatedCard>
 
@@ -1313,7 +1313,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Commercial Painting")} />
+                      <Image src={t("/images/services/painting_commercial.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Commercial Painting")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -1350,7 +1350,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Decorative Finishes")} />
+                      <Image src={t("/images/services/painting_decorative.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Decorative Finishes")} />
                   </div>
                 </AnimatedCard>
 
@@ -1435,7 +1435,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5 xl:col-span-4">
                   <div className="relative aspect-[4/5] rounded-3xl overflow-hidden group">
-                    <Image src={t("/images/services/painting.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
+                    <Image src={t("/images/services/painting_workflow.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
                   </div>
                 </div>
               </div>
@@ -1453,7 +1453,7 @@ export default async function ServiceDetailPage({
               <div className="space-y-4">
                 {[
                   { q: t("Do you provide both interior and exterior painting?"), a: t("Yes. We offer complete interior and exterior painting services for residential and commercial properties.") },
-                  { q: t("Can you help choose paint colors?"), a: "Yes. Our team can recommend suitable colors and finishes based on your property's style and lighting." },
+                  { q: t("Can you help choose paint colors?"), a: t("Yes. Our team can recommend suitable colors and finishes based on your property's style and lighting.") },
                   { q: t("Do you provide paint, or should I purchase it?"), a: t("We can supply high-quality paints or work with the paint brand of your choice.") },
                   { q: t("How long does a painting project take?"), a: t("Project duration depends on the size and condition of the property. We always aim to complete work within the agreed timeline.") },
                   { q: t("Do you protect furniture and flooring before painting?"), a: t("Absolutely. We cover furniture, floors, doors, windows, and fixtures to keep your property clean and protected.") },

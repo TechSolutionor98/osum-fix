@@ -1,13 +1,35 @@
-const { MongoClient, ObjectId } = require('mongodb');
+const { MongoClient } = require('mongodb');
 
-async function main() {
-  const client = new MongoClient('mongodb+srv://admin:admin@cluster0.ac1fznk.mongodb.net');
+async function testMerge() {
+  const uri = 'mongodb+srv://admin:admin@osumfix.nmt1vqm.mongodb.net/?appName=Osumfix';
+  const client = new MongoClient(uri);
   try {
     await client.connect();
-    const db = client.db('voltariadb');
+    const db = client.db('osumfix');
     
-    const route = await db.collection('cms_routes').findOne({ _id: new ObjectId('6a2b9f0db209cb811a56992f') });
-    console.log('Route 6a2b9f0db209cb811a56992f:', route);
+    // Check if cms_routes has /services/interior-designing
+    let route = await db.collection('cms_routes').findOne({ path: '/services/interior-designing' });
+    console.log('Route in DB:', route ? { id: route._id, path: route.path, filePath: route.filePath } : 'Not found');
+    
+    if (!route) {
+      console.log('Creating route in DB...');
+      const insertResult = await db.collection('cms_routes').insertOne({
+        path: '/services/interior-designing',
+        type: 'static',
+        dynamicSegment: null,
+        parentPath: '/services',
+        depth: 2,
+        fileName: 'page.tsx',
+        filePath: 'app/services/[slug]/page.tsx',
+        hasLayout: false,
+        status: 'active',
+        customName: 'Interior Designing',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        websiteId: 'default'
+      });
+      route = { _id: insertResult.insertedId, path: '/services/interior-designing', filePath: 'app/services/[slug]/page.tsx' };
+    }
   } catch (err) {
     console.error(err);
   } finally {
@@ -15,4 +37,4 @@ async function main() {
   }
 }
 
-main();
+testMerge();

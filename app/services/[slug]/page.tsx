@@ -2009,7 +2009,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Custom Furniture & Fit-Out")} />
+                      <Image src={t("/images/services/carpentry_custom.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Custom Furniture & Fit-Out")} />
                   </div>
                 </AnimatedCard>
 
@@ -2018,7 +2018,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Kitchen Carpentry")} />
+                      <Image src={t("/images/services/carpentry_kitchen.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Kitchen Carpentry")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -2055,7 +2055,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Doors, Partitions & Panels")} />
+                      <Image src={t("/images/services/carpentry_doors.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Doors, Partitions & Panels")} />
                   </div>
                 </AnimatedCard>
 
@@ -2064,7 +2064,7 @@ export default async function ServiceDetailPage({
                   <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[350px] lg:min-h-full overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-white to-transparent lg:block hidden z-10 w-24" />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent lg:hidden block z-10 h-24" />
-                      <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Flooring & Furniture Repairs")} />
+                      <Image src={t("/images/services/carpentry_repairs.png")} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Flooring & Furniture Repairs")} />
                   </div>
                   <div className="w-full lg:w-1/2 order-1 lg:order-2 p-10 lg:p-16 space-y-6 flex flex-col justify-center relative z-10 bg-white">
                     <div className="inline-flex items-center gap-4 mb-2">
@@ -2162,7 +2162,7 @@ export default async function ServiceDetailPage({
                 </div>
                 <div className="lg:col-span-5 xl:col-span-4">
                   <div className="relative aspect-[4/5] rounded-3xl overflow-hidden group">
-                    <Image src={t("/images/services/carpentry.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
+                    <Image src={t("/images/services/carpentry_workflow.png")} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" alt={t("Service Workflow")} />
                   </div>
                 </div>
               </div>

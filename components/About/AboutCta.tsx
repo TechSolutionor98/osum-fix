@@ -8,7 +8,7 @@ interface AboutCtaProps {
 }
 
 export default function AboutCta({ cms }: AboutCtaProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "aboutcta");
 
   return (
     <section className="py-20 relative overflow-hidden">

@@ -5,7 +5,7 @@ interface StatsProps {
 }
 
 export default function Stats({ cms }: StatsProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "stats");
 
   return (
     <section className="py-24 bg-[#E46704]">

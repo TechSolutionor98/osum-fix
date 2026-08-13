@@ -45,7 +45,7 @@ const LOCATIONS = [
 ];
 
 export default function CTA({ cms }: CTAProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "cta");
   
   // Assign each location to a unique zone initially with deterministic ring index for SSR hydration
   const [assignments, setAssignments] = useState(() => 

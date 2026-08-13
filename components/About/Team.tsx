@@ -7,7 +7,7 @@ interface TeamProps {
 }
 
 export default function Team({ cms }: TeamProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "team");
 
   return (
     <section className="py-20 bg-gradient-to-b from-blue-50 to-[#cdeae8]">

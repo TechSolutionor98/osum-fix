@@ -7,7 +7,7 @@ interface CommitmentProps {
 }
 
 export default function Commitment({ cms }: CommitmentProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "commitment");
 
   return (
     <section className="py-16 md:py-20 bg-gradient-to-b from-[#cdeae8] via-[#e2f2f1] to-[#fefaef] overflow-hidden relative">

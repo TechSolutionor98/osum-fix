@@ -8,7 +8,7 @@ interface AdvantagesProps {
 }
 
 export default function Advantages({ cms }: AdvantagesProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "advantages");
 
   return (
     <section className="py-20 bg-gradient-to-b from-[#fefaef] to-blue-50">

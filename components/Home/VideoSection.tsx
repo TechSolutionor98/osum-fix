@@ -17,7 +17,7 @@ interface VideoSectionProps {
 }
 
 export default function VideoSection({ cms }: VideoSectionProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "videosection");
   const [loadVideo, setLoadVideo] = useState(false);
 
   return (

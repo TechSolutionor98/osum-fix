@@ -11,7 +11,7 @@ interface HeroProps {
 }
 
 export default function Hero({ cms }: HeroProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "hero");
 
   return (
     <section className="relative min-h-[600px] md:min-h-[700px] pt-24 md:pt-32 flex items-center md:items-end overflow-hidden bg-gradient-to-br from-[#fefaef] to-[#cdeae8]">

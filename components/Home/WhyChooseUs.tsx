@@ -9,7 +9,7 @@ interface WhyChooseUsProps {
 }
 
 export default function WhyChooseUs({ cms }: WhyChooseUsProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "whychooseus");
 
   return (
     <section className="py-24 bg-white overflow-hidden">

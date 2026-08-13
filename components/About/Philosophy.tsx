@@ -6,7 +6,7 @@ interface PhilosophyProps {
 }
 
 export default function Philosophy({ cms }: PhilosophyProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "philosophy");
 
   return (
     <section className="py-20 md:py-32 bg-gradient-to-b from-[#fefaef] via-[#e2f2f1] to-[#cdeae8] relative overflow-hidden">

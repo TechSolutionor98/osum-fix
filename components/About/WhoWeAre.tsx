@@ -10,7 +10,7 @@ interface WhoWeAreProps {
 }
 
 export default function WhoWeAre({ cms }: WhoWeAreProps) {
-  const t = (val: string) => getCmsVal(cms, val);
+  const t = (val: string) => getCmsVal(cms, val, "whoweare");
 
   return (
     <section className="py-20 pt-35 bg-gradient-to-br from-[#cdeae8] via-[#e2f2f1] to-[#fefaef] relative overflow-hidden">

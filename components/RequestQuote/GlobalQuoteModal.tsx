@@ -106,7 +106,6 @@ export default function GlobalQuoteModal() {
 
               {/* Global Floating Texture & Blur Elements */}
               <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-                <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/images/pattern-bg.png')] bg-cover mix-blend-overlay"></div>
                 <div className="absolute -top-32 -left-32 w-96 h-96 bg-white rounded-full blur-[120px] opacity-30"></div>
                 <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-yellow-300 rounded-full blur-[120px] opacity-20"></div>
               </div>

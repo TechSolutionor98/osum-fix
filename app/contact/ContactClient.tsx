@@ -37,22 +37,22 @@ export default function ContactClient() {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMsg("");
-    
+
     try {
       const res = await fetch("/api/contact-submissions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-      
+
       if (!res.ok) {
         const data = await res.json();
         throw new Error(data.error || "Failed to send message");
       }
-      
+
       setSubmitted(true);
       setFormData({ name: "", phone: "", serviceRequired: "", propertyLocation: "", email: "", message: "" });
-      
+
       setTimeout(() => setSubmitted(false), 5000);
     } catch (err: any) {
       console.error(err);
@@ -68,59 +68,80 @@ export default function ContactClient() {
       <main className="min-h-screen bg-gradient-to-br from-[#cdeae8] via-[#e2f2f1] to-[#fefaef] pt-32">
         <section className="py-20 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Contact Info */}
-              <div>
-                <SectionTitle
-                  as="h1"
-                  subtitle="Get In Touch"
-                  title="We're Here to Help"
-                  description="Have a question or need emergency assistance? Contact our team anytime."
-                />
+            {/* Main Row: Left (Top Image + Bottom Info) & Right (Contact Form) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch mb-12">
 
-                <div className="space-y-6 mt-10">
-                  <div className="flex gap-5">
-                    <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] shrink-0 shadow-sm border border-[var(--primary)]/10">
-                      <MapPin size={24} />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-[var(--dark)] mb-1">Office Address</h4>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        office NO4-173 Al Khabeesi Building,<br />
-                        Deira Dubai, UAE
-                      </p>
-                    </div>
+              {/* Left Column: 2 Sections (Equal Top Image + Bottom Contact Info) */}
+              <div className="flex flex-col gap-6 h-full justify-between">
+
+                {/* Top: Image Section */}
+                <div className="relative w-full flex-1 min-h-[260px] sm:min-h-[290px] rounded-3xl overflow-hidden shadow-xl border border-white/40">
+                  <img
+                    src="/images/contact-support.jpg"
+                    alt="Customer Support Team"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Bottom: Contact Info Section (Equal Height & Compact Spacing) */}
+                <div className="flex-1 flex flex-col justify-center">
+                  <div>
+                    <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-xs block mb-1">
+                      GET IN TOUCH
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--dark)] mb-1 leading-tight">
+                      We're Here to Help
+                    </h2>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-snug">
+                      Have a question or need emergency assistance? Contact our team anytime.
+                    </p>
+                    <div className="w-14 h-1 bg-[var(--secondary)] my-3 rounded-full" />
                   </div>
 
-                  <div className="flex gap-5">
-                    <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] shrink-0 shadow-sm border border-[var(--primary)]/10">
-                      <Phone size={24} />
+                  <div className="space-y-3.5 mt-1">
+                    <div className="flex gap-4 items-center">
+                      <div className="w-10 h-10 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center text-[var(--dark)] shrink-0 shadow-sm border border-[var(--primary)]/10">
+                        <MapPin size={20} className="text-slate-700" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-[var(--dark)] leading-tight">Office Address</h4>
+                        <p className="text-slate-600 text-xs leading-snug">
+                          office NO4-173 Al Khabeesi Building, Deira Dubai, UAE
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-[var(--dark)] mb-1">Phone</h4>
-                      <p className="text-slate-600 text-sm mb-0.5">055 1519540 / 056 7910188</p>
-                      <p className="text-xs text-slate-500">Available 24/7 for emergencies</p>
-                    </div>
-                  </div>
 
-                  <div className="flex gap-5">
-                    <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] shrink-0 shadow-sm border border-[var(--primary)]/10">
-                      <Mail size={24} />
+                    <div className="flex gap-4 items-center">
+                      <div className="w-10 h-10 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center text-[var(--dark)] shrink-0 shadow-sm border border-[var(--primary)]/10">
+                        <Phone size={20} className="text-slate-700" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-[var(--dark)] leading-tight">Phone</h4>
+                        <p className="text-slate-700 font-semibold text-xs">055 1519540 / 056 7910188</p>
+                        <p className="text-[11px] text-emerald-600 font-medium">Available 24/7 for emergencies</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-[var(--dark)] mb-1">Email</h4>
-                      <p className="text-slate-600 text-sm">work@osumfix.com</p>
+
+                    <div className="flex gap-4 items-center">
+                      <div className="w-10 h-10 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center text-[var(--dark)] shrink-0 shadow-sm border border-[var(--primary)]/10">
+                        <Mail size={20} className="text-slate-700" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-[var(--dark)] leading-tight">Email</h4>
+                        <p className="text-slate-600 text-xs">work@osumfix.com</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+
               </div>
 
-              {/* Contact Form */}
-              <div className="bg-gradient-to-br from-[#e36704] via-[#e89050] to-[#d1ecea] p-8 rounded-2xl shadow-xl border border-white/20">
+              {/* Right Column: Contact Form */}
+              <div className="bg-gradient-to-br from-[#e36704] via-[#e89050] to-[#d1ecea] p-8 sm:p-10 rounded-3xl shadow-2xl border border-white/20 flex flex-col justify-center">
                 <h3 className="text-3xl font-extrabold text-white mb-6 drop-shadow-md">Send Us a Message</h3>
-                
+
                 {submitted ? (
-                  <div className="text-center py-10 space-y-4 bg-white/90 rounded-xl p-8 backdrop-blur-sm">
+                  <div className="text-center py-10 space-y-4 bg-white/90 rounded-2xl p-8 backdrop-blur-sm shadow-inner">
                     <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <CheckCircle2 size={32} />
                     </div>
@@ -130,7 +151,7 @@ export default function ContactClient() {
                 ) : (
                   <form className="space-y-6" onSubmit={handleSubmit}>
                     {errorMsg && <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-semibold">{errorMsg}</div>}
-                    
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-bold text-white mb-2 drop-shadow-sm">Full Name *</label>
@@ -138,7 +159,7 @@ export default function ContactClient() {
                           type="text"
                           required
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                           placeholder="Enter Your Name"
                         />
@@ -149,7 +170,7 @@ export default function ContactClient() {
                           type="tel"
                           required
                           value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                           placeholder="Enter Your Phone Number"
                         />
@@ -158,9 +179,9 @@ export default function ContactClient() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-bold text-white/90 mb-2 drop-shadow-sm">Service Required</label>
-                        <select 
+                        <select
                           value={formData.serviceRequired}
-                          onChange={(e) => setFormData({...formData, serviceRequired: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                         >
                           <option value="">Select a service</option>
@@ -182,7 +203,7 @@ export default function ContactClient() {
                         <input
                           type="text"
                           value={formData.propertyLocation}
-                          onChange={(e) => setFormData({...formData, propertyLocation: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, propertyLocation: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                           placeholder="Enter Property Location"
                         />
@@ -193,7 +214,7 @@ export default function ContactClient() {
                       <input
                         type="email"
                         value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500"
                         placeholder="Enter Your Email Address"
                       />
@@ -204,7 +225,7 @@ export default function ContactClient() {
                         rows={4}
                         required
                         value={formData.message}
-                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f172a] transition-all bg-white text-slate-800 font-semibold shadow-none placeholder:text-slate-500 resize-none"
                         placeholder="Enter Your Message..."
                       ></textarea>
@@ -228,8 +249,8 @@ export default function ContactClient() {
                 <p className="text-slate-500 mb-8 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
                   Explore our available appointment options and directly book a technician for a time that suits you best.
                 </p>
-                <a 
-                  href="/appointments" 
+                <a
+                  href="/appointments"
                   className="inline-flex items-center justify-center gap-2 bg-[#1e293b] hover:bg-[#0f172a] text-white px-8 py-3.5 rounded-xl font-medium transition-colors"
                 >
                   View Appointment Links
@@ -243,12 +264,12 @@ export default function ContactClient() {
 
         {/* Full-width Map Section */}
         <section className="w-full h-[500px] md:h-[700px] relative">
-          <iframe 
-            width="100%" 
-            height="100%" 
+          <iframe
+            width="100%"
+            height="100%"
             style={{ border: 0 }}
-            src="https://maps.google.com/maps?q=Al%20Khabeesi%20Building%20Deira%20Dubai%20UAE&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-            allowFullScreen={true} 
+            src="https://maps.google.com/maps?q=Al%20Khabeesi%20Building%20Deira%20Dubai%20UAE&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-full"

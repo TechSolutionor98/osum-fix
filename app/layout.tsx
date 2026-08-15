@@ -15,6 +15,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "OsumFix Technical Services LLC | Dubai",
   description: "Professional Technical Services Across Dubai. Premium electrical, plumbing, HVAC, and handyman maintenance.",
+  icons: {
+    icon: [
+      { url: "/images/favicon2.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/images/favicon2.png",
+    apple: "/images/favicon2.png",
+  },
 };
 
 export default async function RootLayout({
@@ -37,6 +45,10 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="icon" href="/images/favicon2.png" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="/images/favicon2.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/images/favicon2.png" />
+
         {/* Network Preconnect & Font File Preload Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

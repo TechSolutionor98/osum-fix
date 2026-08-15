@@ -81,7 +81,7 @@ export default function GlobalQuoteModal() {
             <div className="md:hidden flex flex-col h-full overflow-y-auto scrollbar-hide bg-gradient-to-br from-[#f5f6ed] to-[#d1ecea]">
                <div className="w-full bg-gradient-to-br from-[#e36704] to-[#cc5803] p-8 text-white flex flex-col items-center justify-center text-center">
                   <h3 className="text-2xl font-bold mb-2">Premium Service</h3>
-                  <p className="font-medium opacity-90">Dubai's Trusted Technical Experts</p>
+                  <p className="font-medium opacity-90">UAE Trusted Technical Experts</p>
                </div>
                <div className="p-6">
                  <QuoteForm onStepChange={(step) => setCurrentStep(step)} />
@@ -142,20 +142,19 @@ export default function GlobalQuoteModal() {
                       repeat: Infinity, 
                       ease: "easeInOut" 
                     }}
-                    className="w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 relative group"
+                    className="w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 relative"
                   >
                     <img 
-                      src="/images/about-2.png" 
+                      src="/images/quote-service.jpg" 
                       alt="Technical Services" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop";
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     <div className="absolute bottom-6 left-6 z-20">
-                      <h3 className="text-white text-3xl font-extrabold mb-1 drop-shadow-lg">Premium Service</h3>
-                      <p className="text-[#d1ecea] font-medium text-lg drop-shadow-md">Dubai's Trusted Experts</p>
+                      <h3 className="text-white text-3xl font-extrabold mb-1 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">Premium Service</h3>
+                      <p className="text-[#d1ecea] font-semibold text-lg drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">UAE Trusted Experts</p>
                     </div>
                   </motion.div>
                   
